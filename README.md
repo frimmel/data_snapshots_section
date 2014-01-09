@@ -13,8 +13,10 @@ To enable changes to the display of Data Source nodes follow these steps:
 2. Click on the `Custom classes` tab at the bottom of the `Manage Display` page for the Data Source content type.
 3. Click on the link `Manage region and field CSS classes`.
 4. Add these classes to the `CSS classes for regions` textarea on seperate lines.
-    article-body
-    article-info
+```
+article-body
+article-info
+```
 5. Back on the `Custom classes` tab, ensure the `Class for left` is `article-body` and the `Class for right` is `article-info`.
 
 **TODO**
