@@ -8,6 +8,7 @@ For development purposes you will need to go into the modules/data_snapshots dir
 - The left and right regions for the Data Source content type require custom classes which exist in the final site, but are not included in the module. These classes are enabled by default when the module is enabled due to the way which they were bundled up in features, but will be taken out of the rendered html if any changes to the display of the Data Source content type are saved.
 
 To enable changes to the display of Data Source nodes follow these steps:
+
 1. Enable the `Display Suite UI` module.
 2. Click on the `Custom classes` tab at the bottom of the `Manage Display` page for the Data Source content type.
 3. Click on the link `Manage region and field CSS classes`.
@@ -15,7 +16,6 @@ To enable changes to the display of Data Source nodes follow these steps:
     article-body
     article-info
 5. Back on the `Custom classes` tab, ensure the `Class for left` is `article-body` and the `Class for right` is `article-info`.
-
 
 **TODO**
 - Switch annotations
