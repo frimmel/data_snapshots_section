@@ -1,0 +1,164 @@
+[
+    {
+        "#node_export_object": "1", 
+        "body": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_summary": "", 
+                    "safe_value": "<p>This is the month that it was dry as hell everywhere on the planet.  Even the fish in the oceans got thirsty, and water became more valuable than oil.  This is what we have to look forward to in the future if we continue to use Drupal as our content management platform.</p>\n", 
+                    "summary": "", 
+                    "value": "This is the month that it was dry as hell everywhere on the planet.  Even the fish in the oceans got thirsty, and water became more valuable than oil.  This is what we have to look forward to in the future if we continue to use Drupal as our content management platform."
+                }
+            ]
+        }, 
+        "changed": "1385061822", 
+        "comment": "2", 
+        "created": "1384976790", 
+        "data": "b:0;", 
+        "field_ds_day": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "04", 
+                    "value": "04"
+                }
+            ]
+        }, 
+        "field_ds_disimg": {
+            "und": [
+                {
+                    "attributes": [], 
+                    "title": null, 
+                    "url": "http://datasnapshots-usdm-sample.nemac.com:8080/drought-usdm--2000-01-04--620.png"
+                }
+            ]
+        }, 
+        "field_ds_dloads": [], 
+        "field_ds_dsds_mn": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "droutlook", 
+                    "value": "droutlook"
+                }
+            ]
+        }, 
+        "field_ds_dtacc": {
+            "und": [
+                {
+                    "date_type": "datetime", 
+                    "timezone": "America/New_York", 
+                    "timezone_db": "America/New_York", 
+                    "value": "2013-11-13 00:00:00"
+                }
+            ]
+        }, 
+        "field_ds_dtgen": {
+            "und": [
+                {
+                    "date_type": "datetime", 
+                    "timezone": "America/New_York", 
+                    "timezone_db": "America/New_York", 
+                    "value": "2013-11-13 00:00:00"
+                }
+            ]
+        }, 
+        "field_ds_mon": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "01", 
+                    "value": "01"
+                }
+            ]
+        }, 
+        "field_ds_relnds": [], 
+        "field_ds_tclean": [], 
+        "field_ds_year": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "2000", 
+                    "value": "2000"
+                }
+            ]
+        }, 
+        "language": "und", 
+        "log": "", 
+        "menu": null, 
+        "name": "admin", 
+        "nid": "2", 
+        "node_export_drupal_version": "7", 
+        "path": false, 
+        "picture": "0", 
+        "promote": "1", 
+        "rdf_mapping": {
+            "body": {
+                "predicates": [
+                    "content:encoded"
+                ]
+            }, 
+            "changed": {
+                "callback": "date_iso8601", 
+                "datatype": "xsd:dateTime", 
+                "predicates": [
+                    "dc:modified"
+                ]
+            }, 
+            "comment_count": {
+                "datatype": "xsd:integer", 
+                "predicates": [
+                    "sioc:num_replies"
+                ]
+            }, 
+            "created": {
+                "callback": "date_iso8601", 
+                "datatype": "xsd:dateTime", 
+                "predicates": [
+                    "dc:date", 
+                    "dc:created"
+                ]
+            }, 
+            "last_activity": {
+                "callback": "date_iso8601", 
+                "datatype": "xsd:dateTime", 
+                "predicates": [
+                    "sioc:last_activity_date"
+                ]
+            }, 
+            "name": {
+                "predicates": [
+                    "foaf:name"
+                ]
+            }, 
+            "rdftype": [
+                "sioc:Item", 
+                "foaf:Document"
+            ], 
+            "title": {
+                "predicates": [
+                    "dc:title"
+                ]
+            }, 
+            "uid": {
+                "predicates": [
+                    "sioc:has_creator"
+                ], 
+                "type": "rel"
+            }
+        }, 
+        "revision_timestamp": "1385061822", 
+        "revision_uid": "1", 
+        "status": "1", 
+        "sticky": "0", 
+        "title": "USDM for 2000-01-04", 
+        "tnid": "0", 
+        "translate": "0", 
+        "type": "data_snapshot", 
+        "uid": "1", 
+        "uuid": "d8962262-fe17-43ad-b84b-ebeb00726766", 
+        "vid": "2", 
+        "vuuid": "410675ac-e052-4797-90e4-077c8cba247d"
+    }
+]

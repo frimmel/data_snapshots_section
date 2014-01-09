@@ -1,0 +1,46 @@
+.node-type-data-snapshot-data-source .ds-2col > .group-left {
+    width: 63%;
+}
+
+.node-type-data-snapshot-data-source .group-right.article-info {
+    width: 29%;
+    height: auto;
+    float: right;
+}
+
+.node-type-data-snapshot-data-source .group-right.article-info p,
+.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question p,
+.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi p {
+    margin-bottom: 0;
+}
+
+.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question,
+.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi {
+    font-weight: bold;
+}
+
+/* needed for dev. Will be provided by live site */
+.node-type-data-snapshot-data-source #page-title {
+    display: none;
+}
+
+.node-type-data-snapshot-data-source .field-name-title h2 {
+    margin-top: 0;
+}
+
+.article-info {
+    padding: 1em;
+    padding: 1em;
+    width: 30%;
+    height: 426px;
+    border: 5px solid #f4f4f4;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 5px 0 #aaa;
+    -moz-box-shadow: 0 0 5px 0 #aaa;
+    box-shadow: 0 0 5px 0 #aaa;
+    -o-border-radius: 5px;
+}
+/* end needed for dev */

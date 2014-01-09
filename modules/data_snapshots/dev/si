@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# re-install drupal; this completely replaces the current database
+drush -y site-install
+
+# reset the admin user password
+drush upwd admin --password=`cat dev/.password`
+
+# disable comment module
+drush -y dis comment
+
+# install several modules that we need for development
+drush -y en global_dependencies taxonomy_csv node_export
+
+# import some taxonomy vocab terms
+drush vocimp --vocabulary_id=section `pwd`/dev/section-vocab.csv flat
+
+# set custom theme as default
+drush -y en mybartik
+drush -y vset theme_default mybartik

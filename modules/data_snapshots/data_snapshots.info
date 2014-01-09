@@ -1,0 +1,21 @@
+name = Data Snapshots
+description = Provides Data Snapshot content type
+core = 7.x
+package = UNCA/NEMAC
+version = 7.x-1.0-beta1
+project = data_snapshots
+dependencies[] = date
+dependencies[] = entityreference
+dependencies[] = field_group
+dependencies[] = field_sql_storage
+dependencies[] = global_dependencies
+dependencies[] = link
+dependencies[] = node
+dependencies[] = options
+dependencies[] = taxonomy
+dependencies[] = text
+dependencies[] = feeds
+dependencies[] = feeds_import
+dependencies[] = feeds_ui
+dependencies[] = data_snapshots_data_source
+# TODO: add missing components: context, display suite, etc

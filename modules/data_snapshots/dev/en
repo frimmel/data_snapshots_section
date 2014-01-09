@@ -1,0 +1,7 @@
+#! /bin/bash
+
+drush -y en data_snapshots devel
+
+drush vocimp --vocabulary_id=data_snapshot_data_source_frequency `pwd`/dev/data_snapshot_data_source_frequency-vocab.csv flat
+
+drush vocimp --vocabulary_id=data_snapshots_themes `pwd`/dev/data_snapshots_themes-vocab.csv flat

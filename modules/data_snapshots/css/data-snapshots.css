@@ -1,0 +1,91 @@
+.dss-wrapper {
+  /*background-color: #f00;*/
+  width: 940px;
+}
+
+.dss-header {
+  /*background-color: #f00;*/
+  margin: 5px;
+}
+
+.dss-middle {
+  /*background-color: #0f0;*/
+  position: relative;
+  height: 475px;
+}
+
+.dss-footer {
+  /*background-color: #00f;*/
+}
+
+.dss-left-side {
+  position: absolute;
+  top: 50;
+  left: 0;
+  width: 620px !important;
+  margin: 5px;
+}
+
+.dss-right-side {
+  position: absolute;
+  top: 50;
+  right: 0;
+  width: 300px !important;
+  margin: 5px;
+}
+
+.dss-title {
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+.dss-evergreen-question {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-style: italic;
+  font-size: 14pt;
+}
+
+.dss-question-read-more {
+  float: right;
+}
+
+.dss-evergreen-answer {
+  margin-left: 15px;
+}
+
+.dss-download-social-container {
+  border-top: 1px solid #999;
+  border-bottom: 1px solid #999;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.dss-downloads {
+  display: inline-block;
+  vertical-align: center;
+}
+
+.dss-social {
+  float: right;
+  display: inline-block;
+  vertical-align: center;
+}
+
+.dss-about-this-date {
+  font-weight: bold;
+}
+
+/******************************************************************/
+
+#dss-timeslider, #dss-yearslider {
+  width: 400px;
+}
+
+#dss-timeslider-row {
+  margin-top: 20px;
+}

@@ -1,0 +1,11 @@
+<?php
+/**
+ * @file
+ * Code for the DSS Data Source Export feature.
+ */
+
+include_once 'data_snapshots_data_source.features.inc';
+
+function data_snapshots_data_source_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['full']['custom settings'] = TRUE;
+}
