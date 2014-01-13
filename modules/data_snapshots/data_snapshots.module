@@ -3,6 +3,7 @@
 include_once 'data_snapshots.fields.data_snapshot.inc';
 include_once 'data_snapshots.field_groups.inc';
 include_once 'data_snapshots.import.inc';
+include_once 'data_snapshots.switch_callbacks.inc';
 
 /**
  * Implements hook_ctools_plugin_api().
