@@ -87,6 +87,7 @@ function MonthlyToWeekly($dest, $ptk, $stk) {
   return array(
 	       'ptk' => $new_ptk,
 	       'stk' => $new_stk,
+	       'dates' => $dates,
   );
 }
 
@@ -119,6 +120,7 @@ function WeeklyToMonthly($dest, $ptk, $stk) {
   return array(
 	       'ptk' => $new_ptk,
 	       'stk' => $new_stk,
+	       'dates' => $dates,
   );
 }
 

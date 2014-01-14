@@ -94,7 +94,11 @@
         <table>
           <tr>
             <td>
-              Category:
+              Data Source:&nbsp;
+              <select id="dss-data-source-dropdown">
+		 <option id="dss-data-source-usdm" value="usdm">U.S. Drought Monitor</option>
+		 <option id="dss-data-source-ghcntempm" value="ghcntempm">GHCN Temp Anomaly</option>
+              </select>
             </td>
             <td>
               <table>

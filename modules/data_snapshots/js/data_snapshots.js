@@ -26,28 +26,30 @@ function data_snapshots ($) {
             $('.dss-footer').animate({'opacity' : 1.0}, 200);
         }
 
-        $('#dss-yearslider').slider({
-            'min' : 0,
-            'max' : ptks.length-1,
-            'value' : current_ptk_index,
-            'change' : function(event, ui) {
-                current_ptk_index = $(this).slider('value');
-                stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
-                set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
-                config_stk_slider();
-            },
-            'slide' : function(event, ui) {
-                current_ptk_index = $(this).slider('value');
-                stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
-                set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
-            },
-            'start' : function(event, ui) {
-                hideStuff();
-            },
-            'stop' : function(event, ui) {
-                showStuff();
-            }
-        });
+	function config_ptk_slider() {
+            $('#dss-yearslider').slider({
+                'min' : 0,
+                'max' : ptks.length-1,
+                'value' : current_ptk_index,
+                'change' : function(event, ui) {
+                    current_ptk_index = $(this).slider('value');
+                    stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
+                    set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+                    config_stk_slider();
+                },
+                'slide' : function(event, ui) {
+                    current_ptk_index = $(this).slider('value');
+                    stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
+                    set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+                },
+                'start' : function(event, ui) {
+                    hideStuff();
+                },
+                'stop' : function(event, ui) {
+                    showStuff();
+                }
+            });
+	};
 
         function config_stk_slider() {
             $('#dss-timeslider').slider({
@@ -73,8 +75,45 @@ function data_snapshots ($) {
         }
 
         stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
+        config_ptk_slider();
         config_stk_slider();
 
+
+	$('#dss-data-source-dropdown').val(dsmn); // set default selected data source
+	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
+
+	function data_source_dropdown_change() {
+	    var $this = $(this),
+		new_dsmn = $(this).val();
+	    //	    console.log(new_dsmn);
+	    $.ajax({
+		type : "POST",
+	        url  : "/data-snapshots/ajax",
+		data : {
+			 "current" : dsmn,
+			 "new"     : new_dsmn,
+			 "ptk"     : ptks[current_ptk_index],
+			 "stk"     : stks[current_stk_index]
+		       }
+	    })
+	    .done(function (msg) {
+		var result = msg.callback,
+		    dates = result.dates;
+		dates.dsmn = new_dsmn;
+		Drupal.settings.data_snapshots.snapshots = dates;
+
+		current_ptk_index = dates.p.indexOf(result.ptk);
+		current_stk_index = dates.s[result.ptk].indexOf(result.stk);
+		ptks = dates.p;
+		stks = dates.s[ptks[current_ptk_index]];
+
+		dsmn = new_dsmn;
+
+		set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+		config_ptk_slider();
+		config_stk_slider();
+	    });
+	}
     });
 
 }

@@ -371,27 +371,24 @@ function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name
 }
 
 function _data_snapshots_datasource_ajax() {
-  $received = file_get_contents("php://input");
-  $json = json_decode($received, TRUE);
-
   // Get type of dataset from machine name
-  $current_frequency = _data_snapshots_get_frequency($json['current']);
-  $new_frequency = _data_snapshots_get_frequency($json['new']);
+  $current_frequency = _data_snapshots_get_frequency($_POST['current']);
+  $new_frequency = _data_snapshots_get_frequency($_POST['new']);
 
   // Get conversion callback
-  $callback = _data_snapshots_get_callback($current_frequency, $new_frequency, $json['current'], $json['new']);
+  $callback = _data_snapshots_get_callback($current_frequency, $new_frequency, $_POST['current'], $_POST['new']);
 
   // Serve it back up
   if ($current_frequency != FALSE && $new_frequency != FALSE) {
     $obj = array(
-		 'request' => $json,
+		 'request' => $_POST,
 		 'current_frequency' => $current_frequency,
 		 'new_frequency' => $new_frequency,
-		 'callback' => $callback($json['new'], $json['ptk'], $json['stk']),
+		 'callback' => $callback($_POST['new'], $_POST['ptk'], $_POST['stk']),
 		 );
   } else {
     $obj = array(
-		 'request' => $json,
+		 'request' => $_POST,
 		 'error' => 'freq not found',
 		 );
   }
