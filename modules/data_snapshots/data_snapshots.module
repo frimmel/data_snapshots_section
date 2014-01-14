@@ -340,6 +340,9 @@ function data_snapshots_menu() {
   return $items;
 }
 
+/*
+TODO: pass both machine names to this, get all info in one query
+*/
 function _data_snapshots_get_frequency($machine_name) {
   $query = db_select('taxonomy_term_data', 'ttd')
     ->fields('ttd', array('name'));
@@ -350,6 +353,23 @@ function _data_snapshots_get_frequency($machine_name) {
     ->FetchField();
 }
 
+function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name) {
+  $custom_freq = 'Custom';
+  if ($cur_freq == $custom_freq) {
+    $cur_freq = $cur_freq . $cur_name;
+  }
+  if ($new_freq == $custom_freq) {
+    $new_freq = $new_freq . $new_name;
+  }
+  $callback = $cur_freq . 'To' . $new_freq;
+
+  if (function_exists($callback)) {
+    return $callback;
+  } else {
+    return 'DefaultConversion';
+  }
+}
+
 function _data_snapshots_datasource_ajax() {
   $received = file_get_contents("php://input");
   $json = json_decode($received, TRUE);
@@ -358,12 +378,16 @@ function _data_snapshots_datasource_ajax() {
   $current_frequency = _data_snapshots_get_frequency($json['current']);
   $new_frequency = _data_snapshots_get_frequency($json['new']);
 
+  // Get conversion callback
+  $callback = _data_snapshots_get_callback($current_frequency, $new_frequency, $json['current'], $json['new']);
+
   // Serve it back up
   if ($current_frequency != FALSE && $new_frequency != FALSE) {
     $obj = array(
 		 'request' => $json,
 		 'current_frequency' => $current_frequency,
 		 'new_frequency' => $new_frequency,
+		 'callback' => $callback($json['new'], $json['ptk'], $json['stk']),
 		 );
   } else {
     $obj = array(
