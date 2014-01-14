@@ -32,6 +32,20 @@ function getDataSourceDates($datasource) {
 	       );
 }
 
+function getNewPrimaryKey($ptk, $dates) {
+  if (array_key_exists($ptk, $dates['s'])) {
+    $new_ptk = $ptk;
+  } else {
+    if ($ptk < $dates['p'][0]) {
+      $new_ptk = $dates['p'][0];
+    } else {
+      $new_ptk = $dates['p'][count($dates['p']) - 1];
+    }
+  }
+
+  return $new_ptk;
+}
+
 function AnnualToAnnual($dest, $ptk, $stk) {
   // stub
 }
@@ -55,15 +69,7 @@ function MonthlyToMonthly($dest, $ptk, $stk) {
 function MonthlyToWeekly($dest, $ptk, $stk) {
   $dates = getDataSourceDates($dest);  
 
-  if (array_key_exists($ptk, $dates['s'])) {
-    $new_ptk = $ptk;
-  } else {
-    if ($ptk < $dates['p'][0]) {
-      $new_ptk = $dates['p'][0];
-    } else {
-      $new_ptk = $dates['p'][count($dates['p']) - 1];
-    }
-  }
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
 
   $potential_stks = $dates['s'][$new_ptk];
 
@@ -91,15 +97,7 @@ function WeeklyToAnnual($dest, $ptk, $stk) {
 function WeeklyToMonthly($dest, $ptk, $stk) {
   $dates = getDataSourceDates($dest);  
 
-  if (array_key_exists($ptk, $dates['s'])) {
-    $new_ptk = $ptk;
-  } else {
-    if ($ptk < $dates['p'][0]) {
-      $new_ptk = $dates['p'][0];
-    } else {
-      $new_ptk = $dates['p'][count($dates['p']) - 1];
-    }
-  }
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
 
   $potential_stks = $dates['s'][$new_ptk];
 
