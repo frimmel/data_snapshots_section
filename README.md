@@ -19,14 +19,32 @@ article-info
 ```
 5. Back on the `Custom classes` tab, ensure the `Class for left` is `article-body` and the `Class for right` is `article-info`.
 
+---
+
 **TODO**
-- Switch annotations
-- Theme & Dataset switching
-- Add Annotation admin view
-- Add Context settings
-- Switch display of Data Snapshots to display suite
-- Add URL aliases
-- Switch URL's on interaction
-- Add image to Data Source
-- Properly bundle stylesheets
-- Ensure datasets with odd date combinations work
+1. Make Data Snapshots Page feature complete
+  - Switch annotations
+  - Write remaining data source switchers
+  - Add URL aliases
+  - Update URL aliases on interaction
+  - Update edit links on interaction
+  - Determine Theme from URL
+  - Fix off by one error on slider
+  - Implement Downloads section
+  - Have sliders be in correct initial position
+  - Load Metadata fields
+2. Import remaining dependencies
+  - Annotation admin view
+  - Context settings
+  - Switch display of Data Snapshots to display suite
+  - Add image to Data Source
+  - Social media buttons
+3. Generally clean up code
+  - Rewrite queries to be more efficient
+  - Cut out deprecated/development code
+  - Properly bundle css & js
+  - Minify Javascript
+4. Implementation
+  - Test on live mirror
+  - Ensure datasets with odd date combinations work
+  - Fix remaining bugs
