@@ -22,6 +22,7 @@ article-info
 ---
 
 **TODO**
+
 1. Make Data Snapshots Page feature complete
   - Switch annotations
   - Write remaining data source switchers
