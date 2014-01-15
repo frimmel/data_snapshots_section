@@ -12,6 +12,48 @@ function data_snapshots ($) {
         $('div.dss-title').text(ptk + ' / ' + stk);
     }
 
+    function init_dropdowns() {
+	var data_snapshots = Drupal.settings.data_snapshots,
+	    dsmn = data_snapshots.snapshots.dsmn,
+	    themes = data_snapshots.themes,
+	    data_sources = data_snapshots.datasources,
+	    $theme_dropdown = $("#dss-theme-dropdown"),
+	    $data_source_dropdown = $("#dss-data-source-dropdown"),
+	    theme, i,
+	    foundTheme = false;
+
+	for (i = 0; i < themes.length; i++) {
+	    theme = themes[i];
+	    if (data_sources[theme].length === 0) {
+		continue;
+	    }
+	    $theme_dropdown.append($("<option>", { value: theme })
+				   .text(theme));
+
+	    // TODO: Add parsing of URL to determine proper default theme
+	    // TODO: Add polyfill of indexOf
+	    if (!foundTheme) {
+		var j;
+
+		for (j = 0; j < data_sources[theme].length; j++) {
+		    if (data_sources[theme][j].mname === dsmn) {
+			foundTheme = true;
+		    }
+		}
+
+		if (foundTheme) {
+		    for (j = 0; j < data_sources[theme].length; j++) {
+			$data_source_dropdown.append($("<option>", { value: data_sources[theme][j].mname })
+						     .text(data_sources[theme][j].oname));
+		    }
+
+		    $theme_dropdown.val(theme);
+		    $data_source_dropdown.val(dsmn);
+		}
+	    }
+	}
+    }
+
     $('document').ready(function() {
         var dsmn = Drupal.settings.data_snapshots.snapshots.dsmn,
             current_ptk_index = 0, // not correct, fix later!
@@ -79,13 +121,26 @@ function data_snapshots ($) {
         config_stk_slider();
 
 
-	$('#dss-data-source-dropdown').val(dsmn); // set default selected data source
+	init_dropdowns();
 	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
+	$('#dss-theme-dropdown').on("change", theme_dropdown_change);
+
+	function theme_dropdown_change() {
+	    var new_theme = $(this).val(),
+		data_sources = Drupal.settings.data_snapshots.datasources[new_theme],
+		$data_source_dropdown = $('#dss-data-source-dropdown'),
+		i;
+
+	    $data_source_dropdown.empty();
+
+	    for (i = 0; i < data_sources.length; i++) {
+		$data_source_dropdown.append($("<option>", { value: data_sources[i].mname })
+					     .text(data_sources[i].oname));
+	    }
+	}
 
 	function data_source_dropdown_change() {
-	    var $this = $(this),
-		new_dsmn = $(this).val();
-	    //	    console.log(new_dsmn);
+	    var new_dsmn = $(this).val();
 	    $.ajax({
 		type : "POST",
 	        url  : "/data-snapshots/ajax",
