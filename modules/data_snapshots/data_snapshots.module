@@ -378,6 +378,12 @@ function _data_snapshots_datasource_ajax() {
   // Get conversion callback
   $callback = _data_snapshots_get_callback($current_frequency, $new_frequency, $_POST['current'], $_POST['new']);
 
+  $dataset_nid = db_select('field_data_field_dssds_machine_name', 'f')
+    ->condition('field_dssds_machine_name_value', $_POST['new'])
+    ->fields('f', array('entity_id'))
+    ->execute()
+    ->FetchField();
+
   // Serve it back up
   if ($current_frequency != FALSE && $new_frequency != FALSE) {
     $obj = array(
@@ -385,6 +391,7 @@ function _data_snapshots_datasource_ajax() {
 		 'current_frequency' => $current_frequency,
 		 'new_frequency' => $new_frequency,
 		 'callback' => $callback($_POST['new'], $_POST['ptk'], $_POST['stk']),
+		 'node' => node_load($dataset_nid),
 		 );
   } else {
     $obj = array(

@@ -54,6 +54,22 @@ function data_snapshots ($) {
 	}
     }
 
+    function switch_data_source_content(node) {
+	var $evergreen_question = $(".dss-evergreen-question"),
+	    $evergreen_answer = $(".dss-evergreen-answer");
+
+	$evergreen_question.text(node.field_dssds_framing_question.und[0].value);
+
+	var read_more_link = $("<span>", { class: "dss-question-read-more" })
+	    .append($("<a>", { href: "/node/" + node.nid })
+		    .text("read more...")
+		    );
+
+	$evergreen_answer
+	    .text(node.field_dssds_english_descript.und[0].value)
+	    .append(read_more_link);
+    };
+
     $('document').ready(function() {
         var dsmn = Drupal.settings.data_snapshots.snapshots.dsmn,
             current_ptk_index = 0, // not correct, fix later!
@@ -167,6 +183,8 @@ function data_snapshots ($) {
 		set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
 		config_ptk_slider();
 		config_stk_slider();
+
+		switch_data_source_content(msg.node);
 	    });
 	}
     });
