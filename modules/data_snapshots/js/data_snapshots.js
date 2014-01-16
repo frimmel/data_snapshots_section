@@ -70,6 +70,30 @@ function data_snapshots ($) {
 	    .append(read_more_link);
     };
 
+    function switchDataSnapshotContent(dsmn, ptk, stk) {
+	$.ajax({
+	    type : "POST",
+	    url  : "/data-snapshots/snapshots/ajax",
+	    data : {
+		 "type" : "snapshot",
+		 "dsmn" : dsmn,
+		 "ptk"  : ptk,
+		 "stk"  : stk
+	       }
+	})
+	.done(function (result) {
+	    $(".dss-footer").html(result.body_html);
+
+	    // TODO: switch out tab links in a better fashion. Maybe can be rendered in callback?
+	    // TODO: implement tab links for tabs actually visible on the live site
+	    $(".tabs .primary li:nth-child(1) a").attr("href", "/node/" + result.nid);
+	    $(".tabs .primary li:nth-child(2) a").attr("href", "/node/" + result.nid + "/edit");
+	    $(".tabs .primary li:nth-child(3) a").attr("href", "/node/" + result.nid + "/display");
+	    $(".tabs .primary li:nth-child(4) a").attr("href", "/node/" + result.nid + "/node_export");
+	    $(".tabs .primary li:nth-child(5) a").attr("href", "/node/" + result.nid + "/devel");
+	});
+    }
+
     $('document').ready(function() {
         var dsmn = Drupal.settings.data_snapshots.snapshots.dsmn,
             current_ptk_index = 0, // not correct, fix later!
@@ -105,6 +129,7 @@ function data_snapshots ($) {
                 },
                 'stop' : function(event, ui) {
                     showStuff();
+		    switchDataSnapshotContent(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
                 }
             });
 	};
@@ -127,6 +152,7 @@ function data_snapshots ($) {
                 },
                 'stop' : function(event, ui) {
                     showStuff();
+		    switchDataSnapshotContent(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
                 }           
             });
 
@@ -185,6 +211,7 @@ function data_snapshots ($) {
 		config_stk_slider();
 
 		switch_data_source_content(msg.node);
+		switchDataSnapshotContent(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
 	    });
 	}
     });

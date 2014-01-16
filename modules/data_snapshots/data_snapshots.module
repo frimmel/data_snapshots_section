@@ -337,6 +337,15 @@ function data_snapshots_menu() {
     'access callback' => TRUE,
   );
 
+  // TODO: combine these two items into one, with a paramater to determine the final callback used
+  $items['data-snapshots/snapshots/ajax'] = array(
+    'type' => MENU_CALLBACK,
+    'title' => 'Callback Only',
+    'page callback' => '_data_snapshots_snapshot_ajax',
+    'page arguments' => array(t('The menu entry for this page is of type MENU_CALLBACK, so it provides only a path but not a link in the menu links, but it is the same in every other way to the simplest example.')),
+    'access callback' => TRUE,
+  );
+
   return $items;
 }
 
@@ -370,6 +379,20 @@ function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name
   }
 }
 
+function _data_snapshots_snapshot_ajax() {
+  $result = db_select('data_snapshots', 'ds')
+    ->fields('ds', array('nid'))
+    ->condition('dsmn', $_POST['dsmn'])
+    ->condition('ptk', $_POST['ptk'])
+    ->condition('stk', $_POST['stk'])
+    ->execute()
+    ->fetchAssoc();
+  $result['body_html'] = render(field_view_field('node', node_load($result['nid']), 'body'));
+  drupal_json_output($result);
+  exit();
+}
+
+//select nid, body_value from data_snapshots JOIN field_data_body ON entity_id=nid where dsmn="usdm" AND ptk="2000" AND stk="01-04" ;
 function _data_snapshots_datasource_ajax() {
   // Get type of dataset from machine name
   $current_frequency = _data_snapshots_get_frequency($_POST['current']);
