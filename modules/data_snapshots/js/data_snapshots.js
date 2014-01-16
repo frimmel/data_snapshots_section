@@ -96,8 +96,8 @@ function data_snapshots ($) {
 
     $('document').ready(function() {
         var dsmn = Drupal.settings.data_snapshots.snapshots.dsmn,
-            current_ptk_index = 0, // not correct, fix later!
-            current_stk_index = 0; // not correct, fix later!
+            current_ptk_index = Drupal.settings.data_snapshots.snapshots.p.indexOf(Drupal.settings.data_snapshots.snapshots.init_ptk),
+            current_stk_index = Drupal.settings.data_snapshots.snapshots.s[Drupal.settings.data_snapshots.snapshots.init_ptk].indexOf(Drupal.settings.data_snapshots.snapshots.init_stk);
         var ptks = Drupal.settings.data_snapshots.snapshots.p;
         var stks = [];
 
