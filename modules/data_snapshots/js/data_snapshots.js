@@ -120,7 +120,7 @@ function data_snapshots ($) {
                     config_stk_slider();
                 },
                 'slide' : function(event, ui) {
-                    current_ptk_index = $(this).slider('value');
+                    current_ptk_index = ui.value;
                     stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
                     set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
                 },
@@ -144,7 +144,7 @@ function data_snapshots ($) {
                     set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
                 },
                 'slide' : function(event, ui) {
-                    current_stk_index = $(this).slider('value');
+                    current_stk_index = ui.value;
                     set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
                 },
                 'start' : function(event, ui) {
