@@ -10,6 +10,10 @@ function data_snapshots ($) {
     function set_img(dsmn,ptk,stk) {
         $('#dss-disimg').attr('src', make_img_url(dsmn,ptk,stk));
         $('div.dss-title').text(ptk + ' / ' + stk);
+
+	if (window.history && window.history.replaceState) {
+	    window.history.replaceState({}, "", dsmn + "-" + ptk + "-" + stk + "?theme=" + $("#dss-theme-dropdown").val());
+	}
     }
 
     function init_dropdowns() {
@@ -194,6 +198,7 @@ function data_snapshots ($) {
 		       }
 	    })
 	    .done(function (msg) {
+		    console.log(msg);
 		var result = msg.callback,
 		    dates = result.dates;
 		dates.dsmn = new_dsmn;
