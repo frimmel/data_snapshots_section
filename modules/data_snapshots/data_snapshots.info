@@ -12,6 +12,7 @@ dependencies[] = global_dependencies
 dependencies[] = link
 dependencies[] = node
 dependencies[] = options
+dependencies[] = pathauto
 dependencies[] = taxonomy
 dependencies[] = text
 dependencies[] = feeds

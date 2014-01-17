@@ -325,6 +325,8 @@ function data_snapshots_node_type_insert($content_type) {
     }
   }
 
+  // sets up alias for data snapshots
+  variable_set('pathauto_node_data_snapshot_pattern', 'data-snapshot/[node:field_ds_dsds_mn]-[node:field_ds_ptk]-[node:field_ds_stk]');
 }
 
 /**
