@@ -24,9 +24,8 @@ article-info
 **TODO**
 
 1. Make Data Snapshots Page feature complete
-  - Write remaining data source switchers
-  - Add URL aliases
-  - Update URL aliases on interaction
+  - Write remaining data source switchers 
+  - Add URL aliases to Data Source
   - Determine Theme from URL
   - Implement Downloads section
   - Load Metadata fields
@@ -36,7 +35,9 @@ article-info
   - Switch display of Data Snapshots to display suite
   - Add image to Data Source
   - Social media buttons
+  - Breadcrumbs
 3. Generally clean up code
+  - Rename anything refering to 'Data Set' to 'Data Source'
   - Update primary tab links on interaction
   - Rewrite queries to be more efficient
   - Cut out deprecated/development code
