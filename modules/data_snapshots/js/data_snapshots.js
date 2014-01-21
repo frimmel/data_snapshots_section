@@ -213,7 +213,6 @@ function data_snapshots ($) {
 		       }
 	    })
 	    .done(function (msg) {
-		    console.log(msg);
 		var result = msg.callback,
 		    dates = result.dates;
 		dates.dsmn = new_dsmn;
