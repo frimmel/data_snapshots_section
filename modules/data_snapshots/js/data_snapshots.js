@@ -7,13 +7,17 @@ function data_snapshots ($) {
         return "http://datasnapshots-images.nemac.com:8080/usdm/620/" + ptk + "/usdm--620--" + ptk + "-" + stk + ".png";
     }
 
+    function set_url(dsmn, ptk, stk, theme) {
+	if (window.history && window.history.replaceState) {
+	    window.history.replaceState({}, "", dsmn + "-" + ptk + "-" + stk + "?theme=" + theme);
+	}
+    }
+
     function set_img(dsmn,ptk,stk) {
         $('#dss-disimg').attr('src', make_img_url(dsmn,ptk,stk));
         $('div.dss-title').text(ptk + ' / ' + stk);
 
-	if (window.history && window.history.replaceState) {
-	    window.history.replaceState({}, "", dsmn + "-" + ptk + "-" + stk + "?theme=" + $("#dss-theme-dropdown").val());
-	}
+	set_url(dsmn, ptk, stk, $("#dss-theme-dropdown").val());
     }
 
     function init_dropdowns() {
@@ -192,6 +196,8 @@ function data_snapshots ($) {
 		$data_source_dropdown.append($("<option>", { value: data_sources[i].mname })
 					     .text(data_sources[i].oname));
 	    }
+
+	    set_url(dsmn, ptks[current_ptk_index], stks[current_stk_index], new_theme);
 	}
 
 	function data_source_dropdown_change() {
