@@ -63,7 +63,35 @@ function MonthlyToAnnual($dest, $ptk, $stk) {
 }
 
 function MonthlyToMonthly($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+
+  $potential_stks = $dates['s'][$new_ptk];
+
+  if ($stk <= $potential_stks[0]) {
+    $new_stk = $potential_stks[0];
+  }
+
+  for ($i = 1; $i < count($potential_stks); $i++) {
+    if ($stk == $potential_stks[$i]) {
+      $new_stk = $potential_stks[$i];
+      break;
+    } elseif ($stk < $potential_stks[$i]) {
+      $new_stk = $potential_stks[$i];
+      break;
+    }
+  }
+
+  if (!isset($new_stk)) {
+    $new_stk = $potential_stks[count($potential_stks) - 1];
+  }
+
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => $new_stk,
+	       'dates' => $dates,
+  );
 }
 
 function MonthlyToWeekly($dest, $ptk, $stk) {
@@ -125,7 +153,35 @@ function WeeklyToMonthly($dest, $ptk, $stk) {
 }
 
 function WeeklyToWeekly($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+
+  $potential_stks = $dates['s'][$new_ptk];
+
+  if ($stk <= $potential_stks[0]) {
+    $new_stk = $potential_stks[0];
+  } else {
+    for ($i = 1; $i < count($potential_stks); $i++) {
+      if ($stk == $potential_stks[$i]) {
+	$new_stk = $potential_stks[$i];
+	break;
+      } elseif ($stk < $potential_stks[$i]) {
+	$new_stk = $potential_stks[$i - 1];
+	break;
+      }
+    }
+  }
+
+  if (!isset($new_stk)) {
+    $new_stk = $potential_stks[count($potential_stks) - 1];
+  }
+
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => $new_stk,
+	       'dates' => $dates,
+  );
 }
 
 function DefaultConversion($dest, $ptk, $stk) {
