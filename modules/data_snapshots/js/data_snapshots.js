@@ -23,8 +23,17 @@ function data_snapshots ($) {
 	    data_sources = data_snapshots.datasources,
 	    $theme_dropdown = $("#dss-theme-dropdown"),
 	    $data_source_dropdown = $("#dss-data-source-dropdown"),
-	    theme, i,
-	    foundTheme = false;
+	    init_theme = data_snapshots.init_theme,
+	    foundTheme = false,
+	    theme, i;
+
+	if (init_theme && themes.indexOf(init_theme) !== -1 && data_sources[init_theme].length > 0) {
+	    for (i = 0; i < data_sources[init_theme].length; i++) {
+		if (data_sources[init_theme][i].mname === dsmn) {
+		    foundTheme = true;
+		}
+	    }
+	}
 
 	for (i = 0; i < themes.length; i++) {
 	    theme = themes[i];
@@ -41,21 +50,21 @@ function data_snapshots ($) {
 
 		for (j = 0; j < data_sources[theme].length; j++) {
 		    if (data_sources[theme][j].mname === dsmn) {
+			init_theme = theme;
 			foundTheme = true;
 		    }
 		}
-
-		if (foundTheme) {
-		    for (j = 0; j < data_sources[theme].length; j++) {
-			$data_source_dropdown.append($("<option>", { value: data_sources[theme][j].mname })
-						     .text(data_sources[theme][j].oname));
-		    }
-
-		    $theme_dropdown.val(theme);
-		    $data_source_dropdown.val(dsmn);
-		}
 	    }
 	}
+
+
+	for (i = 0; i < data_sources[init_theme].length; i++) {
+	    $data_source_dropdown.append($("<option>", { value: data_sources[init_theme][i].mname })
+					 .text(data_sources[init_theme][i].oname));
+	}
+
+	$theme_dropdown.val(init_theme);
+	$data_source_dropdown.val(dsmn);
     }
 
     function switch_data_source_content(node) {
