@@ -129,7 +129,7 @@
           </div>  
           <div class="dss-download-social-container">
             <div class="dss-downloads">
-              <a href="#">Downloads</a>
+	      <?php print render($content['field_ds_dloads']) ?>
             </div>
             <div class="dss-social">
               <img src="<?php printf('/%s/', drupal_get_path('module', 'data_snapshots')); ?>/socialbuttons.png">
