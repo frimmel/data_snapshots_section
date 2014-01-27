@@ -73,6 +73,11 @@ function data_snapshots_feeds_importer_default() {
             'target' => 'body',
             'unique' => FALSE,
           ),
+	  7 => array(
+	    'source' => 'date_generated',
+	    'target' => 'field_ds_dtgen:start',
+	    'unique' => FALSE,
+	  ),
         ),
         'update_existing' => '0',
         'input_format' => 'plain_text',
