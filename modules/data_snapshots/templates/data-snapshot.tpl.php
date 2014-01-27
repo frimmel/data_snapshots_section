@@ -136,7 +136,7 @@
             </div>
           </div>
           <div class="dss-metadata">
-            metadata fields go here
+	    <?php print render($content['field_ds_dtgen']) ?>
           </div>  
         </div> <!-- end dss-right-side -->
       </div> <!-- end dss-middle -->
