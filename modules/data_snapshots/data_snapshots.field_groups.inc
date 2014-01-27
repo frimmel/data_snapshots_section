@@ -84,8 +84,7 @@ function data_snapshots_field_group_info() {
       0 => 'field_ds_ptk',
       1 => 'field_ds_stk',
       2 => 'field_ds_dtgen',
-      3 => 'field_ds_dtacc',
-      4 => 'field_ds_dsds_mn',
+      3 => 'field_ds_dsds_mn',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

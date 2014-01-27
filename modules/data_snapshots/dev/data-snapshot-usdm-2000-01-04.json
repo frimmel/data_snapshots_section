@@ -44,16 +44,6 @@
                 }
             ]
         }, 
-        "field_ds_dtacc": {
-            "und": [
-                {
-                    "date_type": "datetime", 
-                    "timezone": "America/New_York", 
-                    "timezone_db": "America/New_York", 
-                    "value": "2013-11-13 00:00:00"
-                }
-            ]
-        }, 
         "field_ds_dtgen": {
             "und": [
                 {
