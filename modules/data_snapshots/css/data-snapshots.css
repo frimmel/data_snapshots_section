@@ -440,14 +440,14 @@ fieldset[disabled] .btn-default.active {
 }
 
 /* DEVELOPMENT CSS -- DELETE LATER */
-#main > #sidebar-first {
+.node-type-data-snapshot #main > #sidebar-first {
     display: none;
 }
 
-#main > #content {
+.node-type-data-snapshot #main > #content {
     width: 960px;
 }
 
-#main > #content > .section {
+.node-type-data-snapshot #main > #content > .section {
     padding: 0 10px;
 }
