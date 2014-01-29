@@ -4,6 +4,7 @@ include_once 'data_snapshots.fields.data_snapshot.inc';
 include_once 'data_snapshots.field_groups.inc';
 include_once 'data_snapshots.ds.inc';
 include_once 'data_snapshots.import.inc';
+include_once 'data_snapshots.feeds_tamper_default.inc';
 include_once 'data_snapshots.switch_callbacks.inc';
 
 /**
@@ -18,6 +19,9 @@ function data_snapshots_ctools_plugin_api() {
   }    
   if ($module == "feeds" && $api == "feeds_importer_default") {
     return array("version" => 1);
+  }
+  if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => "2");
   }
   if ($module == "ds" && $api == "ds") {
     return array("version" => "1");

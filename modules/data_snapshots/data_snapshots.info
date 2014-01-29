@@ -18,5 +18,6 @@ dependencies[] = text
 dependencies[] = feeds
 dependencies[] = feeds_import
 dependencies[] = feeds_ui
+dependencies[] = feeds_tamper
 dependencies[] = data_snapshots_data_source
 # TODO: add missing components: context, display suite, etc

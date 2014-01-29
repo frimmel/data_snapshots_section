@@ -78,6 +78,16 @@ function data_snapshots_feeds_importer_default() {
 	    'target' => 'field_ds_dtgen:start',
 	    'unique' => FALSE,
 	  ),
+	  8 => array(
+		     'source' => 'download_title',
+		     'target' => 'field_ds_dloads:title',
+		     'unique' => FALSE,
+		     ),
+	  9 => array(
+		     'source' => 'download_url',
+		     'target' => 'field_ds_dloads:url',
+		     'unique' => FALSE,
+		     ),
         ),
         'update_existing' => '0',
         'input_format' => 'plain_text',
