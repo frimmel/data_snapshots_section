@@ -8,7 +8,7 @@ For development purposes you will need to go into the modules/data_snapshots dir
 - Feeds can't import multi-value fields very well, so in the eventual csv feeds the downloads fields must each be single columns with commas separating the values. For example:
 ```csv
 ...,download_title,download_url,...
-...,"title 1,title 2,title 3, ..., title n","url 1,url 2,url 3,...,url n",...
+...,"title 1,title 2,title 3,...,title n","url 1,url 2,url 3,...,url n",...
 ```
 - There are multiple field template files, these will work but Drupal is faster if theme functions are created in the theme's template.php file instead with the pattern:
 ```php
@@ -18,7 +18,7 @@ For development purposes you will need to go into the modules/data_snapshots dir
  * Customizes display of the field 'FIELDNAME' for the content type 'Data Snapshot'
  */
 function THEMENAME_field__FIELD_MACHINE_NAME__data_snapshot($variables) {
-  CONTENTS OF TEMPLATE FILE
+  /* CONTENTS OF TEMPLATE FILE TWEAKED FOR THEME_FIELD */
 }
 ```
 
