@@ -43,19 +43,15 @@ article-info
 
 1. Make Data Snapshots Page feature complete
   - Write remaining data source switchers 
-  - Load Metadata fields
   - Add permalink field
 2. Import remaining dependencies
   - Annotation admin view
   - Context settings
-  - Switch display of Data Snapshots to display suite
   - Add image to Data Source
   - Social media buttons
   - Breadcrumbs
 3. Generally clean up code
-  - Fix Downloads section
-  - Import downloads in importer
-  - Import metadata in importer
+  - Fix Downloads section (what did I mean by this...?)
   - Add URL aliases to Data Source links
   - Rename anything refering to 'Data Set' to 'Data Source'
   - Update primary tab links on interaction
