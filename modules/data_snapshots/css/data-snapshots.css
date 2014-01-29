@@ -8,6 +8,14 @@
     margin-left: 2%;
 }
 
+.node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
+    padding-bottom: 1.4em;
+}
+
+.node-type-data-snapshot .field-name-field-ds-dsds-evergreen p {
+    margin-bottom: 0;
+}
+
 .dss-wrapper {
   /*background-color: #f00;*/
   width: 940px;

@@ -31,7 +31,6 @@
         </td>
       </tr>
     </table>
-    <?php /*print $header; */?>
   </<?php print $header_wrapper ?>>
 
   <<?php print $left_wrapper ?> class="group-left<?php print $left_classes; ?>">
