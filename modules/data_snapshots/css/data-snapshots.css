@@ -1,3 +1,13 @@
+.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
+    width: 66%;
+}
+
+.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
+    float: left;
+    width: 32%;
+    margin-left: 2%;
+}
+
 .dss-wrapper {
   /*background-color: #f00;*/
   width: 940px;
@@ -419,4 +429,17 @@ fieldset[disabled] .btn-default.active {
   bottom: 0;
   top: 0;
   z-index: 990;
+}
+
+/* DEVELOPMENT CSS -- DELETE LATER */
+#main > #sidebar-first {
+    display: none;
+}
+
+#main > #content {
+    width: 960px;
+}
+
+#main > #content > .section {
+    padding: 0 10px;
 }
