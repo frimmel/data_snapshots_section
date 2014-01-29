@@ -120,6 +120,9 @@ function data_snapshots_theme($existing, $type, $theme, $path) {
     'field__field_ds_disimg__data_snapshot' => array(
       'template' => 'templates/field--field_ds_disimg--data-snapshot',
     ),
+    'field__field_ds_dloads__data_snapshot' => array(
+      'template' => 'templates/field--field_ds_dloads--data-snapshot',
+    ),
     'field__field_ds_dsds_mn__data_snapshot' => array(
       'template' => 'templates/field--field_ds_dsds_mn--data-snapshot',
     ),
