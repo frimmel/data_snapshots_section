@@ -5,33 +5,20 @@ The end goal of this project is to be able to enable one module and have the sec
 For development purposes you will need to go into the modules/data_snapshots directory and run the redo script.
 
 **PRODUCTION DEPENDENCIES**
-- The downloads section needs its results o be re-written with `theme_field`. This hook isn't available to modules so the following code snippet must be added to the theme's template.php file.
+- Feeds can't import multi-value fields very well, so in the eventual csv feeds the downloads fields must each be single columns with commas separating the values. For example:
+```csv
+...,download_title,download_url,...
+...,"title 1,title 2,title 3, ..., title n","url 1,url 2,url 3,...,url n",...
+```
+- There are multiple field template files, these will work but Drupal is faster if theme functions are created in the theme's template.php file instead with the pattern:
 ```php
 /**
  * Overrides theme_field
  *
- * Customizes display of the field 'Downloads' for the content type 'Data Snapshot'
+ * Customizes display of the field 'FIELDNAME' for the content type 'Data Snapshot'
  */
-function THEMENAME_field__field_ds_dloads__data_snapshot($variables) {
-  $output = '';
-
-  $output .= '<div class="btn-group">';
-
-  // Render the button
-  $output .= '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown">' . $variables['label'] . '&nbsp;<span class="caret"></span></button>';
-
-  // Render the items.
-  $output .= '<ul class="dropdown-menu" role="menu">';
-  foreach ($variables['items'] as $delta => $item) {
-    $output .= '<li>' . drupal_render($item) . '</li>';
-  }
-  $output .= '</button>';
-  $output .= '</div>';
-
-  // Render the top-level DIV.
-  $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-
-  return $output;
+function THEMENAME_field__FIELD_MACHINE_NAME__data_snapshot($variables) {
+  CONTENTS OF TEMPLATE FILE
 }
 ```
 
