@@ -94,7 +94,7 @@ function data_snapshots ($) {
 	})
 	.done(function (result) {
 		console.log(result)
-	    $(".dss-footer").html(result.body_html);
+	    $(".group-footer").html(result.body_html);
 
 	    // TODO: switch out tab links in a better fashion. Maybe can be rendered in callback?
 	    // TODO: implement tab links for tabs actually visible on the live site
@@ -114,10 +114,10 @@ function data_snapshots ($) {
         var stks = [];
 
         function hideStuff() {
-            $('.dss-footer').animate({'opacity' : 0.0}, 200);
+            $('.group-footer').animate({'opacity' : 0.0}, 200);
         }
         function showStuff() {
-            $('.dss-footer').animate({'opacity' : 1.0}, 200);
+            $('.group-footer').animate({'opacity' : 1.0}, 200);
         }
 
 	function config_ptk_slider() {
