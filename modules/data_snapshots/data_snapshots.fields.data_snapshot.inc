@@ -5,8 +5,8 @@
   // Q: remove CLEAN taxonomy
 function data_snapshots_fields_data_snapshot() {
   $fields = array();
-/*
-  $fields['body'] = array(
+
+  $fields['node-data_snapshot-body'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
@@ -86,7 +86,6 @@ function data_snapshots_fields_data_snapshot() {
       'workbench_access_field' => 0,
     ),
   );
-*/
 /*
   $fields['field_ds_day'] = array(
     'field_config' => array(
