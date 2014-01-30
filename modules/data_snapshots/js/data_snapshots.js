@@ -14,7 +14,7 @@ function data_snapshots ($) {
     }
 
     function set_img(dsmn,ptk,stk) {
-        $('#dss-disimg').attr('src', make_img_url(dsmn,ptk,stk));
+        $('.field-name-field-ds-disimg img').attr('src', make_img_url(dsmn,ptk,stk));
         $('div.dss-title').text(ptk + ' / ' + stk);
 
 	set_url(dsmn, ptk, stk, $("#dss-theme-dropdown").val());
@@ -72,19 +72,13 @@ function data_snapshots ($) {
     }
 
     function switch_data_source_content(node) {
-	var $evergreen_question = $(".dss-evergreen-question"),
-	    $evergreen_answer = $(".dss-evergreen-answer");
+	var $evergreen_question = $(".field-name-field-ds-dsds-evergreen .field-label"),
+	    $evergreen_answer = $(".field-name-field-ds-dsds-evergreen .field-item"),
+	    $read_more_link = $(".field-name-field-ds-dsds-evergreen .dss-question-read-more a");
 
 	$evergreen_question.text(node.field_dssds_framing_question.und[0].value);
-
-	var read_more_link = $("<span>", { class: "dss-question-read-more" })
-	    .append($("<a>", { href: "/node/" + node.nid })
-		    .text("read more...")
-		    );
-
-	$evergreen_answer
-	    .text(node.field_dssds_english_descript.und[0].value)
-	    .append(read_more_link);
+	$evergreen_answer.html(node.field_dssds_english_descript.und[0].safe_value);
+	$read_more_link.attr("href", "/node/" + node.nid);
     };
 
     function switchDataSnapshotContent(dsmn, ptk, stk) {
@@ -99,6 +93,7 @@ function data_snapshots ($) {
 	       }
 	})
 	.done(function (result) {
+		console.log(result)
 	    $(".dss-footer").html(result.body_html);
 
 	    // TODO: switch out tab links in a better fashion. Maybe can be rendered in callback?
