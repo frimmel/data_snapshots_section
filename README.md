@@ -43,7 +43,6 @@ article-info
 
 1. Make Data Snapshots Page feature complete
   - Write remaining data source switchers 
-  - Add permalink field
 2. Import remaining dependencies
   - Annotation admin view
   - Context settings
