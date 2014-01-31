@@ -33,6 +33,10 @@ function data_snapshots ($) {
 	$(".field-name-data-snapshot-permalink .field-items .field-item").text(html);
     }
 
+    function set_date_generated(html) {
+	$(".field-name-field-ds-dtgen").replaceWith(html);
+    }
+
     function init_dropdowns() {
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
@@ -109,6 +113,7 @@ function data_snapshots ($) {
 	    set_annotation(result.body_html);
 	    set_downloads(result.download_html);
 	    set_permalink(result.permalink_html);
+	    set_date_generated(result.date_html);
 
 	    // TODO: switch out tab links in a better fashion. Maybe can be rendered in callback?
 	    // TODO: implement tab links for tabs actually visible on the live site
