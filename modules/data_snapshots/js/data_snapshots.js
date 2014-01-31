@@ -20,6 +20,19 @@ function data_snapshots ($) {
 	set_url(dsmn, ptk, stk, $("#dss-theme-dropdown").val());
     }
 
+    function set_annotation(html) {
+	$(".group-footer").html(html);
+    }
+
+    function set_downloads(html) {
+	var new_links = $(html).find("ul");
+	$(".field-name-field-ds-dloads ul").replaceWith(new_links);
+    }
+
+    function set_permalink(html) {
+	$(".field-name-data-snapshot-permalink .field-items .field-item").text(html);
+    }
+
     function init_dropdowns() {
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
@@ -93,8 +106,9 @@ function data_snapshots ($) {
 	       }
 	})
 	.done(function (result) {
-		console.log(result)
-	    $(".group-footer").html(result.body_html);
+	    set_annotation(result.body_html);
+	    set_downloads(result.download_html);
+	    set_permalink(result.permalink_html);
 
 	    // TODO: switch out tab links in a better fashion. Maybe can be rendered in callback?
 	    // TODO: implement tab links for tabs actually visible on the live site

@@ -432,7 +432,16 @@ function _data_snapshots_snapshot_ajax() {
     ->condition('stk', $_POST['stk'])
     ->execute()
     ->fetchAssoc();
-  $result['body_html'] = render(field_view_field('node', node_load($result['nid']), 'body'));
+
+  $new_ds_node = node_load($result['nid']);
+  $result['body_html'] = render(field_view_field('node', $new_ds_node, 'body'));
+  $result['download_html'] = render(field_view_field('node', $new_ds_node, 'field_ds_dloads'));
+
+  $ds_fields = ds_get_fields('node');
+  $ds_permalink_field = $ds_fields['data_snapshot_permalink'];
+  $ds_permalink_field['entity'] = $new_ds_node;
+  $result['permalink_html'] = ds_render_code_field($ds_permalink_field);
+
   drupal_json_output($result);
   exit();
 }
