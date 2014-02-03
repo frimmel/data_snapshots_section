@@ -9,3 +9,10 @@ include_once 'data_snapshots_data_source.features.inc';
 function data_snapshots_data_source_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['full']['custom settings'] = TRUE;
 }
+
+function data_snapshots_data_source_node_type_insert($content_type) {
+  if ($content_type->type == 'data_snapshot_data_source') {
+    // sets up alias for data snapshots
+    variable_set('pathauto_node_data_snapshot_data_source_pattern', 'data-snapshot/data-source-[node:title]');
+  }
+}

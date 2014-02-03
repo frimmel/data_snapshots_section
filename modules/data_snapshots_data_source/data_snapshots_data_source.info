@@ -17,6 +17,7 @@ dependencies[] = link
 dependencies[] = menu
 dependencies[] = node
 dependencies[] = options
+dependencies[] = pathauto
 dependencies[] = taxonomy
 dependencies[] = text
 features[ctools][] = ds:ds:1
