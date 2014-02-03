@@ -44,14 +44,12 @@ article-info
 1. Make Data Snapshots Page feature complete
   - Write remaining data source switchers 
 2. Import remaining dependencies
-  - Annotation admin view
   - Context settings
   - Add image to Data Source
   - Social media buttons
   - Breadcrumbs
 3. Generally clean up code
   - Fix Downloads section (what did I mean by this...?)
-  - Add URL aliases to Data Source links
   - Rename anything refering to 'Data Set' to 'Data Source'
   - Update primary tab links on interaction
   - Rewrite queries to be more efficient
