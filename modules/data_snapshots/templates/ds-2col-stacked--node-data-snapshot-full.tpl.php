@@ -15,6 +15,12 @@
     <table>
       <tr>
         <td>
+          <table>
+            <tr><td align="right">Year:</td><td><div id="dss-yearslider"></div></td></tr>
+            <tr id="dss-timeslider-row"><td align="right">Week:</td><td><div id="dss-timeslider"></div></td></tr>
+          </table>
+        </td>
+        <td>
           Theme:&nbsp;
           <select id="dss-theme-dropdown">
           </select>
@@ -22,12 +28,6 @@
           Data Source:&nbsp;
           <select id="dss-data-source-dropdown">
           </select>
-        </td>
-        <td>
-          <table>
-            <tr><td align="right">Year:</td><td><div id="dss-yearslider"></div></td></tr>
-            <tr id="dss-timeslider-row"><td align="right">Week:</td><td><div id="dss-timeslider"></div></td></tr>
-          </table>
         </td>
       </tr>
     </table>
