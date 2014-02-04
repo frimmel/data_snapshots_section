@@ -37,6 +37,21 @@ function data_snapshots ($) {
 	$(".field-name-field-ds-dtgen").replaceWith(html);
     }
 
+    function set_primary_tabs(nid) {
+	var re = /(\/node\/)(\d+)(\/\w+)/,
+	    pattern = "$1" + nid + "$3",
+	    $links = $(".tabs .primary a"),
+	    $link,
+	    href,
+	    i;
+
+	for (i = 0; i < $links.length; i++) {
+	    $link = $($links[i]);
+	    href = $link.attr("href").replace(re, pattern);
+	    $link.attr("href", href);
+	}
+    }
+
     function init_dropdowns() {
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
@@ -114,14 +129,7 @@ function data_snapshots ($) {
 	    set_downloads(result.download_html);
 	    set_permalink(result.permalink_html);
 	    set_date_generated(result.date_html);
-
-	    // TODO: switch out tab links in a better fashion. Maybe can be rendered in callback?
-	    // TODO: implement tab links for tabs actually visible on the live site
-	    $(".tabs .primary li:nth-child(1) a").attr("href", "/node/" + result.nid);
-	    $(".tabs .primary li:nth-child(2) a").attr("href", "/node/" + result.nid + "/edit");
-	    $(".tabs .primary li:nth-child(3) a").attr("href", "/node/" + result.nid + "/display");
-	    $(".tabs .primary li:nth-child(4) a").attr("href", "/node/" + result.nid + "/node_export");
-	    $(".tabs .primary li:nth-child(5) a").attr("href", "/node/" + result.nid + "/devel");
+	    set_primary_tabs(result.nid);
 	});
     }
 
