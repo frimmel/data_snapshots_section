@@ -134,15 +134,17 @@ function data_snapshots ($) {
     }
 
     $('document').ready(function() {
-        var dsmn = Drupal.settings.data_snapshots.snapshots.dsmn,
-            current_ptk_index = Drupal.settings.data_snapshots.snapshots.p.indexOf(Drupal.settings.data_snapshots.snapshots.init_ptk),
-            current_stk_index = Drupal.settings.data_snapshots.snapshots.s[Drupal.settings.data_snapshots.snapshots.init_ptk].indexOf(Drupal.settings.data_snapshots.snapshots.init_stk);
-        var ptks = Drupal.settings.data_snapshots.snapshots.p;
-        var stks = [];
+	var snapshots = Drupal.settings.data_snapshots.snapshots,
+            dsmn = snapshots.dsmn,
+	    ptks = snapshots.p,
+            current_ptk_index = ptks.indexOf(snapshots.init_ptk),
+	    stks = snapshots.s[ptks[current_ptk_index]],
+            current_stk_index = snapshots.s[snapshots.init_ptk].indexOf(snapshots.init_stk);
 
         function hideStuff() {
             $('.group-footer').animate({'opacity' : 0.0}, 200);
         }
+
         function showStuff() {
             $('.group-footer').animate({'opacity' : 1.0}, 200);
         }
@@ -153,22 +155,22 @@ function data_snapshots ($) {
                 'max' : ptks.length-1,
                 'value' : current_ptk_index,
                 'change' : function(event, ui) {
-                    current_ptk_index = $(this).slider('value');
+                    current_ptk_index = ui.value;
                     stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
-                    set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+                    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                     config_stk_slider();
                 },
                 'slide' : function(event, ui) {
                     current_ptk_index = ui.value;
                     stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
-                    set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+                    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 },
                 'start' : function(event, ui) {
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
                     showStuff();
-		    switchDataSnapshotContent(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }
             });
 	};
@@ -179,28 +181,26 @@ function data_snapshots ($) {
                 'max' : stks.length-1,
                 'value' : current_stk_index,
                 'change' : function(event, ui) {
-                    current_stk_index = $(this).slider('value');
-                    set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+                    current_stk_index = ui.value;
+                    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 },
                 'slide' : function(event, ui) {
                     current_stk_index = ui.value;
-                    set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+                    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 },
                 'start' : function(event, ui) {
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
                     showStuff();
-		    switchDataSnapshotContent(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }           
             });
 
         }
 
-        stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
         config_ptk_slider();
         config_stk_slider();
-
 
 	init_dropdowns();
 	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
@@ -247,12 +247,12 @@ function data_snapshots ($) {
 
 		dsmn = new_dsmn;
 
-		set_img(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+		set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
 		config_ptk_slider();
 		config_stk_slider();
 
 		switch_data_source_content(msg.node);
-		switchDataSnapshotContent(dsmn,ptks[current_ptk_index],stks[current_stk_index]);
+		switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
 	    });
 	}
     });
