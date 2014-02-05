@@ -4,7 +4,10 @@ The end goal of this project is to be able to enable one module and have the sec
 
 For development purposes you will need to go into the modules/data_snapshots directory and run the redo script.
 
+---
+
 **PRODUCTION DEPENDENCIES**
+- Breadcrumbs can't easily be put into code so they must be added by hand.
 - Feeds can't import multi-value fields very well, so in the eventual csv feeds the downloads fields must each be single columns with commas separating the values. For example:
 ```csv
 ...,download_title,download_url,...
@@ -21,6 +24,8 @@ function THEMENAME_field__FIELD_MACHINE_NAME__data_snapshot($variables) {
   /* CONTENTS OF TEMPLATE FILE TWEAKED FOR THEME_FIELD */
 }
 ```
+
+---
 
 **DEVELOPMENT DEPENDENCIES**
 - The left and right regions for the Data Source content type require custom classes which exist in the final site, but are not included in the module. These classes are enabled by default when the module is enabled due to the way which they were bundled up in features, but will be taken out of the rendered html if any changes to the display of the Data Source content type are saved.
@@ -47,7 +52,6 @@ article-info
   - Context settings
   - Add image to Data Source
   - Social media buttons
-  - Breadcrumbs
   - Labels for slider values & endpoints
 3. Generally clean up code
   - Remove Hardcoded image urls from js & replace with data on fields
