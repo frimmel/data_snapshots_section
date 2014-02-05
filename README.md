@@ -48,15 +48,20 @@ article-info
   - Add image to Data Source
   - Social media buttons
   - Breadcrumbs
+  - Labels for slider values & endpoints
 3. Generally clean up code
+  - Remove Hardcoded image urls from js & replace with data on fields
+  - Adjust js to properly handle more data sources
+  - Install module in fresh drupal site on cloud0
   - Fix Downloads section (what did I mean by this...?)
   - Rename anything refering to 'Data Set' to 'Data Source'
-  - Update primary tab links on interaction
   - Rewrite queries to be more efficient
   - Cut out deprecated/development code
   - Properly bundle css & js
   - Minify Javascript
 4. Implementation
   - Test on live mirror
+  - Test with John Keck's theme
+  - Import new data sources
   - Ensure datasets with odd date combinations work
   - Fix remaining bugs
