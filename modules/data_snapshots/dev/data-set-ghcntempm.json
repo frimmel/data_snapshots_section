@@ -199,6 +199,15 @@
                 }
             ]
         }, 
+        "field_dssds_url_pattern": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "http://datasnapshots-images.nemac.com:8080/ghcntemp/monthly/620/{ptk}/ghcntempm--620--{ptk}-{stk}.png",
+                    "value": "http://datasnapshots-images.nemac.com:8080/ghcntemp/monthly/620/{ptk}/ghcntempm--620--{ptk}-{stk}.png"
+                }
+            ]
+        }, 
         "language": "und", 
         "log": "", 
         "menu": null, 

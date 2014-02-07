@@ -25,6 +25,7 @@ function data_snapshots_data_source_field_group_info() {
     'children' => array(
       0 => 'field_dssds_official_name',
       1 => 'field_dssds_machine_name',
+      1 => 'field_dssds_url_pattern',
       2 => 'field_dssds_themes',
       3 => 'field_dssds_catalog_url',
       4 => 'field_dssds_image_frequency',

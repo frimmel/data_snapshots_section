@@ -1,16 +1,17 @@
-\function data_snapshots ($) {
+function data_snapshots ($) {
 
-    function make_img_url(dsmn,ptk,stk) {
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "Septempber", "October", "November", "December"]
-        if (dsmn === "ghcntempm") {
-            return "http://datasnapshots-images.nemac.com:8080/ghcntemp/monthly/620/" + ptk + "/ghcntempm--620--" + ptk + "-" + stk + ".png";
-        } else if (dsmn === "spc_severe") {
-            return "http://datasnapshots-images.nemac.com:8080/spc_severe/spc_severe_probability_" + months[parseInt(ptk, 10)-1] + "_" + stk + "_620.png";
-	}
-        return "http://datasnapshots-images.nemac.com:8080/usdm/620/" + ptk + "/usdm--620--" + ptk + "-" + stk + ".png";
+    function make_img_url(dsmn, ptk, stk) {
+	var pattern = Drupal.settings.data_snapshots.patterns[dsmn];
+
+	return pattern.replace(/\{dsmn\}/g, dsmn)
+	    .replace(/\{ptk\}/g, ptk)
+	    .replace(/\{stk\}/g, stk);
     }
 
     function set_url(dsmn, ptk, stk, theme) {
+	// TODO: See if there is a better way to handle this...
+	//       URL aliases strip out underscores, but spc_severe requires them in the url
+	dsmn = dsmn.replace(/_/g, "");
 	if (window.history && window.history.replaceState) {
 	    window.history.replaceState({}, "", dsmn + "-" + ptk + "-" + stk + "?theme=" + theme);
 	}
