@@ -185,5 +185,14 @@ function WeeklyToWeekly($dest, $ptk, $stk) {
 }
 
 function DefaultConversion($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+
+  $new_ptk = $dates['p'][count($dates['p']) - 1];
+  $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
+
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => $new_stk,
+	       'dates' => $dates,
+  );
 }

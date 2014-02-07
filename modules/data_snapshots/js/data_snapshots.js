@@ -1,9 +1,12 @@
-function data_snapshots ($) {
+\function data_snapshots ($) {
 
     function make_img_url(dsmn,ptk,stk) {
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "Septempber", "October", "November", "December"]
         if (dsmn === "ghcntempm") {
             return "http://datasnapshots-images.nemac.com:8080/ghcntemp/monthly/620/" + ptk + "/ghcntempm--620--" + ptk + "-" + stk + ".png";
-        }
+        } else if (dsmn === "spc_severe") {
+            return "http://datasnapshots-images.nemac.com:8080/spc_severe/spc_severe_probability_" + months[parseInt(ptk, 10)-1] + "_" + stk + "_620.png";
+	}
         return "http://datasnapshots-images.nemac.com:8080/usdm/620/" + ptk + "/usdm--620--" + ptk + "-" + stk + ".png";
     }
 

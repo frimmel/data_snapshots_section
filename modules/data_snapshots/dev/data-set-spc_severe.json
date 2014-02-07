@@ -90,8 +90,8 @@
             "und": [
                 {
                     "format": "filtered_html", 
-                    "safe_value": "<p>Shading shows where drought conditions don't exist but are predicted to develop, where drought is present and is expected to stay or worsen, and where drought conditions are expected to improve or end (removal).</p>\n", 
-                    "value": "Shading shows where drought conditions don't exist but are predicted to develop, where drought is present and is expected to stay or worsen, and where drought conditions are expected to improve or end (removal)."
+                    "safe_value": "<p>Answer to the question.</p>\n", 
+                    "value": "Answer to the question"
                 }
             ]
         }, 
@@ -107,7 +107,7 @@
         "field_dssds_image_frequency": {
             "und": [
                 {
-                    "tid": "7"
+                    "tid": "9"
                 }
             ]
         },
@@ -115,8 +115,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "ghcntempm",
-                    "value": "ghcntempm"
+                    "safe_value": "spc_severe",
+                    "value": "spc_severe"
                 }
             ]
         }, 
@@ -124,8 +124,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "GHCN Temp Anomaly", 
-                    "value": "GHCN Temp Anomaly"
+                    "safe_value": "Prob of extreme events", 
+                    "value": "Prob of extreme events"
                 }
             ]
         }, 
@@ -267,7 +267,7 @@
         "revision_uid": "1", 
         "status": "1", 
         "sticky": "0", 
-        "title": "GHCN Temp Anomaly", 
+        "title": "Prob of extreme events", 
         "tnid": "0", 
         "translate": "0", 
         "type": "data_snapshot_data_source", 
