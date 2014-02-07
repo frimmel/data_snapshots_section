@@ -54,8 +54,6 @@ article-info
   - Social media buttons
   - Labels for slider values & endpoints
 3. Generally clean up code
-  - Remove Hardcoded image urls from js & replace with data on fields
-  - Adjust js to properly handle more data sources
   - Install module in fresh drupal site on cloud0
   - Fix Downloads section (what did I mean by this...?)
   - Rename anything refering to 'Data Set' to 'Data Source'
