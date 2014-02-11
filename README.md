@@ -46,15 +46,16 @@ article-info
 
 **TODO**
 
-1. Make Data Snapshots Page feature complete
-  - Write remaining data source switchers 
+1. Put up public test site
+  - Install module in fresh drupal site on cloud0
+  - Test with John Keck's theme
 2. Import remaining dependencies
   - Context settings
   - Add image to Data Source
   - Social media buttons
   - Labels for slider values & endpoints
 3. Generally clean up code
-  - Install module in fresh drupal site on cloud0
+  - Turn off stk slider on Annual data sets
   - Fix Downloads section (what did I mean by this...?)
   - Rename anything refering to 'Data Set' to 'Data Source'
   - Rewrite queries to be more efficient
@@ -62,8 +63,6 @@ article-info
   - Properly bundle css & js
   - Minify Javascript
 4. Implementation
-  - Test on live mirror
-  - Test with John Keck's theme
-  - Import new data sources
+  - Test in climate.gov
   - Ensure datasets with odd date combinations work
   - Fix remaining bugs
