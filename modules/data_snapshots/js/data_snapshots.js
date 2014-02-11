@@ -11,9 +11,11 @@ function data_snapshots ($) {
     function set_url(dsmn, ptk, stk, theme) {
 	// TODO: See if there is a better way to handle this...
 	//       URL aliases strip out underscores, but spc_severe requires them in the url
+	var url;
 	dsmn = dsmn.replace(/_/g, "");
 	if (window.history && window.history.replaceState) {
-	    window.history.replaceState({}, "", dsmn + "-" + ptk + "-" + stk + "?theme=" + theme);
+	    url = (stk !== null) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
+	    window.history.replaceState({}, "", url);
 	}
     }
 
@@ -118,15 +120,18 @@ function data_snapshots ($) {
     };
 
     function switchDataSnapshotContent(dsmn, ptk, stk) {
+	var parameters = {
+	    "type" : "snapshot",
+	    "dsmn" : dsmn,
+	    "ptk"  : ptk
+	};
+	if (stk !== null) {
+	    parameters.stk = stk
+	}
 	$.ajax({
 	    type : "POST",
 	    url  : "/data-snapshots/snapshots/ajax",
-	    data : {
-		 "type" : "snapshot",
-		 "dsmn" : dsmn,
-		 "ptk"  : ptk,
-		 "stk"  : stk
-	       }
+	    data : parameters
 	})
 	.done(function (result) {
 	    set_annotation(result.body_html);

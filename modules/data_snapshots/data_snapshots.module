@@ -439,12 +439,14 @@ function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name
 }
 
 function _data_snapshots_snapshot_ajax() {
-  $result = db_select('data_snapshots', 'ds')
+  $query = db_select('data_snapshots', 'ds')
     ->fields('ds', array('nid'))
     ->condition('dsmn', $_POST['dsmn'])
-    ->condition('ptk', $_POST['ptk'])
-    ->condition('stk', $_POST['stk'])
-    ->execute()
+    ->condition('ptk', $_POST['ptk']);
+  if (array_key_exists('stk', $_POST)) {
+    $query->condition('stk', $_POST['stk']);
+  }
+  $result = $query->execute()
     ->fetchAssoc();
 
   $new_ds_node = node_load($result['nid']);

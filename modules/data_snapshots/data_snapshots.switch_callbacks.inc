@@ -47,19 +47,47 @@ function getNewPrimaryKey($ptk, $dates) {
 }
 
 function AnnualToAnnual($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => NULL,
+	       'dates' => $dates,
+  );
 }
 
 function AnnualToMonthly($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
+
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => $new_stk,
+	       'dates' => $dates,
+  );
 }
 
 function AnnualToWeekly($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
+
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => $new_stk,
+	       'dates' => $dates,
+  );
 }
 
 function MonthlyToAnnual($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => NULL,
+	       'dates' => $dates,
+  );
 }
 
 function MonthlyToMonthly($dest, $ptk, $stk) {
@@ -120,7 +148,13 @@ function MonthlyToWeekly($dest, $ptk, $stk) {
 }
 
 function WeeklyToAnnual($dest, $ptk, $stk) {
-  // stub
+  $dates = getDataSourceDates($dest);  
+  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  return array(
+	       'ptk' => $new_ptk,
+	       'stk' => NULL,
+	       'dates' => $dates,
+  );
 }
 
 function WeeklyToMonthly($dest, $ptk, $stk) {
