@@ -3,6 +3,7 @@
 # import USDM data set node
 drush ne-import < dev/data-set-usdm.json 
 drush ne-import < dev/data-set-ghcntempm.json
+drush ne-import < dev/data-set-ghcntempm-annual.json
 drush ne-import < dev/data-set-spc_severe.json
 #drush ne-import < data-snapshot-usdm-2000-01-04.json
 
