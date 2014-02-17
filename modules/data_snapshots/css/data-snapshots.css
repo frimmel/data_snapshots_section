@@ -101,7 +101,9 @@
 /******************************************************************/
 
 #dss-timeslider, #dss-yearslider {
-  width: 400px;
+  width: 92%;
+  position: absolute;
+  left: 8%;
 }
 
 #dss-timeslider-row {
@@ -450,4 +452,72 @@ fieldset[disabled] .btn-default.active {
 
 .node-type-data-snapshot #main > #content > .section {
     padding: 0 10px;
+}
+
+/* DEV FOR JOHN KECKS THEME */
+/* REMOVE THIS IN LIVE VERSION */
+
+.page-node .col-2-left {
+    display: none;
+}
+
+.page-node .region-content.grid-9 {
+    width: 940px;
+}
+
+.page-node .region-inner .group-left,
+.dss-interactive-sliders {
+    float: left;
+    width: 66%;
+}
+
+.page-node .region-inner .group-right {
+    float: left;
+    width: 32%;
+    margin-left: 2%;
+}
+
+.page-node .region-inner .group-header {
+    height: 56px;
+    margin-bottom: 10px;
+}
+
+.ui-widget {
+    border: 1px solid #aaaaaa !important;
+}
+
+.field-name-field-ds-dsds-evergreen {
+    padding-bottom: 1.4em;
+}
+
+.field-name-field-ds-dsds-evergreen p {
+    margin-bottom: 0;
+}
+
+#page-title {
+    display: none;
+}
+
+/* END JOHN KECKS THEME */
+.dss-interactive-component {
+    position: relative;
+}
+
+.dss-interactive-slider {
+    position: absolute;
+    left: 10%;
+}
+
+.dss-interactive-select-lists {
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+}
+
+.dss-interactive-component {
+    height: 28px;
+}
+
+.dss-interactive-label, .dss-interactive-slider {
+    float: left;
 }
