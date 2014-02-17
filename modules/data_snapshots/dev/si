@@ -6,6 +6,14 @@ drush -y site-install
 # reset the admin user password
 drush upwd admin --password=`cat dev/.password`
 
+# create accounts for users
+drush ucrt john.keck --password=`cat dev/.password`
+drush ucrt luann.dahlman --password=`cat dev/.password`
+drush ucrt mbp --password=`cat dev/.password`
+
+# make users admins
+drush urol "administrator" john.keck,luann.dahlman,mbp
+
 # disable comment module
 drush -y dis comment
 
