@@ -26,6 +26,10 @@ function data_snapshots ($) {
 	set_url(dsmn, ptk, stk, $("#dss-theme-dropdown").val());
     }
 
+    function set_title(html) {
+	$(".field-name-title h2").text(html);
+    }
+
     function set_annotation(html) {
 	$(".group-footer").html(html);
     }
@@ -134,6 +138,7 @@ function data_snapshots ($) {
 	    data : parameters
 	})
 	.done(function (result) {
+	    set_title(result.title_html);
 	    set_annotation(result.body_html);
 	    set_downloads(result.download_html);
 	    set_permalink(result.permalink_html);

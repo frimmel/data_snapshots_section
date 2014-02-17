@@ -450,6 +450,7 @@ function _data_snapshots_snapshot_ajax() {
     ->fetchAssoc();
 
   $new_ds_node = node_load($result['nid']);
+  $result['title_html'] = $new_ds_node->title;
   $result['body_html'] = render(field_view_field('node', $new_ds_node, 'body'));
   $result['download_html'] = render(field_view_field('node', $new_ds_node, 'field_ds_dloads'));
   $result['date_html'] = render(field_view_field('node', $new_ds_node, 'field_ds_dtgen'));
