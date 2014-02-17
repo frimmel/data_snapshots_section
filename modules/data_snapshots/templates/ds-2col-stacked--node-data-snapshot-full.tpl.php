@@ -12,25 +12,28 @@
   <?php endif; ?>
 
   <<?php print $header_wrapper ?> class="group-header<?php print $header_classes; ?>">
-    <table>
-      <tr>
-        <td>
-          <table>
-            <tr><td align="right">Year:</td><td><div id="dss-yearslider"></div></td></tr>
-            <tr id="dss-timeslider-row"><td align="right">Week:</td><td><div id="dss-timeslider"></div></td></tr>
-          </table>
-        </td>
-        <td>
-          Theme:&nbsp;
-          <select id="dss-theme-dropdown">
-          </select>
-  	      <br/>
-          Data Source:&nbsp;
-          <select id="dss-data-source-dropdown">
-          </select>
-        </td>
-      </tr>
-    </table>
+    <div class="dss-interactive-widget">
+      <div class="dss-interactive-select-lists">
+        <div class="dss-interactive-component">
+          <span class="dss-interactive-theme-label">Theme:&nbsp;</span>
+          <select id="dss-theme-dropdown"></select>
+        </div>
+        <div class="dss-interactive-component">
+          <span class="dss-interactive-source-label">Data Source:&nbsp;</span>
+          <select id="dss-data-source-dropdown"></select>
+        </div>
+      </div>
+      <div class="dss-interactive-sliders">
+        <div class="dss-interactive-component">
+          <span class="dss-interactive-ptk-label dss-interactive-label">Year:</span>
+          <div id="dss-yearslider" class="dss-interactive-slider"></div>
+        </div>
+        <div class="dss-interactive-component">
+          <span class="dss-interactive-ptk-label dss-interactive-label">Week:</span>
+          <div id="dss-timeslider" class="dss-interactive-slider"></div>
+        </div>
+      </div>
+    </div>
   </<?php print $header_wrapper ?>>
 
   <<?php print $left_wrapper ?> class="group-left<?php print $left_classes; ?>">
