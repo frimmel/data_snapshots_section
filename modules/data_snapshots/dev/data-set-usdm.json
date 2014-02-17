@@ -203,8 +203,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "http://datasnapshots-images.nemac.com:8080/usdm/620/{ptk}/usdm--620--{ptk}-{stk}.png",
-                    "value": "http://datasnapshots-images.nemac.com:8080/usdm/620/{ptk}/usdm--620--{ptk}-{stk}.png"
+                    "safe_value": "http://dev.nemac.org/datasnapshots-images/images/html/usdm/620/{ptk}/usdm--620--{ptk}-{stk}.png",
+                    "value": "http://dev.nemac.org/datasnapshots-images/images/html/usdm/620/{ptk}/usdm--620--{ptk}-{stk}.png"
                 }
             ]
         }, 

@@ -203,8 +203,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "http://datasnapshots-images.nemac.com:8080/spc_severe/spc_severe_probability_{ptk}_{stk}_620.png",
-                    "value": "http://datasnapshots-images.nemac.com:8080/spc_severe/spc_severe_probability_{ptk}_{stk}_620.png"
+                    "safe_value": "http://dev.nemac.org/datasnapshots-images/images/html/spc_severe/spc_severe_probability_{ptk}_{stk}_620.png",
+                    "value": "http://dev.nemac.org/datasnapshots-images/images/html/spc_severe/spc_severe_probability_{ptk}_{stk}_620.png"
                 }
             ]
         }, 
