@@ -44,3 +44,31 @@
     -o-border-radius: 5px;
 }
 /* end needed for dev */
+
+/* john keck's theme */
+.group-right.article-info {
+    height: auto;
+}
+
+.node-type-page .col-2-left {
+    display: none;
+}
+
+.page-node .region-inner .group-right {
+    float: right;
+    width: 29%;
+}
+
+.page-node .region-inner .group-left {
+    float: left;
+    width: 63%%;
+}
+
+.container-12 .grid-9 {
+    width: auto !important;
+}
+
+#page-title {
+    display: none;
+}
+/* end john keck's theme */
