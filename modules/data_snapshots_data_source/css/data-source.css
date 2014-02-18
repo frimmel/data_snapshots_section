@@ -71,4 +71,9 @@
 #page-title {
     display: none;
 }
+
+.page-data-snapshot-annotation-admin-view .container-12 .grid-9 {
+    width: 100% !important;
+}
+
 /* end john keck's theme */

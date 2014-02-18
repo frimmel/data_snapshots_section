@@ -41,11 +41,17 @@ function data_snapshots_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = 'Annotation';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   /* Field: Content: Data Set Machine Name */
   $handler->display->display_options['fields']['field_ds_dsds_mn']['id'] = 'field_ds_dsds_mn';
   $handler->display->display_options['fields']['field_ds_dsds_mn']['table'] = 'field_data_field_ds_dsds_mn';
   $handler->display->display_options['fields']['field_ds_dsds_mn']['field'] = 'field_ds_dsds_mn';
-  $handler->display->display_options['fields']['field_ds_dsds_mn']['label'] = 'Official Name';
+  $handler->display->display_options['fields']['field_ds_dsds_mn']['label'] = 'Machine Name';
   $handler->display->display_options['fields']['field_ds_dsds_mn']['element_label_colon'] = FALSE;
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
@@ -76,6 +82,48 @@ function data_snapshots_views_default_views() {
   $handler->display->display_options['filters']['body_value']['table'] = 'field_data_body';
   $handler->display->display_options['filters']['body_value']['field'] = 'body_value';
   $handler->display->display_options['filters']['body_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['body_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['body_value']['expose']['operator_id'] = 'body_value_op';
+  $handler->display->display_options['filters']['body_value']['expose']['label'] = 'Body (body)';
+  $handler->display->display_options['filters']['body_value']['expose']['use_operator'] = TRUE;
+  $handler->display->display_options['filters']['body_value']['expose']['operator'] = 'body_value_op';
+  $handler->display->display_options['filters']['body_value']['expose']['identifier'] = 'body_value';
+  $handler->display->display_options['filters']['body_value']['expose']['remember_roles'] = array(
+												  2 => '2',
+												  1 => 0,
+												  3 => 0,
+												  );
+  $handler->display->display_options['filters']['body_value']['is_grouped'] = TRUE;
+  $handler->display->display_options['filters']['body_value']['group_info']['label'] = 'Annotation';
+  $handler->display->display_options['filters']['body_value']['group_info']['identifier'] = 'body_value';
+  $handler->display->display_options['filters']['body_value']['group_info']['widget'] = 'radios';
+  $handler->display->display_options['filters']['body_value']['group_info']['group_items'] = array(
+												   1 => array(
+													      'title' => 'No Annotation',
+													      'operator' => 'empty',
+													      'value' => '1',
+													      ),
+												   2 => array(
+													      'title' => 'Has Annotation',
+													      'operator' => 'not empty',
+													      'value' => '2',
+													      ),
+												   );
+  /* Filter criterion: Content: Data Set Machine Name (field_ds_dsds_mn) */
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['id'] = 'field_ds_dsds_mn_value';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['table'] = 'field_data_field_ds_dsds_mn';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['field'] = 'field_ds_dsds_mn_value';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['operator_id'] = 'field_ds_dsds_mn_value_op';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['label'] = 'Machine Name';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['operator'] = 'field_ds_dsds_mn_value_op';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['identifier'] = 'field_ds_dsds_mn_value';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['remember_roles'] = array(
+													      2 => '2',
+													      1 => 0,
+													      3 => 0,
+													      );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
