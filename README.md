@@ -46,23 +46,22 @@ article-info
 
 **TODO**
 
-1. Put up public test site
-  - Install module in fresh drupal site on cloud0
-  - Test with John Keck's theme
-2. Import remaining dependencies
+1. Import remaining dependencies
+  - Labels for slider values & endpoints
+  - Annotation view exposed filters
   - Context settings
   - Add image to Data Source
-  - Social media buttons
-  - Labels for slider values & endpoints
-3. Generally clean up code
+2. Generally clean up code
   - Turn off stk slider on Annual data sets
+  - Properly handle ptk sliding when stk value does not exist. ex: February 30th
   - Fix Downloads section (what did I mean by this...?)
   - Rename anything refering to 'Data Set' to 'Data Source'
   - Rewrite queries to be more efficient
   - Cut out deprecated/development code
   - Properly bundle css & js
   - Minify Javascript
-4. Implementation
+3. Implementation
   - Test in climate.gov
+  - Social media buttons
   - Ensure datasets with odd date combinations work
   - Fix remaining bugs
