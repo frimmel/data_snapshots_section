@@ -48,9 +48,7 @@ article-info
 
 1. Import remaining dependencies
   - Labels for slider values & endpoints
-  - Annotation view exposed filters
-  - Context settings
-  - Add image to Data Source
+  - Add example image to Data Source
 2. Generally clean up code
   - Turn off stk slider on Annual data sets
   - Properly handle ptk sliding when stk value does not exist. ex: February 30th
@@ -61,6 +59,8 @@ article-info
   - Properly bundle css & js
   - Minify Javascript
 3. Implementation
+  - Write instructions for adding data snapshots to Maps & Data submenu
+  - Annotation view exposed filters
   - Test in climate.gov
   - Social media buttons
   - Ensure datasets with odd date combinations work
