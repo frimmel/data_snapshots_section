@@ -217,8 +217,23 @@ function data_snapshots ($) {
         config_stk_slider();
 
 	init_dropdowns();
+	data_source_stk_change();
 	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
 	$('#dss-theme-dropdown').on("change", theme_dropdown_change);
+
+	function data_source_stk_change() {
+	    var frequencies = Drupal.settings.data_snapshots.frequencies,
+		disabledStk = ["Annual"],
+		$dsstimeslider = $('#dss-timeslider'),
+		val;
+
+	    if (disabledStk.indexOf(frequencies[dsmn]) !== -1) {
+		val = true;
+	    } else {
+		val = false;
+	    }
+	    $dsstimeslider.slider("option", "disabled", val);
+	}
 
 	function theme_dropdown_change() {
 	    var new_theme = $(this).val(),
@@ -267,6 +282,7 @@ function data_snapshots ($) {
 
 		switch_data_source_content(msg.node);
 		switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+		data_source_stk_change();
 	    });
 	}
     });
