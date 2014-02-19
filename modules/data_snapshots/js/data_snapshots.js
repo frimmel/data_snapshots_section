@@ -175,9 +175,15 @@ function data_snapshots ($) {
                     config_stk_slider();
                 },
                 'slide' : function(event, ui) {
+		    var stk;
                     current_ptk_index = ui.value;
                     stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
-                    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+		    if (current_stk_index >= stks.length) {
+			stk = stks[stks.length - 1];
+		    } else {
+			stk = stks[current_stk_index]
+		    }
+                    set_img(dsmn, ptks[current_ptk_index], stk);
                 },
                 'start' : function(event, ui) {
                     hideStuff();
