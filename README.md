@@ -50,7 +50,6 @@ article-info
   - Labels for slider values & endpoints
   - Add example image to Data Source
 2. Generally clean up code
-  - Turn off stk slider on Annual data sets
   - Properly handle ptk sliding when stk value does not exist. ex: February 30th
   - Fix Downloads section (what did I mean by this...?)
   - Rename anything refering to 'Data Set' to 'Data Source'
