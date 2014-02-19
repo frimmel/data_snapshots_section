@@ -28,6 +28,7 @@ function data_snapshots ($) {
 
     function set_title(html) {
 	$(".field-name-title h2").text(html);
+	document.title = html;
     }
 
     function set_annotation(html) {
