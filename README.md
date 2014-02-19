@@ -47,11 +47,9 @@ article-info
 **TODO**
 
 1. Import remaining dependencies
-  - Labels for slider values & endpoints
+  - Labels for slider values
   - Add example image to Data Source
 2. Generally clean up code
-  - Properly handle ptk sliding when stk value does not exist. ex: February 30th
-  - Fix Downloads section (what did I mean by this...?)
   - Rename anything refering to 'Data Set' to 'Data Source'
   - Rewrite queries to be more efficient
   - Cut out deprecated/development code
