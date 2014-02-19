@@ -110,6 +110,20 @@
   margin-top: 20px;
 }
 
+.dss-interactive-slider-label {
+    position: absolute;
+    font-size: .7em;
+    bottom: 0;
+}
+
+.dss-interactive-slider-start-label {
+    left: 8%;
+}
+
+.dss-interactive-slider-end-label {
+    right: 0;
+}
+
 /******************************************************************/
 /*!
  * Bootstrap v3.0.0
@@ -515,7 +529,7 @@ fieldset[disabled] .btn-default.active {
 }
 
 .dss-interactive-component {
-    height: 28px;
+    height: 30px;
 }
 
 .dss-interactive-label, .dss-interactive-slider {

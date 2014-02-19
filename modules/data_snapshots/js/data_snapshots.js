@@ -63,6 +63,20 @@ function data_snapshots ($) {
 	}
     }
 
+    function set_slider_labels(type, start, end) {
+	var startlabel, endlabel;
+	if (type === "ptk") {
+	    startlabel = $("#dss-interactive-slider-ptk-start-label");
+	    endlabel = $("#dss-interactive-slider-ptk-end-label");
+	} else if (type === "stk") {
+	    startlabel = $("#dss-interactive-slider-stk-start-label");
+	    endlabel = $("#dss-interactive-slider-stk-end-label");
+	}
+
+	startlabel.text(start);
+	endlabel.text(end);
+    }
+
     function init_dropdowns() {
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
@@ -185,6 +199,7 @@ function data_snapshots ($) {
 			stk = stks[current_stk_index]
 		    }
                     set_img(dsmn, ptks[current_ptk_index], stk);
+		    set_slider_labels("stk", stks[0], stks[stks.length - 1]);
                 },
                 'start' : function(event, ui) {
                     hideStuff();
@@ -194,6 +209,7 @@ function data_snapshots ($) {
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }
             });
+	    set_slider_labels("ptk", ptks[0], ptks[ptks.length - 1]);
 	};
 
         function config_stk_slider() {
@@ -218,6 +234,7 @@ function data_snapshots ($) {
                 }           
             });
 
+	    set_slider_labels("stk", stks[0], stks[stks.length - 1]);
         }
 
         config_ptk_slider();
