@@ -46,19 +46,17 @@ article-info
 
 **TODO**
 
-1. Import remaining dependencies
-  - Labels for slider values
-  - Add example image to Data Source
-2. Generally clean up code
+1. Generally clean up code
   - Rename anything refering to 'Data Set' to 'Data Source'
   - Rewrite queries to be more efficient
   - Cut out deprecated/development code
   - Properly bundle css & js
-  - Minify Javascript
-3. Implementation
+2. Implementation
   - Write instructions for adding data snapshots to Maps & Data submenu
   - Annotation view exposed filters
   - Test in climate.gov
   - Social media buttons
+  - Add example image to Data Source
   - Ensure datasets with odd date combinations work
+  - Minify Javascript
   - Fix remaining bugs
