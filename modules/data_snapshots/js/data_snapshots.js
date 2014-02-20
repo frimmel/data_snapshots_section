@@ -244,10 +244,19 @@ function data_snapshots ($) {
 		    }
 		    set_img(dsmn, ptks[current_ptk_index], stk);
 		    set_slider_labels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
-		    set_slider_popups("#dss-interactive-slider-ptk-popup", ptks[current_ptk_index] + "-" + stk, this, ptks.length, ui.value);
+
+		    var popupText = ptks[current_ptk_index];
+		    if (Drupal.settings.data_snapshots.frequencies[dsmn] !== "Annual") {
+			popupText += "-" + stk;
+		    }
+		    set_slider_popups("#dss-interactive-slider-ptk-popup", popupText, this, ptks.length, ui.value);
                 },
                 'start' : function(event, ui) {
-		    set_slider_popups("#dss-interactive-slider-ptk-popup", ptks[current_ptk_index] + "-" + stks[current_stk_index], this, ptks.length, ui.value);
+		    var popupText = ptks[current_ptk_index];
+		    if (Drupal.settings.data_snapshots.frequencies[dsmn] !== "Annual") {
+			popupText += "-" + stks[current_stk_index];
+		    }
+		    set_slider_popups("#dss-interactive-slider-ptk-popup", popupText, this, ptks.length, ui.value);
 		    $("#dss-interactive-slider-ptk-popup").addClass("dss-interactive-slider-popup-active");
                     hideStuff();
                 },

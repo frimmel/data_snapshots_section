@@ -130,6 +130,8 @@
     border-radius: .5em;
     padding: 2px;
     background-color: #fff;
+    z-index: 3;
+    white-space: nowrap;
     display: none;
 }
 
@@ -140,7 +142,7 @@
 .dss-interactive-slider-popup:after {
     position: absolute;
     top: 100%;
-    left: 35%;
+    left: 25%;
     width: 0;
     height: 0;
     border: 6px solid transparent;
