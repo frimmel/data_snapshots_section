@@ -63,6 +63,30 @@ function data_snapshots ($) {
 	}
     }
 
+    function set_slider_names(type) {
+	var labels = {
+	    Annual : {
+		ptk : "Year:",
+		stk : ""
+	    },
+	    Monthly : {
+		ptk : "Year:",
+		stk : "Month:"
+	    },
+	    Weekly : {
+		ptk : "Year:",
+		stk : "Day:"
+	    },
+	    Custom : {
+		ptk : "Date:",
+		stk : ""
+	    },
+	};
+
+	$(".dss-interactive-ptk-label").text(labels[type].ptk);
+	$(".dss-interactive-stk-label").text(labels[type].stk);
+    }
+
     function set_slider_labels(type, start, end) {
 	var startlabel, endlabel;
 	if (type === "ptk") {
@@ -244,6 +268,7 @@ function data_snapshots ($) {
 	data_source_stk_change();
 	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
 	$('#dss-theme-dropdown').on("change", theme_dropdown_change);
+	set_slider_names(Drupal.settings.data_snapshots.frequencies[dsmn]);
 
 	function data_source_stk_change() {
 	    var frequencies = Drupal.settings.data_snapshots.frequencies,
@@ -307,6 +332,7 @@ function data_snapshots ($) {
 		switch_data_source_content(msg.node);
 		switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
 		data_source_stk_change();
+		set_slider_names(Drupal.settings.data_snapshots.frequencies[dsmn]);
 	    });
 	}
     });
