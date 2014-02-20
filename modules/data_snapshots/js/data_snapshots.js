@@ -106,6 +106,21 @@ function data_snapshots ($) {
 	endlabel.text(end);
     }
 
+    function set_slider_popups(selector, value, slider, steps, position) {
+	var afterElemBorder = 6,// need to add to margin for correct placement. Change if css changes.
+	    $elem = $(selector),
+	    elemPosition = (position * ($(slider).width() / (steps - 1))) + "px",
+	    elemWidth, marginLeft;
+
+	$elem.text(value);
+
+	elemWidth = $elem.width() / 2;
+	marginLeft = (-elemWidth + afterElemBorder) + "px";
+
+	$elem.css("margin-left", marginLeft)
+	    .css("left", elemPosition);
+    }
+
     function init_dropdowns() {
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
@@ -225,15 +240,19 @@ function data_snapshots ($) {
 		    if (current_stk_index >= stks.length) {
 			stk = stks[stks.length - 1];
 		    } else {
-			stk = stks[current_stk_index]
+			stk = stks[current_stk_index];
 		    }
-                    set_img(dsmn, ptks[current_ptk_index], stk);
+		    set_img(dsmn, ptks[current_ptk_index], stk);
 		    set_slider_labels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
+		    set_slider_popups("#dss-interactive-slider-ptk-popup", ptks[current_ptk_index] + "-" + stk, this, ptks.length, ui.value);
                 },
                 'start' : function(event, ui) {
+		    set_slider_popups("#dss-interactive-slider-ptk-popup", ptks[current_ptk_index] + "-" + stks[current_stk_index], this, ptks.length, ui.value);
+		    $("#dss-interactive-slider-ptk-popup").addClass("dss-interactive-slider-popup-active");
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
+		    $("#dss-interactive-slider-ptk-popup").removeClass("dss-interactive-slider-popup-active");
                     showStuff();
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }
@@ -251,13 +270,17 @@ function data_snapshots ($) {
                     set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 },
                 'slide' : function(event, ui) {
-                    current_stk_index = ui.value;
-                    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+		    current_stk_index = ui.value;
+		    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+		    set_slider_popups("#dss-interactive-slider-stk-popup", ptks[current_ptk_index] + "-" + stks[current_stk_index], this, stks.length, ui.value);
                 },
                 'start' : function(event, ui) {
+		    set_slider_popups("#dss-interactive-slider-stk-popup", ptks[current_ptk_index] + "-" + stks[current_stk_index], this, stks.length, ui.value);
+		    $("#dss-interactive-slider-stk-popup").addClass("dss-interactive-slider-popup-active");
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
+		    $("#dss-interactive-slider-stk-popup").removeClass("dss-interactive-slider-popup-active");
                     showStuff();
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }           

@@ -101,9 +101,8 @@
 /******************************************************************/
 
 #dss-timeslider, #dss-yearslider {
-  width: 92%;
   position: absolute;
-  left: 8%;
+  width: 100%;
 }
 
 #dss-timeslider-row {
@@ -117,13 +116,37 @@
 }
 
 .dss-interactive-slider-start-label {
-    left: 8%;
+    left: 0;
 }
 
 .dss-interactive-slider-end-label {
     right: 0;
 }
 
+.dss-interactive-slider-popup {
+    position: absolute;
+    top: -108%;
+    border: 2px solid #369;
+    border-radius: .5em;
+    padding: 2px;
+    background-color: #fff;
+    display: none;
+}
+
+.dss-interactive-slider-popup-active {
+    display: inline-block !important;
+}
+
+.dss-interactive-slider-popup:after {
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: #369;
+    content: ' '
+}
 /******************************************************************/
 /*!
  * Bootstrap v3.0.0
@@ -517,9 +540,11 @@ fieldset[disabled] .btn-default.active {
     position: relative;
 }
 
-.dss-interactive-slider {
-    position: absolute;
+.dss-interactive-slider-wrapper {
+    position: relative;
     left: 10%;
+    width: 90%;
+    height: 100%;
 }
 
 .dss-interactive-select-lists {
