@@ -87,7 +87,7 @@ function data_snapshots ($) {
 	$(".dss-interactive-stk-label").text(labels[type].stk);
     }
 
-    function set_slider_labels(type, start, end) {
+    function set_slider_labels(type, start, end, freq) {
 	var startlabel, endlabel;
 	if (type === "ptk") {
 	    startlabel = $("#dss-interactive-slider-ptk-start-label");
@@ -95,6 +95,11 @@ function data_snapshots ($) {
 	} else if (type === "stk") {
 	    startlabel = $("#dss-interactive-slider-stk-start-label");
 	    endlabel = $("#dss-interactive-slider-stk-end-label");
+	}
+
+	if (type === "stk" && freq === "Annual") {
+	    start = "";
+	    end = "";
 	}
 
 	startlabel.text(start);
@@ -223,7 +228,7 @@ function data_snapshots ($) {
 			stk = stks[current_stk_index]
 		    }
                     set_img(dsmn, ptks[current_ptk_index], stk);
-		    set_slider_labels("stk", stks[0], stks[stks.length - 1]);
+		    set_slider_labels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
                 },
                 'start' : function(event, ui) {
                     hideStuff();
@@ -233,7 +238,7 @@ function data_snapshots ($) {
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }
             });
-	    set_slider_labels("ptk", ptks[0], ptks[ptks.length - 1]);
+	    set_slider_labels("ptk", ptks[0], ptks[ptks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
 	};
 
         function config_stk_slider() {
@@ -258,7 +263,7 @@ function data_snapshots ($) {
                 }           
             });
 
-	    set_slider_labels("stk", stks[0], stks[stks.length - 1]);
+	    set_slider_labels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
         }
 
         config_ptk_slider();

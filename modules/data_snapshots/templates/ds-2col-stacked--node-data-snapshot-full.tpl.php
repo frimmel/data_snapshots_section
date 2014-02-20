@@ -26,15 +26,15 @@
       <div class="dss-interactive-sliders">
         <div class="dss-interactive-component">
           <span class="dss-interactive-ptk-label dss-interactive-label"></span>
-	  <span id="dss-interactive-slider-ptk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label">1990</span>
+	  <span id="dss-interactive-slider-ptk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
           <div id="dss-yearslider" class="dss-interactive-slider"></div>
-	  <span id="dss-interactive-slider-ptk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label">2013</span>
+	  <span id="dss-interactive-slider-ptk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
         </div>
         <div class="dss-interactive-component">
           <span class="dss-interactive-stk-label dss-interactive-label"></span>
-	  <span id="dss-interactive-slider-stk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label">Jan 1st</span>
+	  <span id="dss-interactive-slider-stk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
           <div id="dss-timeslider" class="dss-interactive-slider"></div>
-	  <span id="dss-interactive-slider-stk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label">Dec 31st</span>
+	  <span id="dss-interactive-slider-stk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
         </div>
       </div>
     </div>
