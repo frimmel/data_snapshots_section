@@ -30,7 +30,7 @@
 	    <span id="dss-interactive-slider-ptk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
             <div id="dss-yearslider" class="dss-interactive-slider"></div>
 	    <span id="dss-interactive-slider-ptk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
-	    <span id="dss-interactive-slider-ptk-popup" class="dss-interactive-slider-popup">sup</span>
+	    <span id="dss-interactive-slider-ptk-popup" class="dss-interactive-slider-popup"></span>
           </div>
         </div>
         <div class="dss-interactive-component">
@@ -39,7 +39,7 @@
 	    <span id="dss-interactive-slider-stk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
             <div id="dss-timeslider" class="dss-interactive-slider"></div>
 	    <span id="dss-interactive-slider-stk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
-	    <span id="dss-interactive-slider-stk-popup" class="dss-interactive-slider-popup">yo</span>
+	    <span id="dss-interactive-slider-stk-popup" class="dss-interactive-slider-popup"></span>
           </div>
         </div>
       </div>
