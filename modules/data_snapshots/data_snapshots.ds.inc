@@ -52,6 +52,21 @@ function data_snapshots_ds_field_settings_info() {
 				     );
   $export['node|data_snapshot|full'] = $ds_fieldsetting;
 
+  $ds_fieldsetting = new stdClass();
+  $ds_fieldsetting->api_version = 1;
+  $ds_fieldsetting->id = 'node|data_snapshot|full';
+  $ds_fieldsetting->entity_type = 'node';
+  $ds_fieldsetting->bundle = 'data_snapshot';
+  $ds_fieldsetting->view_mode = 'full';
+  $ds_fieldsetting->settings = array(
+				     'title' => array(
+						      'weight' => '0',
+						      'label' => 'hidden',
+						      'format' => 'default',
+						      ),
+				     );
+  $export['node|data_snapshot|full'] = $ds_fieldsetting;
+
   return $export;
 }
 
