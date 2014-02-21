@@ -5,6 +5,7 @@ package = UNCA/NEMAC
 
 stylesheets[all][] = css/data-source.css
 
+dependencies[] = ckeditor
 dependencies[] = content_taxonomy
 dependencies[] = content_taxonomy_autocomplete
 dependencies[] = ctools

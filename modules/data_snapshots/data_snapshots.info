@@ -5,6 +5,7 @@ package = UNCA/NEMAC
 version = 7.x-1.0-beta1
 project = data_snapshots
 dependencies[] = context
+dependencies[] = ckeditor
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = ds
