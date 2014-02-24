@@ -3,7 +3,6 @@
 /**
  * Implements hook_field_group_info().
  */
-  //REMOVE all groups associcated with the data source
 function data_snapshots_field_group_info() {
 
   $export = array();
@@ -21,9 +20,8 @@ function data_snapshots_field_group_info() {
     'label' => 'Climate.gov Metadata',
     'weight' => '3',
     'children' => array(
-      0 => 'field_ds_tclean',
-      1 => 'path',
-      2 => 'redirect',
+      0 => 'path',
+      1 => 'redirect',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
