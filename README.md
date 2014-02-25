@@ -47,7 +47,6 @@ article-info
 **TODO**
 
 1. Generally clean up code
-  - Rename anything refering to 'Data Set' to 'Data Source'
   - Rewrite queries to be more efficient
   - Cut out deprecated/development code
   - Properly bundle css & js
