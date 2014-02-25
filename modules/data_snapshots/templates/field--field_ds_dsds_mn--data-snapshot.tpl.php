@@ -43,7 +43,7 @@
  *
  * @ingroup themeable
  */
-$evergreen = strip_tags($element['#object']->{'dataset_node'}->{'field_dssds_english_descript'}['und'][0]['safe_value']);
+$evergreen = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_english_descript'}['und'][0]['safe_value']);
 $evergreen_answer_length = 250;
 $evergreen_answer_length_ellipsis = $evergreen_answer_length + 3;
 
@@ -53,11 +53,10 @@ if (strlen($evergreen) > $evergreen_answer_length_ellipsis) {
 ?>
 <div class="field-name-field-ds-dsds-evergreen <?php print $classes; ?>"<?php print $attributes; ?>>
   <?php if (!$label_hidden): ?>
-    <?php $label = $element['#object']->{'dataset_node'}->{'field_dssds_framing_question'}['und'][0]['value'] ?>
-    <div class="field-label"<?php print $title_attributes; ?>><?php print $label ?>&nbsp;</div>
+    <div class="field-label"<?php print $title_attributes; ?>><?php print $element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']; ?>&nbsp;</div>
   <?php endif; ?>
   <div class="field-items"<?php print $content_attributes; ?>>
     <div class="field-item"><p><?php print $evergreen; ?></p></div>
-    <span class="dss-question-read-more"><a href="/node/<?php print $element['#object']->{'dataset_node'}->nid; ?>">read more</a></span>
+    <span class="dss-question-read-more"><a href="/node/<?php print $element['#object']->{'datasource_node'}->nid; ?>">read more</a></span>
   </div>
 </div>

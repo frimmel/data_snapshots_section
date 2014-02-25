@@ -266,7 +266,7 @@ function data_snapshots_fields_data_snapshot() {
       'bundle' => 'data_snapshot',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'The unique machine name for the data set this snapshot is for',
+      'description' => 'The unique machine name for the data source this snapshot is for',
       'display' => array(
         'default' => array(
           'label' => 'above',

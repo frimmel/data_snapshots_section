@@ -57,7 +57,7 @@ function data_snapshots_schema() {
         'type' => 'varchar',
         'length' => 64,
         'not null' => TRUE,
-        'description' => "Dataset machine name for the node.",
+        'description' => "Data source machine name for the node.",
       ),
       'ptk' => array(
         'type' => 'varchar',

@@ -1,7 +1,7 @@
 <?php
 
   /*
-callback functions to switch between different datasets
+callback functions to switch between different data sources
   */
 
 function getDataSourceDates($datasource) {
