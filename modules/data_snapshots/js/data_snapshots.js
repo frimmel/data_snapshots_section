@@ -173,12 +173,22 @@ function data_snapshots ($) {
     }
 
     function switch_data_source_content(node) {
-	var $evergreen_question = $(".field-name-field-ds-dsds-evergreen .field-label"),
-	    $evergreen_answer = $(".field-name-field-ds-dsds-evergreen .field-item"),
-	    $read_more_link = $(".field-name-field-ds-dsds-evergreen .dss-question-read-more a");
+	var evergreen_answer = node.field_dssds_english_descript.und[0].safe_value,
+	    $evergreen_question = $(".field-name-field-ds-dsds-evergreen .field-label"),
+	    $evergreen_answer = $(".field-name-field-ds-dsds-evergreen .field-item p"),
+	    $read_more_link = $(".field-name-field-ds-dsds-evergreen .dss-question-read-more a"),
+	    evergreen_answer_length = 250,
+	    evergreen_answer_length_ellipsis = evergreen_answer_length + 3;
+
+	// strip all tags
+	evergreen_answer = $("<div/>").html(evergreen_answer).text();
+
+	if (evergreen_answer.length > evergreen_answer_length_ellipsis) {
+	    evergreen_answer = evergreen_answer.substring(0, evergreen_answer_length).trim() + "...";
+        }
 
 	$evergreen_question.text(node.field_dssds_framing_question.und[0].value);
-	$evergreen_answer.html(node.field_dssds_english_descript.und[0].safe_value);
+	$evergreen_answer.text(evergreen_answer);
 	$read_more_link.attr("href", "/node/" + node.nid);
     };
 
