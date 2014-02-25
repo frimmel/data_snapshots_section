@@ -192,6 +192,8 @@ function data_snapshots ($) {
 	$read_more_link.attr("href", "/node/" + node.nid);
     };
 
+    var xhr;
+
     function switchDataSnapshotContent(dsmn, ptk, stk) {
 	var parameters = {
 	    "type" : "snapshot",
@@ -201,7 +203,12 @@ function data_snapshots ($) {
 	if (stk !== null) {
 	    parameters.stk = stk
 	}
-	$.ajax({
+
+	if (xhr) {
+	    xhr.abort();
+	}
+
+	xhr = $.ajax({
 	    type : "POST",
 	    url  : "/data-snapshots/snapshots/ajax",
 	    data : parameters
@@ -213,6 +220,7 @@ function data_snapshots ($) {
 	    set_permalink(result.permalink_html);
 	    set_date_generated(result.date_html);
 	    set_primary_tabs(result.nid);
+	    xhr = null;
 	});
     }
 
@@ -225,11 +233,11 @@ function data_snapshots ($) {
             current_stk_index = snapshots.s[snapshots.init_ptk].indexOf(snapshots.init_stk);
 
         function hideStuff() {
-            $('.group-footer').animate({'opacity' : 0.0}, 200);
+            $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
         }
 
         function showStuff() {
-            $('.group-footer').animate({'opacity' : 1.0}, 200);
+	    $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
         }
 
 	function config_ptk_slider() {
@@ -272,8 +280,8 @@ function data_snapshots ($) {
                 },
                 'stop' : function(event, ui) {
 		    $("#dss-interactive-slider-ptk-popup").removeClass("dss-interactive-slider-popup-active");
-                    showStuff();
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+                    showStuff();
                 }
             });
 	    set_slider_labels("ptk", ptks[0], ptks[ptks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
