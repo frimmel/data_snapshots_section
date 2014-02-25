@@ -9,17 +9,15 @@ function data_snapshots ($) {
     }
 
     function set_url(dsmn, ptk, stk, theme) {
-	// TODO: See if there is a better way to handle this...
-	//       URL aliases strip out underscores, but spc_severe requires them in the url
 	var url;
-	dsmn = dsmn.replace(/_/g, "");
+	dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
 	if (window.history && window.history.replaceState) {
 	    url = (stk !== null) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
 	    window.history.replaceState({}, "", url);
 	}
     }
 
-    function set_img(dsmn,ptk,stk) {
+    function set_img(dsmn, ptk, stk) {
         $('.field-name-field-ds-disimg img').attr('src', make_img_url(dsmn,ptk,stk));
         $('div.dss-title').text(ptk + ' / ' + stk);
 
@@ -121,6 +119,16 @@ function data_snapshots ($) {
 	    .css("left", elemPosition);
     }
 
+    function set_ptk_slider_popup(selector, ptk, stk, frequency, slider, steps, position) {
+	var popupText = ptk;
+
+	if (frequency !== "Annual") {
+	    popupText += "-" + stk;
+	}
+
+	set_slider_popups(selector, popupText, slider, steps, position);
+    }
+
     function init_dropdowns() {
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
@@ -148,7 +156,6 @@ function data_snapshots ($) {
 	    $theme_dropdown.append($("<option>", { value: theme })
 				   .text(theme));
 
-	    // TODO: Add parsing of URL to determine proper default theme
 	    // TODO: Add polyfill of indexOf
 	    if (!foundTheme) {
 		var j;
@@ -241,9 +248,11 @@ function data_snapshots ($) {
         }
 
 	function config_ptk_slider() {
+	    var ptk_popup_selector = "#dss-interactive-slider-ptk-popup";
+
             $('#dss-yearslider').slider({
                 'min' : 0,
-                'max' : ptks.length-1,
+                'max' : ptks.length - 1,
                 'value' : current_ptk_index,
                 'change' : function(event, ui) {
                     current_ptk_index = ui.value;
@@ -252,34 +261,34 @@ function data_snapshots ($) {
                     config_stk_slider();
                 },
                 'slide' : function(event, ui) {
-		    var stk;
+		    var data_snapshots_properties = Drupal.settings.data_snapshots,
+			frequency = data_snapshots_properties.frequencies[dsmn],
+			ptk, stk, lastStk,
+			popupText;
+
                     current_ptk_index = ui.value;
-                    stks = Drupal.settings.data_snapshots.snapshots.s[ptks[current_ptk_index]];
+
+		    ptk = ptks[current_ptk_index];
+                    stks = data_snapshots_properties.snapshots.s[ptk];
+		    lastStk = stks[stks.length - 1];
+
 		    if (current_stk_index >= stks.length) {
-			stk = stks[stks.length - 1];
+			stk = lastStk;
 		    } else {
 			stk = stks[current_stk_index];
 		    }
-		    set_img(dsmn, ptks[current_ptk_index], stk);
-		    set_slider_labels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
 
-		    var popupText = ptks[current_ptk_index];
-		    if (Drupal.settings.data_snapshots.frequencies[dsmn] !== "Annual") {
-			popupText += "-" + stk;
-		    }
-		    set_slider_popups("#dss-interactive-slider-ptk-popup", popupText, this, ptks.length, ui.value);
+		    set_img(dsmn, ptk, stk);
+		    set_slider_labels("stk", stks[0], lastStk, frequency);
+		    set_ptk_slider_popup(ptk_popup_selector, ptk, stk, frequency, this, ptks.length, current_ptk_index);
                 },
                 'start' : function(event, ui) {
-		    var popupText = ptks[current_ptk_index];
-		    if (Drupal.settings.data_snapshots.frequencies[dsmn] !== "Annual") {
-			popupText += "-" + stks[current_stk_index];
-		    }
-		    set_slider_popups("#dss-interactive-slider-ptk-popup", popupText, this, ptks.length, ui.value);
-		    $("#dss-interactive-slider-ptk-popup").addClass("dss-interactive-slider-popup-active");
+		    set_ptk_slider_popup(ptk_popup_selector, ptks[current_ptk_index], stks[current_stk_index], Drupal.settings.data_snapshots.frequencies[dsmn], this, ptks.length, ui.value);
+		    $(ptk_popup_selector).addClass("dss-interactive-slider-popup-active");
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
-		    $("#dss-interactive-slider-ptk-popup").removeClass("dss-interactive-slider-popup-active");
+		    $(ptk_popup_selector).removeClass("dss-interactive-slider-popup-active");
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                     showStuff();
                 }
@@ -288,26 +297,33 @@ function data_snapshots ($) {
 	};
 
         function config_stk_slider() {
+	    var stk_popup_selector = "#dss-interactive-slider-stk-popup";
+
             $('#dss-timeslider').slider({
                 'min' : 0,
-                'max' : stks.length-1,
+                'max' : stks.length - 1,
                 'value' : current_stk_index,
                 'change' : function(event, ui) {
                     current_stk_index = ui.value;
                     set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 },
                 'slide' : function(event, ui) {
+		    var ptk, stk;
 		    current_stk_index = ui.value;
-		    set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
-		    set_slider_popups("#dss-interactive-slider-stk-popup", ptks[current_ptk_index] + "-" + stks[current_stk_index], this, stks.length, ui.value);
+
+		    ptk = ptks[current_ptk_index];
+		    stk = stks[current_stk_index];
+
+		    set_img(dsmn, ptk, stk);
+		    set_slider_popups(stk_popup_selector, ptk + "-" + stk, this, stks.length, current_stk_index);
                 },
                 'start' : function(event, ui) {
-		    set_slider_popups("#dss-interactive-slider-stk-popup", ptks[current_ptk_index] + "-" + stks[current_stk_index], this, stks.length, ui.value);
-		    $("#dss-interactive-slider-stk-popup").addClass("dss-interactive-slider-popup-active");
+		    set_slider_popups(stk_popup_selector, ptks[current_ptk_index] + "-" + stks[current_stk_index], this, stks.length, ui.value);
+		    $(stk_popup_selector).addClass("dss-interactive-slider-popup-active");
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
-		    $("#dss-interactive-slider-stk-popup").removeClass("dss-interactive-slider-popup-active");
+		    $(stk_popup_selector).removeClass("dss-interactive-slider-popup-active");
                     showStuff();
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
                 }           
