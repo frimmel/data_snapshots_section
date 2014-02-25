@@ -1686,7 +1686,7 @@ function data_snapshots_data_source_field_default_fields() {
       'bundle' => 'data_snapshot_data_source',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'A unique string used to identify this data set internally',
+      'description' => 'A unique string used to identify this data source internally',
       'display' => array(
         'default' => array(
           'label' => 'above',
