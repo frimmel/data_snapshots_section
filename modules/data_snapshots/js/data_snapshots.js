@@ -400,23 +400,27 @@ function data_snapshots ($) {
 	    })
 	    .done(function (msg) {
 		var result = msg.callback,
-		    dates = result.dates;
+		    dates = result.dates,
+		    ptk, stk;
+
 		dates.dsmn = new_dsmn;
 		Drupal.settings.data_snapshots.snapshots = dates;
 
 		current_ptk_index = dates.p.indexOf(result.ptk);
 		current_stk_index = dates.s[result.ptk].indexOf(result.stk);
 		ptks = dates.p;
-		stks = dates.s[ptks[current_ptk_index]];
+		ptk = ptks[current_ptk_index];
+		stks = dates.s[ptk];
+		stk = stks[current_stk_index];
 
 		dsmn = new_dsmn;
 
-		set_img(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+		set_img(dsmn, ptk, stk);
 		config_ptk_slider();
 		config_stk_slider();
 
 		switch_data_source_content(msg.node);
-		switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+		switchDataSnapshotContent(dsmn, ptk, stk);
 		data_source_stk_change();
 		set_slider_names(Drupal.settings.data_snapshots.frequencies[dsmn]);
 	    });
