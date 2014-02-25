@@ -359,20 +359,35 @@ function data_snapshots ($) {
 	    var new_theme = $(this).val(),
 		data_sources = Drupal.settings.data_snapshots.datasources[new_theme],
 		$data_source_dropdown = $('#dss-data-source-dropdown'),
+		data_source, mname,
+		change_data_source = true,
 		i;
 
 	    $data_source_dropdown.empty();
 
 	    for (i = 0; i < data_sources.length; i++) {
-		$data_source_dropdown.append($("<option>", { value: data_sources[i].mname })
-					     .text(data_sources[i].oname));
+		data_source = data_sources[i];
+		mname = data_source.mname;
+		$data_source_dropdown.append($("<option>", { value: mname })
+					     .text(data_source.oname));
+		if (dsmn === mname) {
+		    $data_source_dropdown.val(mname);
+		    change_data_source = false;
+		}
+	    }
+
+	    if (change_data_source === true) {
+		set_data_source(data_sources[0].mname);
 	    }
 
 	    set_url(dsmn, ptks[current_ptk_index], stks[current_stk_index], new_theme);
 	}
 
 	function data_source_dropdown_change() {
-	    var new_dsmn = $(this).val();
+	    set_data_source($(this).val());
+	}
+
+	function set_data_source(new_dsmn) {
 	    $.ajax({
 		type : "POST",
 	        url  : "/data-snapshots/ajax",
