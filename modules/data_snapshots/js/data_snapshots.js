@@ -232,12 +232,23 @@ function data_snapshots ($) {
     }
 
     $('document').ready(function() {
-	var snapshots = Drupal.settings.data_snapshots.snapshots,
+	var data_snapshots_options = Drupal.settings.data_snapshots,
+	    snapshots = data_snapshots_options.snapshots,
             dsmn = snapshots.dsmn,
+	    init_ptk = snapshots.init_ptk,
 	    ptks = snapshots.p,
-            current_ptk_index = ptks.indexOf(snapshots.init_ptk),
+            current_ptk_index = ptks.indexOf(init_ptk),
 	    stks = snapshots.s[ptks[current_ptk_index]],
-            current_stk_index = snapshots.s[snapshots.init_ptk].indexOf(snapshots.init_stk);
+            current_stk_index = snapshots.s[init_ptk].indexOf(snapshots.init_stk);
+
+        config_ptk_slider();
+        config_stk_slider();
+
+	init_dropdowns();
+	data_source_stk_change();
+	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
+	$('#dss-theme-dropdown').on("change", theme_dropdown_change);
+	set_slider_names(data_snapshots_options.frequencies[dsmn]);
 
         function hideStuff() {
             $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
@@ -324,22 +335,13 @@ function data_snapshots ($) {
                 },
                 'stop' : function(event, ui) {
 		    $(stk_popup_selector).removeClass("dss-interactive-slider-popup-active");
-                    showStuff();
 		    switchDataSnapshotContent(dsmn, ptks[current_ptk_index], stks[current_stk_index]);
+                    showStuff();
                 }           
             });
 
 	    set_slider_labels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
         }
-
-        config_ptk_slider();
-        config_stk_slider();
-
-	init_dropdowns();
-	data_source_stk_change();
-	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
-	$('#dss-theme-dropdown').on("change", theme_dropdown_change);
-	set_slider_names(Drupal.settings.data_snapshots.frequencies[dsmn]);
 
 	function data_source_stk_change() {
 	    var frequencies = Drupal.settings.data_snapshots.frequencies,
