@@ -54,14 +54,14 @@ function _data_snapshots_generate_switch_results($ptk, $stk, $dates) {
 	       );
 }
 
-function AnnualToAnnual($dest, $ptk, $stk) {
+function _data_snapshots_Annual_to_Annual($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);  
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
 
   return _data_snapshots_generate_switch_results($new_ptk, NULL, $dates);
 }
 
-function AnnualToMonthly($dest, $ptk, $stk) {
+function _data_snapshots_Annual_to_Monthly($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);  
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
@@ -69,7 +69,7 @@ function AnnualToMonthly($dest, $ptk, $stk) {
   return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
-function AnnualToWeekly($dest, $ptk, $stk) {
+function _data_snapshots_Annual_to_Weekly($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);  
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
@@ -77,14 +77,14 @@ function AnnualToWeekly($dest, $ptk, $stk) {
   return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
-function MonthlyToAnnual($dest, $ptk, $stk) {
+function _data_snapshots_Monthly_to_Annual($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);  
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
 
   return _data_snapshots_generate_switch_results($new_ptk, NULL, $dates);
 }
 
-function MonthlyToMonthly($dest, $ptk, $stk) {
+function _data_snapshots_Monthly_to_Monthly($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);  
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
@@ -110,7 +110,7 @@ function MonthlyToMonthly($dest, $ptk, $stk) {
   return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
-function MonthlyToWeekly($dest, $ptk, $stk) {
+function _data_snapshots_Monthly_to_Weekly($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
@@ -129,14 +129,14 @@ function MonthlyToWeekly($dest, $ptk, $stk) {
   return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
-function WeeklyToAnnual($dest, $ptk, $stk) {
+function _data_snapshots_Weekly_to_Annual($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);  
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
 
   return _data_snapshots_generate_switch_results($new_ptk, NULL, $dates);
 }
 
-function WeeklyToMonthly($dest, $ptk, $stk) {
+function _data_snapshots_Weekly_to_Monthly($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
@@ -159,7 +159,7 @@ function WeeklyToMonthly($dest, $ptk, $stk) {
   return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
-function WeeklyToWeekly($dest, $ptk, $stk) {
+function _data_snapshots_Weekly_to_Weekly($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);
   $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
@@ -185,7 +185,7 @@ function WeeklyToWeekly($dest, $ptk, $stk) {
   return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
-function DefaultConversion($dest, $ptk, $stk) {
+function _data_snapshots_default_conversion($dest, $ptk, $stk) {
   $dates = _data_snapshots_get_dates($dest);
   $new_ptk = $dates['p'][count($dates['p']) - 1];
   $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];

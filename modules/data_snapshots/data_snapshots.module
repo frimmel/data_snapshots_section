@@ -416,18 +416,20 @@ function _data_snapshots_get_frequency($machine_name) {
 
 function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name) {
   $custom_freq = 'Custom';
+  $default_conversion = '_data_snapshots_default_conversion';
+  
   if ($cur_freq == $custom_freq) {
     $cur_freq = $cur_freq . $cur_name;
   }
   if ($new_freq == $custom_freq) {
     $new_freq = $new_freq . $new_name;
   }
-  $callback = $cur_freq . 'To' . $new_freq;
+  $callback = '_data_snapshots_' . $cur_freq . '_to_' . $new_freq;
 
   if (function_exists($callback)) {
     return $callback;
   } else {
-    return 'DefaultConversion';
+    return $default_conversion;
   }
 }
 
