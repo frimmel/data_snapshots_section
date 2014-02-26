@@ -1,4 +1,4 @@
-function data_snapshots ($) {
+(function($) {
 
     function make_img_url(dsmn, ptk, stk) {
 	var pattern = Drupal.settings.data_snapshots.patterns[dsmn];
@@ -201,6 +201,16 @@ function data_snapshots ($) {
 
     var xhr;
 
+    function switchDataSnapshotContentSuccessHandler(result) {
+	    set_title(result.title_html);
+	    set_annotation(result.body_html);
+	    set_downloads(result.download_html);
+	    set_permalink(result.permalink_html);
+	    set_date_generated(result.date_html);
+	    set_primary_tabs(result.nid);
+	    xhr = null;
+    }
+
     function switchDataSnapshotContent(dsmn, ptk, stk) {
 	var parameters = {
 	    "type" : "snapshot",
@@ -216,18 +226,10 @@ function data_snapshots ($) {
 	}
 
 	xhr = $.ajax({
-	    type : "POST",
-	    url  : "/data-snapshots/snapshots/ajax",
-	    data : parameters
-	})
-	.done(function (result) {
-	    set_title(result.title_html);
-	    set_annotation(result.body_html);
-	    set_downloads(result.download_html);
-	    set_permalink(result.permalink_html);
-	    set_date_generated(result.date_html);
-	    set_primary_tabs(result.nid);
-	    xhr = null;
+	    type    : "POST",
+	    url     : "/data-snapshots/snapshots/ajax",
+	    data    : parameters,
+	    success : switchDataSnapshotContentSuccessHandler
 	});
     }
 
@@ -246,8 +248,8 @@ function data_snapshots ($) {
 
 	init_dropdowns();
 	data_source_stk_change();
-	$('#dss-data-source-dropdown').on("change", data_source_dropdown_change);
-	$('#dss-theme-dropdown').on("change", theme_dropdown_change);
+	$('#dss-data-source-dropdown').change(data_source_dropdown_change);
+	$('#dss-theme-dropdown').change(theme_dropdown_change);
 	set_slider_names(data_snapshots_options.frequencies[dsmn]);
 
         function hideStuff() {
@@ -389,44 +391,47 @@ function data_snapshots ($) {
 	    set_data_source($(this).val());
 	}
 
+	function set_data_source_success_handler(msg) {
+	    var result = msg.callback,
+		dates = result.dates,
+		new_dsmn = msg.request.new,
+		ptk, stk;
+
+	    dates.dsmn = new_dsmn;
+	    Drupal.settings.data_snapshots.snapshots = dates;
+
+	    current_ptk_index = dates.p.indexOf(result.ptk);
+	    current_stk_index = dates.s[result.ptk].indexOf(result.stk);
+	    ptks = dates.p;
+	    ptk = ptks[current_ptk_index];
+	    stks = dates.s[ptk];
+	    stk = stks[current_stk_index];
+
+	    dsmn = new_dsmn;
+
+	    set_img(dsmn, ptk, stk);
+	    config_ptk_slider();
+	    config_stk_slider();
+
+	    switch_data_source_content(msg.node);
+	    switchDataSnapshotContent(dsmn, ptk, stk);
+	    data_source_stk_change();
+	    set_slider_names(Drupal.settings.data_snapshots.frequencies[dsmn]);
+	}
+
 	function set_data_source(new_dsmn) {
 	    $.ajax({
-		type : "POST",
-	        url  : "/data-snapshots/ajax",
-		data : {
-			 "current" : dsmn,
-			 "new"     : new_dsmn,
-			 "ptk"     : ptks[current_ptk_index],
-			 "stk"     : stks[current_stk_index]
-		       }
-	    })
-	    .done(function (msg) {
-		var result = msg.callback,
-		    dates = result.dates,
-		    ptk, stk;
-
-		dates.dsmn = new_dsmn;
-		Drupal.settings.data_snapshots.snapshots = dates;
-
-		current_ptk_index = dates.p.indexOf(result.ptk);
-		current_stk_index = dates.s[result.ptk].indexOf(result.stk);
-		ptks = dates.p;
-		ptk = ptks[current_ptk_index];
-		stks = dates.s[ptk];
-		stk = stks[current_stk_index];
-
-		dsmn = new_dsmn;
-
-		set_img(dsmn, ptk, stk);
-		config_ptk_slider();
-		config_stk_slider();
-
-		switch_data_source_content(msg.node);
-		switchDataSnapshotContent(dsmn, ptk, stk);
-		data_source_stk_change();
-		set_slider_names(Drupal.settings.data_snapshots.frequencies[dsmn]);
+		type    : "POST",
+	        url     : "/data-snapshots/ajax",
+		success : set_data_source_success_handler,
+		data    : {
+			    "current" : dsmn,
+			    "new"     : new_dsmn,
+			    "ptk"     : ptks[current_ptk_index],
+			    "stk"     : stks[current_stk_index]
+		          }
 	    });
 	}
     });
 
-}
+})(jQuery);
