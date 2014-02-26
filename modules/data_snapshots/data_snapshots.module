@@ -207,11 +207,11 @@ function _get_field_value($node, $field) {
 // Q: figure out if there is a better place for the drupal_add_[css|js]?
 function data_snapshots_view($node, $view_mode) {
   drupal_add_css(drupal_get_path('module', 'data_snapshots') . "/css/data-snapshots.css");
-  drupal_add_css(drupal_get_path('module', 'data_snapshots') . "/js/jquery-ui/jquery-ui-1.10.3/themes/base/jquery.ui.all.css");
+  drupal_add_css(drupal_get_path('module', 'data_snapshots') . "/js/jquery-ui-1.10.4.custom/css/smoothness/jquery-ui-1.10.4.custom.min.css");
 
   drupal_add_js(drupal_get_path('module', 'data_snapshots') . "/js/bootstrap.js",
                 array('scope' => 'header', 'group' => JS_DEFAULT, 'weight' => 1001));
-  drupal_add_js(drupal_get_path('module', 'data_snapshots') . "/js/jquery-ui/jquery-ui-1.10.3/ui/jquery-ui.js",
+  drupal_add_js(drupal_get_path('module', 'data_snapshots') . "/js/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js",
                 array('scope' => 'header', 'group' => JS_DEFAULT, 'weight' => 1002));
   drupal_add_js(drupal_get_path('module', 'data_snapshots') . "/js/data_snapshots.js",
                 array('scope' => 'header', 'group' => JS_DEFAULT, 'weight' => 1003));
