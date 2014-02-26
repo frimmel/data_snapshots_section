@@ -4,7 +4,7 @@
 callback functions to switch between different data sources
   */
 
-function getDataSourceDates($datasource) {
+function _data_snapshots_get_dates($datasource) {
   $rows = db_select('data_snapshots', 'ds')
     ->fields('ds', array('nid','ptk','stk'))
     ->condition('dsmn', $datasource)
@@ -32,7 +32,7 @@ function getDataSourceDates($datasource) {
 	       );
 }
 
-function getNewPrimaryKey($ptk, $dates) {
+function _data_snapshots_get_ptk($ptk, $dates) {
   if (array_key_exists($ptk, $dates['s'])) {
     $new_ptk = $ptk;
   } else {
@@ -46,55 +46,47 @@ function getNewPrimaryKey($ptk, $dates) {
   return $new_ptk;
 }
 
-function AnnualToAnnual($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
+function _data_snapshots_generate_switch_results($ptk, $stk, $dates) {
   return array(
-	       'ptk' => $new_ptk,
-	       'stk' => NULL,
+	       'ptk' => $ptk,
+	       'stk' => $stk,
 	       'dates' => $dates,
-  );
+	       );
+}
+
+function AnnualToAnnual($dest, $ptk, $stk) {
+  $dates = _data_snapshots_get_dates($dest);  
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
+
+  return _data_snapshots_generate_switch_results($new_ptk, NULL, $dates);
 }
 
 function AnnualToMonthly($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  $dates = _data_snapshots_get_dates($dest);  
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
 function AnnualToWeekly($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
+  $dates = _data_snapshots_get_dates($dest);  
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
 function MonthlyToAnnual($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => NULL,
-	       'dates' => $dates,
-  );
+  $dates = _data_snapshots_get_dates($dest);  
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
+
+  return _data_snapshots_generate_switch_results($new_ptk, NULL, $dates);
 }
 
 function MonthlyToMonthly($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
-
+  $dates = _data_snapshots_get_dates($dest);  
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
 
   if ($stk <= $potential_stks[0]) {
@@ -115,18 +107,12 @@ function MonthlyToMonthly($dest, $ptk, $stk) {
     $new_stk = $potential_stks[count($potential_stks) - 1];
   }
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
 function MonthlyToWeekly($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
-
+  $dates = _data_snapshots_get_dates($dest);
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
 
   for ($i = 0; $i < count($potential_stks); $i++) {
@@ -140,28 +126,19 @@ function MonthlyToWeekly($dest, $ptk, $stk) {
     $new_stk = $potential_stks[count($potential_stks) - 1];
   }
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
 function WeeklyToAnnual($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => NULL,
-	       'dates' => $dates,
-  );
+  $dates = _data_snapshots_get_dates($dest);  
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
+
+  return _data_snapshots_generate_switch_results($new_ptk, NULL, $dates);
 }
 
 function WeeklyToMonthly($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
-
+  $dates = _data_snapshots_get_dates($dest);
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
 
   if ($stk < $potential_stks[0]) {
@@ -179,18 +156,12 @@ function WeeklyToMonthly($dest, $ptk, $stk) {
     $new_stk = $potential_stks[count($potential_stks) - 1];
   }
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
 function WeeklyToWeekly($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-
-  $new_ptk = getNewPrimaryKey($ptk, $dates);
-
+  $dates = _data_snapshots_get_dates($dest);
+  $new_ptk = _data_snapshots_get_ptk($ptk, $dates);
   $potential_stks = $dates['s'][$new_ptk];
 
   if ($stk <= $potential_stks[0]) {
@@ -211,22 +182,13 @@ function WeeklyToWeekly($dest, $ptk, $stk) {
     $new_stk = $potential_stks[count($potential_stks) - 1];
   }
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
 
 function DefaultConversion($dest, $ptk, $stk) {
-  $dates = getDataSourceDates($dest);  
-
+  $dates = _data_snapshots_get_dates($dest);
   $new_ptk = $dates['p'][count($dates['p']) - 1];
   $new_stk = $dates['s'][$new_ptk][count($dates['s'][$new_ptk]) - 1];
 
-  return array(
-	       'ptk' => $new_ptk,
-	       'stk' => $new_stk,
-	       'dates' => $dates,
-  );
+  return _data_snapshots_generate_switch_results($new_ptk, $new_stk, $dates);
 }
