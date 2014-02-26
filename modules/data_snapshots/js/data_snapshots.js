@@ -202,18 +202,18 @@
     var xhr;
 
     function switchDataSnapshotContentSuccessHandler(result) {
-	    set_title(result.title_html);
-	    set_annotation(result.body_html);
-	    set_downloads(result.download_html);
-	    set_permalink(result.permalink_html);
-	    set_date_generated(result.date_html);
-	    set_primary_tabs(result.nid);
-	    xhr = null;
+	set_title(result.title_html);
+	set_annotation(result.body_html);
+	set_downloads(result.download_html);
+	set_permalink(result.permalink_html);
+	set_date_generated(result.date_html);
+	set_primary_tabs(result.nid);
+	xhr = null;
     }
 
     function switchDataSnapshotContent(dsmn, ptk, stk) {
 	var parameters = {
-	    "type" : "snapshot",
+	    "type" : "data_snapshot",
 	    "dsmn" : dsmn,
 	    "ptk"  : ptk
 	};
@@ -227,7 +227,7 @@
 
 	xhr = $.ajax({
 	    type    : "POST",
-	    url     : "/data-snapshots/snapshots/ajax",
+	    url     : "/data-snapshots/ajax",
 	    data    : parameters,
 	    success : switchDataSnapshotContentSuccessHandler
 	});
@@ -427,6 +427,7 @@
 	        url     : "/data-snapshots/ajax",
 		success : set_data_source_success_handler,
 		data    : {
+			    "type"              : "data_source",
 			    "current_dsmn"      : dsmn,
 			    "new_dsmn"          : new_dsmn,
 			    "current_frequency" : frequencies[dsmn],

@@ -377,16 +377,7 @@ function data_snapshots_menu() {
   $items['data-snapshots/ajax'] = array(
     'type' => MENU_CALLBACK,
     'title' => 'Callback Only',
-    'page callback' => '_data_snapshots_datasource_ajax',
-    'page arguments' => array(t('The menu entry for this page is of type MENU_CALLBACK, so it provides only a path but not a link in the menu links, but it is the same in every other way to the simplest example.')),
-    'access callback' => TRUE,
-  );
-
-  // TODO: combine these two items into one, with a paramater to determine the final callback used
-  $items['data-snapshots/snapshots/ajax'] = array(
-    'type' => MENU_CALLBACK,
-    'title' => 'Callback Only',
-    'page callback' => '_data_snapshots_snapshot_ajax',
+    'page callback' => '_data_snapshots_ajax',
     'page arguments' => array(t('The menu entry for this page is of type MENU_CALLBACK, so it provides only a path but not a link in the menu links, but it is the same in every other way to the simplest example.')),
     'access callback' => TRUE,
   );
@@ -413,13 +404,24 @@ function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name
   }
 }
 
-function _data_snapshots_snapshot_ajax() {
+function _data_snapshots_ajax() {
+  if ($_POST['type'] == 'data_snapshot') {
+    $result = _data_snapshots_data_snapshot_ajax($_POST);
+  } else if ($_POST['type'] == 'data_source') {
+    $result = _data_snapshots_data_source_ajax($_POST);
+  }
+
+  drupal_json_output($result);
+  exit();
+}
+
+function _data_snapshots_data_snapshot_ajax($parameters) {
   $query = db_select('data_snapshots', 'ds')
     ->fields('ds', array('nid'))
-    ->condition('dsmn', $_POST['dsmn'])
-    ->condition('ptk', $_POST['ptk']);
-  if (array_key_exists('stk', $_POST)) {
-    $query->condition('stk', $_POST['stk']);
+    ->condition('dsmn', $parameters['dsmn'])
+    ->condition('ptk', $parameters['ptk']);
+  if (array_key_exists('stk', $parameters)) {
+    $query->condition('stk', $parameters['stk']);
   }
   $result = $query->execute()
     ->fetchAssoc();
@@ -435,27 +437,21 @@ function _data_snapshots_snapshot_ajax() {
   $ds_permalink_field['entity'] = $new_ds_node;
   $result['permalink_html'] = ds_render_code_field($ds_permalink_field);
 
-  drupal_json_output($result);
-  exit();
+  return $result;
 }
 
-function _data_snapshots_datasource_ajax() {
-  // Get conversion callback
-  $callback = _data_snapshots_get_callback($_POST['current_frequency'], $_POST['new_frequency'], $_POST['current_dsmn'], $_POST['new_dsmn']);
+function _data_snapshots_data_source_ajax($parameters) {
+  $callback = _data_snapshots_get_callback($parameters['current_frequency'], $parameters['new_frequency'], $parameters['current_dsmn'], $parameters['new_dsmn']);
 
-  $datasource_nid = db_select('field_data_field_dssds_machine_name', 'f')
-    ->condition('field_dssds_machine_name_value', $_POST['new_dsmn'])
+  $data_source_nid = db_select('field_data_field_dssds_machine_name', 'f')
+    ->condition('field_dssds_machine_name_value', $parameters['new_dsmn'])
     ->fields('f', array('entity_id'))
     ->execute()
     ->FetchField();
 
-  // Serve it back up
-  $obj = array(
-	       'request' => $_POST,
-	       'callback' => $callback($_POST['new_dsmn'], $_POST['ptk'], $_POST['stk']),
-	       'node' => node_load($datasource_nid),
+  return array(
+	       'request' => $parameters,
+	       'callback' => $callback($parameters['new_dsmn'], $parameters['ptk'], $parameters['stk']),
+	       'node' => node_load($data_source_nid),
 	       );
-
-  drupal_json_output($obj);
-  exit();
 }
