@@ -394,7 +394,7 @@
 	function set_data_source_success_handler(msg) {
 	    var result = msg.callback,
 		dates = result.dates,
-		new_dsmn = msg.request.new,
+		new_dsmn = msg.request.new_dsmn,
 		ptk, stk;
 
 	    dates.dsmn = new_dsmn;
@@ -420,15 +420,19 @@
 	}
 
 	function set_data_source(new_dsmn) {
+	    var frequencies = Drupal.settings.data_snapshots.frequencies;
+
 	    $.ajax({
 		type    : "POST",
 	        url     : "/data-snapshots/ajax",
 		success : set_data_source_success_handler,
 		data    : {
-			    "current" : dsmn,
-			    "new"     : new_dsmn,
-			    "ptk"     : ptks[current_ptk_index],
-			    "stk"     : stks[current_stk_index]
+			    "current_dsmn"      : dsmn,
+			    "new_dsmn"          : new_dsmn,
+			    "current_frequency" : frequencies[dsmn],
+			    "new_frequency"     : frequencies[new_dsmn],
+			    "ptk"               : ptks[current_ptk_index],
+			    "stk"               : stks[current_stk_index]
 		          }
 	    });
 	}

@@ -394,19 +394,6 @@ function data_snapshots_menu() {
   return $items;
 }
 
-/*
-TODO: pass both machine names to this, get all info in one query
-*/
-function _data_snapshots_get_frequency($machine_name) {
-  $query = db_select('taxonomy_term_data', 'ttd')
-    ->fields('ttd', array('name'));
-  $query->leftJoin('field_data_field_dssds_image_frequency', 'fdif', 'fdif.field_dssds_image_frequency_tid = ttd.tid');
-  $query->leftJoin('field_data_field_dssds_machine_name', 'fdmn', 'fdmn.entity_id = fdif.entity_id');
-  $query->condition('fdmn.field_dssds_machine_name_value', $machine_name);
-  return $query->execute()
-    ->FetchField();
-}
-
 function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name) {
   $custom_freq = 'Custom';
   $default_conversion = '_data_snapshots_default_conversion';
@@ -452,36 +439,23 @@ function _data_snapshots_snapshot_ajax() {
   exit();
 }
 
-//select nid, body_value from data_snapshots JOIN field_data_body ON entity_id=nid where dsmn="usdm" AND ptk="2000" AND stk="01-04" ;
 function _data_snapshots_datasource_ajax() {
-  // Get type of data source from machine name
-  $current_frequency = _data_snapshots_get_frequency($_POST['current']);
-  $new_frequency = _data_snapshots_get_frequency($_POST['new']);
-
   // Get conversion callback
-  $callback = _data_snapshots_get_callback($current_frequency, $new_frequency, $_POST['current'], $_POST['new']);
+  $callback = _data_snapshots_get_callback($_POST['current_frequency'], $_POST['new_frequency'], $_POST['current_dsmn'], $_POST['new_dsmn']);
 
   $datasource_nid = db_select('field_data_field_dssds_machine_name', 'f')
-    ->condition('field_dssds_machine_name_value', $_POST['new'])
+    ->condition('field_dssds_machine_name_value', $_POST['new_dsmn'])
     ->fields('f', array('entity_id'))
     ->execute()
     ->FetchField();
 
   // Serve it back up
-  if ($current_frequency != FALSE && $new_frequency != FALSE) {
-    $obj = array(
-		 'request' => $_POST,
-		 'current_frequency' => $current_frequency,
-		 'new_frequency' => $new_frequency,
-		 'callback' => $callback($_POST['new'], $_POST['ptk'], $_POST['stk']),
-		 'node' => node_load($datasource_nid),
-		 );
-  } else {
-    $obj = array(
-		 'request' => $_POST,
-		 'error' => 'freq not found',
-		 );
-  }
+  $obj = array(
+	       'request' => $_POST,
+	       'callback' => $callback($_POST['new_dsmn'], $_POST['ptk'], $_POST['stk']),
+	       'node' => node_load($datasource_nid),
+	       );
+
   drupal_json_output($obj);
   exit();
 }
