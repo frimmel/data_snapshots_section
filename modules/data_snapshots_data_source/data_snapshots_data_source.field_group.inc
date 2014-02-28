@@ -144,7 +144,7 @@ function data_snapshots_data_source_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_dssds_colors',
-      1 => 'field_dssds_data_matters',
+      1 => 'field_dssds_data_matter',
       2 => 'field_dssds_editorial_commen',
       3 => 'field_dssds_references',
       4 => 'field_dssds_framing_question',

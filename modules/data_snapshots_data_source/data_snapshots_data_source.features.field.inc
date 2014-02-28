@@ -344,14 +344,14 @@ function data_snapshots_data_source_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_data_matters'.
-  $fields['node-data_snapshot_data_source-field_dssds_data_matters'] = array(
+  // Exported field: 'node-data_snapshot_data_source-field_dssds_data_matter'.
+  $fields['node-data_snapshot_data_source-field_dssds_data_matter'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dssds_data_matters',
+      'field_name' => 'field_dssds_data_matter',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -399,8 +399,8 @@ function data_snapshots_data_source_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dssds_data_matters',
-      'label' => 'Why This Data Matters',
+      'field_name' => 'field_dssds_data_matter',
+      'label' => 'Why These Data Matter',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -1835,7 +1835,7 @@ function data_snapshots_data_source_field_default_fields() {
   t('Secondary Question');
   t('Theme(s)');
   t('URL to Climate.gov Dataset Catalog record.');
-  t('Why This Data Matters');
+  t('Why These Data Matter');
 
   return $fields;
 }
