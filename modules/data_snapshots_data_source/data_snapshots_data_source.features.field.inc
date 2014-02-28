@@ -969,14 +969,14 @@ function data_snapshots_data_source_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_plain_english_an'.
-  $fields['node-data_snapshot_data_source-field_dssds_plain_english_an'] = array(
+  // Exported field: 'node-data_snapshot_data_source-field_dssds_secondary_q_answ'.
+  $fields['node-data_snapshot_data_source-field_dssds_secondary_q_answ'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dssds_plain_english_an',
+      'field_name' => 'field_dssds_secondary_q_answ',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1024,8 +1024,8 @@ function data_snapshots_data_source_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dssds_plain_english_an',
-      'label' => 'Plain English Answer',
+      'field_name' => 'field_dssds_secondary_q_answ',
+      'label' => 'Answer to Secondary Question',
       'required' => 1,
       'settings' => array(
         'text_processing' => '1',
@@ -1825,7 +1825,7 @@ function data_snapshots_data_source_field_default_fields() {
   t('Name of and URL to Data Provider\'s main site.');
   t('Operational Data Product');
   t('Outline of Processing Steps');
-  t('Plain English Answer');
+  t('Answer to Secondary Question');
   t('Answer to Framing Question');
   t('Processing Environment');
   t('Processing environment (include OS and software versions)');
