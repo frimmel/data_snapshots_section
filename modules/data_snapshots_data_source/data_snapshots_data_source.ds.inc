@@ -59,7 +59,7 @@ function data_snapshots_data_source_ds_layout_settings_info() {
         18 => 'field_dssds_references',
       ),
       'right' => array(
-        2 => 'field_dssds_official_name',
+        2 => 'field_dssds_operational_data_pro',
         4 => 'field_dssds_data_provider',
         8 => 'field_dssds_data_access_url',
         10 => 'field_dssds_catalog_url',
@@ -70,7 +70,7 @@ function data_snapshots_data_source_ds_layout_settings_info() {
     'fields' => array(
       'title' => 'left',
       'field_dssds_framing_question' => 'left',
-      'field_dssds_official_name' => 'right',
+      'field_dssds_operational_data_pro' => 'right',
       'field_dssds_english_descript' => 'left',
       'field_dssds_data_provider' => 'right',
       'field_dssds_secondary_questi' => 'left',

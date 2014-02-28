@@ -891,15 +891,15 @@ function data_snapshots_data_source_field_default_fields() {
       'workbench_access_field' => 0,
     ),
   );
-
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_official_name'.
-  $fields['node-data_snapshot_data_source-field_dssds_official_name'] = array(
+  
+  // Exported field: 'node-data_snapshot_data_source-field_dssds_operational_data_pro'.
+  $fields['node-data_snapshot_data_source-field_dssds_operational_data_pro'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dssds_official_name',
+      'field_name' => 'field_dssds_operational_data_pro',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -925,7 +925,7 @@ function data_snapshots_data_source_field_default_fields() {
       'bundle' => 'data_snapshot_data_source',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Formal name for official data product.',
+      'description' => 'Formal name for operational data product.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -949,8 +949,8 @@ function data_snapshots_data_source_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dssds_official_name',
-      'label' => 'Official Name',
+      'field_name' => 'field_dssds_operational_data_pro',
+      'label' => 'Operational Data Product',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -1818,12 +1818,12 @@ function data_snapshots_data_source_field_default_fields() {
   t('Dataset Catalog Record URL');
   t('Description Author');
   t('First and last name of subject matter expert reviewer.');
-  t('Formal name for official data product.');
+  t('Formal name for operational data product.');
   t('Framing Question');
   t('How to Interpret Colors');
   t('Image Frequency');
   t('Name of and URL to Data Provider\'s main site.');
-  t('Official Name');
+  t('Operational Data Product');
   t('Outline of Processing Steps');
   t('Plain English Answer');
   t('Plain English Description');
