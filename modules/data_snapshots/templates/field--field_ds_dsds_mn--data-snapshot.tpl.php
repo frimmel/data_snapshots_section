@@ -46,7 +46,9 @@
 $evergreen_answer_length = 250;
 $evergreen_answer_length_ellipsis = $evergreen_answer_length + 3;
 
+$framing_question = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']);
 $framing_question_answer = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_q_answer'}['und'][0]['safe_value']);
+$secondary_question = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_secondary_questi'}['und'][0]['value']);
 $secondary_question_answer = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_secondary_q_answ'}['und'][0]['safe_value']);
 
 if (strlen($framing_question_answer) > $evergreen_answer_length_ellipsis) {
@@ -59,11 +61,11 @@ if (strlen($secondary_question_answer) > $evergreen_answer_length_ellipsis) {
 
 ?>
 <div class="field-name-field-ds-dsds-evergreen <?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="field-label field_dssds_framing_question"<?php print $title_attributes; ?>><?php print $element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']; ?>&nbsp;</div>
+  <div class="field-label field_dssds_framing_question"<?php print $title_attributes; ?>><?php print $framing_question; ?>&nbsp;</div>
   <div class="field-items"<?php print $content_attributes; ?>>
     <div class="field-item field_dssds_framing_q_answer"><p><?php print $framing_question_answer; ?></p></div>
   </div>
-  <div class="field-label field_dssds_secondary_questi"<?php print $title_attributes; ?>><?php print $element['#object']->{'datasource_node'}->{'field_dssds_secondary_questi'}['und'][0]['value']; ?>&nbsp;</div>
+  <div class="field-label field_dssds_secondary_questi"<?php print $title_attributes; ?>><?php print $secondary_question; ?>&nbsp;</div>
   <div class="field-items"<?php print $content_attributes; ?>>
     <div class="field-item field_dssds_secondary_q_answ"><p><?php print $secondary_question_answer; ?></p></div>
     <span class="dss-question-read-more"><a href="/node/<?php print $element['#object']->{'datasource_node'}->nid; ?>">read more</a></span>

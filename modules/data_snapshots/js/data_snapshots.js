@@ -179,23 +179,25 @@
 	$data_source_dropdown.val(dsmn);
     }
 
-    function format_evergreen_answer(answer) {
-	var answer_length = 250,
-	    answer_length_ellipsis = answer_length + 3;
+    function format_evergreen_text(text) {
+	var text_length = 250,
+	    text_length_ellipsis = text_length + 3;
 
 	// strip all tags
-	answer = $("<div/>").html(answer).text();
+	text = $("<div/>").html(text).text();
 
-	if (answer.length > answer_length_ellipsis) {
-	    answer = answer.substring(0, answer_length).trim() + "...";
+	if (text.length > text_length_ellipsis) {
+	    text = text.substring(0, text_length).trim() + "...";
         }
 
-	return answer;
+	return text;
     }
 
     function switch_data_source_content(node) {
-	var framing_answer = format_evergreen_answer(node.field_dssds_framing_q_answer.und[0].safe_value),
-	    secondary_answer = format_evergreen_answer(node.field_dssds_secondary_q_answ.und[0].safe_value),
+	var framing_question = format_evergreen_text(node.field_dssds_framing_q_answer.und[0].safe_value),
+	    framing_answer = format_evergreen_text(node.field_dssds_framing_question.und[0].value),
+	    secondary_question = format_evergreen_text(node.field_dssds_secondary_questi.und[0].value),
+	    secondary_answer = format_evergreen_text(node.field_dssds_secondary_q_answ.und[0].safe_value),
 	    $evergreen_wrapper = $(".field-name-field-ds-dsds-evergreen"),
 	    $framing_question = $evergreen_wrapper.find(".field_dssds_framing_question"),
 	    $framing_answer = $evergreen_wrapper.find(".field_dssds_framing_q_answer p"),
@@ -203,9 +205,9 @@
 	    $secondary_answer = $evergreen_wrapper.find(".field_dssds_secondary_q_answ p"),
 	    $read_more_link = $evergreen_wrapper.find(".dss-question-read-more a");
 
-	$framing_question.text(node.field_dssds_framing_question.und[0].value);
+	$framing_question.text(framing_question);
 	$framing_answer.text(framing_answer);
-	$secondary_question.text(node.field_dssds_secondary_questi.und[0].value);
+	$secondary_question.text(secondary_question);
 	$secondary_answer.text(secondary_answer);
 	$read_more_link.attr("href", "/node/" + node.nid);
     };
