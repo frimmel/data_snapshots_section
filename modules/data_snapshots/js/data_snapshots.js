@@ -179,23 +179,34 @@
 	$data_source_dropdown.val(dsmn);
     }
 
-    function switch_data_source_content(node) {
-	var evergreen_answer = node.field_dssds_framing_q_answer.und[0].safe_value,
-	    $evergreen_question = $(".field-name-field-ds-dsds-evergreen .field-label"),
-	    $evergreen_answer = $(".field-name-field-ds-dsds-evergreen .field-item p"),
-	    $read_more_link = $(".field-name-field-ds-dsds-evergreen .dss-question-read-more a"),
-	    evergreen_answer_length = 250,
-	    evergreen_answer_length_ellipsis = evergreen_answer_length + 3;
+    function format_evergreen_answer(answer) {
+	var answer_length = 250,
+	    answer_length_ellipsis = answer_length + 3;
 
 	// strip all tags
-	evergreen_answer = $("<div/>").html(evergreen_answer).text();
+	answer = $("<div/>").html(answer).text();
 
-	if (evergreen_answer.length > evergreen_answer_length_ellipsis) {
-	    evergreen_answer = evergreen_answer.substring(0, evergreen_answer_length).trim() + "...";
+	if (answer.length > answer_length_ellipsis) {
+	    answer = answer.substring(0, answer_length).trim() + "...";
         }
 
-	$evergreen_question.text(node.field_dssds_framing_question.und[0].value);
-	$evergreen_answer.text(evergreen_answer);
+	return answer;
+    }
+
+    function switch_data_source_content(node) {
+	var framing_answer = format_evergreen_answer(node.field_dssds_framing_q_answer.und[0].safe_value),
+	    secondary_answer = format_evergreen_answer(node.field_dssds_secondary_q_answ.und[0].safe_value),
+	    $evergreen_wrapper = $(".field-name-field-ds-dsds-evergreen"),
+	    $framing_question = $evergreen_wrapper.find(".field_dssds_framing_question"),
+	    $framing_answer = $evergreen_wrapper.find(".field_dssds_framing_q_answer p"),
+	    $secondary_question = $evergreen_wrapper.find(".field_dssds_secondary_questi"),
+	    $secondary_answer = $evergreen_wrapper.find(".field_dssds_secondary_q_answ p"),
+	    $read_more_link = $evergreen_wrapper.find(".dss-question-read-more a");
+
+	$framing_question.text(node.field_dssds_framing_question.und[0].value);
+	$framing_answer.text(framing_answer);
+	$secondary_question.text(node.field_dssds_secondary_questi.und[0].value);
+	$secondary_answer.text(secondary_answer);
 	$read_more_link.attr("href", "/node/" + node.nid);
     };
 

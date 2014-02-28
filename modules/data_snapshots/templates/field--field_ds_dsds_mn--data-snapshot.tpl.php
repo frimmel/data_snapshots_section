@@ -43,20 +43,29 @@
  *
  * @ingroup themeable
  */
-$evergreen = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_q_answer'}['und'][0]['safe_value']);
 $evergreen_answer_length = 250;
 $evergreen_answer_length_ellipsis = $evergreen_answer_length + 3;
 
-if (strlen($evergreen) > $evergreen_answer_length_ellipsis) {
-  $evergreen = trim(substr($evergreen, 0, $evergreen_answer_length)) . '...';
+$framing_question_answer = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_q_answer'}['und'][0]['safe_value']);
+$secondary_question_answer = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_secondary_q_answ'}['und'][0]['safe_value']);
+
+if (strlen($framing_question_answer) > $evergreen_answer_length_ellipsis) {
+  $framing_question_answer = trim(substr($framing_question_answer, 0, $evergreen_answer_length)) . '...';
 }
+
+if (strlen($secondary_question_answer) > $evergreen_answer_length_ellipsis) {
+  $secondary_question_answer = trim(substr($secondary_question_answer, 0, $evergreen_answer_length)) . '...';
+}
+
 ?>
 <div class="field-name-field-ds-dsds-evergreen <?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php if (!$label_hidden): ?>
-    <div class="field-label"<?php print $title_attributes; ?>><?php print $element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']; ?>&nbsp;</div>
-  <?php endif; ?>
+  <div class="field-label field_dssds_framing_question"<?php print $title_attributes; ?>><?php print $element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']; ?>&nbsp;</div>
   <div class="field-items"<?php print $content_attributes; ?>>
-    <div class="field-item"><p><?php print $evergreen; ?></p></div>
+    <div class="field-item field_dssds_framing_q_answer"><p><?php print $framing_question_answer; ?></p></div>
+  </div>
+  <div class="field-label field_dssds_secondary_questi"<?php print $title_attributes; ?>><?php print $element['#object']->{'datasource_node'}->{'field_dssds_secondary_questi'}['und'][0]['value']; ?>&nbsp;</div>
+  <div class="field-items"<?php print $content_attributes; ?>>
+    <div class="field-item field_dssds_secondary_q_answ"><p><?php print $secondary_question_answer; ?></p></div>
     <span class="dss-question-read-more"><a href="/node/<?php print $element['#object']->{'datasource_node'}->nid; ?>">read more</a></span>
   </div>
 </div>
