@@ -1,109 +1,109 @@
 [
     {
-        "#node_export_object": "1", 
-        "changed": "1385156141", 
-        "comment": "2", 
-        "created": "1385063594", 
-        "data": "b:0;", 
+        "#node_export_object": "1",
+        "changed": "1385156141",
+        "comment": "2",
+        "created": "1385063594",
+        "data": "b:0;",
         "field_dssds_catalog_url": {
             "und": [
                 {
-                    "attributes": [], 
-                    "title": "this is the dcrurl title ", 
+                    "attributes": [],
+                    "title": "this is the dcrurl title ",
                     "url": "http://www.dcurl.org/this/is/the/link"
                 }
             ]
-        }, 
+        },
         "field_dssds_colors": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Golden areas are not currently in heat but are likely to become drier. Brown through tan areas are currently in some level of freeze: conditions in dark brown areas are likely to persist or worsen, light brown areas are expected to see some improvement, and tan areas are expected to recover.</p>\n", 
-                    "value": "Golden areas are not currently in heat but are likely to become drier. Brown through tan areas are currently in some level of freeze: conditions in dark brown areas are likely to persist or worsen, light brown areas are expected to see some improvement, and tan areas are expected to recover."
+                    "format": "filtered_html",
+                    "safe_value": "<p>Shades of red show where  annual average temperatures were up to 4° Fahrenheit warmer than the average from 1981–2010. Shades of blue show where average temperature for the year was up to 4° Fahrenheit cooler than average. The darker the color, the larger the difference from average. White and very light areas were close to their long-term average temperature.</p>\n",
+                    "value": "<p class=\"p1\">Shades of red show where&nbsp; annual average temperatures were up to 4° Fahrenheit warmer than the average from 1981–2010. Shades of blue show where average temperature for the year was up to 4° Fahrenheit cooler than average. The darker the color, the larger the difference from average. White and very light areas were close to their long-term average temperature.</p>\r\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_data_access_url": {
             "und": [
                 {
-                    "attributes": [], 
-                    "title": "GHCN Temp Anomaly", 
+                    "attributes": [],
+                    "title": "GHCN Temp Anomaly",
                     "url": "https://www.ncdc.noaa.gov/temp-and-precip/ghcn-gridded-products.php"
                 }
             ]
-        }, 
+        },
         "field_dssds_data_format": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Data Access URL above should perhaps be an FTP site and this field will list the shapefiles used...</p>\n", 
+                    "format": "filtered_html",
+                    "safe_value": "<p>Data Access URL above should perhaps be an FTP site and this field will list the shapefiles used...</p>\n",
                     "value": "Data Access URL above should perhaps be an FTP site and this field will list the shapefiles used..."
                 }
             ]
-        }, 
+        },
         "field_dssds_data_matter": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Water managers, forestry officials, farmers, ranchers, and others who depend on rain to sustain natural resources need to know about expected changes in their usual supply of water.</p>\n<p>Drought Outlooks can inform people in advance if a dry spell is expected or if current levels of dryness are expected to end. In heavily populated regions with limited supplies of fresh water, water managers need to plan ahead to ensure that water is available for drinking, cooking, and washing in homes and for industries that depend on water. Drought outlooks also inform forestry officials if they need to prepare for the risk of wildfire.</p>\n", 
-                    "value": "Water managers, forestry officials, farmers, ranchers, and others who depend on rain to sustain natural resources need to know about expected changes in their usual supply of water.\r\n\r\nDrought Outlooks can inform people in advance if a dry spell is expected or if current levels of dryness are expected to end. In heavily populated regions with limited supplies of fresh water, water managers need to plan ahead to ensure that water is available for drinking, cooking, and washing in homes and for industries that depend on water. Drought outlooks also inform forestry officials if they need to prepare for the risk of wildfire."
+                    "format": "filtered_html",
+                    "safe_value": "<p>Checking how temperatures around the globe compare to their long-term average for each year gives climate scientists a way to monitor Earth's overall temperature. Though some areas are cooler than usual and other areas are warmer than usual each year, overall average temperatures show a decades-long trend of increasing.</p>\n",
+                    "value": "<p class=\"p1\">Checking how temperatures around the globe compare to their long-term average for each year gives climate scientists a way to monitor Earth's overall temperature. Though some areas are cooler than usual and other areas are warmer than usual each year, overall average temperatures show a decades-long trend of increasing.</p>\r\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_data_provider": {
             "und": [
                 {
-                    "attributes": [], 
-                    "title": "Climate Prediction Center", 
+                    "attributes": [],
+                    "title": "Climate Prediction Center",
                     "url": "http://www.cpc.ncep.noaa.gov/"
                 }
             ]
-        }, 
+        },
         "field_dssds_description_auth": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>LuAnn Dahlman</p>\n", 
+                    "format": "filtered_html",
+                    "safe_value": "<p>LuAnn Dahlman</p>\n",
                     "value": "LuAnn Dahlman"
                 }
             ]
-        }, 
+        },
         "field_dssds_editorial_commen": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>I'd like to change the \"How to Interpret Colors\" field label to \"What Do the Colors Mean?\"</p>\n", 
-                    "value": "I'd like to change the \"How to Interpret Colors\" field label to \"What Do the Colors Mean?\""
+                    "format": "filtered_html",
+                    "safe_value": "<p>From NOAA View: Merged Land and Ocean Surface Temperature version 3.5.4 (which is composed of the Global Historical Climatology Network-Monthly version 3.2.2 and ERSST version 3b)  <a href=\"http://www.ncdc.noaa.gov/ersst/merge.php\">http://www.ncdc.noaa.gov/ersst/merge.php</a></p>\n",
+                    "value": "<p>From NOAA View:&nbsp;<span style=\"color: rgb(187, 187, 187); font-family: HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 13px; line-height: 19.5px;\">Merged Land and Ocean Surface Temperature version 3.5.4 (which is composed of the Global Historical Climatology Network-Monthly version 3.2.2 and ERSST version 3b) &nbsp;</span>http://www.ncdc.noaa.gov/ersst/merge.php</p>\r\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_secondary_q_answ": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>9 out of 10 experts agree: most of the hot air in the climate comes from politicians.</p>\n", 
-                    "value": "9 out of 10 experts agree: most of the hot air in the climate comes from politicians."
+                    "format": "filtered_html",
+                    "safe_value": "<p>Temperature readings come from weather stations in the Global Historical Climate Network. Departure from Average values are calculated by averaging daily temperatures observed at individual stations, and subtracting them from the long-term average temperature for each location. To produce the final map, visualization specialists use an averaging process to smooth color transitions and fill blank spaces.</p>\n",
+                    "value": "<p class=\"p1\">Temperature readings come from weather stations in the Global Historical Climate Network. Departure from Average values are calculated by averaging daily temperatures observed at individual stations, and subtracting them from the long-term average temperature for each location.&nbsp;<span style=\"color: rgb(102, 102, 102); font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 17.5px;\">To produce the final map, visualization specialists use an averaging process to smooth color transitions and fill blank spaces.</span></p>\r\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_framing_q_answer": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Annual - Shading shows where drought conditions don't exist but are predicted to develop, where drought is present and is expected to stay or worsen, and where drought conditions are expected to improve or end (removal).</p>\n", 
-                    "value": "Annual - Shading shows where drought conditions don't exist but are predicted to develop, where drought is present and is expected to stay or worsen, and where drought conditions are expected to improve or end (removal)."
+                    "format": "filtered_html",
+	            "value": "<p class=\"p1\">Colors show where average annual temperatures were warmer or cooler than their long-term average temperature. The darker the color, the larger the difference from the average temperature.</p>\r\n",
+                    "safe_value": "<p>Colors show where average annual temperatures were warmer or cooler than their long-term average temperature. The darker the color, the larger the difference from the average temperature.</p>\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_framing_question": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Where is it gonna be real hot?</p>\n", 
-                    "value": "Where is it gonna be real hot?"
+                    "format": "filtered_html",
+                    "safe_value": "<p>Was it warmer or cooler than usual?</p>\n",
+                    "value": "<p>Was it warmer or cooler than usual?</p>\r\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_image_frequency": {
             "und": [
                 {
@@ -114,175 +114,175 @@
         "field_dssds_machine_name": {
             "und": [
                 {
-                    "format": null, 
+                    "format": null,
                     "safe_value": "ghcntempm_annual",
                     "value": "ghcntempm_annual"
                 }
             ]
-        }, 
+        },
         "field_dssds_operational_data_pro": {
             "und": [
                 {
-                    "format": null, 
-                    "safe_value": "GHCN Yearly Temp Anomaly", 
-                    "value": "GHCN Yearly Temp Anomaly"
+                    "format": null,
+                    "safe_value": "GHCN Annual Temp Anomaly",
+                    "value": "GHCN Annual Temp Anomaly"
                 }
             ]
-        }, 
+        },
         "field_dssds_processing_envir": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>The Amazon.</p>\n", 
+                    "format": "filtered_html",
+                    "safe_value": "<p>The Amazon.</p>\n",
                     "value": "The Amazon."
                 }
             ]
-        }, 
+        },
         "field_dssds_processing_steps": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>A python grabs shapefiles from CPC, and swallows them whole.</p>\n", 
+                    "format": "filtered_html",
+                    "safe_value": "<p>A python grabs shapefiles from CPC, and swallows them whole.</p>\n",
                     "value": "A python grabs shapefiles from CPC, and swallows them whole."
                 }
             ]
-        }, 
+        },
         "field_dssds_references": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>I guess this field should show an example or two of the format we'd like to use for references.</p>\n", 
-                    "value": "I guess this field should show an example or two of the format we'd like to use for references."
+                   "format": "filtered_html",
+                    "value": "<p style=\"margin: 0px 0px 6px 20px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; font-family: inherit; font-size: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; list-style: disc outside;\">Lawrimore, J. H., M. J. Menne, B. E. Gleason, C. N. Williams, D. B. Wuertz, R. S. Vose, and J. Rennie (2011), An overview of the Global Historical Climatology Network monthly mean temperature data set, version 3,&nbsp;<em style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; font-family: inherit; font-size: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit;\">J. Geophys. Res.</em>, 116, D19121,<a href=\"http://doi.org/10.1029/2011JD016187\" style=\"margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; font-family: inherit; font-size: inherit; font-style: inherit; font-variant: inherit; font-weight: inherit; line-height: inherit; color: rgb(0, 51, 102); text-decoration: none;\">doi:10.1029/2011JD016187</a>.</p>\r\n",
+                   "safe_value": "<p>Lawrimore, J. H., M. J. Menne, B. E. Gleason, C. N. Williams, D. B. Wuertz, R. S. Vose, and J. Rennie (2011), An overview of the Global Historical Climatology Network monthly mean temperature data set, version 3, <em>J. Geophys. Res.</em>, 116, D19121,<a href=\"http://doi.org/10.1029/2011JD016187\">doi:10.1029/2011JD016187</a>.</p>\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_reviewer": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>TBD - Dave Miskus, I hope</p>\n", 
+                    "format": "filtered_html",
+                    "safe_value": "<p>TBD - Dave Miskus, I hope</p>\n",
                     "value": "TBD - Dave Miskus, I hope"
                 }
             ]
-        }, 
+        },
         "field_dssds_reviewer_affilia": {
             "und": [
                 {
-                    "format": null, 
-                    "safe_value": "Climate Prediction Center", 
+                    "format": null,
+                    "safe_value": "Climate Prediction Center",
                     "value": "Climate Prediction Center"
                 }
             ]
-        }, 
+        },
         "field_dssds_secondary_questi": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>How do experts produce temperature anomalies?</p>\n", 
-                    "value": "How do experts produce temperature anomalies?"
+                    "format": "filtered_html",
+                    "safe_value": "<p>Where did these measurements come from?</p>\n",
+                    "value": "<p class=\"p1\">Where did these measurements come from?</p>\r\n"
                 }
             ]
-        }, 
+        },
         "field_dssds_technical_commen": {
             "und": [
                 {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Here come some additional technical comments.</p>\n", 
+                    "format": "filtered_html",
+                    "safe_value": "<p>Here come some additional technical comments.</p>\n",
                     "value": "Here come some additional technical comments."
                 }
             ]
-        }, 
+        },
         "field_dssds_themes": {
             "und": [
                 {
                     "tid": "10"
                 }
             ]
-        }, 
+        },
         "field_dssds_url_pattern": {
             "und": [
                 {
-                    "format": null, 
+                    "format": null,
                     "safe_value": "http://datasnapshots-images.nemac.com:8080/ghcntemp/yearly/620/{ptk}.png",
                     "value": "http://datasnapshots-images.nemac.com:8080/ghcntemp/yearly/620/{ptk}.png"
                 }
             ]
-        }, 
-        "language": "und", 
-        "log": "", 
-        "menu": null, 
-        "name": "admin", 
-        "nid": "2", 
-        "node_export_drupal_version": "7", 
-        "path": false, 
-        "picture": "0", 
-        "promote": "1", 
+        },
+        "language": "und",
+        "log": "",
+        "menu": null,
+        "name": "admin",
+        "nid": "2",
+        "node_export_drupal_version": "7",
+        "path": false,
+        "picture": "0",
+        "promote": "1",
         "rdf_mapping": {
             "body": {
                 "predicates": [
                     "content:encoded"
                 ]
-            }, 
+            },
             "changed": {
-                "callback": "date_iso8601", 
-                "datatype": "xsd:dateTime", 
+                "callback": "date_iso8601",
+                "datatype": "xsd:dateTime",
                 "predicates": [
                     "dc:modified"
                 ]
-            }, 
+            },
             "comment_count": {
-                "datatype": "xsd:integer", 
+                "datatype": "xsd:integer",
                 "predicates": [
                     "sioc:num_replies"
                 ]
-            }, 
+            },
             "created": {
-                "callback": "date_iso8601", 
-                "datatype": "xsd:dateTime", 
+                "callback": "date_iso8601",
+                "datatype": "xsd:dateTime",
                 "predicates": [
-                    "dc:date", 
+                    "dc:date",
                     "dc:created"
                 ]
-            }, 
+            },
             "last_activity": {
-                "callback": "date_iso8601", 
-                "datatype": "xsd:dateTime", 
+                "callback": "date_iso8601",
+                "datatype": "xsd:dateTime",
                 "predicates": [
                     "sioc:last_activity_date"
                 ]
-            }, 
+            },
             "name": {
                 "predicates": [
                     "foaf:name"
                 ]
-            }, 
+            },
             "rdftype": [
-                "sioc:Item", 
+                "sioc:Item",
                 "foaf:Document"
-            ], 
+            ],
             "title": {
                 "predicates": [
                     "dc:title"
                 ]
-            }, 
+            },
             "uid": {
                 "predicates": [
                     "sioc:has_creator"
-                ], 
+                ],
                 "type": "rel"
             }
-        }, 
-        "revision_timestamp": "1385156141", 
-        "revision_uid": "1", 
-        "status": "1", 
-        "sticky": "0", 
-        "title": "GHCN Temp Anomaly", 
-        "tnid": "0", 
-        "translate": "0", 
-        "type": "data_snapshot_data_source", 
-        "uid": "1", 
-        "uuid": "df42f9a0-2edc-4826-b04d-6b3fd0f6df05", 
-        "vid": "1", 
+        },
+        "revision_timestamp": "1385156141",
+        "revision_uid": "1",
+        "status": "1",
+        "sticky": "0",
+        "title": "Difference from Average Temp - Annual",
+        "tnid": "0",
+        "translate": "0",
+        "type": "data_snapshot_data_source",
+        "uid": "1",
+        "uuid": "df42f9a0-2edc-4826-b04d-6b3fd0f6df05",
+        "vid": "1",
         "vuuid": "837a158b-57e2-4448-a881-e851cbcc2b22"
     }
 ]
