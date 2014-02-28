@@ -194,8 +194,8 @@
     }
 
     function switch_data_source_content(node) {
-	var framing_question = format_evergreen_text(node.field_dssds_framing_q_answer.und[0].safe_value),
-	    framing_answer = format_evergreen_text(node.field_dssds_framing_question.und[0].value),
+	var framing_question = format_evergreen_text(node.field_dssds_framing_question.und[0].safe_value),
+	    framing_answer = format_evergreen_text(node.field_dssds_framing_q_answer.und[0].value),
 	    secondary_question = format_evergreen_text(node.field_dssds_secondary_questi.und[0].value),
 	    secondary_answer = format_evergreen_text(node.field_dssds_secondary_q_answ.und[0].safe_value),
 	    $evergreen_wrapper = $(".field-name-field-ds-dsds-evergreen"),
