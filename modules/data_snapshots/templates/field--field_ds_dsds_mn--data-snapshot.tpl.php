@@ -43,7 +43,7 @@
  *
  * @ingroup themeable
  */
-$evergreen = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_english_descript'}['und'][0]['safe_value']);
+$evergreen = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_q_answer'}['und'][0]['safe_value']);
 $evergreen_answer_length = 250;
 $evergreen_answer_length_ellipsis = $evergreen_answer_length + 3;
 

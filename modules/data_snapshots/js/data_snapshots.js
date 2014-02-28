@@ -180,7 +180,7 @@
     }
 
     function switch_data_source_content(node) {
-	var evergreen_answer = node.field_dssds_english_descript.und[0].safe_value,
+	var evergreen_answer = node.field_dssds_framing_q_answer.und[0].safe_value,
 	    $evergreen_question = $(".field-name-field-ds-dsds-evergreen .field-label"),
 	    $evergreen_answer = $(".field-name-field-ds-dsds-evergreen .field-item p"),
 	    $read_more_link = $(".field-name-field-ds-dsds-evergreen .dss-question-read-more a"),

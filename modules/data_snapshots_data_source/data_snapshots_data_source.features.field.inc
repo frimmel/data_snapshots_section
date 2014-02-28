@@ -662,14 +662,14 @@ function data_snapshots_data_source_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_english_descript'.
-  $fields['node-data_snapshot_data_source-field_dssds_english_descript'] = array(
+  // Exported field: 'node-data_snapshot_data_source-field_dssds_framing_q_answer'.
+  $fields['node-data_snapshot_data_source-field_dssds_framing_q_answer'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dssds_english_descript',
+      'field_name' => 'field_dssds_framing_q_answer',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -717,8 +717,8 @@ function data_snapshots_data_source_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dssds_english_descript',
-      'label' => 'Plain English Description',
+      'field_name' => 'field_dssds_framing_q_answer',
+      'label' => 'Answer to Framing Question',
       'required' => 1,
       'settings' => array(
         'text_processing' => '1',
@@ -1826,7 +1826,7 @@ function data_snapshots_data_source_field_default_fields() {
   t('Operational Data Product');
   t('Outline of Processing Steps');
   t('Plain English Answer');
-  t('Plain English Description');
+  t('Answer to Framing Question');
   t('Processing Environment');
   t('Processing environment (include OS and software versions)');
   t('References');
