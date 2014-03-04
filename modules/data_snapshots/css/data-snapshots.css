@@ -20,8 +20,14 @@
     margin-bottom: 0;
 }
 
-.dss-question-read-more {
-  float: right;
+.node-type-data-snapshot .dss-question-read-more {
+    float: right;
+}
+
+.node-type-data-snapshot #region-content .field-name-field-ds-dloads li {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: 0;
 }
 
 /******************************************************************/
