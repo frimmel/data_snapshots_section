@@ -4,34 +4,6 @@
 callback functions to switch between different data sources
   */
 
-function _data_snapshots_get_dates($datasource) {
-  $rows = db_select('data_snapshots', 'ds')
-    ->fields('ds', array('nid','ptk','stk'))
-    ->condition('dsmn', $datasource)
-    ->orderBy('ds.ptk', 'ASC')
-    ->orderBy('ds.stk', 'ASC')
-    ->execute()
-    ->fetchAll();
-  $snapshots = array();
-  if (!empty($rows)) {
-    $ptk = null;
-    $ptks = array();
-    foreach ($rows as $row) {
-      if ($row->{'ptk'} != $ptk) {
-	$snapshots[$row->{'ptk'}] = array();
-	$ptk = $row->{'ptk'};
-	$ptks[] = $ptk;
-      }
-      $snapshots[$ptk][] = $row->{'stk'};
-    }
-  }
-
-  return array(
-	       'p' => $ptks,
-	       's' => $snapshots
-	       );
-}
-
 function _data_snapshots_get_ptk($ptk, $dates) {
   if (array_key_exists($ptk, $dates['s'])) {
     $new_ptk = $ptk;
