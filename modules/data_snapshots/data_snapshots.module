@@ -456,17 +456,18 @@ function _data_snapshots_data_snapshot_ajax($parameters) {
 }
 
 function _data_snapshots_data_source_ajax($parameters) {
-  $callback = _data_snapshots_get_callback($parameters['current_frequency'], $parameters['new_frequency'], $parameters['current_dsmn'], $parameters['new_dsmn']);
+  $new_dsmn = $parameters['new_dsmn'];
+  $callback = _data_snapshots_get_callback($parameters['current_frequency'], $parameters['new_frequency'], $parameters['current_dsmn'], $new_dsmn);
 
   $data_source_nid = db_select('field_data_field_dssds_machine_name', 'f')
-    ->condition('field_dssds_machine_name_value', $parameters['new_dsmn'])
+    ->condition('field_dssds_machine_name_value', $new_dsmn)
     ->fields('f', array('entity_id'))
     ->execute()
     ->FetchField();
 
   return array(
 	       'request' => $parameters,
-	       'callback' => $callback($parameters['new_dsmn'], $parameters['ptk'], $parameters['stk']),
+	       'callback' => $callback($new_dsmn, $parameters['ptk'], $parameters['stk'], _data_snapshots_get_dates($new_dsmn)),
 	       'node' => node_load($data_source_nid),
 	       );
 }
