@@ -276,7 +276,7 @@
 	function config_ptk_slider() {
 	    var ptk_popup_selector = "#dss-interactive-slider-ptk-popup";
 
-            $('#dss-yearslider').slider({
+            $('#dss-interactive-slider-ptk-slider').slider({
                 'min' : 0,
                 'max' : ptks.length - 1,
                 'value' : current_ptk_index,
@@ -325,7 +325,7 @@
         function config_stk_slider() {
 	    var stk_popup_selector = "#dss-interactive-slider-stk-popup";
 
-            $('#dss-timeslider').slider({
+            $('#dss-interactive-slider-stk-slider').slider({
                 'min' : 0,
                 'max' : stks.length - 1,
                 'value' : current_stk_index,
@@ -361,7 +361,7 @@
 	function data_source_stk_change() {
 	    var frequencies = Drupal.settings.data_snapshots.frequencies,
 		disabledStk = ["Annual"],
-		$dsstimeslider = $('#dss-timeslider'),
+		$dssStkSlider = $('#dss-interactive-slider-stk-slider'),
 		val;
 
 	    if (disabledStk.indexOf(frequencies[dsmn]) !== -1) {
@@ -369,7 +369,7 @@
 	    } else {
 		val = false;
 	    }
-	    $dsstimeslider.slider("option", "disabled", val);
+	    $dssStkSlider.slider("option", "disabled", val);
 	}
 
 	function theme_dropdown_change() {

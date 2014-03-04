@@ -100,7 +100,7 @@
 
 /******************************************************************/
 
-#dss-timeslider, #dss-yearslider {
+.dss-interactive-slider.ui-slider {
   position: absolute;
   width: 100%;
 }

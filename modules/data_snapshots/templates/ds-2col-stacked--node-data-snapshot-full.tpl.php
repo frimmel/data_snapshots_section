@@ -28,7 +28,7 @@
           <span class="dss-interactive-ptk-label dss-interactive-label"></span>
 	  <div class="dss-interactive-slider-wrapper">
 	    <span id="dss-interactive-slider-ptk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
-            <div id="dss-yearslider" class="dss-interactive-slider"></div>
+            <div id="dss-interactive-slider-ptk-slider" class="dss-interactive-slider"></div>
 	    <span id="dss-interactive-slider-ptk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
 	    <span id="dss-interactive-slider-ptk-popup" class="dss-interactive-slider-popup"></span>
           </div>
@@ -37,7 +37,7 @@
           <span class="dss-interactive-stk-label dss-interactive-label"></span>
 	  <div class="dss-interactive-slider-wrapper">
 	    <span id="dss-interactive-slider-stk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
-            <div id="dss-timeslider" class="dss-interactive-slider"></div>
+            <div id="dss-interactive-slider-stk-slider" class="dss-interactive-slider"></div>
 	    <span id="dss-interactive-slider-stk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
 	    <span id="dss-interactive-slider-stk-popup" class="dss-interactive-slider-popup"></span>
           </div>
