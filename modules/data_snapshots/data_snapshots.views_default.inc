@@ -113,10 +113,9 @@ function data_snapshots_views_default_views() {
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['id'] = 'field_ds_dsds_mn_value';
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['table'] = 'field_data_field_ds_dsds_mn';
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['field'] = 'field_ds_dsds_mn_value';
-  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['operator'] = 'contains';
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['operator_id'] = 'field_ds_dsds_mn_value_op';
-  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['label'] = 'Machine Name';
+  $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['label'] = 'Operational Name';
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['operator'] = 'field_ds_dsds_mn_value_op';
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['identifier'] = 'field_ds_dsds_mn_value';
   $handler->display->display_options['filters']['field_ds_dsds_mn_value']['expose']['remember_roles'] = array(

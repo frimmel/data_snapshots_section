@@ -37,7 +37,11 @@ function data_snapshots_ctools_plugin_api() {
  * Implements hook_views_api().
  */
 function data_snapshots_views_api() {
-  return array("version" => "3.0");
+  return array(
+    'version' => '3.0',
+    'path' => drupal_get_path('module', 'data_snapshots'),
+    'template path' => drupal_get_path('module', 'data_snapshots') . '/templates',
+  );
 }
 
 /*
