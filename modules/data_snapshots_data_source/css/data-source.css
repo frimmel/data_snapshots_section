@@ -16,7 +16,9 @@
 
 .node-type-data-snapshot-data-source .field-name-field-dssds-framing-question,
 .node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi {
+    font: 700 italic 1em Cabin,Arial,sans-serif;
     font-weight: bold;
+    color: #000;
 }
 
 /* needed for dev. Will be provided by live site */
