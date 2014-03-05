@@ -191,6 +191,14 @@ function _data_snapshots_get_dates($datasource) {
 	       );
 }
 
+function _data_snapshots_get_data_source_nid($dsmn) {
+  return db_select('field_data_field_dssds_machine_name', 'f')
+    ->condition('field_dssds_machine_name_value', $dsmn)
+    ->fields('f', array('entity_id'))
+    ->execute()
+    ->FetchField();
+}
+
 /**
  * Implements hook_view()
  *
@@ -256,11 +264,7 @@ function data_snapshots_view($node, $view_mode) {
   $init_ptk = _get_field_value($node, 'field_ds_ptk');
   $init_stk = _get_field_value($node, 'field_ds_stk');
   if ($dsds_mn) {
-    $datasource_nid = db_select('field_data_field_dssds_machine_name', 'f')
-      ->condition('field_dssds_machine_name_value', $dsds_mn)
-      ->fields('f', array('entity_id'))
-      ->execute()
-      ->FetchField();
+    $datasource_nid = _data_snapshots_get_data_source_nid($dsds_mn);
     if ($datasource_nid != FALSE) {
       $node->{'datasource_node'} = node_load($datasource_nid);
     }
@@ -455,11 +459,7 @@ function _data_snapshots_data_source_ajax($parameters) {
   $new_dsmn = $parameters['new_dsmn'];
   $callback = _data_snapshots_get_callback($parameters['current_frequency'], $parameters['new_frequency'], $parameters['current_dsmn'], $new_dsmn);
 
-  $data_source_nid = db_select('field_data_field_dssds_machine_name', 'f')
-    ->condition('field_dssds_machine_name_value', $new_dsmn)
-    ->fields('f', array('entity_id'))
-    ->execute()
-    ->FetchField();
+  $data_source_nid = _data_snapshots_get_data_source_nid($new_dsmn);
 
   return array(
 	       'request' => $parameters,
