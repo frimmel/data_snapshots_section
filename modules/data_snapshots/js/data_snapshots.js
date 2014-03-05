@@ -441,13 +441,10 @@
 	    setDataSource($(this).val());
 	}
 
-	function setDataSourceSuccessHandler(msg) {
-	    var result = msg.callback,
-		dates = result.dates,
-		newDsmn = msg.request.new_dsmn,
+	function setDataSourceSuccessHandler(result) {
+	    var dates = result.dates,
 		ptk, stk;
 
-	    dates.dsmn = newDsmn;
 	    Drupal.settings.data_snapshots.snapshots = dates;
 
 	    currentPtkIndex = dates.p.indexOf(result.ptk);
@@ -457,13 +454,13 @@
 	    stks = dates.s[ptk];
 	    stk = stks[currentStkIndex];
 
-	    dsmn = newDsmn;
+	    dsmn = dates.dsmn;
 
 	    setImg(dsmn, ptk, stk);
 	    configPtkSlider();
 	    configStkSlider();
 
-	    switchDataSourceContent(msg.node);
+	    switchDataSourceContent(result.node);
 	    switchDataSnapshotContent(dsmn, ptk, stk);
 	    dataSourceStkChange();
 	    setSliderNames(Drupal.settings.data_snapshots.frequencies[dsmn]);
