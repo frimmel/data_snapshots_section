@@ -133,7 +133,7 @@
 	var data_snapshots = Drupal.settings.data_snapshots,
 	    dsmn = data_snapshots.snapshots.dsmn,
 	    themes = data_snapshots.themes,
-	    data_sources = data_snapshots.datasources,
+	    data_sources = data_snapshots.data_sources,
 	    $theme_dropdown = $("#dss-theme-dropdown"),
 	    $data_source_dropdown = $("#dss-data-source-dropdown"),
 	    init_theme = data_snapshots.init_theme,
@@ -374,7 +374,7 @@
 
 	function theme_dropdown_change() {
 	    var new_theme = $(this).val(),
-		data_sources = Drupal.settings.data_snapshots.datasources[new_theme],
+		data_sources = Drupal.settings.data_snapshots.data_sources[new_theme],
 		$data_source_dropdown = $('#dss-data-source-dropdown'),
 		data_source, mname,
 		change_data_source = true,
