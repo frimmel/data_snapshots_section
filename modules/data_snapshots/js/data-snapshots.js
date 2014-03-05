@@ -1,3 +1,7 @@
+/* Data Snapshots
+ * Copyright 2014 University of North Carolina at Asheville
+ * Released under the MIT license
+ */
 (function($) {
 
     if (!Array.prototype.indexOf) {
