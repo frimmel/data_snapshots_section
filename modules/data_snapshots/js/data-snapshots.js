@@ -80,7 +80,7 @@
     }
 
     function setPermalink(html) {
-        $(".field-name-data-snapshot-permalink .field-items .field-item").text(html);
+        $(".field-name-data-snapshot-permalink .field-label").permalink('url', html);
     }
 
     function setDateGenerated(html) {
@@ -295,8 +295,20 @@
             ptks = snapshots.p,
             currentPtkIndex = ptks.indexOf(initPtk),
             stks = snapshots.s[ptks[currentPtkIndex]],
-            currentStkIndex = snapshots.s[initPtk].indexOf(snapshots.init_stk);
+            currentStkIndex = snapshots.s[initPtk].indexOf(snapshots.init_stk),
+            currentPermalink = $(".field-name-data-snapshot-permalink .field-items .field-item").text();
 
+        // clear out the permalink field value
+        $(".field-name-data-snapshot-permalink .field-items .field-item").text("");
+        // change the "Permalink:" label to just "Permalink" (without the colon)
+        $(".field-name-data-snapshot-permalink .field-label").text("Permalink");
+
+        // initialize the permalink widget
+        $(".field-name-data-snapshot-permalink .field-label").permalink({
+            url : currentPermalink
+        });
+
+        
         configPtkSlider();
         configStkSlider();
 

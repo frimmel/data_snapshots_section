@@ -1,0 +1,47 @@
+.permalink .linkicon {
+  display: inline-block;
+  width: 19px;
+  height: 7px;
+  background: url('link.png') 0 0;
+  margin-right: 3px;
+  margin-bottom: 2px;
+}
+
+.permalink.link {
+  cursor: pointer;
+}
+
+.permalink.link:hover {
+  opacity: 0.5;
+}
+
+.permalink.popup {
+  border: 1px solid green;
+  position: absolute;
+  padding: 5px;
+  background-color: #fff;
+}
+
+.permalink.popup .url {
+  border: 1px solid black;
+  padding: 2px;
+  margin-right: 15px;
+  overflow: hidden;
+  text-overflow:clip;
+  width: 200px;
+}
+
+.permalink.popup .closebutton {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: url('closebutton.png') 0 0;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.permalink.popup .closebutton:hover {
+  background-position: bottom;
+  cursor: pointer;
+}
