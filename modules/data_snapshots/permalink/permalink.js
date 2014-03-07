@@ -67,9 +67,7 @@
                         return false;
                     }
 
-                    var $popup = $(permalink_html($this.data('permalink').settings.url)).appendTo($('body'));
-                    $popup.css('left', e.pageX);
-                    $popup.css('top', e.pageY-10);
+                    var $popup = $(permalink_html($this.data('permalink').settings.url)).insertAfter($this);
 
                     $this.data('permalink').popup_open = true;
 
