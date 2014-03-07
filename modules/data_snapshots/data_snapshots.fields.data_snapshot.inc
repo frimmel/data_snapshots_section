@@ -48,7 +48,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '5',
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -128,7 +128,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '20',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -204,7 +204,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '21',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -280,7 +280,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -371,7 +371,7 @@ function data_snapshots_fields_data_snapshot() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '9',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -458,7 +458,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_plain',
-          'weight' => '4',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -542,14 +542,14 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '7',
+          'weight' => '3',
         ),
         'full' => array(
           'label' => 'above',
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '8',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',

@@ -44,13 +44,18 @@ function data_snapshots_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'data_snapshot';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+				     'add_this' => array(
+                                                         'weight' => '4',
+                                                         'label' => 'above',
+                                                         'format' => 'default',
+                                                         ),
 				     'data_snapshot_permalink' => array(
-									'weight' => '4',
+                                                                        'weight' => '5',
 									'label' => 'above',
 									'format' => 'default',
 									),
 				     'title' => array(
-						      'weight' => '0',
+						      'weight' => '1',
 						      'label' => 'hidden',
 						      'format' => 'default',
 						      ),
@@ -82,12 +87,12 @@ function data_snapshots_ds_layout_settings_info() {
 								   1 => 'title',
 								   2 => 'field_ds_dsds_mn',
 								   3 => 'field_ds_dloads',
-								   4 => 'data_snapshot_permalink',
-								   5 => 'field_ds_dtgen',
+								   4 => 'add_this',
+								   5 => 'data_snapshot_permalink',
+								   6 => 'field_ds_dtgen',
 								   ),
 						  'footer' => array(
-								    6 => 'body',
-								    7 => 'field_ds_relnds',
+								    7 => 'body',
 								    ),
 						  ),
 			       'fields' => array(
@@ -95,10 +100,10 @@ function data_snapshots_ds_layout_settings_info() {
 						 'title' => 'right',
 						 'field_ds_dsds_mn' => 'right',
 						 'field_ds_dloads' => 'right',
+						 'add_this' => 'right',
 						 'data_snapshot_permalink' => 'right',
 						 'field_ds_dtgen' => 'right',
 						 'body' => 'footer',
-						 'field_ds_relnds' => 'footer',
 						 ),
 			       'classes' => array(),
 			       'wrappers' => array(

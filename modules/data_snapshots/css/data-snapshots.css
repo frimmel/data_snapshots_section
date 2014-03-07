@@ -110,6 +110,30 @@
     content: ' '
 }
 
+
+/******************************************/
+.node-type-data-snapshot .field-name-field-ds-dloads {
+    width: 100%;
+}
+
+.node-type-data-snapshot .field-name-add-this {
+    position: relative;
+    float: left;
+    width: 60%;
+    margin-right: .5em;
+}
+
+.node-type-data-snapshot .field-name-data-snapshot-permalink {
+    margin-top: 26px;
+}
+
+.node-type-data-snapshot .field-name-field-ds-dtgen,
+.node-type-data-snapshot .field-name-field-ds-dloads {
+    clear: both;
+}
+
+
+
 /* DEV FOR JOHN KECKS THEME */
 /* REMOVE THIS IN LIVE VERSION */
 
