@@ -353,11 +353,11 @@
         $('#dss-theme-dropdown').change(themeDropdownChange);
         setSliderNames(getFrequency(dsmn));
 
-        function hideStuff() {
+        function hideElements() {
             $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
         }
 
-        function showStuff() {
+        function showElements() {
             $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
         }
 
@@ -399,7 +399,7 @@
                     dismissPermalink();
                     setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, ui.value);
                     $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
-                    hideStuff();
+                    hideElements();
                 },
                 'stop' : function(event, ui) {
                     $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
@@ -408,7 +408,7 @@
                     } else {
                         switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
                     }
-                    showStuff();
+                    showElements();
                 }
             });
             setSliderLabels("ptk", ptks[0], ptks[ptks.length - 1], getFrequency[dsmn]);
@@ -439,12 +439,12 @@
                     dismissPermalink();
                     setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, ui.value);
                     $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
-                    hideStuff();
+                    hideElements();
                 },
                 'stop' : function(event, ui) {
                     $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
                     switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-                    showStuff();
+                    showElements();
                 }           
             });
 
