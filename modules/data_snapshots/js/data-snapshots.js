@@ -136,7 +136,7 @@
             $endLabel = $("#dss-interactive-slider-stk-end-label");
         }
 
-        if (type === "stk" && freq === "Annual") {
+        if (type === "stk" && determineStkDisabled() === true) {
             start = "";
             end = "";
         }
@@ -163,7 +163,7 @@
     function setPtkSliderPopup(selector, ptk, stk, frequency, slider, steps, position) {
         var popupText = ptk;
 
-        if (frequency !== "Annual") {
+        if (determineStkDisabled() === false) {
             popupText += "-" + stk;
         }
 
@@ -420,12 +420,10 @@
         }
 
         function dataSourceStkChange() {
-            var frequencies = Drupal.settings.data_snapshots.frequencies,
-                disabledStk = ["Annual"],
-                $dssStkSlider = $('#dss-interactive-slider-stk-slider'),
+            var $dssStkSlider = $('#dss-interactive-slider-stk-slider'),
                 val;
 
-            if (disabledStk.indexOf(frequencies[dsmn]) !== -1) {
+            if (determineStkDisabled() === false) {
                 val = true;
             } else {
                 val = false;
