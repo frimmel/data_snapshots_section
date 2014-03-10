@@ -322,6 +322,10 @@
         });
     }
 
+    function dismissPermalink() {
+        $(".field-name-data-snapshot-permalink .closebutton").click();
+    }
+
     $('document').ready(function() {
         var snapshots = getPropertiesObject().snapshots,
             dsmn = getDsmn(),
@@ -393,6 +397,7 @@
                     setPtkSliderPopup(ptkPopupSelector, ptk, stk, frequency, this, ptks.length, currentPtkIndex);
                 },
                 'start' : function(event, ui) {
+                    dismissPermalink();
                     setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, ui.value);
                     $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
                     hideStuff();
@@ -432,6 +437,7 @@
                     setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
                 },
                 'start' : function(event, ui) {
+                    dismissPermalink();
                     setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, ui.value);
                     $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
                     hideStuff();
@@ -476,10 +482,12 @@
             }
 
             setUrl(dsmn, ptks[currentPtkIndex], stks[currentStkIndex], newTheme);
+            dismissPermalink();
         }
 
         function dataSourceDropdownChange() {
             setDataSource($(this).val());
+            dismissPermalink();
         }
 
         function setDataSourceSuccessHandler(result) {
