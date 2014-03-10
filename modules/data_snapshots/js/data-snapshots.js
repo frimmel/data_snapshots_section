@@ -41,8 +41,28 @@
         };
     }
 
+    function getPattern(dsmn) {
+        return Drupal.settings.data_snapshots.patterns[dsmn];
+    }
+
+    function getFrequency(dsmn) {
+        return Drupal.settings.data_snapshots.frequencies[dsmn]
+    }
+
+    function getPtks() {
+        return Drupal.settings.data_snapshots.snapshots.p;
+    }
+
+    function getStks(ptk) {
+        if (determineStkDisabled() === true) {
+            return [];
+        } else {
+            return Drupal.settings.data_snapshots.snapshots.s[ptk];
+        }
+    }
+
     function makeImgUrl(dsmn, ptk, stk) {
-        var pattern = Drupal.settings.data_snapshots.patterns[dsmn];
+        var pattern = getPattern(dsmn);
 
         return pattern.replace(/\{dsmn\}/g, dsmn)
             .replace(/\{ptk\}/g, ptk)
@@ -53,14 +73,13 @@
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
         if (window.history && window.history.replaceState) {
-            url = (stk !== null) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
+            url = (determineStkDisabled() === false) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
             window.history.replaceState({}, "", url);
         }
     }
 
     function setImg(dsmn, ptk, stk) {
-        $('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn,ptk,stk));
-        $('div.dss-title').text(ptk + ' / ' + stk);
+        $('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn, ptk, stk));
 
         setUrl(dsmn, ptk, stk, $("#dss-theme-dropdown").val());
     }
@@ -299,11 +318,10 @@
         var dataSnapshotsOptions = Drupal.settings.data_snapshots,
             snapshots = dataSnapshotsOptions.snapshots,
             dsmn = snapshots.dsmn,
-            initPtk = snapshots.init_ptk,
-            ptks = snapshots.p,
-            currentPtkIndex = ptks.indexOf(initPtk),
-            stks = snapshots.s[ptks[currentPtkIndex]],
-            currentStkIndex = snapshots.s[initPtk].indexOf(snapshots.init_stk),
+            ptks = getPtks(),
+            stks = getStks(snapshots.init_ptk),
+            currentPtkIndex = ptks.indexOf(snapshots.init_ptk),
+            currentStkIndex = stks.indexOf(snapshots.init_stk),
             currentPermalink = $(".field-name-data-snapshot-permalink .field-items .field-item").text();
 
         // clear out the permalink field value
@@ -316,7 +334,6 @@
             url : currentPermalink
         });
 
-        
         configPtkSlider();
         configStkSlider();
 
@@ -324,7 +341,7 @@
         dataSourceStkChange();
         $('#dss-data-source-dropdown').change(dataSourceDropdownChange);
         $('#dss-theme-dropdown').change(themeDropdownChange);
-        setSliderNames(dataSnapshotsOptions.frequencies[dsmn]);
+        setSliderNames(getFrequency(dsmn));
 
         function hideStuff() {
             $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
@@ -343,20 +360,20 @@
                 'value' : currentPtkIndex,
                 'change' : function(event, ui) {
                     currentPtkIndex = ui.value;
-                    stks = Drupal.settings.data_snapshots.snapshots.s[ptks[currentPtkIndex]];
+                    stks = getStks(ptks[currentPtkIndex]);
                     setImg(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
                     configStkSlider();
                 },
                 'slide' : function(event, ui) {
                     var dataSnapshotsProperties = Drupal.settings.data_snapshots,
-                        frequency = dataSnapshotsProperties.frequencies[dsmn],
+                        frequency = getFrequency(dsmn),
                         ptk, stk, lastStk,
                         popupText;
 
                     currentPtkIndex = ui.value;
 
                     ptk = ptks[currentPtkIndex];
-                    stks = dataSnapshotsProperties.snapshots.s[ptk];
+                    stks = getStks(ptk);
                     lastStk = stks[stks.length - 1];
 
                     if (currentStkIndex >= stks.length) {
@@ -370,17 +387,21 @@
                     setPtkSliderPopup(ptkPopupSelector, ptk, stk, frequency, this, ptks.length, currentPtkIndex);
                 },
                 'start' : function(event, ui) {
-                    setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], Drupal.settings.data_snapshots.frequencies[dsmn], this, ptks.length, ui.value);
+                    setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, ui.value);
                     $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
                     hideStuff();
                 },
                 'stop' : function(event, ui) {
                     $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
-                    switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
+                    if (determineStkDisabled === false) {
+                        switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
+                    } else {
+                        switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
+                    }
                     showStuff();
                 }
             });
-            setSliderLabels("ptk", ptks[0], ptks[ptks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
+            setSliderLabels("ptk", ptks[0], ptks[ptks.length - 1], getFrequency[dsmn]);
         };
 
         function configStkSlider() {
@@ -416,19 +437,11 @@
                 }           
             });
 
-            setSliderLabels("stk", stks[0], stks[stks.length - 1], Drupal.settings.data_snapshots.frequencies[dsmn]);
+            setSliderLabels("stk", stks[0], stks[stks.length - 1], getFrequency(dsmn));
         }
 
         function dataSourceStkChange() {
-            var $dssStkSlider = $('#dss-interactive-slider-stk-slider'),
-                val;
-
-            if (determineStkDisabled() === false) {
-                val = true;
-            } else {
-                val = false;
-            }
-            $dssStkSlider.slider("option", "disabled", val);
+            $('#dss-interactive-slider-stk-slider').slider("option", "disabled", determineStkDisabled());
         }
 
         function themeDropdownChange() {
@@ -469,19 +482,17 @@
 
             Drupal.settings.data_snapshots.snapshots = dates;
 
-            currentPtkIndex = dates.p.indexOf(result.ptk);
-            ptks = dates.p;
+            dsmn = dates.dsmn;
+            ptks = getPtks();
+            stks = getStks(result.ptk);
+            currentPtkIndex = ptks.indexOf(result.ptk);
             ptk = ptks[currentPtkIndex];
             if (determineStkDisabled() === true) {
-                currentStkIndex = -1;
-                stks = undefined;
-                stk = undefined;
+                currentStkIndex = 0;
             } else {
-                currentStkIndex = dates.s[result.ptk].indexOf(result.stk);
-                stks = dates.s[ptk];
+                currentStkIndex = stks.indexOf(result.stk);
                 stk = stks[currentStkIndex];
             }
-            dsmn = dates.dsmn;
 
             setImg(dsmn, ptk, stk);
             configPtkSlider();
@@ -490,12 +501,10 @@
             switchDataSourceContent(result.node);
             switchDataSnapshotContent(dsmn, ptk, stk);
             dataSourceStkChange();
-            setSliderNames(Drupal.settings.data_snapshots.frequencies[dsmn]);
+            setSliderNames(getFrequency(dsmn));
         }
 
         function setDataSource(newDsmn) {
-            var frequencies = Drupal.settings.data_snapshots.frequencies;
-
             $.ajax({
                 type    : "POST",
                 url     : "/data-snapshots/ajax",
@@ -504,8 +513,8 @@
                             "type"              : "data_source",
                             "current_dsmn"      : dsmn,
                             "new_dsmn"          : newDsmn,
-                            "current_frequency" : frequencies[dsmn],
-                            "new_frequency"     : frequencies[newDsmn],
+                            "current_frequency" : getFrequency(dsmn),
+                            "new_frequency"     : getFrequency(newDsmn),
                             "ptk"               : ptks[currentPtkIndex],
                             "stk"               : stks[currentStkIndex]
                           }
