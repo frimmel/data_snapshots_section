@@ -41,23 +41,31 @@
         };
     }
 
+    function getPropertiesObject() {
+        return Drupal.settings.data_snapshots;
+    }
+
+    function getDsmn() {
+        return getPropertiesObject().snapshots.dsmn;
+    }
+
     function getPattern(dsmn) {
-        return Drupal.settings.data_snapshots.patterns[dsmn];
+        return getPropertiesObject().patterns[dsmn];
     }
 
     function getFrequency(dsmn) {
-        return Drupal.settings.data_snapshots.frequencies[dsmn]
+        return getPropertiesObject().frequencies[dsmn]
     }
 
     function getPtks() {
-        return Drupal.settings.data_snapshots.snapshots.p;
+        return getPropertiesObject().snapshots.p;
     }
 
     function getStks(ptk) {
         if (determineStkDisabled() === true) {
             return [];
         } else {
-            return Drupal.settings.data_snapshots.snapshots.s[ptk];
+            return getPropertiesObject().snapshots.s[ptk];
         }
     }
 
@@ -190,8 +198,8 @@
     }
 
     function initDropdowns() {
-        var dataSnapshots = Drupal.settings.data_snapshots,
-            dsmn = dataSnapshots.snapshots.dsmn,
+        var dataSnapshots = getPropertiesObject(),
+            dsmn = getDsmn(),
             themes = dataSnapshots.themes,
             dataSources = dataSnapshots.data_sources,
             $themeDropdown = $("#dss-theme-dropdown"),
@@ -240,7 +248,7 @@
     }
 
     function determineStkDisabled() {
-        if (Drupal.settings.data_snapshots.snapshots.s.length === 0) {
+        if (getPropertiesObject().snapshots.s.length === 0) {
             return true;
         } else {
             return false;
@@ -315,9 +323,8 @@
     }
 
     $('document').ready(function() {
-        var dataSnapshotsOptions = Drupal.settings.data_snapshots,
-            snapshots = dataSnapshotsOptions.snapshots,
-            dsmn = snapshots.dsmn,
+        var snapshots = getPropertiesObject().snapshots,
+            dsmn = getDsmn(),
             ptks = getPtks(),
             stks = getStks(snapshots.init_ptk),
             currentPtkIndex = ptks.indexOf(snapshots.init_ptk),
@@ -365,8 +372,7 @@
                     configStkSlider();
                 },
                 'slide' : function(event, ui) {
-                    var dataSnapshotsProperties = Drupal.settings.data_snapshots,
-                        frequency = getFrequency(dsmn),
+                    var frequency = getFrequency(dsmn),
                         ptk, stk, lastStk,
                         popupText;
 
@@ -446,7 +452,7 @@
 
         function themeDropdownChange() {
             var newTheme = $(this).val(),
-                dataSources = Drupal.settings.data_snapshots.data_sources[newTheme],
+                dataSources = getPropertiesObject().data_sources[newTheme],
                 $dataSourceDropdown = $('#dss-data-source-dropdown'),
                 dataSource, mname,
                 changeDataSource = true,
@@ -480,9 +486,9 @@
             var dates = result.dates,
                 ptk, stk;
 
-            Drupal.settings.data_snapshots.snapshots = dates;
+            getPropertiesObject().snapshots = dates;
 
-            dsmn = dates.dsmn;
+            dsmn = getDsmn();
             ptks = getPtks();
             stks = getStks(result.ptk);
             currentPtkIndex = ptks.indexOf(result.ptk);
