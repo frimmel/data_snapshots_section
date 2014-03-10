@@ -177,11 +177,15 @@ function _data_snapshots_get_dates($data_source) {
     $ptks = array();
     foreach ($rows as $row) {
       if ($row->{'ptk'} != $ptk) {
-	$snapshots[$row->{'ptk'}] = array();
+        if ($row->{'stk'} != NULL) {
+          $snapshots[$row->{'ptk'}] = array();
+        }
 	$ptk = $row->{'ptk'};
 	$ptks[] = $ptk;
       }
-      $snapshots[$ptk][] = $row->{'stk'};
+      if ($row->{'stk'} != NULL) {
+        $snapshots[$ptk][] = $row->{'stk'};
+      }
     }
   }
 

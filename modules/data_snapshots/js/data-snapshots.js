@@ -220,6 +220,14 @@
         $dataSourceDropdown.val(dsmn);
     }
 
+    function determineStkDisabled() {
+        if (Drupal.settings.data_snapshots.snapshots.s.length === 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function formatEvergreenText(text) {
         var textLength = 250,
             textLengthEllipsis = textLength + 3;
@@ -464,12 +472,17 @@
             Drupal.settings.data_snapshots.snapshots = dates;
 
             currentPtkIndex = dates.p.indexOf(result.ptk);
-            currentStkIndex = dates.s[result.ptk].indexOf(result.stk);
             ptks = dates.p;
             ptk = ptks[currentPtkIndex];
-            stks = dates.s[ptk];
-            stk = stks[currentStkIndex];
-
+            if (determineStkDisabled() === true) {
+                currentStkIndex = -1;
+                stks = undefined;
+                stk = undefined;
+            } else {
+                currentStkIndex = dates.s[result.ptk].indexOf(result.stk);
+                stks = dates.s[ptk];
+                stk = stks[currentStkIndex];
+            }
             dsmn = dates.dsmn;
 
             setImg(dsmn, ptk, stk);
