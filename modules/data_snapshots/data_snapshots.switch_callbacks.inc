@@ -5,7 +5,7 @@ callback functions to switch between different data sources
   */
 
 function _data_snapshots_get_ptk($ptk, $dates) {
-  if (array_key_exists($ptk, $dates['s'])) {
+  if (in_array($ptk, $dates['p'])) {
     $new_ptk = $ptk;
   } else {
     if ($ptk < $dates['p'][0]) {
