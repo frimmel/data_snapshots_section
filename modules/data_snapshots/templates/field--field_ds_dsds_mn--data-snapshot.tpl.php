@@ -43,7 +43,7 @@
  *
  * @ingroup themeable
  */
-$evergreen_answer_length = 250;
+$evergreen_answer_length = 500;
 $evergreen_answer_length_ellipsis = $evergreen_answer_length + 3;
 
 $framing_question = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']);

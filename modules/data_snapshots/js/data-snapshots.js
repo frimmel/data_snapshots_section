@@ -256,7 +256,7 @@
     }
 
     function formatEvergreenText(text) {
-        var textLength = 250,
+        var textLength = 500,
             textLengthEllipsis = textLength + 3;
 
         // strip all tags
