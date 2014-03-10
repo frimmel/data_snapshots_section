@@ -224,7 +224,6 @@
             $themeDropdown.append($("<option>", { value: theme })
                                    .text(theme));
 
-            // TODO: Add polyfill of indexOf
             if (!foundTheme) {
                 var j;
 

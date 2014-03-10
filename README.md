@@ -47,15 +47,10 @@ article-info
 **TODO**
 
 1. Generally clean up code
-  - Rewrite queries to be more efficient
-  - Cut out deprecated/development code
   - Properly bundle css & js
 2. Implementation
   - Write instructions for adding data snapshots to Maps & Data submenu
-  - Annotation view exposed filters
   - Test in climate.gov
-  - Social media buttons
-  - Add example image to Data Source
   - Ensure datasets with odd date combinations work
   - Minify Javascript
   - Fix remaining bugs
