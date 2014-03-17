@@ -24,7 +24,6 @@ function data_snapshots_data_source_field_group_info() {
     'weight' => '1',
     'children' => array(
       0 => 'field_dssds_operational_data_pro',
-      1 => 'field_dssds_machine_name',
       1 => 'field_dssds_url_pattern',
       2 => 'field_dssds_themes',
       3 => 'field_dssds_catalog_url',
@@ -42,6 +41,35 @@ function data_snapshots_data_source_field_group_info() {
     ),
   );
   $export['group_dssds_metadata|node|data_snapshot_data_source|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_dssds_people|node|data_snapshot_data_source|form';
+  $field_group->group_name = 'group_dssds_people';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_snapshot_data_source';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_dssds_tabs';
+  $field_group->data = array(
+    'label' => 'People Involved',
+    'weight' => '6',
+    'children' => array(
+      0 => 'field_dssds_reviewer_affilia',
+      1 => 'field_dssds_description_auth',
+      2 => 'field_dssds_reviewer',
+    ),
+    'format_type' => 'htab',
+    'format_settings' => array(
+      'formatter' => 'closed',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => '',
+        'required_fields' => 1,
+      ),
+    ),
+  );
+  $export['group_dssds_people|node|data_snapshot_data_source|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -163,35 +191,6 @@ function data_snapshots_data_source_field_group_info() {
     ),
   );
   $export['group_dssds_text|node|data_snapshot_data_source|form'] = $field_group;
-
-  $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
-  $field_group->api_version = 1;
-  $field_group->identifier = 'group_dssds_people|node|data_snapshot_data_source|form';
-  $field_group->group_name = 'group_dssds_people';
-  $field_group->entity_type = 'node';
-  $field_group->bundle = 'data_snapshot_data_source';
-  $field_group->mode = 'form';
-  $field_group->parent_name = 'group_dssds_tabs';
-  $field_group->data = array(
-    'label' => 'People Involved',
-    'weight' => '6',
-    'children' => array(
-      0 => 'field_dssds_reviewer_affilia',
-      1 => 'field_dssds_description_auth',
-      2 => 'field_dssds_reviewer',
-    ),
-    'format_type' => 'htab',
-    'format_settings' => array(
-      'formatter' => 'closed',
-      'instance_settings' => array(
-        'description' => '',
-        'classes' => '',
-        'required_fields' => 1,
-      ),
-    ),
-  );
-  $export['group_dssds_people|node|data_snapshot_data_source|form'] = $field_group;
 
   return $export;
 }

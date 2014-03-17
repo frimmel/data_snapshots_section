@@ -14,9 +14,7 @@ function data_snapshots_data_source_user_default_permissions() {
   $permissions['create data_snapshot_data_source content'] = array(
     'name' => 'create data_snapshot_data_source content',
     'roles' => array(
-      0 => 'Publisher',
-      1 => 'administrator',
-      2 => 'editor',
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -25,9 +23,7 @@ function data_snapshots_data_source_user_default_permissions() {
   $permissions['delete any data_snapshot_data_source content'] = array(
     'name' => 'delete any data_snapshot_data_source content',
     'roles' => array(
-      0 => 'Publisher',
-      1 => 'administrator',
-      2 => 'editor',
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -36,9 +32,7 @@ function data_snapshots_data_source_user_default_permissions() {
   $permissions['delete own data_snapshot_data_source content'] = array(
     'name' => 'delete own data_snapshot_data_source content',
     'roles' => array(
-      0 => 'Publisher',
-      1 => 'administrator',
-      2 => 'editor',
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -47,9 +41,7 @@ function data_snapshots_data_source_user_default_permissions() {
   $permissions['edit any data_snapshot_data_source content'] = array(
     'name' => 'edit any data_snapshot_data_source content',
     'roles' => array(
-      0 => 'Publisher',
-      1 => 'administrator',
-      2 => 'editor',
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
@@ -58,9 +50,7 @@ function data_snapshots_data_source_user_default_permissions() {
   $permissions['edit own data_snapshot_data_source content'] = array(
     'name' => 'edit own data_snapshot_data_source content',
     'roles' => array(
-      0 => 'Publisher',
-      1 => 'administrator',
-      2 => 'editor',
+      0 => 'administrator',
     ),
     'module' => 'node',
   );
