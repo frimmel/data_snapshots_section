@@ -61,11 +61,15 @@
         return getPropertiesObject().snapshots.p;
     }
 
+    function getAllStks() {
+        return getPropertiesObject().snapshots.s;
+    }
+
     function getStks(ptk) {
         if (determineStkDisabled() === true) {
             return [];
         } else {
-            return getPropertiesObject().snapshots.s[ptk];
+            return getAllStks()[ptk];
         }
     }
 
@@ -127,49 +131,6 @@
             href = $link.attr("href").replace(re, pattern);
             $link.attr("href", href);
         }
-    }
-
-    function setSliderNames(type) {
-        var labels = {
-            Annual : {
-                ptk : "Year:",
-                stk : ""
-            },
-            Monthly : {
-                ptk : "Year:",
-                stk : "Month:"
-            },
-            Weekly : {
-                ptk : "Year:",
-                stk : "Day:"
-            },
-            Custom : {
-                ptk : "Date:",
-                stk : ""
-            },
-        };
-
-        $(".dss-interactive-ptk-label").text(labels[type].ptk);
-        $(".dss-interactive-stk-label").text(labels[type].stk);
-    }
-
-    function setSliderLabels(type, start, end, freq) {
-        var $startLabel, $endLabel;
-        if (type === "ptk") {
-            $startLabel = $("#dss-interactive-slider-ptk-start-label");
-            $endLabel = $("#dss-interactive-slider-ptk-end-label");
-        } else if (type === "stk") {
-            $startLabel = $("#dss-interactive-slider-stk-start-label");
-            $endLabel = $("#dss-interactive-slider-stk-end-label");
-        }
-
-        if (type === "stk" && determineStkDisabled() === true) {
-            start = "";
-            end = "";
-        }
-
-        $startLabel.text(start);
-        $endLabel.text(end);
     }
 
     function setSliderPopups(selector, value, slider, steps, position) {
@@ -361,6 +322,113 @@
             $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
         }
 
+        function getStkMin() {
+            var allStks = getAllStks(),
+                ptk = ptks[0],
+                stks = allStks[ptk],
+                min,
+                i, j;
+
+            min = stks[0];
+            if (!min) {
+                for (i = 1; i < stks.length; i++) {
+                    min = stks[i];
+                    if (min) {
+                        break;
+                    }
+                }
+            }
+
+            for (i = 1; i < ptks.length; i++) {
+                ptk = ptks[i];
+                stks = allStks[ptk];
+                for (j = 0; j < stks.length; j++) {
+                    if (!stks[j]) {
+                        continue;
+                    }
+                    if (stks[j] < min) {
+                        min = stks[j];
+                    }
+                    break;
+                }
+            }
+
+            return min;
+        }
+
+        function getStkMax() {
+            var allStks = getAllStks(),
+                ptk = ptks[0],
+                stks = allStks[ptk],
+                max,
+                i, j;
+
+            max = stks[stks.length - 1];
+            if (!max) {
+                for (i = stks.length - 2; i >= 0; i--) {
+                    max = stks[i];
+                    if (max) {
+                        break;
+                    }
+                }
+            }
+
+            for (i = 1; i < ptks.length; i++) {
+                ptk = ptks[i];
+                stks = allStks[ptk];
+                for (j = stks.length - 1; j >= 0; j--) {
+                    if (!stks[j]) {
+                        continue;
+                    }
+                    if (stks[j] > max) {
+                        max = stks[j];
+                    }
+                    break;
+                }
+            }
+
+            return max;
+        }
+
+        function setSliderNames(type) {
+            var labels = {
+                    Annual : {
+                        ptk : "Year:",
+                        stk : "",
+                        stkStart : "",
+                        stkEnd : ""
+                    },
+                    Monthly : {
+                        ptk : "Year:",
+                        stk : "Month:",
+                        stkStart : "Jan",
+                        stkEnd : "Dec"
+                    },
+                    Weekly : {
+                        ptk : "Year:",
+                        stk : "Day:",
+                        stkStart : "Jan",
+                        stkEnd : "Dec"
+                    },
+                    Custom : {
+                        ptk : "Date:",
+                        stk : "",
+                        stkStart : getStkMin,
+                        stkEnd : getStkMax
+                    },
+                },
+                label = labels[type],
+                stkStart = label.stkStart,
+                stkEnd = label.stkEnd;
+
+            $(".dss-interactive-ptk-label").text(label.ptk);
+            $(".dss-interactive-stk-label").text(label.stk);
+            $("#dss-interactive-slider-stk-start-label").text((typeof(stkStart) === "string") ? stkStart : stkStart());
+            $("#dss-interactive-slider-stk-end-label").text((typeof(stkEnd) === "string") ? stkEnd : stkEnd());
+            $("#dss-interactive-slider-ptk-start-label").text(ptks[0]);
+            $("#dss-interactive-slider-ptk-end-label").text(ptks[ptks.length - 1]);
+        }
+
         function configPtkSlider() {
             var ptkPopupSelector = "#dss-interactive-slider-ptk-popup";
 
@@ -392,7 +460,6 @@
                     }
 
                     setImg(dsmn, ptk, stk);
-                    setSliderLabels("stk", stks[0], lastStk, frequency);
                     setPtkSliderPopup(ptkPopupSelector, ptk, stk, frequency, this, ptks.length, currentPtkIndex);
                 },
                 'start' : function(event, ui) {
@@ -411,7 +478,6 @@
                     showElements();
                 }
             });
-            setSliderLabels("ptk", ptks[0], ptks[ptks.length - 1], getFrequency[dsmn]);
         };
 
         function configStkSlider() {
@@ -447,8 +513,6 @@
                     showElements();
                 }           
             });
-
-            setSliderLabels("stk", stks[0], stks[stks.length - 1], getFrequency(dsmn));
         }
 
         function dataSourceStkChange() {
