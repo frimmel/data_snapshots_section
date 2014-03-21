@@ -208,11 +208,7 @@
     }
 
     function determineStkDisabled() {
-        if (getPropertiesObject().snapshots.s.length === 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return jQuery.isEmptyObject(getAllStks());
     }
 
     function formatEvergreenText(text) {
@@ -429,6 +425,22 @@
             $("#dss-interactive-slider-ptk-end-label").text(ptks[ptks.length - 1]);
         }
 
+        function findValidStkIndex() {
+            var l = stks.length,
+                i;
+            // scan forward first incase missing element is at front
+            for (i = currentStkIndex; i < l; i++) {
+                if (stks[i] !== null) {
+                    return i;
+                }
+            }
+            for (i = l - 1; i >= 0; i--) {
+                if (stks[i] !== null) {
+                    return i;
+                }
+            }
+        }
+
         function configPtkSlider() {
             var ptkPopupSelector = "#dss-interactive-slider-ptk-popup";
 
@@ -443,24 +455,22 @@
                     configStkSlider();
                 },
                 'slide' : function(event, ui) {
-                    var frequency = getFrequency(dsmn),
-                        ptk, stk, lastStk,
+                    var ptk, stk,
                         popupText;
 
                     currentPtkIndex = ui.value;
 
                     ptk = ptks[currentPtkIndex];
                     stks = getStks(ptk);
-                    lastStk = stks[stks.length - 1];
 
-                    if (currentStkIndex >= stks.length) {
-                        stk = lastStk;
+                    if (currentStkIndex >= stks.length || stks[currentStkIndex] === null) {
+                        stk = stks[findValidStkIndex()];
                     } else {
                         stk = stks[currentStkIndex];
                     }
 
                     setImg(dsmn, ptk, stk);
-                    setPtkSliderPopup(ptkPopupSelector, ptk, stk, frequency, this, ptks.length, currentPtkIndex);
+                    setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
                 },
                 'start' : function(event, ui) {
                     dismissPermalink();
@@ -470,7 +480,8 @@
                 },
                 'stop' : function(event, ui) {
                     $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
-                    if (determineStkDisabled === false) {
+                    currentStkIndex = findValidStkIndex();
+                    if (determineStkDisabled() === false) {
                         switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
                     } else {
                         switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
@@ -486,12 +497,16 @@
             $('#dss-interactive-slider-stk-slider').slider({
                 'min' : 0,
                 'max' : stks.length - 1,
-                'value' : currentStkIndex,
+                'value' : findValidStkIndex(),
                 'change' : function(event, ui) {
                     currentStkIndex = ui.value;
                     setImg(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
                 },
                 'slide' : function(event, ui) {
+                    var newStkIndex = ui.value;
+                    if (stks[newStkIndex] === null) {
+                        return false;
+                    }
                     var ptk, stk;
                     currentStkIndex = ui.value;
 
