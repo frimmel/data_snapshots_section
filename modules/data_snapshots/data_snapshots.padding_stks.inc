@@ -8,7 +8,21 @@ function _data_snapshots_pad_snapshots($dsmn, $ptks, &$stks) {
 }
 
 function _data_snapshots_pad_Custom($ptks, &$stks, $PAD_VALUE) {
-  
+  $expected_length = 0;
+  for ($i = 0; $i < count($ptks); $i++) {
+    $test_length = count($stks[$ptks[$i]]);
+    if ($test_length > $expected_length) {
+      $expected_length = $test_length;
+    }
+  }
+
+  for ($i = 0; $i < count($ptks); $i++) {
+    $ptk = $ptks[$i];
+
+    while (count($stks[$ptk]) < $expected_length) {
+      array_push($stks[$ptk], $PAD_VALUE);
+    }
+  }
 }
 
 function _data_snapshots_pad_Monthly($ptks, &$stks, $PAD_VALUE) {
