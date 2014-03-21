@@ -47,7 +47,38 @@ function _data_snapshots_pad_Monthly($ptks, &$stks, $PAD_VALUE) {
   }
 }
 
-function _data_snapshots_pad_Weekly($ptks, &$stks, $PAD_VALUE) {}
+function _data_snapshots_pad_Weekly($ptks, &$stks, $PAD_VALUE) {
+  $DATE_INTERVAL = date_interval_create_from_date_string('7 days');
+  for ($i = 0; $i < count($ptks); $i++) {
+    $ptk = $ptks[$i];
+
+    // pad the front
+    $base_date = date_create($ptk . '-' . $stks[$ptk][0]);
+    $test_date = date_sub($base_date, $DATE_INTERVAL);
+    if (date_format($test_date, 'Y') == $ptk) {
+      while (TRUE) {
+        array_unshift($stks[$ptk], $PAD_VALUE);
+        $test_date = date_sub($test_date, $DATE_INTERVAL);
+        if (date_format($test_date, 'Y') != $ptk) {
+          break;
+        }
+      }
+    }
+
+    //pad the back
+    $base_date = date_create($ptk . '-' . $stks[$ptk][count($stks[$ptk]) - 1]);
+    $test_date = date_add($base_date, $DATE_INTERVAL);
+    if (date_format($test_date, 'Y') == $ptk) {
+      while (TRUE) {
+        array_push($stks[$ptk], $PAD_VALUE);
+        $test_date = date_add($test_date, $DATE_INTERVAL);
+        if (date_format($test_date, 'Y') != $ptk) {
+          break;
+        }
+      }
+    }
+  }
+}
 
 function _data_snapshots_pad_Annual($ptks, &$stks, $PAD_VALUE) {
   // nothing needs to happen here. There will never be stks.
