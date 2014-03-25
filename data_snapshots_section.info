@@ -1,7 +1,0 @@
-name = Data Snapshots Section
-description = Sets up the Data Snapshots section of climate.gov
-core = 7.x
-package = UNCA/NEMAC
-
-dependencies[] = data_snapshots
-dependencies[] = data_snapshots_data_source
