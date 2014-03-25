@@ -10,6 +10,7 @@ include_once 'data_snapshots.padding_stks.inc';
 include_once 'data_snapshots.views_default.inc';
 include_once 'data_snapshots.context.inc';
 
+
 /**
  * Implements hook_ctools_plugin_api().
  *
@@ -17,11 +18,11 @@ include_once 'data_snapshots.context.inc';
  */
 function data_snapshots_ctools_plugin_api() {
   list($module, $api) = func_get_args();
-  if ($module == 'field_group' && $api == 'field_group') {
-    return array('version' => 1);
+  if ($module == "field_group" && $api == "field_group") {
+    return array("version" => "1");
   }    
   if ($module == "feeds" && $api == "feeds_importer_default") {
-    return array("version" => 1);
+    return array("version" => "1");
   }
   if ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
     return array("version" => "2");
@@ -72,6 +73,14 @@ function data_snapshots_node_info() {
       'title_label' => t('Title'),
       'help' => '',
     ),
+    'data_snapshot_data_source' => array(
+      'name' => t('Data Snapshot Data Source'),
+      'base' => 'node_content',
+      'description' => t('Content type for Data Snapshot Data Sources'),
+      'has_title' => '1',
+      'title_label' => t('Public Name for Dataset'),
+      'help' => '',
+    )
   );
   return $items;
 }
@@ -403,6 +412,11 @@ function data_snapshots_node_type_insert($content_type) {
     }
   }
 
+  if ($content_type->type == 'data_snapshot_data_source') {
+    // sets up alias for data snapshots
+    variable_set('pathauto_node_data_snapshot_data_source_pattern', 'data-snapshot/data-source-[node:title]');
+  }
+
 }
 
 /**
@@ -489,4 +503,27 @@ function _data_snapshots_data_source_ajax($parameters) {
   $result['node'] = node_load($data_source_nid);
 
   return $result;
+}
+
+function data_snapshots_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['full']['custom settings'] = TRUE;
+  $entity_info['node']['view modes']['teaser']['custom settings'] = TRUE;
+  $entity_info['node']['view modes']['search_result']['custom settings'] = TRUE;
+
+  $entity_info['node']['view modes']['nf_related_content_teaser'] = array(
+    'label' => 'NF Related Content Teaser',
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['nf_category_listing'] = array(
+    'label' => 'NF Category Listing',
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['short_teaser'] = array(
+    'label' => 'Short Teaser',
+    'custom settings' => TRUE,
+  );
+  $entity_info['node']['view modes']['tiny_teaser'] = array(
+    'label' => 'Tiny Teaser',
+    'custom settings' => TRUE,
+  );
 }

@@ -1,0 +1,23 @@
+<?php
+
+$url = "http://datasnapshots-images.nemac.com/usdm/feed.csv";
+$timeout = 5;
+$result = drupal_http_request($url, array('timeout' => $timeout));
+if ($result->code != 200) {
+  throw new Exception(t('Download of @url failed with code !code.', array('@url' => $url, '!code' => $result->code)));
+}
+
+print_r($result->data);
+
+
+### $source = feeds_source("data_snapshot_importer");
+### 
+### $url = "http://datasnapshots-images.nemac.com/doyaya/feed.csv";
+### 
+### $config = array(
+###   'FeedsHTTPFetcher' => array('source' => $url)
+### );
+### $source->addConfig($config);
+### $source->save();
+### 
+### print_r($source);
