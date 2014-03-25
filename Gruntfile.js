@@ -4,49 +4,41 @@ module.exports = function(grunt) {
     grunt.initConfig({
 	    pkg: grunt.file.readJSON('package.json'),
 	    banner: '/*! <%= pkg.name %>\n' +
-	            ' * Copyright 2014 University of North Carolina at Asheville\n' +
-           	    ' * Released under the MIT license\n' +
-	            ' */',
+	        ' * Copyright 2014 University of North Carolina at Asheville\n' +
+           	' * Released under the MIT license\n' +
+	        ' */',
 	    concat: {
-		dataSnapshotJs: {
-		    src: [
-			  "modules/data_snapshots/js/data-snapshots.js"
-		    ],
-		    dest: 'modules/data_snapshots/build/data-snapshots.js'
-		},
-		dataSnapshotCss: {
-		    src: [
-			  "modules/data_snapshots/css/data-snapshots.css"
-                    ],
-		    dest: 'modules/data_snapshots/build/data-snapshots.css'
-		}
+		    dataSnapshotJs: {
+		        src: [
+			        "modules/data_snapshots/js/data-snapshots.js"
+		        ],
+		        dest: 'modules/data_snapshots/build/data-snapshots.js'
+		    },
+		    dataSnapshotCss: {
+		        src: [
+			        "modules/data_snapshots/css/data-snapshots.css"
+                ],
+		        dest: 'modules/data_snapshots/build/data-snapshots.css'
+		    }
 	    },
 	    uglify: {
-		options: {
-		    banner: '<%= banner %>' + '\n'
-		},
-		build: {
-		    src: 'modules/data_snapshots/build/data-snapshots.js',
-		    dest: 'modules/data_snapshots/build/data-snapshots.min.js'
-		}
+		    options: {
+		        banner: '<%= banner %>' + '\n'
+		    },
+		    build: {
+		        src: 'modules/data_snapshots/build/data-snapshots.js',
+		        dest: 'modules/data_snapshots/build/data-snapshots.min.js'
+		    }
 	    },
 	    cssmin: {
-		dataSnapshotCss: {
-		    options: {
-			keepSpecialComments: 0,
-			banner: '<%= banner %>'
-		    },
-                    src: "modules/data_snapshots/build/data-snapshots.css",
-                    dest: "modules/data_snapshots/build/data-snapshots.min.css"
-                },
-		dataSourceCss: {
-		    options: {
-			keepSpecialComments: 0,
-			banner: '<%= banner %>'
-		    },
-                    src: "modules/data_snapshots_data_source/css/data-source.css",
-                    dest: "modules/data_snapshots_data_source/build/data-source.min.css"
-                }
+		    dataSnapshotCss: {
+		        options: {
+			        keepSpecialComments: 0,
+			        banner: '<%= banner %>'
+		        },
+                src: "modules/data_snapshots/build/data-snapshots.css",
+                dest: "modules/data_snapshots/build/data-snapshots.min.css"
+            }
 	    }
 	});
 
