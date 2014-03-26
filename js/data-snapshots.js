@@ -440,8 +440,8 @@
                 rightCount++;
             }
 
-            leftWidth = (leftCount / l) * 100;
-            rightWidth = (rightCount / l) * 100;
+            leftWidth = (l === 0) ? 100 : (leftCount / l) * 100;
+            rightWidth = (l === 0) ? 100 : (rightCount / l) * 100;
 
             $("#dss-interactive-slider-region-disabled-left").css("width", leftWidth + "%");
             $("#dss-interactive-slider-region-disabled-right").css("width", rightWidth + "%");
