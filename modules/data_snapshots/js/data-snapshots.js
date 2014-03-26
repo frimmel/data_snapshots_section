@@ -523,10 +523,6 @@
                 'min' : 0,
                 'max' : stks.length - 1,
                 'value' : findValidStkIndex(),
-                'change' : function(event, ui) {
-                    currentStkIndex = ui.value;
-                    setImg(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-                },
                 'slide' : function(event, ui) {
                     var newStkIndex = ui.value;
                     if (stks[newStkIndex] === null) {
