@@ -460,19 +460,19 @@
             var missingValue = null,
                 leftCount = 0, rightCount = 0,
                 leftWidth, rightWidth,
-                l = stks.length - 1,
+                l = stks.length,
                 i;
 
-            for (i = 0; stks[i] === missingValue; i++) {
+            for (i = 0; stks[i] === missingValue && i < l; i++) {
                 leftCount++;
                 
             }
-            for (i = l; stks[i] === missingValue; i--) {
+            for (i = l - 1; stks[i] === missingValue && i >= 0; i--) {
                 rightCount++;
             }
 
-            leftWidth = (l === 0) ? 100 : (leftCount / l) * 100;
-            rightWidth = (l === 0) ? 100 : (rightCount / l) * 100;
+            leftWidth = determineSliderOffset(leftCount, l);
+            rightWidth = determineSliderOffset(rightCount, l);
 
             $("#dss-interactive-slider-region-disabled-left").css("width", leftWidth + "%");
             $("#dss-interactive-slider-region-disabled-right").css("width", rightWidth + "%");
