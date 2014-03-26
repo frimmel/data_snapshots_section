@@ -158,6 +158,23 @@
         setSliderPopups(selector, popupText, slider, steps, position);
     }
 
+    function determineSliderOffset(index, length) {
+        length--;
+        return (length === 0) ? 0 : (index / length) * 100;
+    };
+
+    function replaceSliderTickmarks(wrapper, length) {
+        var tickmarks = "",
+            left, i;
+
+        for (i = 0; i < length; i++) {
+            left = determineSliderOffset(i, length);
+            tickmarks += "<span style=\"left:" + left + "%;\"></span>";
+        }
+
+        wrapper.html(tickmarks);
+    }
+
     function initDropdowns() {
         var dataSnapshots = getPropertiesObject(),
             dsmn = getDsmn(),
@@ -316,6 +333,20 @@
 
         function showElements() {
             $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
+        }
+
+        function replaceTickmarks() {
+            var ptkLength = ptks.length,
+                stkLength = stks.length,
+                $ptkTickmarks = $("#dss-interactive-slider-tickmarks-ptk"),
+                $stkTickmarks = $("#dss-interactive-slider-tickmarks-stk");
+
+            if ($ptkTickmarks.children().length !== ptkLength) {
+                replaceSliderTickmarks($ptkTickmarks, ptkLength);
+            }
+            if ($stkTickmarks.children().length !== stkLength) {
+                replaceSliderTickmarks($stkTickmarks, stkLength);
+            }
         }
 
         function getStkMin() {
@@ -512,6 +543,7 @@
                     showElements();
                 }
             });
+            replaceTickmarks();
         };
 
         function configStkSlider() {
@@ -549,6 +581,8 @@
                     showElements();
                 }           
             });
+
+            replaceTickmarks();
         }
 
         function dataSourceStkChange() {

@@ -89,6 +89,20 @@
     background-color: #ccc;
 }
 
+.dss-interactive-slider-tickmarks {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.dss-interactive-slider-tickmarks span {
+    position: absolute;
+    width: 1px;
+    height: 3px;
+    float: left;
+    background-color: #aaa;
+}
+
 #dss-interactive-slider-region-disabled-left {
     left: 0;
 }
