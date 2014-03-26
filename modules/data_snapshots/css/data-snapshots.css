@@ -83,6 +83,20 @@
     right: 0;
 }
 
+.dss-interactive-slider-region-disabled {
+    position: absolute;
+    height: .8em;
+    background-color: #ccc;
+}
+
+#dss-interactive-slider-region-disabled-left {
+    left: 0;
+}
+
+#dss-interactive-slider-region-disabled-right {
+    right: 0;
+}
+
 .dss-interactive-slider-popup {
     position: absolute;
     top: -108%;

@@ -37,7 +37,10 @@
           <span class="dss-interactive-stk-label dss-interactive-label"></span>
 	  <div class="dss-interactive-slider-wrapper">
 	    <span id="dss-interactive-slider-stk-start-label" class="dss-interactive-slider-label dss-interactive-slider-start-label"></span>
-            <div id="dss-interactive-slider-stk-slider" class="dss-interactive-slider"></div>
+            <div id="dss-interactive-slider-stk-slider" class="dss-interactive-slider">
+              <div id="dss-interactive-slider-region-disabled-left" class="dss-interactive-slider-region-disabled"></div>
+              <div id="dss-interactive-slider-region-disabled-right" class="dss-interactive-slider-region-disabled"></div>
+            </div>
 	    <span id="dss-interactive-slider-stk-end-label" class="dss-interactive-slider-label dss-interactive-slider-end-label"></span>
 	    <span id="dss-interactive-slider-stk-popup" class="dss-interactive-slider-popup"></span>
           </div>

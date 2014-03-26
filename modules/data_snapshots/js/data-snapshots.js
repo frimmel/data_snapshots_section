@@ -425,6 +425,28 @@
             $("#dss-interactive-slider-ptk-end-label").text(ptks[ptks.length - 1]);
         }
 
+        function setDisabledRegions() {
+            var missingValue = null,
+                leftCount = 0, rightCount = 0,
+                leftWidth, rightWidth,
+                l = stks.length - 1,
+                i;
+
+            for (i = 0; stks[i] === missingValue; i++) {
+                leftCount++;
+                
+            }
+            for (i = l; stks[i] === missingValue; i--) {
+                rightCount++;
+            }
+
+            leftWidth = (leftCount / l) * 100;
+            rightWidth = (rightCount / l) * 100;
+
+            $("#dss-interactive-slider-region-disabled-left").css("width", leftWidth + "%");
+            $("#dss-interactive-slider-region-disabled-right").css("width", rightWidth + "%");
+        }
+
         function findValidStkIndex() {
             var l = stks.length,
                 i;
@@ -471,6 +493,7 @@
 
                     setImg(dsmn, ptk, stk);
                     setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
+                    configStkSlider();
                 },
                 'start' : function(event, ui) {
                     dismissPermalink();
@@ -493,6 +516,8 @@
 
         function configStkSlider() {
             var stkPopupSelector = "#dss-interactive-slider-stk-popup";
+
+            setDisabledRegions();
 
             $('#dss-interactive-slider-stk-slider').slider({
                 'min' : 0,
