@@ -84,3 +84,4 @@ features[user_permission][] = delete any data_snapshot_data_source content
 features[user_permission][] = delete own data_snapshot_data_source content
 features[user_permission][] = edit any data_snapshot_data_source content
 features[user_permission][] = edit own data_snapshot_data_source content
+stylesheets[all][] = css/data-snapshots.css
