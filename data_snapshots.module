@@ -454,16 +454,39 @@ function data_snapshots_menu() {
 }
 
 function data_snapshots_admin_settings() {
+  $form['description'] = array(
+    '#markup' => '<p>' . t('Use this form to configure the Data Snapshots module import URL, and/or to run the import.') . '</p>',
+  );
+  $form['run'] = array(
+    '#type' => 'submit',
+    '#value' => t('Run import now'),
+    '#submit' => array('data_snapshots_run_import'),
+  );
+  $last_import = data_snapshots_last_import_info();
+  if ($last_import == null) {
+    $status = '<p>' . t('Last import: no batches imported yet') . '</p>';
+  } else {
+    $status = '<p>' . t('Last import: %when.  The URLs imported were:</p><ul>', array('%when' => $last_import['time_imported']));
+    foreach ($last_import['urls'] as $url) {
+      $status .= '<li>' . $url . '</li>';
+    }
+    $status .= '</ul>';
+  }
+  $form['status'] = array(
+    '#markup' => $status,
+  );
+
   $form['data_snapshots_import_url'] = array(
     '#type' => 'textfield',
     '#title' => t('Import URL'),
-    '#default_value' => variable_get('data_snapshots_import_url', 'the default value here'),
+    '#default_value' => variable_get('data_snapshots_import_url'),
     '#description' => t('Enter the master feed URL to be used for automated Data Snapshots imports; this should be a full URL, complete with http:// or https://'),
     '#size' => 80
   );
-# $form['#submit'][] = 'data_snapshots_admin_settings_submit';
+
   return system_settings_form($form);
 }
+
 
 function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name) {
   $custom_freq = 'Custom';
@@ -556,4 +579,121 @@ function data_snapshots_entity_info_alter(&$entity_info) {
     'label' => 'Tiny Teaser',
     'custom settings' => TRUE,
   );
+}
+
+###
+### Return information about the most recently run import batch.
+### Returns an assoc array like the following:
+###   array(
+###     dsi_id        => INT,      // dsi_id of last import
+###     time_imported => STRING    // human-readable string indicating date/time of last import
+###     urls          => array of STRING // the urls imported in this batch
+###   )
+### If there have been no imports, returns null.
+function data_snapshots_last_import_info() {
+  $result = db_select('data_snapshots_imports', 'dsi')
+      ->fields('dsi', array('dsi_id', 'time_imported'))
+      ->orderBy('time_imported',  'DESC')
+      ->range(0,1)
+      ->execute()
+      ->fetchAssoc();
+  if (!$result) {
+    return null;
+  } else {
+    $dsi_id = $result['dsi_id'];
+    $time_imported = date("H:i:s \\o\\n D, M j Y", $result['time_imported']);
+
+    $result = db_select('data_snapshots_import_urls', 'dsiu')
+      ->fields('dsiu', array('url'))
+      ->condition('dsi_id', $dsi_id)
+      ->execute()
+      ->fetchAll();
+    $urls = array();
+    foreach ($result as $row) {
+      $urls[] = $row->{'url'};
+    }
+    return array(
+      'dsi_id'        => $dsi_id,
+      'time_imported' => $time_imported,
+      'urls'          => $urls
+    );
+  }
+}
+
+
+function data_snapshots_run_import() {
+
+  ###
+  ### Get the list of URLs that have already been loaded, store them in
+  ### the `$loaded_urls` hash:
+  ###
+
+  $loaded_urls = array();
+  $rows = db_select('data_snapshots_import_urls', 'dsiu')
+    ->fields('dsiu', array('url'))
+    ->execute()
+    ->fetchAll();
+  if (!empty($rows)) {
+    foreach ($rows as $row) {
+      $loaded_urls[$row->{'url'}] = true;
+    }
+  }
+
+  ###
+  ### Exactract the urls from the master feed file, and store any that have not
+  ### already been loaded in the `$urls` array
+  ###
+  $master_feed_url = variable_get('data_snapshots_import_url');
+  $timeout = 5;
+  $result = drupal_http_request($master_feed_url, array('timeout' => $timeout));
+  if ($result->code != 200) {
+    throw new Exception(t('Download of @url failed with code !code.', array('@url' => $master_feed_url, '!code' => $result->code)));
+  }
+
+  $urls = array();
+  $lines = explode("\n", $result->data);
+  foreach ($lines as $line) {
+    $url = trim($line);
+    if ($url != '' && (!array_key_exists($url, $loaded_urls) ||  !$loaded_urls[$url])) {
+      $urls[] = $url;
+    }
+  }
+
+  ###
+  ### Now load each url from `$urls`:
+  ###
+
+  if (count($urls) > 0) {
+    $dsi_id = db_insert('data_snapshots_imports')
+      ->fields(array('time_imported' => time()))
+      ->execute();
+    foreach ($urls as $url) {
+      data_snapshots_load_url($url, $dsi_id);
+    }
+  } else {
+    drupal_set_message(t('Nothing new to import'));
+  }
+
+  drupal_goto('admin/config/data-snapshots/settings');
+}
+
+
+function data_snapshots_load_url($url, $dsi_id) {
+
+  drupal_set_message(t('Importing data snapshots from: %url', array('%url' => $url)));
+
+  db_insert('data_snapshots_import_urls')
+    ->fields(array(
+      'url'  => $url,
+      'dsi_id'  => $dsi_id
+    ))
+    ->execute();
+
+  $source = feeds_source("data_snapshot_importer");
+  $config = array(
+    'FeedsHTTPFetcher' => array('source' => $url)
+  );
+  $source->addConfig($config);
+  $source->save();
+  while (FEEDS_BATCH_COMPLETE != $source->import());
 }

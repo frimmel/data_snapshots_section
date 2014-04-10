@@ -78,5 +78,46 @@ function data_snapshots_schema() {
     ),
   );
 
+  $schema['data_snapshots_imports'] = array(
+    'description' => 'Stores a log of import batches for the Data Snapshots module.',
+    'fields' => array(
+      'dsi_id'  => array(
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Unique id for an import batch',
+      ),
+      'time_imported' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'Unix timestamp when this batch was imported',
+      )
+    ),
+    'primary key' => array('dsi_id'),
+    'indexes' => array(
+      'time_imported'    => array('time_imported')
+    ),
+  );
+
+  $schema['data_snapshots_import_urls'] = array(
+    'description' => 'Stores the URLs imported by each Data Snapshots import batch.',
+    'fields' => array(
+      'url'  => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'A feed URL',
+      ),
+      'dsi_id'  => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'description' => 'dsi_id of the import batch that loaded this URL',
+      )
+    ),
+    'primary key' => array('url'),
+    'indexes' => array(
+      'dsi_id'    => array('dsi_id')
+    ),
+  );
+
   return $schema;
 }

@@ -7,7 +7,9 @@ drush ne-import < dev/data-set-ghcntempm-annual.json
 drush ne-import < dev/data-set-spc_severe.json
 #drush ne-import < data-snapshot-usdm-2000-01-04.json
 
-drush -y en feedsdrush ; drush cc all
+#drush -y en feedsdrush ; drush cc all
 drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/usdm/feed.csv
 drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/ghcntemp/feed.csv
 drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/spc_severe/feed.csv
+
+#drush variable-set --yes data_snapshots_import_url "http://datasnapshots-images.nemac.com/feed.csv"
