@@ -690,6 +690,11 @@ function data_snapshots_load_url($url, $dsi_id) {
     ->execute();
 
   $source = feeds_source("data_snapshot_importer");
+  # Need to reset the state of the FeedsSource object, per comments
+  # on https://drupal.org/node/2087091.  Yet another undocumented Drupal annoyance.
+  $source->state( FEEDS_FETCH );
+  $source->state( FEEDS_PROCESS );
+  $source->state( FEEDS_PROCESS_CLEAR );
   $config = array(
     'FeedsHTTPFetcher' => array('source' => $url)
   );
