@@ -1,0 +1,345 @@
+#! /usr/bin/python
+
+### 
+### There are two kinds of json files that store info about dataset nodes:
+### 
+### 1. the "brief" format, which only stores the essential info, but is not suitable
+###    for direct importing into Drupal
+### 2. the full "node" format, which stores all the gory details needed by Drupal,
+###    and is suitable for importing
+### 
+### This directory contains the "brief" format files.  Edit these files as desired to modify
+### the information that is imported for each dataset node.
+### 
+### This script generates the full "node" format files, storing them in the "node_json" subdir.
+### Those files are the ones that get imported into drupal with "drush import" (by the ../im script).
+### 
+
+
+import json
+
+# Themes:
+#   11  Drought
+#   12  Temperature
+#   13  Precipitation
+#   14  Snow
+
+# Frequencies:
+#    6  Daily
+#    7  Weekly
+#    8  Monthly
+#    9  Annual
+#   10  Custom
+
+def do_data_set(machine_name):
+    json_file = machine_name + ".json"
+    with open(json_file, "r") as json_data:
+        data = json.load(json_data)
+    output = tpl
+    for key in data.keys():
+        output = output.replace("{{"+key+"}}", data[key])
+    node_file = "node_json/" + machine_name + ".node.json"
+    with open(node_file, "w") as f:
+        f.write(output)
+    print "wrote %s" % node_file
+
+
+def main():
+    do_data_set('probseverewx-dayofyear-spc')
+    do_data_set('usdroughtmonitor-weekly-ndmc')
+    do_data_set('averagetemp-monthly-cmb')
+    do_data_set('droughtoutlook-monthly-cpc')
+    do_data_set('oisst-daily-cdr')
+    do_data_set('totalprecip-monthly-cmb')
+    do_data_set('tempanomaly-annual-nnvl')
+    do_data_set('tempanomaly-monthly-nnvl')
+
+
+tpl = """
+[
+    {
+        "#node_export_object": "1", 
+        "changed": "1385156141", 
+        "comment": "2", 
+        "created": "1385063594", 
+        "data": "b:0;", 
+        "field_dssds_catalog_url": {
+            "und": [
+                {
+                    "attributes": [], 
+                    "title": "this is the dcrurl title ", 
+                    "url": "http://www.dcurl.org/this/is/the/link"
+                }
+            ]
+        }, 
+        "field_dssds_colors": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_colors}}</p>\\n", 
+                    "value": "{{field_dssds_colors}}"
+                }
+            ]
+        }, 
+        "field_dssds_data_access_url": {
+            "und": [
+                {
+                    "attributes": [], 
+                    "title": "{{field_dssds_data_access_url_title}}", 
+                    "url": "{{field_dssds_data_access_url_url}}"
+                }
+            ]
+        }, 
+        "field_dssds_data_format": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>Data Access URL above should perhaps be an FTP site and this field will list the shapefiles used...</p>\\n", 
+                    "value": "Data Access URL above should perhaps be an FTP site and this field will list the shapefiles used..."
+                }
+            ]
+        }, 
+        "field_dssds_data_matter": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>Water managers, forestry officials, farmers, ranchers, and others who depend on rain to sustain natural resources need to know about expected changes in their usual supply of water.</p>\\n<p>Drought Outlooks can inform people in advance if a dry spell is expected or if current levels of dryness are expected to end. In heavily populated regions with limited supplies of fresh water, water managers need to plan ahead to ensure that water is available for drinking, cooking, and washing in homes and for industries that depend on water. Drought outlooks also inform forestry officials if they need to prepare for the risk of wildfire.</p>\\n", 
+                    "value": "Water managers, forestry officials, farmers, ranchers, and others who depend on rain to sustain natural resources need to know about expected changes in their usual supply of water.\\r\\n\\r\\nDrought Outlooks can inform people in advance if a dry spell is expected or if current levels of dryness are expected to end. In heavily populated regions with limited supplies of fresh water, water managers need to plan ahead to ensure that water is available for drinking, cooking, and washing in homes and for industries that depend on water. Drought outlooks also inform forestry officials if they need to prepare for the risk of wildfire."
+                }
+            ]
+        }, 
+        "field_dssds_data_provider": {
+            "und": [
+                {
+                    "attributes": [], 
+                    "title": "Climate Prediction Center", 
+                    "url": "http://www.cpc.ncep.noaa.gov/"
+                }
+            ]
+        }, 
+        "field_dssds_description_auth": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>LuAnn Dahlman</p>\\n", 
+                    "value": "LuAnn Dahlman"
+                }
+            ]
+        }, 
+        "field_dssds_editorial_commen": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>I'd like to change the \\"How to Interpret Colors\\" field label to \\"What Do the Colors Mean?\\"</p>\\n", 
+                    "value": "I'd like to change the \\"How to Interpret Colors\\" field label to \\"What Do the Colors Mean?\\""
+                }
+            ]
+        }, 
+        "field_dssds_secondary_q_answ": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_secondary_q_answ}}</p>\\n", 
+                    "value": "{{field_dssds_secondary_q_answ}}"
+                }
+            ]
+        }, 
+        "field_dssds_framing_q_answer": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_framing_q_answer}}</p>\\n", 
+                    "value": "{{field_dssds_framing_q_answer}}"
+                }
+            ]
+        }, 
+        "field_dssds_framing_question": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_framing_question}}</p>\\n", 
+                    "value": "{{field_dssds_framing_question}}"
+                }
+            ]
+        }, 
+        "field_dssds_image_frequency": {
+            "und": [
+                {
+                    "tid": "{{field_dssds_image_frequency_tid}}"
+                }
+            ]
+        },
+        "field_dssds_machine_name": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "{{field_dssds_machine_name}}",
+                    "value": "{{field_dssds_machine_name}}"
+                }
+            ]
+        }, 
+        "field_dssds_operational_data_pro": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "{{field_dssds_operational_data_pro}}", 
+                    "value": "{{field_dssds_operational_data_pro}}"
+                }
+            ]
+        }, 
+        "field_dssds_processing_envir": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_processing_envir}}.</p>\\n", 
+                    "value": "{{field_dssds_processing_envir}}"
+                }
+            ]
+        }, 
+        "field_dssds_processing_steps": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_processing_steps}}</p>\\n", 
+                    "value": "{{field_dssds_processing_steps}}"
+                }
+            ]
+        }, 
+        "field_dssds_references": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_references}}</p>\\n", 
+                    "value": "{{field_dssds_references}}"
+                }
+            ]
+        }, 
+        "field_dssds_reviewer": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_reviewer}}</p>\\n", 
+                    "value": "{{field_dssds_reviewer}}"
+                }
+            ]
+        }, 
+        "field_dssds_reviewer_affilia": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "{{field_dssds_reviewer_affilia}}", 
+                    "value": "{{field_dssds_reviewer_affilia}}"
+                }
+            ]
+        }, 
+        "field_dssds_secondary_questi": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_secondary_questi}}</p>\\n", 
+                    "value": "{{field_dssds_secondary_questi}}"
+                }
+            ]
+        }, 
+        "field_dssds_technical_commen": {
+            "und": [
+                {
+                    "format": "filtered_html", 
+                    "safe_value": "<p>{{field_dssds_technical_commen}}</p>\\n", 
+                    "value": "{{field_dssds_technical_commen}}"
+                }
+            ]
+        }, 
+        "field_dssds_themes": {
+            "und": {{field_dssds_themes}}
+        }, 
+        "field_dssds_url_pattern": {
+            "und": [
+                {
+                    "format": null, 
+                    "safe_value": "{{field_dssds_url_pattern}}",
+                    "value": "{{field_dssds_url_pattern}}"
+                }
+            ]
+        }, 
+        "language": "und", 
+        "log": "", 
+        "menu": null, 
+        "name": "admin", 
+        "nid": "{{nid}}", 
+        "node_export_drupal_version": "7", 
+        "path": false, 
+        "picture": "0", 
+        "promote": "1", 
+        "rdf_mapping": {
+            "body": {
+                "predicates": [
+                    "content:encoded"
+                ]
+            }, 
+            "changed": {
+                "callback": "date_iso8601", 
+                "datatype": "xsd:dateTime", 
+                "predicates": [
+                    "dc:modified"
+                ]
+            }, 
+            "comment_count": {
+                "datatype": "xsd:integer", 
+                "predicates": [
+                    "sioc:num_replies"
+                ]
+            }, 
+            "created": {
+                "callback": "date_iso8601", 
+                "datatype": "xsd:dateTime", 
+                "predicates": [
+                    "dc:date", 
+                    "dc:created"
+                ]
+            }, 
+            "last_activity": {
+                "callback": "date_iso8601", 
+                "datatype": "xsd:dateTime", 
+                "predicates": [
+                    "sioc:last_activity_date"
+                ]
+            }, 
+            "name": {
+                "predicates": [
+                    "foaf:name"
+                ]
+            }, 
+            "rdftype": [
+                "sioc:Item", 
+                "foaf:Document"
+            ], 
+            "title": {
+                "predicates": [
+                    "dc:title"
+                ]
+            }, 
+            "uid": {
+                "predicates": [
+                    "sioc:has_creator"
+                ], 
+                "type": "rel"
+            }
+        }, 
+        "revision_timestamp": "1385156141", 
+        "revision_uid": "1", 
+        "status": "1", 
+        "sticky": "0", 
+        "title": "{{title}}", 
+        "tnid": "0", 
+        "translate": "0", 
+        "type": "data_snapshot_data_source", 
+        "uid": "1", 
+        "uuid": "{{uuid}}", 
+        "vid": "1", 
+        "vuuid": "{{uuid}}"
+    }
+]
+"""
+
+main()

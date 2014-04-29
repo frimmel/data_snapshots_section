@@ -1,15 +1,27 @@
 #! /bin/bash
 
-# import USDM data set node
-drush ne-import < dev/data-set-usdm.json 
-drush ne-import < dev/data-set-ghcntempm.json
-drush ne-import < dev/data-set-ghcntempm-annual.json
-drush ne-import < dev/data-set-spc_severe.json
+# import data set nodes
+
+( cd dev/data-sets ; ./make_node_jsons )
+drush ne-import < dev/data-sets/node_json/averagetemp-monthly-cmb.node.json
+drush ne-import < dev/data-sets/node_json/tempanomaly-annual-nnvl.node.json
+#drush ne-import < dev/data-sets/node_json/droughtoutlook-monthly-cpc.node.json
+#drush ne-import < dev/data-sets/node_json/tempanomaly-monthly-nnvl.node.json
+#drush ne-import < dev/data-sets/node_json/oisst-daily-cdr.node.json	      
+#drush ne-import < dev/data-sets/node_json/totalprecip-monthly-cmb.node.json
+#drush ne-import < dev/data-sets/node_json/probseverewx-dayofyear-spc.node.json
+#drush ne-import < dev/data-sets/node_json/usdroughtmonitor-weekly-ndmc.node.json
+
 #drush ne-import < data-snapshot-usdm-2000-01-04.json
+#drush -y en feedsdrush ; drush cc all
+#drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/usdm/feed.csv
+#drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/ghcntemp/feed.csv
+#drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/spc_severe/feed.csv
 
-drush -y en feedsdrush ; drush cc all
-drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/usdm/feed.csv
-drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/ghcntemp/feed.csv
-drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/spc_severe/feed.csv
+drush variable-set --yes data_snapshots_import_url "http://54.235.203.129/Images/feed.csv"
 
-#drush variable-set --yes data_snapshots_import_url "http://datasnapshots-images.nemac.com/feed.csv"
+echo "importing nodes now, this might take a while"
+
+drush scr dev/run_import.php
+
+echo "importing done."

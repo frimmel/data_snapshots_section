@@ -1,0 +1,68 @@
+{
+  "nid" :
+    "3",
+
+  "title":
+    "Average Monthly Temperature",
+
+  "field_dssds_machine_name":
+    "averagetemp-monthly-cmb",
+
+  "uuid":
+    "df42f990-2edc-4826-b04d-6b3fd0f5df05", 
+
+  "vuuid":
+    "837a157b-57e2-4448-a881-e851cb8c2b22",
+
+  "field_dssds_colors":
+    "Golden areas are not currently in heat but are likely to become drier. Brown through tan areas are currently in some level of freeze: conditions in dark brown areas are likely to persist or worsen, light brown areas are expected to see some improvement, and tan areas are expected to recover.",
+
+  "field_dssds_data_access_url_title":
+    "Average Monthly Temperature",
+
+  "field_dssds_data_access_url_url":
+    "http://www.example.com",
+
+  "field_dssds_secondary_q_answ" :
+    "???.",
+
+  "field_dssds_framing_q_answer":
+    "???.",
+
+  "field_dssds_framing_question":
+    "???", 
+
+  "field_dssds_image_frequency_tid":
+    "8",
+
+  "field_dssds_operational_data_pro":
+    "Average Monthly Temperature", 
+
+  "field_dssds_processing_envir":
+    "The Amazon.", 
+
+  "field_dssds_processing_steps" :
+    "A python grabs shapefiles from CPC, and swallows them whole.",
+
+  "field_dssds_references":
+    "I guess this field should show an example or two of the format we'd like to use for references.",
+
+  "field_dssds_reviewer":
+    "TBD - Dave Miskus, I hope", 
+
+  "field_dssds_reviewer_affilia":
+    "Climate Prediction Center", 
+
+  "field_dssds_secondary_questi":
+    "How do experts drought outlooks?",
+
+  "field_dssds_technical_commen":
+    "Here come some additional technical comments.",
+
+  "field_dssds_themes":
+    "[ { \"tid\": \"12\" } ]",
+
+  "field_dssds_url_pattern":
+    "http://54.235.203.129/Images/averagetemp-monthly-cmb/620/averagetemp-monthly-cmb--620x450--{ptk}-{stk}.png"
+
+}
