@@ -125,8 +125,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "Average Monthly Temperature", 
-                    "value": "Average Monthly Temperature"
+                    "safe_value": "Total Monthly Precipitation", 
+                    "value": "Total Monthly Precipitation"
                 }
             ]
         }, 

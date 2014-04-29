@@ -200,8 +200,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "http://54.235.203.129/Images/tempanomaly-annual-nnvl/620/tempanomaly-annual-nnvl--620x365--{ptk}-{stk}.png",
-                    "value": "http://54.235.203.129/Images/tempanomaly-annual-nnvl/620/tempanomaly-annual-nnvl--620x365--{ptk}-{stk}.png"
+                    "safe_value": "http://54.235.203.129/Images/tempanomaly-annual-nnvl/620/tempanomaly-annual-nnvl--620x365--{ptk}-00-00.png",
+                    "value": "http://54.235.203.129/Images/tempanomaly-annual-nnvl/620/tempanomaly-annual-nnvl--620x365--{ptk}-00-00.png"
                 }
             ]
         }, 

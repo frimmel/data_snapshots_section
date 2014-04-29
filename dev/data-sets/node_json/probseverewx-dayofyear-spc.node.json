@@ -200,8 +200,8 @@
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "http://54.235.203.129/Images/probseverewx-dayofyear-spc/620/probseverewx-dayofyear-spc--620x450--{ptk}-{stk}.png",
-                    "value": "http://54.235.203.129/Images/probseverewx-dayofyear-spc/620/probseverewx-dayofyear-spc--620x450--{ptk}-{stk}.png"
+                    "safe_value": "http://54.235.203.129/Images/probseverewx-dayofyear-spc/620/probseverewx-dayofyear-spc--620x450--0000-{stk}.png",
+                    "value": "http://54.235.203.129/Images/probseverewx-dayofyear-spc/620/probseverewx-dayofyear-spc--620x450--0000-{stk}.png"
                 }
             ]
         }, 
