@@ -1,10 +1,18 @@
 #! /bin/bash
 
+# save current data set node content for reloading later...
+drush ne-export --type=data_snapshot_data_source --format=json > dev/datasets.json
+
 # re-install drupal; this completely replaces the current database
 drush -y site-install
 
 # reset the admin user password
 drush upwd admin --password=`cat dev/.password`
+
+# create any local user accounts by running a the script dev/.localusers, if it exsists
+if [ -f dev/.localusers ] ; then
+  . ./dev/.localusers
+fi
 
 # disable comment module
 drush -y dis comment

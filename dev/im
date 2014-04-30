@@ -2,15 +2,18 @@
 
 # import data set nodes
 
-( cd dev/data-sets ; ./make_node_jsons )
-drush ne-import < dev/data-sets/node_json/averagetemp-monthly-cmb.node.json
-drush ne-import < dev/data-sets/node_json/tempanomaly-annual-nnvl.node.json
-drush ne-import < dev/data-sets/node_json/usdroughtmonitor-weekly-ndmc.node.json
-drush ne-import < dev/data-sets/node_json/droughtoutlook-monthly-cpc.node.json
-drush ne-import < dev/data-sets/node_json/tempanomaly-monthly-nnvl.node.json
+# reload data set node content saved by "si" script...
+drush ne-import < dev/datasets.json
+
+#( cd dev/data-sets ; ./make_node_jsons )
+#drush ne-import < dev/data-sets/node_json/averagetemp-monthly-cmb.node.json
+#drush ne-import < dev/data-sets/node_json/tempanomaly-annual-nnvl.node.json
+#drush ne-import < dev/data-sets/node_json/usdroughtmonitor-weekly-ndmc.node.json
+#drush ne-import < dev/data-sets/node_json/droughtoutlook-monthly-cpc.node.json
+#drush ne-import < dev/data-sets/node_json/tempanomaly-monthly-nnvl.node.json
 #drush ne-import < dev/data-sets/node_json/oisst-daily-cdr.node.json	      
-drush ne-import < dev/data-sets/node_json/totalprecip-monthly-cmb.node.json
-drush ne-import < dev/data-sets/node_json/probseverewx-dayofyear-spc.node.json
+#drush ne-import < dev/data-sets/node_json/totalprecip-monthly-cmb.node.json
+#drush ne-import < dev/data-sets/node_json/probseverewx-dayofyear-spc.node.json
 
 #drush ne-import < data-snapshot-usdm-2000-01-04.json
 #drush -y en feedsdrush ; drush cc all

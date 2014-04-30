@@ -1,0 +1,2 @@
+NOTE: the stuff in this directory is not used directly.  It was used to initially populate the nodes of type data_snapshot_data_source, but now
+the content of those nodes is saved and reloaded from the database by the ../si and ../im scripts.
