@@ -639,28 +639,72 @@ function data_snapshots_run_import() {
     }
   }
 
+  ###  ###
+  ###  ### Exactract the urls from the master feed file, and store any that have not
+  ###  ### already been loaded in the `$urls` array
+  ###  ###
+  ###  $master_feed_url = variable_get('data_snapshots_import_url');
+  ###  $timeout = 5;
+  ###  $result = drupal_http_request($master_feed_url, array('timeout' => $timeout));
+  ###  if ($result->code != 200) {
+  ###    throw new Exception(t('Download of @url failed with code !code.', array('@url' => $master_feed_url, '!code' => $result->code)));
+  ###  }
   ###
-  ### Exactract the urls from the master feed file, and store any that have not
-  ### already been loaded in the `$urls` array
-  ###
-  $master_feed_url = variable_get('data_snapshots_import_url');
-  $timeout = 5;
-  $result = drupal_http_request($master_feed_url, array('timeout' => $timeout));
-  if ($result->code != 200) {
-    throw new Exception(t('Download of @url failed with code !code.', array('@url' => $master_feed_url, '!code' => $result->code)));
-  }
+  ###  $urls = array();
+  ###  $lines = explode("\n", $result->data);
+  ###  foreach ($lines as $line) {
+  ###    $url = trim($line);
+  ###    if ($url != '' && (!array_key_exists($url, $loaded_urls) ||  !$loaded_urls[$url])) {
+  ###      $urls[] = $url;
+  ###    }
+  ###  }
+  
 
-  $urls = array();
-  $lines = explode("\n", $result->data);
-  foreach ($lines as $line) {
-    $url = trim($line);
-    if ($url != '' && (!array_key_exists($url, $loaded_urls) ||  !$loaded_urls[$url])) {
-      $urls[] = $url;
+  ###
+  ### Next we construct the list of URLs to load.   This is a two-step process.
+  ###
+  ### First, we make a list of the non-empty values of the `feed_url` field of
+  ### each data_snapshot_data_source instance currently in the database.  This is
+  ### stored in the `$ds_feeds` array.
+  ###
+
+  $ds_feeds = array();
+  $rows = db_select('field_data_field_dssds_feed_url', 'dsfu')
+    ->fields('dsfu', array('field_dssds_feed_url_value'))
+    ->execute()
+    ->fetchAll();
+  if (!empty($rows)) {
+    foreach ($rows as $row) {
+      if ($row->{'field_dssds_feed_url_value'} != "") {
+        $ds_feeds[] = $row->{'field_dssds_feed_url_value'};
+      }
     }
   }
-
+  
   ###
-  ### Now load each url from `$urls`:
+  ### Next, we fetch the contents of each URL in the `$ds_feeds` array; each of these is assumed to contain
+  ### a list of URLs to be loaded.  We store all the ones that are not already loaded (i.e. not present in
+  ### the `$loaded_urls` hash) in the `$urls` array.
+  ###
+
+  $urls = array();
+  foreach ($ds_feeds as $ds_feed) {
+    $timeout = 5;
+    $result = drupal_http_request($ds_feed, array('timeout' => $timeout));
+    if ($result->code != 200) {
+      throw new Exception(t('Download of @url failed with code !code.', array('@url' => $ds_feed, '!code' => $result->code)));
+    }
+    $lines = explode("\n", $result->data);
+    foreach ($lines as $line) {
+      $url = trim($line);
+      if ($url != '' && (!array_key_exists($url, $loaded_urls) ||  !$loaded_urls[$url])) {
+        $urls[] = $url;
+      }
+    }
+  }
+  
+  ###
+  ### Now load each url from the `$urls` array:
   ###
 
   if (count($urls) > 0) {
