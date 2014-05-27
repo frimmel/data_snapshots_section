@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+	<Items>
+   		<entry>
+            		<title>Total Precipitation</title>
+			<questOne><![CDATA[<font size="2"><b><i>How much rain and snow fell through the month?</i></b></font><p>Colors show monthly precipitation totals for each of the 344 climate divisions of the contiguous United States. The darker the color, the higher the total precipitation.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>Where do these measurements come from?</i></b></font><p>Daily records of rain and snow come from individual weather stations in the Global Historical Climate Network. For each station, climate scientists check the data quality, calculate the monthly total, and plot it on a gridded map. To fill gaps in the grid, they apply a mathematical filter that accounts for the distribution of stations and the terrain. The total precipitation for each climate division is the average of all grid points within it.</p>]]></questTwo>
+			<aboutSnap>Colors show monthly precipitation totals for each of the 344 climate divisions of the contiguous United States. </aboutSnap>
+            		<imgURL>media/testMaps/totalprecip-monthly450.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+   		<entry>
+            		<title>Precipitation Outlook</title>
+			<questOne><![CDATA[<font size="2"><b><i>Is total precipitation likely to be below, near, or above average?</i></b></font><p>Colors show where total precipitation is likely to be higher or lower than usual during the next month. The darker the shading, the higher the chance for the indicated condition. White areas have equal chances for precipitation totals that are below, near, or above the long-term average for the month.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>How do experts develop these forecasts?</i></b></font><p>Climate scientists base future climate outlooks on current patterns in the ocean and atmosphere. They examine projections from climate and weather models and consider recent trends. They also check historical records to see how much precipitation fell when patterns were similar in the past.</p>]]></questTwo>
+			<aboutSnap>Colors show where total precipitation is likely to be higher or lower than usual during the next month.</aboutSnap>
+            		<imgURL>media/testMaps/precipoutlook-monthly460.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+ 	</Items>
