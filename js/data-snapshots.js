@@ -604,6 +604,8 @@
                 mname = dataSource.mname;
                 $dataSourceDropdown.append($("<option>", { value: mname })
                                              .text(dataSource.oname));
+                // Note: dsmn is the machine name of the currently selected data source; it's a local
+                // var declared inside `$('document').ready(function()` above.
                 if (dsmn === mname) {
                     $dataSourceDropdown.val(mname);
                     changeDataSource = false;
