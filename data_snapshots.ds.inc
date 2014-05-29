@@ -45,17 +45,17 @@ function data_snapshots_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
 				     'add_this' => array(
-                                                         'weight' => '4',
-                                                         'label' => 'above',
+                                                         'weight' => '7',
+                                                         'label' => 'hidden',
                                                          'format' => 'default',
                                                          ),
 				     'data_snapshot_permalink' => array(
-                                                                        'weight' => '5',
+                                                                        'weight' => '8',
 									'label' => 'above',
 									'format' => 'default',
 									),
 				     'title' => array(
-						      'weight' => '1',
+						      'weight' => '0',
 						      'label' => 'hidden',
 						      'format' => 'default',
 						      ),
@@ -431,30 +431,40 @@ function data_snapshots_ds_layout_settings_info() {
   $ds_layout->layout = 'ds_2col_stacked';
   $ds_layout->settings = array(
 			       'regions' => array(
+                                                  'header' => array(
+                                                                    0 => 'title',
+                                                                    ),
 						  'left' => array(
-								  0 => 'field_ds_disimg',
+								  1 => 'field_ds_disimg',
 								  ),
 						  'right' => array(
-								   1 => 'title',
 								   2 => 'field_ds_dsds_mn',
-								   3 => 'field_ds_dloads',
-								   4 => 'add_this',
-								   5 => 'data_snapshot_permalink',
-								   6 => 'field_ds_dtgen',
+								   3 => 'field_ds_dtgen',
+                                                                   4 => 'body',
 								   ),
 						  'footer' => array(
-								    7 => 'body',
+                                                                    5 => 'group_dss_sliders',
+                                                                    6 => 'add_this',
+                                                                    7 => 'data_snapshot_permalink',
+                                                                    8 => 'field_ds_ptk',
+                                                                    9 => 'field_ds_stk',
+                                                                    10 => 'field_ds_dloads',
+                                                                    11 => 'group_dss_share',
 								    ),
 						  ),
 			       'fields' => array(
+						 'title' => 'header',
 						 'field_ds_disimg' => 'left',
-						 'title' => 'right',
 						 'field_ds_dsds_mn' => 'right',
-						 'field_ds_dloads' => 'right',
-						 'add_this' => 'right',
-						 'data_snapshot_permalink' => 'right',
 						 'field_ds_dtgen' => 'right',
-						 'body' => 'footer',
+						 'body' => 'right',
+                                                 'group_dss_sliders' => 'footer',
+						 'add_this' => 'footer',
+						 'data_snapshot_permalink' => 'footer',
+						 'field_ds_ptk' => 'footer',
+						 'field_ds_stk' => 'footer',
+						 'field_ds_dloads' => 'footer',
+                                                 'group_dss_share' => 'footer',
 						 ),
 			       'classes' => array(),
 			       'wrappers' => array(

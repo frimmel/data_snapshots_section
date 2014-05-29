@@ -1,3 +1,38 @@
+.node-type-data-snapshot #block-system-main {
+    padding: 1em;
+    border-radius: 1em;
+    background: #404952;
+    color: #fff;
+    box-shadow: 0 0 5px #404952;
+}
+
+.group-left img {
+    min-height: 437px;
+}
+
+.group-right {
+    height: 437px;
+    overflow: hidden;
+    background: #dadbdc;
+}
+
+.group-footer {
+    padding-top: 1em;
+}
+
+#node_data_snapshot_full_group_dss_sliders {
+    float: left;
+    width: 602px;
+    padding: 1em;
+    border-radius: 1em;
+    box-sizing: border-box;
+    background: #303841;
+}
+
+/**
+OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
+**/
+
 /* Data Snapshots
  * Copyright 2014 University of North Carolina at Asheville
  * Released under the MIT license
@@ -13,7 +48,7 @@
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
     float: left;
     width: 32%;
-    margin-left: 2%;
+    padding-left: 2%;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
@@ -36,18 +71,7 @@
 
 /******************************************************************/
 
-.dss-interactive-select-lists {
-    float: left;
-    width: 32%;
-    margin-right: 2%;
-}
-
-.dss-interactive-sliders {
-    float: left;
-    width: 66%;
-}
-
-.dss-interactive-component {
+.dss-interactive-sliders .dss-interactive-component {
     position: relative;
     height: 30px;
 }
@@ -145,14 +169,17 @@
 }
 
 .node-type-data-snapshot .field-name-add-this {
-    position: relative;
     float: left;
-    width: 60%;
+    margin-left: 2%;
     margin-right: .5em;
 }
 
+.addthis_toolbox {
+    margin-top: 0 !important;
+}
+
 .node-type-data-snapshot .field-name-data-snapshot-permalink {
-    margin-top: 26px;
+    float: left;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dtgen,

@@ -126,6 +126,71 @@ function data_snapshots_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_dss_share|node|data_snapshot|full';
+  $field_group->group_name = 'group_dss_share';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_snapshot';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sharing',
+    'weight' => '20',
+    'children' => array(
+      0 => 'add_this',
+      1 => 'data_snapshot_permalink',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Share',
+      'instance_settings' => array(
+        'classes' => 'group-dss-share field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_share|node|data_snapshot|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_dss_sliders|node|data_snapshot|full';
+  $field_group->group_name = 'group_dss_sliders';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'data_snapshot';
+  $field_group->mode = 'full';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Sliders',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_ds_ptk',
+      1 => 'field_ds_stk',
+      2 => 'field_ds_dloads',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => '',
+      'instance_settings' => array(
+        'classes' => 'group-dss-sliders field-group-div',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_sliders|node|data_snapshot|full'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_dssds_metadata|node|data_snapshot_data_source|form';
   $field_group->group_name = 'group_dssds_metadata';
   $field_group->entity_type = 'node';

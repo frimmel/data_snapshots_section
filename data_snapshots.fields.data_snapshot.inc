@@ -48,7 +48,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -167,11 +167,11 @@ function data_snapshots_fields_data_snapshot() {
           'weight' => '4',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '20',
+          'weight' => '10',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -243,11 +243,11 @@ function data_snapshots_fields_data_snapshot() {
           'weight' => '3',
         ),
         'full' => array(
-          'label' => 'above',
+          'label' => 'inline',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '21',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -414,7 +414,7 @@ function data_snapshots_fields_data_snapshot() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '6',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -501,7 +501,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_plain',
-          'weight' => '0',
+          'weight' => '11',
         ),
         'nf_category_listing' => array(
           'label' => 'hidden',
@@ -622,7 +622,7 @@ function data_snapshots_fields_data_snapshot() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => '3',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -737,7 +737,7 @@ function data_snapshots_fields_data_snapshot() {
             'view_mode' => 'tiny_teaser',
           ),
           'type' => 'entityreference_entity_view',
-          'weight' => '13',
+          'weight' => '17',
         ),
         'teaser' => array(
           'label' => 'above',

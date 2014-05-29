@@ -13,16 +13,6 @@
 
   <<?php print $header_wrapper ?> class="group-header<?php print $header_classes; ?>">
     <div class="dss-interactive-widget">
-      <div class="dss-interactive-select-lists">
-        <div class="dss-interactive-component">
-          <span class="dss-interactive-theme-label">Theme:&nbsp;</span>
-          <select id="dss-theme-dropdown"></select>
-        </div>
-        <div class="dss-interactive-component">
-          <span class="dss-interactive-source-label">Data Source:&nbsp;</span>
-          <select id="dss-data-source-dropdown"></select>
-        </div>
-      </div>
       <div class="dss-interactive-sliders">
         <div class="dss-interactive-component">
           <span class="dss-interactive-ptk-label dss-interactive-label"></span>
@@ -50,6 +40,7 @@
         </div>
       </div>
     </div>
+    <?php print $header; ?>
   </<?php print $header_wrapper ?>>
 
   <<?php print $left_wrapper ?> class="group-left<?php print $left_classes; ?>">
@@ -57,6 +48,16 @@
   </<?php print $left_wrapper ?>>
 
   <<?php print $right_wrapper ?> class="group-right<?php print $right_classes; ?>">
+      <div class="dss-interactive-select-lists">
+        <div class="dss-interactive-component">
+          <span class="dss-interactive-theme-label">Theme:&nbsp;</span>
+          <select id="dss-theme-dropdown"></select>
+        </div>
+        <div class="dss-interactive-component">
+          <span class="dss-interactive-source-label">Data Source:&nbsp;</span>
+          <select id="dss-data-source-dropdown"></select>
+        </div>
+      </div>
     <?php print $right; ?>
   </<?php print $right_wrapper ?>>
 
