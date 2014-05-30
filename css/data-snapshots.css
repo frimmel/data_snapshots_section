@@ -6,6 +6,59 @@
     box-shadow: 0 0 5px #404952;
 }
 
+.group-header {
+    position: relative;
+}
+
+.field-name-title {
+    display: inline-block;
+}
+
+.field-name-title h2 {
+    padding-bottom: .5em;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: normal;
+}
+
+#dss-tabs-wrapper {
+    width: 34%;
+    background: #dadbdc;
+    height: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+.dss-tab {
+    display: inline-block;
+    width: 102px;
+    vertical-align: bottom;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding: 3px 3px 6px 3px;
+}
+
+#dss-tabs-maps {
+    background: #f58400;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+#dss-tabs-description {
+    background: #555555;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
 .group-left img {
     min-height: 437px;
 }
