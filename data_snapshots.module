@@ -680,13 +680,13 @@ function data_snapshots_run_import() {
       }
     }
   }
-  
+
   ###
   ### Next, we fetch the contents of each URL in the `$ds_feeds` array; each of these is assumed to contain
   ### a list of URLs to be loaded.  We store all the ones that are not already loaded (i.e. not present in
   ### the `$loaded_urls` hash) in the `$urls` array.
   ###
-
+  
   $urls = array();
   foreach ($ds_feeds as $ds_feed) {
     $timeout = 5;
@@ -706,7 +706,7 @@ function data_snapshots_run_import() {
   ###
   ### Now load each url from the `$urls` array:
   ###
-
+  
   if (count($urls) > 0) {
     $dsi_id = db_insert('data_snapshots_imports')
       ->fields(array('time_imported' => time()))
@@ -717,7 +717,7 @@ function data_snapshots_run_import() {
   } else {
     drupal_set_message(t('Nothing new to import'));
   }
-
+  
   drupal_goto('admin/config/data-snapshots/settings');
 }
 
