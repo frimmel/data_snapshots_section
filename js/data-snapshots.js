@@ -497,6 +497,21 @@
         function configPtkSlider() {
             var ptkPopupSelector = "#dss-interactive-slider-ptk-popup";
 
+            $('.field-name-field-ds-ptk > .field-items').jqxSlider({ 
+                theme: 'ui-darkness',
+                min: 0, 
+                max: 10, 
+                ticksFrequency: 1, 
+                value: 0, 
+                step: 1,
+                showButtons: false,
+                ticksPosition: 'bottom',
+                width: 380,
+                showRange: false,
+                mode: 'fixed',
+                tooltip: false
+            });
+
             $('#dss-interactive-slider-ptk-slider').slider({
                 'min' : 0,
                 'max' : ptks.length - 1,
@@ -550,6 +565,21 @@
             var stkPopupSelector = "#dss-interactive-slider-stk-popup";
 
             setDisabledRegions();
+
+            $('.field-name-field-ds-stk > .field-items').jqxSlider({ 
+                theme: 'ui-darkness',
+                min: 0, 
+                max: 11, 
+                ticksFrequency: 1, 
+                value: 0, 
+                step: 1,
+                showButtons: false,
+                ticksPosition: 'top',
+                width: 380,
+                showRange: false,
+                mode: 'fixed',
+                tooltip: false
+            });
 
             $('#dss-interactive-slider-stk-slider').slider({
                 'min' : 0,
