@@ -1,3 +1,90 @@
+.jqx-slider {
+    clear: none !important;
+}
+
+.dss-accordion .ui-accordion .ui-accordion-header {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: .7em;
+    font-size: 14px;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-default {
+    border: 1px solid #666;
+    background: #555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
+    font-weight: bold;
+    color: #eee;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-active {
+    border: 1px solid #24211b;
+    background: #565656;
+    font-weight: bold;
+    color: #fff;
+}
+
+.ui-accordion-content div {
+    border: 1px solid #888;
+    height: 25px;
+    background-color: #888888;
+    color: #fff;
+    padding-left: 30px;
+    padding-top: 0px;
+    display: block;
+    border-bottom: thin solid #666;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.dss-text-wrapper {
+    display: none;
+}
+
+.dss-selector-wrapper {
+    height: 100%;
+    position: relative;
+}
+
+.dss-short-summary-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: #aaa;
+    height: 91px;
+    padding: .5em;
+    box-sizing: border-box;
+}
+
+.dss-short-summary-title {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: oblique;
+    color: #000;
+}
+
+.dss-accordion .ui-accordion .ui-accordion-content {
+    padding: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-top, .dss-accordion .ui-corner-right, .dss-accordion .ui-corner-tr {
+    border-top-right-radius: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-top, .dss-accordion .ui-corner-left, .dss-accordion .ui-corner-tl {
+    border-top-left-radius: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-bottom, .dss-accordion .ui-corner-right, .dss-accordion .ui-corner-br {
+    border-bottom-right-radius: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-bottom, .dss-accordion .ui-corner-left, .dss-accordion .ui-corner-bl {
+    border-bottom-left-radius: 0;
+}
+
 .node-type-data-snapshot #block-system-main {
     padding: 1em;
     border-radius: 1em;
@@ -218,7 +305,7 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 
 /******************************************/
 .node-type-data-snapshot .field-name-field-ds-dloads {
-    width: 100%;
+    float: right;
 }
 
 .node-type-data-snapshot .field-name-add-this {

@@ -168,8 +168,8 @@ function data_snapshots_field_group_info() {
     'label' => 'Sliders',
     'weight' => '5',
     'children' => array(
-      0 => 'field_ds_ptk',
-      1 => 'field_ds_stk',
+      0 => 'field_ds_stk',
+      1 => 'field_ds_ptk',
       2 => 'field_ds_dloads',
     ),
     'format_type' => 'div',

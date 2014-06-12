@@ -23,17 +23,19 @@
   </<?php print $left_wrapper ?>>
 
   <<?php print $right_wrapper ?> class="group-right<?php print $right_classes; ?>">
-      <div class="dss-interactive-select-lists">
-        <div class="dss-interactive-component">
-          <span class="dss-interactive-theme-label">Theme:&nbsp;</span>
-          <select id="dss-theme-dropdown"></select>
-        </div>
-        <div class="dss-interactive-component">
-          <span class="dss-interactive-source-label">Data Source:&nbsp;</span>
-          <select id="dss-data-source-dropdown"></select>
-        </div>
+    <div class="dss-selector-wrapper active">  
+      <div class="dss-menu-wrapper">
+        <div class="dss-spacer"></div>
+        <div class="dss-accordion"></div>
       </div>
-    <?php print $right; ?>
+      <div class="dss-short-summary-wrapper">
+        <div class="dss-short-summary-title">About This Snapshot:</div>
+        <div class="dss-short-summary-text"></div>
+      </div>
+    </div>
+    <div class="dss-text-wrapper">
+      <?php print $right; ?>
+    </div>
   </<?php print $right_wrapper ?>>
 
   <<?php print $footer_wrapper ?> class="group-footer<?php print $footer_classes; ?>">
