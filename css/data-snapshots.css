@@ -1,3 +1,282 @@
+.node-type-data-snapshot .field-name-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #aaa;
+    padding: .5em;
+    box-sizing: border-box;
+    height: 91px;
+    overflow: hidden;
+}
+
+.node-type-data-snapshot .field-name-body.expanded {
+    height: auto;
+    min-height: 93px;
+}
+
+.node-type-data-snapshot .field-name-body .field-label.hidden,
+.node-type-data-snapshot .field-name-body .annotation-toggle-wrapper.hidden {
+    display: none;
+}
+
+.node-type-data-snapshot .field-name-body .field-label,
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.node-type-data-snapshot .field-name-body .field-label {
+    font-weight: bold;
+    font-style: oblique;
+    color: #000;
+}
+
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.node-type-data-snapshot .field-name-body .field-items {
+    min-height: 36px;
+    overflow: hidden;
+}
+
+.node-type-data-snapshot .field-name-body.expanded .field-items {
+    height: auto;
+}
+
+.annotation-toggle-wrapper {
+    text-align: right;
+    color: #000;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.jqx-slider {
+    clear: none !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dss-short-summary-text {
+    font-size: 12px;
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.dss-accordion .ui-accordion .ui-accordion-header {
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: .7em;
+    font-size: 14px;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-default {
+    border: 1px solid #666;
+    background: #555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
+    font-weight: bold;
+    color: #eee;
+}
+
+.ui-accordion .ui-accordion-header.ui-state-active {
+    border: 1px solid #24211b;
+    background: #565656;
+    font-weight: bold;
+    color: #fff;
+}
+
+.field-name-field-ds-stk, .field-name-field-ds-ptk {
+    float: left;
+}
+
+.field-name-field-ds-stk .field-label, .field-name-field-ds-ptk .field-label {
+    width: 40px;
+    text-align: right;
+    color: #fff;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ui-accordion-content div {
+    border: 1px solid #888;
+    height: 25px;
+    background-color: #888888;
+    color: #fff;
+    padding-left: 30px;
+    padding-top: 0px;
+    display: block;
+    border-bottom: thin solid #666;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.dss-interactive-slider-start-label {
+    margin-left: 13px;
+    text-align: right;
+}
+
+.dss-text-wrapper {
+    display: none;
+}
+
+.dss-selector-wrapper {
+    height: 100%;
+    position: relative;
+}
+
+.dss-short-summary-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background: #aaa;
+    height: 91px;
+    padding: .5em;
+    box-sizing: border-box;
+}
+
+.dss-short-summary-title {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    font-style: oblique;
+    color: #000;
+}
+
+.dss-accordion .ui-accordion .ui-accordion-content {
+    padding: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-top, .dss-accordion .ui-corner-right, .dss-accordion .ui-corner-tr {
+    border-top-right-radius: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-top, .dss-accordion .ui-corner-left, .dss-accordion .ui-corner-tl {
+    border-top-left-radius: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-bottom, .dss-accordion .ui-corner-right, .dss-accordion .ui-corner-br {
+    border-bottom-right-radius: 0;
+}
+
+.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-bottom, .dss-accordion .ui-corner-left, .dss-accordion .ui-corner-bl {
+    border-bottom-left-radius: 0;
+}
+
+.node-type-data-snapshot #block-system-main {
+    padding: 1em;
+    border-radius: 1em;
+    background: #404952;
+    color: #fff;
+    box-shadow: 0 0 5px #404952;
+}
+
+.group-header {
+    position: relative;
+}
+
+.field-name-title {
+    display: inline-block;
+}
+
+.field-name-title h2 {
+    padding-bottom: .5em;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    line-height: normal;
+}
+
+#dss-tabs-wrapper {
+    width: 32%;
+    background: #dadbdc;
+    height: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+.dss-tab {
+    display: inline-block;
+    width: 102px;
+    vertical-align: bottom;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding: 3px 3px 6px 3px;
+}
+
+#dss-tabs-maps {
+    background: #f58400;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+#dss-tabs-description {
+    background: #555555;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.group-left {
+    background-color: #fff;
+    min-height: 464px;
+}
+
+.field-name-field-ds-disimg {
+    height: 464px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.field-name-field-ds-dsds-evergreen .field_dssds_framing_question, .field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
+    font-size: 12px;
+    color: #1a1a1a;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    line-height: 14px;
+}
+
+.field_dssds_framing_q_answer p, .field_dssds_secondary_q_answ p {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1A1A1A;
+}
+
+.group-right {
+    height: 464px;
+    overflow: hidden;
+    background: #dadbdc;
+    position: relative;
+}
+
+.group-footer {
+    padding-top: 1em;
+}
+
+#node_data_snapshot_full_group_dss_sliders {
+    float: left;
+    width: 68%;
+    padding: 1em 1em .5em;
+    border-radius: 1em;
+    box-sizing: border-box;
+    background: #303841;
+}
+
+/**
+OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
+**/
+
 /* Data Snapshots
  * Copyright 2014 University of North Carolina at Asheville
  * Released under the MIT license
@@ -7,16 +286,17 @@
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
-    width: 66%;
+    width: 68%;
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
     float: left;
     width: 32%;
-    margin-left: 2%;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
+    padding-left: 1em;
+    padding-right: 1em;
     padding-bottom: 1.4em;
 }
 
@@ -28,6 +308,10 @@
     float: right;
 }
 
+.node-type-data-snapshot #region-content .field-name-field-ds-dloads button {
+    font-size: 12px;
+}
+
 .node-type-data-snapshot #region-content .field-name-field-ds-dloads li {
     list-style: none;
     margin-left: 0;
@@ -36,18 +320,7 @@
 
 /******************************************************************/
 
-.dss-interactive-select-lists {
-    float: left;
-    width: 32%;
-    margin-right: 2%;
-}
-
-.dss-interactive-sliders {
-    float: left;
-    width: 66%;
-}
-
-.dss-interactive-component {
+.dss-interactive-sliders .dss-interactive-component {
     position: relative;
     height: 30px;
 }
@@ -70,17 +343,9 @@
 }
 
 .dss-interactive-slider-label {
-    position: absolute;
-    font-size: .7em;
-    bottom: 0;
-}
-
-.dss-interactive-slider-start-label {
-    left: 0;
-}
-
-.dss-interactive-slider-end-label {
-    right: 0;
+    float: left;
+    font-size: 9px;
+    width: 20px;
 }
 
 .dss-interactive-slider-region-disabled {
@@ -141,18 +406,21 @@
 
 /******************************************/
 .node-type-data-snapshot .field-name-field-ds-dloads {
-    width: 100%;
+    float: right;
 }
 
 .node-type-data-snapshot .field-name-add-this {
-    position: relative;
     float: left;
-    width: 60%;
+    margin-left: 2%;
     margin-right: .5em;
 }
 
+.addthis_toolbox {
+    margin-top: 0 !important;
+}
+
 .node-type-data-snapshot .field-name-data-snapshot-permalink {
-    margin-top: 26px;
+    float: left;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dtgen,
@@ -247,7 +515,7 @@
 }
 .node-type-data-snapshot .field-name-field-ds-dloads .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 3px 6px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;

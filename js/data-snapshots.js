@@ -82,6 +82,7 @@
     }
 
     function setUrl(dsmn, ptk, stk, theme) {
+        console.log("DOG");
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
         if (window.history && window.history.replaceState) {
@@ -93,7 +94,7 @@
     function setImg(dsmn, ptk, stk) {
         $('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn, ptk, stk));
 
-        setUrl(dsmn, ptk, stk, $("#dss-theme-dropdown").val());
+        setUrl(dsmn, ptk, stk, $(".dss-accordion .ui-accordion-header-active").attr("value"));
     }
 
     function setTitle(html) {
@@ -101,8 +102,38 @@
         document.title = html;
     }
 
+    function showAnnotation() {
+        $(".field-name-body").addClass("expanded");
+        $(".annotation-toggle").text("read less -");
+        showAnnotationLabels();
+    }
+
+    function showAnnotationLabels() {
+        if ($(".field-name-body .field-items").text().trim() !== "") {
+            $(".field-name-body .field-label").removeClass("hidden");
+            $(".field-name-body .annotation-toggle-wrapper").removeClass("hidden");
+        }
+    }
+
+    function hideAnnotation() {
+        $(".field-name-body").removeClass("expanded");
+        $(".annotation-toggle").text("read more +");
+        hideAnnotationLabels();
+    }
+
+    function hideAnnotationLabels() {
+        if ($(".field-name-body .field-items").text().trim() === "") {
+            $(".field-name-body .field-label").addClass("hidden");
+            $(".field-name-body .annotation-toggle-wrapper").addClass("hidden");
+        }
+    }
+
     function setAnnotation(html) {
-        $(".group-footer").html(html);
+        console.log("HEY")
+        console.log(html);
+        $(".field-name-body .field-items").html(html ? $(html).children(".field-items").html() : "");
+        html ? showAnnotationLabels() : hideAnnotationLabels();
+        //        $(".group-footer").html(html);
     }
 
     function setDownloads(html) {
@@ -180,11 +211,12 @@
             dsmn = getDsmn(),
             themes = dataSnapshots.themes,
             dataSources = dataSnapshots.data_sources,
-            $themeDropdown = $("#dss-theme-dropdown"),
-            $dataSourceDropdown = $("#dss-data-source-dropdown"),
+            $accordion = $("<div></div>"),
+            $datasourceWrapper,
+            //            $dataSourceDropdown = $("#dss-data-source-dropdown"),
             initTheme = dataSnapshots.init_theme,
             foundTheme = false,
-            theme, i;
+            theme, i, j;
 
         if (initTheme && themes.indexOf(initTheme) !== -1 && dataSources[initTheme].length > 0) {
             for (i = 0; i < dataSources[initTheme].length; i++) {
@@ -199,29 +231,29 @@
             if (dataSources[theme].length === 0) {
                 continue;
             }
-            $themeDropdown.append($("<option>", { value: theme })
-                                   .text(theme));
+            $accordion.append($("<h3/>", { value: theme }).text(theme));
 
-            if (!foundTheme) {
-                var j;
+            $datasourceWrapper = $("<div></div>");
+            for (j = 0; j < dataSources[theme].length; j++) {
+                $datasourceWrapper.append($("<div/>", { value: dataSources[theme][j].mname })
+                                  .addClass("dss-data-source-dropdown")
+                                  .text(dataSources[theme][j].oname));
 
-                for (j = 0; j < dataSources[theme].length; j++) {
+                if (!foundTheme) {
                     if (dataSources[theme][j].mname === dsmn) {
                         initTheme = theme;
                         foundTheme = true;
                     }
                 }
             }
+            $accordion.append($datasourceWrapper);
         }
 
+        $accordion.accordion({ heightStyle : "content" });
 
-        for (i = 0; i < dataSources[initTheme].length; i++) {
-            $dataSourceDropdown.append($("<option>", { value: dataSources[initTheme][i].mname })
-                                         .text(dataSources[initTheme][i].oname));
-        }
-
-        $themeDropdown.val(initTheme);
-        $dataSourceDropdown.val(dsmn);
+        $(".dss-accordion").append($accordion);
+        //        $themeDropdown.val(initTheme);
+        //        $dataSourceDropdown.val(dsmn);
     }
 
     function determineStkDisabled() {
@@ -300,6 +332,33 @@
     }
 
     $('document').ready(function() {
+        hideAnnotation();
+
+        $("#dss-tabs-maps").click(function () {
+            $(".dss-selector-wrapper").show();
+            $(".dss-text-wrapper").hide();
+            $("#dss-tabs-maps").css("background", "#f58400");
+            $("#dss-tabs-description").css("background", "#555555");
+        });
+
+        $("#dss-tabs-description").click(function () {
+            $(".dss-selector-wrapper").hide();
+            $(".dss-text-wrapper").show();
+            $("#dss-tabs-maps").css("background", "#555555");
+            $("#dss-tabs-description").css("background", "#f58400");
+            hideAnnotation();
+        });
+
+        $(".annotation-toggle").click(function () {
+            if ($(".field-name-body").hasClass("expanded")) {
+                hideAnnotation();
+            } else {
+                showAnnotation();
+            }
+        });
+
+        $(".dss-short-summary-text").text($(".field_dssds_framing_q_answer").text().split(".")[0] + ".")
+
         var snapshots = getPropertiesObject().snapshots,
             dsmn = getDsmn(),
             ptks = getPtks(),
@@ -320,19 +379,21 @@
 
         configPtkSlider();
         configStkSlider();
+        bindPtkEvents();
+        bindStkEvents();
 
         initDropdowns();
         dataSourceStkChange();
-        $('#dss-data-source-dropdown').change(dataSourceDropdownChange);
+        $(".dss-data-source-dropdown").click(dataSourceDropdownChange);
         $('#dss-theme-dropdown').change(themeDropdownChange);
         setSliderNames(getFrequency(dsmn));
 
         function hideElements() {
-            $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
+            //            $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
         }
 
         function showElements() {
-            $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
+            //            $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
         }
 
         function replaceTickmarks() {
@@ -438,8 +499,8 @@
                         stkEnd : "Dec"
                     },
                     Custom : {
-                        ptk : "Date:",
-                        stk : "",
+                        ptk : "",
+                        stk : "Date:",
                         stkStart : getStkMin,
                         stkEnd : getStkMax
                     },
@@ -448,8 +509,8 @@
                 stkStart = label.stkStart,
                 stkEnd = label.stkEnd;
 
-            $(".dss-interactive-ptk-label").text(label.ptk);
-            $(".dss-interactive-stk-label").text(label.stk);
+            $(".field-name-field-ds-ptk > .field-label").text(label.ptk);
+            $(".field-name-field-ds-stk > .field-label").text(label.stk);
             $("#dss-interactive-slider-stk-start-label").text((typeof(stkStart) === "string") ? stkStart : stkStart());
             $("#dss-interactive-slider-stk-end-label").text((typeof(stkEnd) === "string") ? stkEnd : stkEnd());
             $("#dss-interactive-slider-ptk-start-label").text(ptks[0]);
@@ -494,99 +555,171 @@
             }
         }
 
+        function ptkSlideHandler(event) {
+            var ptk, stk,
+                popupText;
+
+            currentPtkIndex = event.args.value;
+
+            ptk = ptks[currentPtkIndex];
+            stks = getStks(ptk);
+
+            if (currentStkIndex >= stks.length || stks[currentStkIndex] === null) {
+                stk = stks[findValidStkIndex()];
+            } else {
+                stk = stks[currentStkIndex];
+            }
+
+            setImg(dsmn, ptk, stk);
+            //            setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
+            configStkSlider();
+        }
+
+        function ptkSlideStartHandler(event) {
+            unbindStkEvents();
+            dismissPermalink();
+            //            setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, ui.value);
+            //            $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
+            //            hideElements();
+        }
+
+        function ptkSlideEndHandler(event) {
+            bindStkEvents();
+            //            $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
+            currentStkIndex = findValidStkIndex();
+            if (determineStkDisabled() === false) {
+                switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
+            } else {
+                switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
+            }
+            //            showElements();
+        };
+
+        function bindPtkEvents() {
+            $('.field-name-field-ds-ptk > .field-items')
+                .bind('slide', ptkSlideHandler)
+                .bind('slideStart', ptkSlideStartHandler)
+                .bind('slideEnd', ptkSlideEndHandler);
+
+            /*
+              $('.field-name-field-ds-ptk > .field-items').bind('change', function(event) {
+                currentPtkIndex = event.args.value;
+                stks = getStks(ptks[currentPtkIndex]);
+                setImg(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
+                configStkSlider();
+                })
+            */
+        }
+
+        function unbindPtkEvents() {
+            $('.field-name-field-ds-ptk > .field-items')
+                .unbind('slide', ptkSlideHandler)
+                .unbind('slideStart', ptkSlideStartHandler)
+                .unbind('slideEnd', ptkSlideEndHandler);
+        }
+
         function configPtkSlider() {
             var ptkPopupSelector = "#dss-interactive-slider-ptk-popup";
 
+            $('.field-name-field-ds-ptk > .field-items').jqxSlider({ 
+                theme: 'ui-darkness',
+                min: 0,
+                max: ptks.length - 1,
+                ticksFrequency: 1,
+                value: currentPtkIndex,
+                step: 1,
+                showButtons: false,
+                ticksPosition: 'bottom',
+                width: 380,
+                height: 17,
+                showRange: false,
+                mode: 'fixed',
+                tooltip: false
+                        });
+
+            /*
             $('#dss-interactive-slider-ptk-slider').slider({
                 'min' : 0,
                 'max' : ptks.length - 1,
                 'value' : currentPtkIndex,
-                'change' : function(event, ui) {
-                    currentPtkIndex = ui.value;
-                    stks = getStks(ptks[currentPtkIndex]);
-                    setImg(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-                    configStkSlider();
-                },
-                'slide' : function(event, ui) {
-                    var ptk, stk,
-                        popupText;
-
-                    currentPtkIndex = ui.value;
-
-                    ptk = ptks[currentPtkIndex];
-                    stks = getStks(ptk);
-
-                    if (currentStkIndex >= stks.length || stks[currentStkIndex] === null) {
-                        stk = stks[findValidStkIndex()];
-                    } else {
-                        stk = stks[currentStkIndex];
-                    }
-
-                    setImg(dsmn, ptk, stk);
-                    setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
-                    configStkSlider();
-                },
-                'start' : function(event, ui) {
-                    dismissPermalink();
-                    setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, ui.value);
-                    $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
-                    hideElements();
-                },
-                'stop' : function(event, ui) {
-                    $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
-                    currentStkIndex = findValidStkIndex();
-                    if (determineStkDisabled() === false) {
-                        switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-                    } else {
-                        switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
-                    }
-                    showElements();
-                }
             });
             replaceTickmarks();
+            */
         };
+
+        function stkSlideHandler(event) {
+            var newStkIndex = event.args.value;
+            if (stks[newStkIndex] === null) {
+                return false;
+            }
+            var ptk, stk;
+            currentStkIndex = event.args.value;
+
+            ptk = ptks[currentPtkIndex];
+            stk = stks[currentStkIndex];
+
+            setImg(dsmn, ptk, stk);
+            //                    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
+        }
+
+        function stkSlideStartHandler(event) {
+            dismissPermalink();
+            //                    setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, event.args.value);
+            //                    $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
+            //                    hideElements();
+        }
+
+        function stkSlideEndHandler(event) {
+            //            $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
+            switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
+            //            showElements();
+        }
+
+        function bindStkEvents() {
+            $('.field-name-field-ds-stk > .field-items').bind('slide', stkSlideHandler)
+                .bind('slideStart', stkSlideStartHandler)
+                .bind('slideEnd', stkSlideEndHandler);
+        }
+
+        function unbindStkEvents() {
+            $('.field-name-field-ds-stk > .field-items').unbind('slide', stkSlideHandler)
+                .unbind('slideStart', stkSlideStartHandler)
+                .unbind('slideEnd', stkSlideEndHandler);
+        }
 
         function configStkSlider() {
             var stkPopupSelector = "#dss-interactive-slider-stk-popup";
+            //            setDisabledRegions();
 
-            setDisabledRegions();
+            $('.field-name-field-ds-stk > .field-items').jqxSlider({ 
+                theme: 'ui-darkness',
+                min: 0,
+                max: stks.length - 1,
+                ticksFrequency: 1,
+                value: findValidStkIndex(),
+                step: 1,
+                showButtons: false,
+                ticksPosition: 'top',
+                width: 380,
+                height: 17,
+                showRange: false,
+                mode: 'fixed',
+                tooltip: false
+            });
 
+            /*
             $('#dss-interactive-slider-stk-slider').slider({
                 'min' : 0,
                 'max' : stks.length - 1,
-                'value' : findValidStkIndex(),
-                'slide' : function(event, ui) {
-                    var newStkIndex = ui.value;
-                    if (stks[newStkIndex] === null) {
-                        return false;
-                    }
-                    var ptk, stk;
-                    currentStkIndex = ui.value;
-
-                    ptk = ptks[currentPtkIndex];
-                    stk = stks[currentStkIndex];
-
-                    setImg(dsmn, ptk, stk);
-                    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
-                },
-                'start' : function(event, ui) {
-                    dismissPermalink();
-                    setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, ui.value);
-                    $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
-                    hideElements();
-                },
-                'stop' : function(event, ui) {
-                    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
-                    switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-                    showElements();
-                }           
+                'value' : findValidStkIndex()
             });
 
             replaceTickmarks();
+            */
         }
 
         function dataSourceStkChange() {
-            $('#dss-interactive-slider-stk-slider').slider("option", "disabled", determineStkDisabled());
+            //            $('#dss-interactive-slider-stk-slider').slider("option", "disabled", determineStkDisabled());
         }
 
         function themeDropdownChange() {
@@ -621,7 +754,9 @@
         }
 
         function dataSourceDropdownChange() {
-            setDataSource($(this).val());
+            unbindPtkEvents();
+            unbindStkEvents();
+            setDataSource($(this).attr("value"));
             dismissPermalink();
         }
 
@@ -651,6 +786,9 @@
             switchDataSnapshotContent(dsmn, ptk, stk);
             dataSourceStkChange();
             setSliderNames(getFrequency(dsmn));
+            $(".dss-short-summary-text").text($(".field_dssds_framing_q_answer").text().split(".")[0] + ".");
+            bindPtkEvents();
+            bindStkEvents();
         }
 
         function setDataSource(newDsmn) {

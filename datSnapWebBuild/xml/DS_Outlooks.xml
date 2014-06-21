@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+	<Items>
+   		<entry>
+            		<title>Temperature Outlook</title>
+			<questOne><![CDATA[<font size="2"><b><i>What temperature conditions are most likely next month?</i></b></font><p>Shaded areas show where average temperatures are likely to be warmer or cooler than usual. The darker the shading, the higher the chance for the indicated condition. White areas have equal chances for average temperatures that are below, near, or above the long-term average for the month.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>What data do experts use to develop these forecasts?</i></b></font><p>Climate scientists base future climate outlooks on current patterns in the ocean and atmosphere. They examine projections from climate and weather models and consider recent trends. They also check historical records to see what temperature conditions resulted from similar patterns in the past.</p>]]></questTwo>
+			<aboutSnap>Shaded areas show where average temperatures are likely to be warmer or cooler than usual.</aboutSnap>
+            		<imgURL>media/testMaps/tempoutlook-monthly460.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+   		<entry>
+            		<title>Precipitation Outlook</title>
+			<questOne><![CDATA[<font size="2"><b><i>Is total precipitation likely to be below, near, or above average?</i></b></font><p>Colors show where total precipitation is likely to be higher or lower than usual during the next month. The darker the shading, the higher the chance for the indicated condition. White areas have equal chances for precipitation totals that are below, near, or above the long-term average for the month.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>How do experts develop these forecasts?</i></b></font><p>Climate scientists base future climate outlooks on current patterns in the ocean and atmosphere. They examine projections from climate and weather models and consider recent trends. They also check historical records to see how much precipitation fell when patterns were similar in the past.</p>]]></questTwo>
+			<aboutSnap>Colors show where total precipitation is likely to be higher or lower than usual during the next month.</aboutSnap>
+            		<imgURL>media/testMaps/precipoutlook-monthly460.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+		<entry>
+            		<title>Drought Outlook</title>
+			<questOne><![CDATA[<font size="2"><b><i>How are conditions related to drought likely to change?</i></b></font><p>Colors show experts' estimates of how conditions related to drought are likely to change in the next month. Areas where experts expect below-average precipitation or above-average temperatures (which increases evaporation) may see drought develop, persist, or worsen. Areas with forecasts for above-average precipitation or below-average temperature may see drought conditions improve or end.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>What information do experts use to produce drought outlooks?</i></b></font><p>Starting with knowledge of current drought status, experts examine weather forecasts and climate outlooks to estimate how much precipitation will fall and what temperatures will be over the next month. The experts consider seasonal patterns of precipitation (for example, if a region usually has a wet summer), and compare that information with forecasts to judge if conditions are likely to become drier or wetter.</p>]]></questTwo>
+			<aboutSnap>Colors show experts' estimates of how conditions related to drought are likely to change in the next month.</aboutSnap>
+            		<imgURL>media/testMaps/droughtoutlook-monthly460.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+ 	</Items>

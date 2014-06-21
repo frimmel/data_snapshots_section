@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+
+	<Items>
+   		<entry>
+            		<title>Average Temperature</title>
+			<questOne><![CDATA[<font size="2"><b><i>What was the average monthly temperature?</i></b></font><p>Colors show the average monthly temperature for each of the 344 climate divisions of the contiguous United States. White and very light areas had average temperatures near 50°F. The darker the shade of blue, the cooler the temperature. The darker the shade of orange or red, the warmer the temperature.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>Where do these measurements come from?</i></b></font><p>Temperature readings come from  weather stations in the Global Historical Climate Network. Scientists collect the highest and lowest temperature of the day from each station. After they check the data quality, they calculate the station’s monthly average temperature and plot it on a gridded map. To fill gaps in the grid, they apply a mathematical filter that accounts for the distribution of stations and the terrain. The monthly average temperature for each climate division is the average of all grid point values that fall within it.</p>]]></questTwo>
+			<aboutSnap>Colors show the average monthly temperature for each of the 344 climate divisions of the contiguous United States.</aboutSnap>
+            		<imgURL>media/testMaps/01.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+   		<entry>
+            		<title>Difference from Average - Monthly</title>
+			<questOne><![CDATA[<font size="2"><b><i>Where was the monthly temperature warmer or cooler than usual?</i></b></font><p>Colors show how average monthly temperatures compare to their long-term average. Blue areas were cooler than usual; red areas were warmer than usual. The darker the color, the larger the difference from the average temperature.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>Where do these measurements come from?</i></b></font><p>Temperature readings come from weather stations in the Global Historical Climate Network. To calculate temperature anomalies (also known as difference-from-average temperatures), climate scientists calculate the monthly average at each station, and subtract it from its 1981-2010 average for the same month. To fill blank spots and smooth colors across the map, visualizers apply a mathematical filter to the results. Final maps are estimates of how each month's temperature compared to usual.</p>]]></questTwo>
+			<aboutSnap>Colors show how average monthly temperatures compare to their long-term average</aboutSnap>
+            		<imgURL>media/testMaps/tempanomaly-monthly365.png</imgURL>
+			<mapType>Global</mapType>
+   		</entry>
+		<entry>
+            		<title>Difference from Average - Yearly</title>
+			<questOne><![CDATA[<font size="2"><b><i>Where was the annual temperature warmer or cooler than usual?</i></b></font><p>Colors show how average yearly temperatures compare to their long-term average.  Blue areas were cooler than usual; red areas were warmer than usual. The darker the color, the larger the difference from the average temperature.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>Where do these measurements come from?</i></b></font><p>Temperature readings come from weather stations in the Global Historical Climate Network. To calculate temperature anomalies (also known as difference-from-average temperatures), climate scientists calculate the yearly average at each station, and subtract it from the annual average from 1981-2010. To fill blank spots and smooth colors across the map, visualizers apply a mathematical filter to the results. Final maps are estimates of how each month's temperature compared to usual.</p>]]></questTwo>
+			<aboutSnap>Colors show how average yearly temperatures compare to their long-term average.</aboutSnap>
+            		<imgURL>media/testMaps/tempanomaly-annual365.png</imgURL>
+			<mapType>Global</mapType>
+   		</entry>
+		<entry>
+            		<title>Temperature Outlook</title>
+			<questOne><![CDATA[<font size="2"><b><i>What temperature conditions are most likely next month?</i></b></font><p>Shaded areas show where average temperatures are likely to be warmer or cooler than usual. The darker the shading, the higher the chance for the indicated condition. White areas have equal chances for average temperatures that are below, near, or above the long-term average for the month.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>What data do experts use to develop these forecasts?</i></b></font><p>Climate scientists base future climate outlooks on current patterns in the ocean and atmosphere. They examine projections from climate and weather models and consider recent trends. They also check historical records to see what temperature conditions resulted from similar patterns in the past.</p>]]></questTwo>
+			<aboutSnap>Shaded areas show where average temperatures are likely to be warmer or cooler than usual.</aboutSnap>
+            		<imgURL>media/testMaps/tempoutlook-monthly460.png</imgURL>
+			<mapType>CONUS</mapType>
+   		</entry>
+		<entry>
+            		<title>Sea Surface Temperature</title>
+			<questOne><![CDATA[<font size="2"><b><i>What's the temperature at the ocean's surface?</i></b></font><p>Colors show water temperature right at the surface of the ocean. The darkest blue shows the coldest water: floating sea ice is usually present in these areas. Lighter shades of blue show temperatures of up to 80°F.  White and orange areas show where surface temperatures are warm enough to fuel tropical cyclones or hurricanes.</p>]]></questOne>
+			<questTwo><![CDATA[<font size="2"><b><i>Where do these measurements come from?</i></b></font><p>Satellite instruments measure sea surface temperature by checking how much energy comes off the ocean at different wavelengths. Scientists also plot sea surface temperatures from ships and buoys over these data, and compare them to maps of sea ice. To produce the final map, scientists apply a mathematical filter that merges and smooths data from all three sources.</p>]]></questTwo>
+			<aboutSnap>Colors show water temperature right at the surface of the ocean.</aboutSnap>
+            		<imgURL>media/testMaps/oisst-daily365.png</imgURL>
+			<mapType>Global</mapType>
+   		</entry>
+
+ 	</Items>
+
