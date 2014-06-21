@@ -145,6 +145,15 @@ function data_snapshots_theme($existing, $type, $theme, $path) {
     'field__field_ds_dsds_mn__data_snapshot' => array(
       'template' => 'templates/field--field_ds_dsds_mn--data-snapshot',
     ),
+    'field__field_ds_stk__data_snapshot' => array(
+      'template' => 'templates/field--field_ds_stk--data-snapshot',
+    ),
+    'field__field_ds_ptk__data_snapshot' => array(
+      'template' => 'templates/field--field_ds_ptk--data-snapshot',
+    ),
+    'field__body__data_snapshot' => array(
+      'template' => 'templates/field--body--data-snapshot',
+    ),
   );
 }
 

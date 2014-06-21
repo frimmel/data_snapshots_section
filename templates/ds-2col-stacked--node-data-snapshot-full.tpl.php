@@ -39,6 +39,7 @@
   </<?php print $right_wrapper ?>>
 
   <<?php print $footer_wrapper ?> class="group-footer<?php print $footer_classes; ?>">
+<!--
     <div class="dss-interactive-widget">
       <div class="dss-interactive-sliders">
         <div class="dss-interactive-component">
@@ -67,6 +68,7 @@
         </div>
       </div>
     </div>
+-->
     <?php print $footer; ?>
   </<?php print $footer_wrapper ?>>
 

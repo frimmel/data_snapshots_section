@@ -1,5 +1,69 @@
+.node-type-data-snapshot .field-name-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #aaa;
+    padding: .5em;
+    box-sizing: border-box;
+    height: 91px;
+    overflow: hidden;
+}
+
+.node-type-data-snapshot .field-name-body.expanded {
+    height: auto;
+    min-height: 93px;
+}
+
+.node-type-data-snapshot .field-name-body .field-label.hidden,
+.node-type-data-snapshot .field-name-body .annotation-toggle-wrapper.hidden {
+    display: none;
+}
+
+.node-type-data-snapshot .field-name-body .field-label,
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.node-type-data-snapshot .field-name-body .field-label {
+    font-weight: bold;
+    font-style: oblique;
+    color: #000;
+}
+
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.node-type-data-snapshot .field-name-body .field-items {
+    min-height: 36px;
+    overflow: hidden;
+}
+
+.node-type-data-snapshot .field-name-body.expanded .field-items {
+    height: auto;
+}
+
+.annotation-toggle-wrapper {
+    text-align: right;
+    color: #000;
+    font-size: 12px;
+    cursor: pointer;
+}
+
 .jqx-slider {
     clear: none !important;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.dss-short-summary-text {
+    font-size: 12px;
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
 }
 
 .dss-accordion .ui-accordion .ui-accordion-header {
@@ -23,6 +87,19 @@
     color: #fff;
 }
 
+.field-name-field-ds-stk, .field-name-field-ds-ptk {
+    float: left;
+}
+
+.field-name-field-ds-stk .field-label, .field-name-field-ds-ptk .field-label {
+    width: 40px;
+    text-align: right;
+    color: #fff;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .ui-accordion-content div {
     border: 1px solid #888;
     height: 25px;
@@ -36,6 +113,11 @@
     font-weight: bold;
     line-height: 20px;
     cursor: pointer;
+}
+
+.dss-interactive-slider-start-label {
+    margin-left: 13px;
+    text-align: right;
 }
 
 .dss-text-wrapper {
@@ -109,7 +191,7 @@
 }
 
 #dss-tabs-wrapper {
-    width: 34%;
+    width: 32%;
     background: #dadbdc;
     height: 100%;
     display: inline-block;
@@ -146,14 +228,36 @@
     border-top-right-radius: 6px;
 }
 
-.group-left img {
-    min-height: 437px;
+.group-left {
+    background-color: #fff;
+    min-height: 464px;
+}
+
+.field-name-field-ds-disimg {
+    height: 464px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.field-name-field-ds-dsds-evergreen .field_dssds_framing_question, .field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
+    font-size: 12px;
+    color: #1a1a1a;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    line-height: 14px;
+}
+
+.field_dssds_framing_q_answer p, .field_dssds_secondary_q_answ p {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1A1A1A;
 }
 
 .group-right {
-    height: 437px;
+    height: 464px;
     overflow: hidden;
     background: #dadbdc;
+    position: relative;
 }
 
 .group-footer {
@@ -162,8 +266,8 @@
 
 #node_data_snapshot_full_group_dss_sliders {
     float: left;
-    width: 602px;
-    padding: 1em;
+    width: 68%;
+    padding: 1em 1em .5em;
     border-radius: 1em;
     box-sizing: border-box;
     background: #303841;
@@ -182,16 +286,17 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
-    width: 66%;
+    width: 68%;
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
     float: left;
     width: 32%;
-    padding-left: 2%;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
+    padding-left: 1em;
+    padding-right: 1em;
     padding-bottom: 1.4em;
 }
 
@@ -201,6 +306,10 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 
 .node-type-data-snapshot .dss-question-read-more {
     float: right;
+}
+
+.node-type-data-snapshot #region-content .field-name-field-ds-dloads button {
+    font-size: 12px;
 }
 
 .node-type-data-snapshot #region-content .field-name-field-ds-dloads li {
@@ -234,17 +343,9 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 }
 
 .dss-interactive-slider-label {
-    position: absolute;
-    font-size: .7em;
-    bottom: 0;
-}
-
-.dss-interactive-slider-start-label {
-    left: 0;
-}
-
-.dss-interactive-slider-end-label {
-    right: 0;
+    float: left;
+    font-size: 9px;
+    width: 20px;
 }
 
 .dss-interactive-slider-region-disabled {
@@ -414,7 +515,7 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 }
 .node-type-data-snapshot .field-name-field-ds-dloads .btn {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 3px 6px;
   margin-bottom: 0;
   font-size: 14px;
   font-weight: normal;
