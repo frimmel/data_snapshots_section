@@ -12,9 +12,10 @@
   <?php endif; ?>
 
   <<?php print $header_wrapper ?> class="group-header<?php print $header_classes; ?>">
-    <?php print $header; ?>
+				<?php /* print $header; */ ?>
+    <h2 style="display:inline-block; margin-bottom: .25em;">Data Snapshots</h2>
     <div id="dss-tabs-wrapper">
-      <div id="dss-tabs-maps" class="dss-tab">Maps</div><div id="dss-tabs-description" class="dss-tab">Description</div>
+      <div id="dss-tabs-maps" class="dss-tab active">Maps</div><div id="dss-tabs-description" class="dss-tab">Description</div>
     </div>
   </<?php print $header_wrapper ?>>
 

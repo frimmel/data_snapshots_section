@@ -261,7 +261,7 @@
     }
 
     function formatEvergreenText(text) {
-        var textLength = 500,
+        var textLength = 450,
             textLengthEllipsis = textLength + 3;
 
         // strip all tags
@@ -335,17 +335,17 @@
         hideAnnotation();
 
         $("#dss-tabs-maps").click(function () {
+	    $(this).addClass("active");
             $(".dss-selector-wrapper").show();
             $(".dss-text-wrapper").hide();
-            $("#dss-tabs-maps").css("background", "#f58400");
-            $("#dss-tabs-description").css("background", "#555555");
+            $("#dss-tabs-description").removeClass("active");
         });
 
         $("#dss-tabs-description").click(function () {
+	    $(this).addClass("active");
             $(".dss-selector-wrapper").hide();
             $(".dss-text-wrapper").show();
-            $("#dss-tabs-maps").css("background", "#555555");
-            $("#dss-tabs-description").css("background", "#f58400");
+            $("#dss-tabs-maps").removeClass("active");
             hideAnnotation();
         });
 
@@ -367,6 +367,7 @@
             currentStkIndex = stks.indexOf(snapshots.init_stk),
             currentPermalink = $(".field-name-data-snapshot-permalink .field-items .field-item").text();
 
+
         // clear out the permalink field value
         $(".field-name-data-snapshot-permalink .field-items .field-item").text("");
         // change the "Permalink:" label to just "Permalink" (without the colon)
@@ -387,6 +388,8 @@
         $(".dss-data-source-dropdown").click(dataSourceDropdownChange);
         $('#dss-theme-dropdown').change(themeDropdownChange);
         setSliderNames(getFrequency(dsmn));
+
+	$("div[value=" + dsmn + "]").addClass("active");
 
         function hideElements() {
             //            $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
@@ -754,10 +757,12 @@
         }
 
         function dataSourceDropdownChange() {
+	    $(".dss-data-source-dropdown.active").removeClass("active");
             unbindPtkEvents();
             unbindStkEvents();
             setDataSource($(this).attr("value"));
             dismissPermalink();
+	    $(this).addClass("active");
         }
 
         function setDataSourceSuccessHandler(result) {

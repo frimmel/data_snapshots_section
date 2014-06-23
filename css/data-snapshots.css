@@ -1,3 +1,7 @@
+#zone-postscript-wrapper {
+    margin-top: 20px !important;
+}
+
 .node-type-data-snapshot .field-name-body {
     position: absolute;
     bottom: 0;
@@ -115,6 +119,10 @@
     cursor: pointer;
 }
 
+.ui-accordion-content div.active {
+    background-color: #aaa;
+}
+
 .dss-interactive-slider-start-label {
     margin-left: 13px;
     text-align: right;
@@ -197,7 +205,7 @@
     display: inline-block;
     vertical-align: bottom;
     position: absolute;
-    right: 0;
+    right: 1px;
     text-align: center;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
@@ -214,18 +222,25 @@
     font-weight: 800;
     text-align: center;
     padding: 3px 3px 6px 3px;
+    cursor: pointer;
 }
 
 #dss-tabs-maps {
-    background: #f58400;
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
 }
 
 #dss-tabs-description {
-    background: #555555;
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
+}
+
+.dss-tab {
+    background: #555555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
+}
+
+.dss-tab.active {
+    background: #f58400 url(images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
 }
 
 .group-left {
@@ -295,9 +310,10 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 }
 
 .node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
+    max-height: 373px;
+    overflow: auto;
     padding-left: 1em;
     padding-right: 1em;
-    padding-bottom: 1.4em;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dsds-evergreen p {
@@ -346,6 +362,7 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
     float: left;
     font-size: 9px;
     width: 20px;
+    white-space: nowrap;
 }
 
 .dss-interactive-slider-region-disabled {
