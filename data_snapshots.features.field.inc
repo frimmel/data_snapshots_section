@@ -100,7 +100,7 @@ function data_snapshots_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dssds_catalog_url',
-      'label' => 'Dataset Catalog Record URL',
+      'label' => 'Source Dataset Information',
       'required' => 1,
       'settings' => array(
         'attributes' => array(
@@ -2662,7 +2662,7 @@ function data_snapshots_field_default_fields() {
   t('Access to Source Data');
   t('Data Format Description');
   t('Data Provider');
-  t('Dataset Catalog Record URL');
+  t('Source Dataset Information');
   t('Description Author');
   t('First and last name of subject matter expert reviewer.');
   t('Formal name for noaa data product.');
