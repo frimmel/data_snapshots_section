@@ -18,12 +18,12 @@
  *
  * @ingroup views_templates
  */
-$query = db_select('field_data_field_dssds_operational_data_pro', 'ona');
+$query = db_select('field_data_field_dssds_noaa_data_product', 'ona');
 $query->join('field_data_field_dssds_machine_name', 'mna', '(ona.entity_id = mna.entity_id)');
-$query->fields('ona', array('field_dssds_operational_data_pro_value'))
+$query->fields('ona', array('field_dssds_noaa_data_product_value'))
   ->fields('mna', array('field_dssds_machine_name_value'))
   ->distinct()
-  ->orderBy('field_dssds_operational_data_pro_value', 'DESC');
+  ->orderBy('field_dssds_noaa_data_product_value', 'DESC');
 $rows = $query->execute()
   ->fetchAll();
 
@@ -41,7 +41,7 @@ foreach ($rows as $row) {
   if ($row->field_dssds_machine_name_value == $value) {
     $new_form .= ' selected="selected"';
   }
-  $new_form .= '>' . $row->field_dssds_operational_data_pro_value . '</option>';
+  $new_form .= '>' . $row->field_dssds_noaa_data_product_value . '</option>';
 }
 $new_form .= '</select>';
 $new_form .= '</div>';

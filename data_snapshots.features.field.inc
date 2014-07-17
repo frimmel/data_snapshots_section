@@ -1361,14 +1361,14 @@ function data_snapshots_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_operational_data_pro'.
-  $fields['node-data_snapshot_data_source-field_dssds_operational_data_pro'] = array(
+  // Exported field: 'node-data_snapshot_data_source-field_dssds_noaa_data_product'.
+  $fields['node-data_snapshot_data_source-field_dssds_noaa_data_product'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dssds_operational_data_pro',
+      'field_name' => 'field_dssds_noaa_data_product',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -1394,7 +1394,7 @@ function data_snapshots_field_default_fields() {
       'bundle' => 'data_snapshot_data_source',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'Formal name for operational data product.',
+      'description' => 'Formal name for noaa data product.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1449,8 +1449,8 @@ function data_snapshots_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dssds_operational_data_pro',
-      'label' => 'Operational Data Product',
+      'field_name' => 'field_dssds_noaa_data_product',
+      'label' => 'NOAA Data Product',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',
@@ -2665,12 +2665,12 @@ function data_snapshots_field_default_fields() {
   t('Dataset Catalog Record URL');
   t('Description Author');
   t('First and last name of subject matter expert reviewer.');
-  t('Formal name for operational data product.');
+  t('Formal name for noaa data product.');
   t('Framing Question');
   t('Image Frequency');
   t('Machine Name');
   t('Name of and URL to Data Provider\'s main site.');
-  t('Operational Data Product');
+  t('NOAA Data Product');
   t('Outline of Processing Steps');
   t('Processing Environment');
   t('Processing environment (include OS and software versions)');

@@ -201,7 +201,7 @@ function data_snapshots_field_group_info() {
     'label' => 'Data Source Metadata',
     'weight' => '1',
     'children' => array(
-      0 => 'field_dssds_operational_data_pro',
+      0 => 'field_dssds_noaa_data_product',
       1 => 'field_dssds_url_pattern',
       2 => 'field_dssds_themes',
       3 => 'field_dssds_catalog_url',

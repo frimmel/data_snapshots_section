@@ -178,12 +178,12 @@ tpl = """
                 }
             ]
         }, 
-        "field_dssds_operational_data_pro": {
+        "field_dssds_noaa_data_product": {
             "und": [
                 {
                     "format": null, 
-                    "safe_value": "{{field_dssds_operational_data_pro}}", 
-                    "value": "{{field_dssds_operational_data_pro}}"
+                    "safe_value": "{{field_dssds_noaa_data_product}}", 
+                    "value": "{{field_dssds_noaa_data_product}}"
                 }
             ]
         }, 
