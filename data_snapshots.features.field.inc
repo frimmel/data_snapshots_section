@@ -329,7 +329,7 @@ function data_snapshots_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dssds_data_access_url',
-      'label' => 'Data Access URL',
+      'label' => 'Access to Source Data',
       'required' => 1,
       'settings' => array(
         'attributes' => array(
@@ -2659,7 +2659,7 @@ function data_snapshots_field_default_fields() {
   t('Affiliation of Reviewer');
   t('Answer to Framing Question');
   t('Answer to Secondary Question');
-  t('Data Access URL');
+  t('Access to Source Data');
   t('Data Format Description');
   t('Data Provider');
   t('Dataset Catalog Record URL');
