@@ -220,7 +220,7 @@ function data_snapshots_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dssds_colors',
-      'label' => 'What do the Colors Mean',
+      'label' => 'What do the colors mean?',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -2682,7 +2682,7 @@ function data_snapshots_field_default_fields() {
   t('Theme(s)');
   t('URL pattern');
   t('URL to Climate.gov Dataset Catalog record.');
-  t('What do the Colors Mean');
+  t('What do the colors mean?');
   t('Why These Data Matter');
 
   return $fields;
