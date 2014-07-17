@@ -555,7 +555,7 @@ function data_snapshots_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dssds_data_matter',
-      'label' => 'Why These Data Matter',
+      'label' => 'Why do these data matter?',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -2683,7 +2683,7 @@ function data_snapshots_field_default_fields() {
   t('URL pattern');
   t('URL to Climate.gov Dataset Catalog record.');
   t('What do the colors mean?');
-  t('Why These Data Matter');
+  t('Why do these data matter?');
 
   return $fields;
 }
