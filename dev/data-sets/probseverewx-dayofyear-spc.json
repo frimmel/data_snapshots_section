@@ -19,6 +19,6 @@
   "field_dssds_reviewer_affilia": "Climate Prediction Center", 
   "field_dssds_secondary_questi": "How do experts produce temperature anomalies?",
   "field_dssds_technical_commen": "Here come some additional technical comments.",
-  "field_dssds_themes": "[ { \"tid\": \"12\" } ]",
+  "field_dssds_themes": "[ { \"tid\": \"13\" } ]",
   "field_dssds_url_pattern": "http://54.235.203.129/Images/probseverewx-dayofyear-spc/620/probseverewx-dayofyear-spc--620x450--0000-{stk}.png"
 }
