@@ -68,7 +68,7 @@
                 }
             ]
         },
-        "field_dssds_editorial_commen": {
+        "field_dssds_additional_info": {
             "und": [
                 {
                     "format": "filtered_html",

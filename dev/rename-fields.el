@@ -11,7 +11,7 @@
 
 (tags-query-replace "field_dssds_description_auth"               "field_dsds_dscaut"          )
 
-(tags-query-replace "field_dssds_editorial_commen"               "field_dsds_edcom"          )
+(tags-query-replace "field_dssds_additional_info"               "field_dsds_edcom"          )
 
 (tags-query-replace "field_dssds_english_descript"               "field_dsds_engdsc"          )
 

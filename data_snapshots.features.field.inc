@@ -804,14 +804,14 @@ function data_snapshots_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_editorial_commen'.
-  $fields['node-data_snapshot_data_source-field_dssds_editorial_commen'] = array(
+  // Exported field: 'node-data_snapshot_data_source-field_dssds_additional_info'.
+  $fields['node-data_snapshot_data_source-field_dssds_additional_info'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_dssds_editorial_commen',
+      'field_name' => 'field_dssds_additional_info',
       'foreign keys' => array(
         'format' => array(
           'columns' => array(
@@ -890,8 +890,8 @@ function data_snapshots_field_default_fields() {
         ),
       ),
       'entity_type' => 'node',
-      'field_name' => 'field_dssds_editorial_commen',
-      'label' => 'Additional Editorial Comments',
+      'field_name' => 'field_dssds_additional_info',
+      'label' => 'Additional information',
       'required' => 0,
       'settings' => array(
         'text_processing' => '1',
@@ -2654,7 +2654,7 @@ function data_snapshots_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A unique string used to identify this data source internally');
-  t('Additional Editorial Comments');
+  t('Additional information');
   t('Additional Technical Comments');
   t('Affiliation of Reviewer');
   t('Answer to Framing Question');
