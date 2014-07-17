@@ -1,3 +1,115 @@
+.dss-text-wrapper {
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+
+.dss-selector-wrapper {
+    padding-top: 7px;
+    box-sizing: border-box;
+}
+
+.dss-interactive-slider-label {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+}
+
+.dss-question-read-more a {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.dss-downloads-popup {
+    width: 319px;
+    height: 219px;
+    display: none;
+    background-color: #DADBDC;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    box-shadow: 0px 5px 5px #888;
+    position: absolute;
+    top: 200px;
+    left: 170px;
+}
+
+.dss-downloads-label {
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: oblique;
+    background-color: #DADBDC;
+    padding: 10px;
+    color: #333;
+}
+
+.dss-downloads-options {
+    width: 284px;
+    height: 150px;
+    padding: 12px 30px 20px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.dss-downloads-options > div {
+    height: 25px;
+    color: #000;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.dss-downloads-radio {
+    display: none;
+}
+
+.dss-downloads-buttons {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.dss-downloads-toggle {
+    float: right;
+}
+
+.node-type-data-snapshot .group-header h2 {
+    display: inline-block;
+    margin-top: .19em;
+    margin-bottom: .25em;
+    margin-left: .25em;
+    font-size: 28px;
+}
+
+.dss-spacer {
+    height: 7px;
+    background-color: #787878;
+}
+
+.addthis_toolbox .at300b {
+    margin-right: 2px;
+}
+
+.field .field-label.permalink {
+    color: #fff;
+    font-weight: normal;
+}
+
+.field-name-field-ds-stk, .field-name-field-ds-ptk {
+    position: relative;
+}
+
+.dss-question-read-more a {
+    color: #1a1a1a !important;
+}
+
 #zone-postscript-wrapper {
     margin-top: 20px !important;
 }
@@ -7,7 +119,7 @@
     bottom: 0;
     width: 100%;
     background-color: #aaa;
-    padding: .5em;
+    padding: 12px;
     box-sizing: border-box;
     height: 91px;
     overflow: hidden;
@@ -42,7 +154,7 @@
 }
 
 .node-type-data-snapshot .field-name-body .field-items {
-    min-height: 36px;
+    min-height: 30px;
     overflow: hidden;
 }
 
@@ -85,7 +197,6 @@
 }
 
 .ui-accordion .ui-accordion-header.ui-state-active {
-    border: 1px solid #24211b;
     background: #565656;
     font-weight: bold;
     color: #fff;
@@ -102,6 +213,7 @@
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
+    font-style: normal;
 }
 
 .ui-accordion-content div {
@@ -143,7 +255,7 @@
     bottom: 0;
     background: #aaa;
     height: 91px;
-    padding: .5em;
+    padding: 12px;
     box-sizing: border-box;
 }
 
@@ -176,8 +288,10 @@
 }
 
 .node-type-data-snapshot #block-system-main {
-    padding: 1em;
-    border-radius: 1em;
+    padding: 6px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: .7em;
     background: #404952;
     color: #fff;
     box-shadow: 0 0 5px #404952;
@@ -199,17 +313,17 @@
 }
 
 #dss-tabs-wrapper {
-    width: 32%;
-    background: #dadbdc;
+    width: 31%;
+    background: #dadbdc url(images/dss-accent3.png) 0px 0px no-repeat;
     height: 100%;
     display: inline-block;
     vertical-align: bottom;
     position: absolute;
-    right: 1px;
+    right: 0px;
     text-align: center;
-    border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     padding-top: 10px;
+    padding-left: 44px;
     box-sizing: border-box;
     font-size: 13px;
 }
@@ -245,11 +359,11 @@
 
 .group-left {
     background-color: #fff;
-    min-height: 464px;
+    min-height: 471px;
 }
 
 .field-name-field-ds-disimg {
-    height: 464px;
+    height: 471px;
     display: table-cell;
     vertical-align: middle;
 }
@@ -269,21 +383,21 @@
 }
 
 .group-right {
-    height: 464px;
+    height: 471px;
     overflow: hidden;
     background: #dadbdc;
     position: relative;
 }
 
 .group-footer {
-    padding-top: 1em;
+    padding-top: 10px;
 }
 
 #node_data_snapshot_full_group_dss_sliders {
     float: left;
-    width: 68%;
+    width: 625px;
     padding: 1em 1em .5em;
-    border-radius: 1em;
+    border-radius: 9px;
     box-sizing: border-box;
     background: #303841;
 }
@@ -301,12 +415,12 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
-    width: 68%;
+    width: 69%;
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
     float: left;
-    width: 32%;
+    width: 31%;
 }
 
 .node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
@@ -396,11 +510,14 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 .dss-interactive-slider-popup {
     position: absolute;
     top: -108%;
-    border: 2px solid #369;
     border-radius: .5em;
     padding: 2px;
-    background-color: #fff;
-    z-index: 3;
+    font-family:  Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    background-color: #000;
+    opacity: 0.6;
+    z-index: 20;
     white-space: nowrap;
     display: none;
 }
@@ -409,18 +526,6 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
     display: inline-block !important;
 }
 
-.dss-interactive-slider-popup:after {
-    position: absolute;
-    top: 100%;
-    left: 25%;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-top-color: #369;
-    content: ' '
-}
-
-
 /******************************************/
 .node-type-data-snapshot .field-name-field-ds-dloads {
     float: right;
@@ -428,8 +533,8 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 
 .node-type-data-snapshot .field-name-add-this {
     float: left;
-    margin-left: 2%;
-    margin-right: .5em;
+    margin-left: 4%;
+    margin-right: 1.5em;
 }
 
 .addthis_toolbox {

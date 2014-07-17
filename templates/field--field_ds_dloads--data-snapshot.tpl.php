@@ -44,11 +44,27 @@
  * @ingroup themeable
  */
 ?>
-<div class="btn-group <?php print $classes; ?>"<?php print $attributes; ?>>
-  <button class="btn btn-default dropdown-toggle"<?php print $title_attributes; ?> data-toggle="dropdown"><?php print $label ?>&nbsp;<span class="caret"></span></button>
-  <ul class="field-items dropdown-menu"<?php print $content_attributes; ?> role="menu">
-    <?php foreach ($items as $delta => $item): ?>
-      <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></li>
-    <?php endforeach; ?>
-  </ul>
+<div class="dss-downloads-wrapper">
+  <div class="dss-downloads-popup">
+    <div class="dss-downloads-label">Select a Format:</div>
+    <div class="dss-downloads-options">
+      <?php foreach ($items as $delta => $item): ?>
+        <div>
+          <label for="dss-form-element-<?php print $delta; ?>"><?php print $item['#element']['title']; ?></label>
+        </div>
+      <?php endforeach; ?>
+    </div>
+    <form method="get" action="" target="_blank" id="exampleform">
+      <div class="dss-downloads-radio">
+        <?php foreach ($items as $delta => $item): ?>
+          <input type="radio" value="<?php print $item['#element']['url']; ?>" id="dss-form-element-<?php print $delta; ?>" class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?> name="dss-download"></input>
+        <?php endforeach; ?>
+      </div>
+      <div class="dss-downloads-buttons">
+        <button class="dss-downloads-cancel-button">Cancel</button>
+        <button class="dss-downloads-ok-button" type="submit">OK</button>
+      </div>
+    </form>
+  </div>
+  <button class="dss-downloads-toggle">Download</button>
 </div>

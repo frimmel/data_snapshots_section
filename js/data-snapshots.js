@@ -167,7 +167,7 @@
     function setSliderPopups(selector, value, slider, steps, position) {
         var afterElemBorder = 6,// need to add to margin for correct placement. Change if css changes.
             $elem = $(selector),
-            elemPosition = (position * ($(slider).width() / (steps - 1))) + "px",
+            elemPosition = (75 + position * ($(slider).width() / (steps - 1))) + "px",
             elemWidth, marginLeft;
 
         $elem.text(value);
@@ -213,18 +213,10 @@
             dataSources = dataSnapshots.data_sources,
             $accordion = $("<div></div>"),
             $datasourceWrapper,
-            //            $dataSourceDropdown = $("#dss-data-source-dropdown"),
             initTheme = dataSnapshots.init_theme,
             foundTheme = false,
+	    themeIndex = 0,
             theme, i, j;
-
-        if (initTheme && themes.indexOf(initTheme) !== -1 && dataSources[initTheme].length > 0) {
-            for (i = 0; i < dataSources[initTheme].length; i++) {
-                if (dataSources[initTheme][i].mname === dsmn) {
-                    foundTheme = true;
-                }
-            }
-        }
 
         for (i = 0; i < themes.length; i++) {
             theme = themes[i];
@@ -241,17 +233,23 @@
 
                 if (!foundTheme) {
                     if (dataSources[theme][j].mname === dsmn) {
-                        initTheme = theme;
                         foundTheme = true;
                     }
                 }
             }
             $accordion.append($datasourceWrapper);
+
+	    if (!foundTheme) {
+		themeIndex++;
+	    }
         }
 
-        $accordion.accordion({ heightStyle : "content" });
-
+        $accordion.accordion({heightStyle : "content" });
         $(".dss-accordion").append($accordion);
+	if (foundTheme) {
+	    $accordion.accordion("option", "active", themeIndex);
+	}
+
         //        $themeDropdown.val(initTheme);
         //        $dataSourceDropdown.val(dsmn);
     }
@@ -334,6 +332,45 @@
     $('document').ready(function() {
         hideAnnotation();
 
+	$(".dss-downloads-options label").each(function (index) {
+	    $(this).jqxRadioButton({
+		"theme" : "ui-darkness"
+	    }).bind("change", function () {
+		$("#" + $(this).attr("for")).attr("checked", "checked").change();
+	    });
+
+	    console.log(index === 0)
+
+	    if (index === 0) {
+		$(this).jqxRadioButton({
+		    "checked": true
+		}).change();
+	    }
+	});
+
+	$(".dss-downloads-ok-button").jqxButton({theme: "ui-darkness", width: 68})
+	    .click(function () {
+		$(".dss-downloads-popup").fadeOut(200);
+	    });
+
+	$(".dss-downloads-cancel-button").jqxButton({theme: "ui-darkness", width: 68})
+	    .click(function (event) {
+		event.preventDefault();
+		$(".dss-downloads-popup").fadeOut(200);
+	    });
+
+	$(".dss-downloads-popup input").change(function () {
+	    $("#exampleform").attr("action", $(this).attr("value"));
+	});
+
+	$(".dss-downloads-toggle").jqxToggleButton({ theme: "ui-darkness", width: '86', toggled: false })
+	    .click(function () {
+		$(".dss-downloads-popup").fadeToggle(200);
+		$($(".dss-downloads-options label")[0]).jqxRadioButton({
+		    "checked": true
+		}).change();
+	    });
+
         $("#dss-tabs-maps").click(function () {
 	    $(this).addClass("active");
             $(".dss-selector-wrapper").show();
@@ -357,7 +394,10 @@
             }
         });
 
-        $(".dss-short-summary-text").text($(".field_dssds_framing_q_answer").text().split(".")[0] + ".")
+        $(".dss-short-summary-text").text($(".field_dssds_framing_q_answer").text().split(".")[0] + ".");
+
+	var stkPopupSelector = "#dss-interactive-slider-stk-popup";
+	var ptkPopupSelector = "#dss-interactive-slider-ptk-popup";
 
         var snapshots = getPropertiesObject().snapshots,
             dsmn = getDsmn(),
@@ -574,21 +614,21 @@
             }
 
             setImg(dsmn, ptk, stk);
-            //            setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
+	    setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
             configStkSlider();
         }
 
         function ptkSlideStartHandler(event) {
             unbindStkEvents();
             dismissPermalink();
-            //            setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, ui.value);
-            //            $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
+	    setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, event.args.value);
+	    $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
             //            hideElements();
         }
 
         function ptkSlideEndHandler(event) {
             bindStkEvents();
-            //            $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
+	    $(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
             currentStkIndex = findValidStkIndex();
             if (determineStkDisabled() === false) {
                 switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
@@ -622,8 +662,6 @@
         }
 
         function configPtkSlider() {
-            var ptkPopupSelector = "#dss-interactive-slider-ptk-popup";
-
             $('.field-name-field-ds-ptk > .field-items').jqxSlider({ 
                 theme: 'ui-darkness',
                 min: 0,
@@ -662,20 +700,20 @@
             stk = stks[currentStkIndex];
 
             setImg(dsmn, ptk, stk);
-            //                    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
+	    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
         }
 
         function stkSlideStartHandler(event) {
             dismissPermalink();
-            //                    setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, event.args.value);
-            //                    $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
-            //                    hideElements();
+	    setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, event.args.value);
+	    $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
+	    //	    hideElements();
         }
 
         function stkSlideEndHandler(event) {
-            //            $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
+	    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
             switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-            //            showElements();
+	    //	    showElements();
         }
 
         function bindStkEvents() {
@@ -691,7 +729,6 @@
         }
 
         function configStkSlider() {
-            var stkPopupSelector = "#dss-interactive-slider-stk-popup";
             //            setDisabledRegions();
 
             $('.field-name-field-ds-stk > .field-items').jqxSlider({ 
