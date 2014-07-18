@@ -721,7 +721,6 @@ function data_snapshots_ds_layout_settings_info() {
         8 => 'field_dssds_data_access_url',
         10 => 'field_dssds_catalog_url',
         12 => 'field_dssds_reviewer',
-        13 => 'field_dssds_reviewer_affilia',
       ),
     ),
     'fields' => array(
@@ -738,7 +737,6 @@ function data_snapshots_ds_layout_settings_info() {
       'field_dssds_catalog_url' => 'right',
       'field_dssds_additional_info' => 'left',
       'field_dssds_reviewer' => 'right',
-      'field_dssds_reviewer_affilia' => 'right',
       'field_dssds_processing_steps' => 'left',
       'field_dssds_processing_envir' => 'left',
       'field_dssds_technical_commen' => 'left',

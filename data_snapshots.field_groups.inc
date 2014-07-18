@@ -233,9 +233,8 @@ function data_snapshots_field_group_info() {
     'label' => 'People Involved',
     'weight' => '6',
     'children' => array(
-      0 => 'field_dssds_reviewer_affilia',
-      1 => 'field_dssds_description_auth',
-      2 => 'field_dssds_reviewer',
+      0 => 'field_dssds_description_auth',
+      1 => 'field_dssds_reviewer',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

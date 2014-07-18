@@ -165,15 +165,6 @@
                 }
             ]
         },
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null,
-                    "safe_value": "National Climatic Data Center",
-                    "value": "National Climatic Data Center"
-                }
-            ]
-        },
         "field_dssds_secondary_questi": {
             "und": [
                 {

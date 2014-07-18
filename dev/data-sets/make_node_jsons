@@ -223,15 +223,6 @@ tpl = """
                 }
             ]
         }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "{{field_dssds_reviewer_affilia}}", 
-                    "value": "{{field_dssds_reviewer_affilia}}"
-                }
-            ]
-        }, 
         "field_dssds_secondary_questi": {
             "und": [
                 {

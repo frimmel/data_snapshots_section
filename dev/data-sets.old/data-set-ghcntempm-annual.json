@@ -165,15 +165,6 @@
                 }
             ]
         },
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null,
-                    "safe_value": "Climate Prediction Center",
-                    "value": "Climate Prediction Center"
-                }
-            ]
-        },
         "field_dssds_secondary_questi": {
             "und": [
                 {

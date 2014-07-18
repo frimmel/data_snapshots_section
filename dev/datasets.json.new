@@ -157,15 +157,6 @@
                 }
             ]
         }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "Anonymous", 
-                    "value": "Anonymous"
-                }
-            ]
-        }, 
         "field_dssds_secondary_q_answ": {
             "und": [
                 {
@@ -446,15 +437,6 @@
                     "format": "filtered_html", 
                     "safe_value": "<p>TBD - Dave Miskus, I hope</p>\n", 
                     "value": "TBD - Dave Miskus, I hope"
-                }
-            ]
-        }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "Climate Prediction Center", 
-                    "value": "Climate Prediction Center"
                 }
             ]
         }, 
@@ -741,15 +723,6 @@
                 }
             ]
         }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "Climate Prediction Center", 
-                    "value": "Climate Prediction Center"
-                }
-            ]
-        }, 
         "field_dssds_secondary_q_answ": {
             "und": [
                 {
@@ -1022,15 +995,6 @@
                     "format": "filtered_html", 
                     "safe_value": "<p>David Miskus</p>\n", 
                     "value": "David Miskus"
-                }
-            ]
-        }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "Climate Prediction Center", 
-                    "value": "Climate Prediction Center"
                 }
             ]
         }, 
@@ -1309,15 +1273,6 @@
                 }
             ]
         }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "National Climatic Data Center", 
-                    "value": "National Climatic Data Center"
-                }
-            ]
-        }, 
         "field_dssds_secondary_q_answ": {
             "und": [
                 {
@@ -1590,15 +1545,6 @@
                     "format": "filtered_html", 
                     "safe_value": "<p>Kenneth Casey</p>\n", 
                     "value": "Kenneth Casey"
-                }
-            ]
-        }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "NOAA National Ocean Service", 
-                    "value": "NOAA National Ocean Service"
                 }
             ]
         }, 
@@ -1885,15 +1831,6 @@
                 }
             ]
         }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "National Climatic Data Center", 
-                    "value": "National Climatic Data Center"
-                }
-            ]
-        }, 
         "field_dssds_secondary_q_answ": {
             "und": [
                 {
@@ -2158,15 +2095,6 @@
                     "format": "filtered_html", 
                     "safe_value": "<p>Patrick Marsh</p>\n", 
                     "value": "Patrick Marsh"
-                }
-            ]
-        }, 
-        "field_dssds_reviewer_affilia": {
-            "und": [
-                {
-                    "format": null, 
-                    "safe_value": "NOAA Storm Prediction Center", 
-                    "value": "NOAA Storm Prediction Center"
                 }
             ]
         }, 

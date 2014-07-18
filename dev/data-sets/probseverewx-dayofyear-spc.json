@@ -16,7 +16,6 @@
   "field_dssds_processing_steps" : "A python grabs shapefiles from CPC, and swallows them whole.",
   "field_dssds_references": "I guess this field should show an example or two of the format we'd like to use for references.",
   "field_dssds_reviewer": "TBD - Dave Miskus, I hope", 
-  "field_dssds_reviewer_affilia": "Climate Prediction Center", 
   "field_dssds_secondary_questi": "How do experts produce temperature anomalies?",
   "field_dssds_technical_commen": "Here come some additional technical comments.",
   "field_dssds_themes": "[ { \"tid\": \"13\" } ]",
