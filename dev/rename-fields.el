@@ -25,8 +25,6 @@
 
 (tags-query-replace "field_dssds_plain_english_an"               "field_dsds_engans"          )
 
-(tags-query-replace "field_dssds_processing_envir"               "field_dsds_prcenv"          )
-
 (tags-query-replace "field_dssds_processing_steps"               "field_dsds_prcste"          )
 
 (tags-query-replace "field_dssds_references"                     "field_dsds_refs"          )

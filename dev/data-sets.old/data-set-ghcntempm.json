@@ -129,15 +129,6 @@
                 }
             ]
         },
-        "field_dssds_processing_envir": {
-            "und": [
-                {
-                    "format": "filtered_html",
-                    "safe_value": "<p>The Amazon.</p>\n",
-                    "value": "The Amazon."
-                }
-            ]
-        },
         "field_dssds_processing_steps": {
             "und": [
                 {

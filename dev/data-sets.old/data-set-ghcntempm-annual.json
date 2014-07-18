@@ -1,4 +1,4 @@
-[
+\[
     {
         "#node_export_object": "1",
         "changed": "1385156141",
@@ -126,15 +126,6 @@
                     "format": null,
                     "safe_value": "GHCN Annual Temp Anomaly",
                     "value": "GHCN Annual Temp Anomaly"
-                }
-            ]
-        },
-        "field_dssds_processing_envir": {
-            "und": [
-                {
-                    "format": "filtered_html",
-                    "safe_value": "<p>The Amazon.</p>\n",
-                    "value": "The Amazon."
                 }
             ]
         },

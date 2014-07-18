@@ -38,9 +38,6 @@
   "field_dssds_noaa_data_product":
    "Daily Sea Surface Temperature",
 
-  "field_dssds_processing_envir":
-    "The Amazon.", 
-
   "field_dssds_processing_steps" :
     "A python grabs shapefiles from CPC, and swallows them whole.",
 

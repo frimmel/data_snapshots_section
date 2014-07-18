@@ -1469,112 +1469,6 @@ function data_snapshots_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-data_snapshot_data_source-field_dssds_processing_envir'.
-  $fields['node-data_snapshot_data_source-field_dssds_processing_envir'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'field_dssds_processing_envir',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
-        ),
-      ),
-      'locked' => '0',
-      'module' => 'text',
-      'settings' => array(),
-      'translatable' => '0',
-      'type' => 'text_long',
-    ),
-    'field_instance' => array(
-      'bundle' => 'data_snapshot_data_source',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => 'Processing environment (include OS and software versions)',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
-        ),
-        'nf_category_listing' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '16',
-        ),
-        'nf_related_content_teaser' => array(
-          'label' => 'above',
-          'module' => 'text',
-          'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '10',
-        ),
-        'search_result' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '29',
-        ),
-        'short_teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '16',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '26',
-        ),
-        'tiny_teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '16',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'field_dssds_processing_envir',
-      'label' => 'Processing Environment',
-      'required' => 1,
-      'settings' => array(
-        'text_processing' => '1',
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'rows' => '5',
-        ),
-        'type' => 'text_textarea',
-        'weight' => '11',
-      ),
-      'workbench_access_field' => 0,
-    ),
-  );
-
   // Exported field: 'node-data_snapshot_data_source-field_dssds_processing_steps'.
   $fields['node-data_snapshot_data_source-field_dssds_processing_steps'] = array(
     'field_config' => array(
@@ -2565,7 +2459,6 @@ function data_snapshots_field_default_fields() {
   t('NOAA Data Product');
   t('Outline of Processing Steps');
   t('Processing Environment');
-  t('Processing environment (include OS and software versions)');
   t('References');
   t('References used in writing the description.');
   t('Reviewer');
