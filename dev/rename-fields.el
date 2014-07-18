@@ -37,8 +37,6 @@
 
 (tags-query-replace "field_dssds_secondary_questi"               "field_dsds_secq"          )
 
-(tags-query-replace "field_dssds_technical_commen"               "field_dsds_teccom"          )
-
 (tags-query-replace "field_dssds_themes"                         "field_dsds_themes"                       )
 
 

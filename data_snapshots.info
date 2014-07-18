@@ -64,7 +64,6 @@ features[field][] = node-data_snapshot_data_source-field_dssds_references
 features[field][] = node-data_snapshot_data_source-field_dssds_reviewer
 features[field][] = node-data_snapshot_data_source-field_dssds_secondary_q_answ
 features[field][] = node-data_snapshot_data_source-field_dssds_secondary_questi
-features[field][] = node-data_snapshot_data_source-field_dssds_technical_commen
 features[field][] = node-data_snapshot_data_source-field_dssds_themes
 features[field][] = node-data_snapshot_data_source-field_dssds_url_pattern
 features[field_group][] = group_dssds_metadata|node|data_snapshot_data_source|form

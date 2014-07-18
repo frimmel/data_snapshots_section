@@ -165,15 +165,6 @@
                 }
             ]
         }, 
-        "field_dssds_technical_commen": {
-            "und": [
-                {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>Here come some additional technical comments.</p>\n", 
-                    "value": "Here come some additional technical comments."
-                }
-            ]
-        }, 
         "field_dssds_themes": {
             "und": [
                 {

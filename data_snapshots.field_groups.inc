@@ -262,7 +262,6 @@ function data_snapshots_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_dssds_processing_steps',
-      1 => 'field_dssds_technical_commen',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

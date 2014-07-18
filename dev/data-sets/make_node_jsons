@@ -223,15 +223,6 @@ tpl = """
                 }
             ]
         }, 
-        "field_dssds_technical_commen": {
-            "und": [
-                {
-                    "format": "filtered_html", 
-                    "safe_value": "<p>{{field_dssds_technical_commen}}</p>\\n", 
-                    "value": "{{field_dssds_technical_commen}}"
-                }
-            ]
-        }, 
         "field_dssds_themes": {
             "und": {{field_dssds_themes}}
         }, 

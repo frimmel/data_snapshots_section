@@ -165,15 +165,6 @@
                 }
             ]
         },
-        "field_dssds_technical_commen": {
-            "und": [
-                {
-                    "format": "filtered_html",
-                    "safe_value": "<p>Original GHCN data are smoothed using a nearest-neighbor algorithm developed by NOAA's Environmental Visualization Laboratory. Unsmoothed versions of these data are available at <a href=\"http://www.ncdc.noaa.gov/sotc/service/global/map-blended-mntp/YYYYMM.gif\">http://www.ncdc.noaa.gov/sotc/service/global/map-blended-mntp/YYYYMM.gif</a></p>\n",
-                    "value": "<p>Original GHCN data are smoothed using a nearest-neighbor algorithm developed by NOAA's Environmental Visualization Laboratory. Unsmoothed versions of these data are available at&nbsp;http://www.ncdc.noaa.gov/sotc/service/global/map-blended-mntp/YYYYMM.gif</p>\r\n"
-                }
-            ]
-        },
         "field_dssds_themes": {
             "und": [
                 {
