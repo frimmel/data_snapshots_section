@@ -160,6 +160,9 @@ function data_snapshots_theme($existing, $type, $theme, $path) {
     'field__field_dssds_data_matter__data_snapshot_data_source' => array(
       'template' => 'templates/field--field_dssds_data_matter--data-snapshot-data-source',
     ),
+    'field__field_dssds_processing_steps__data_snapshot_data_source' => array(
+      'template' => 'templates/field--field_dssds_processing_steps--data-snapshot-data-source',
+    ),
   );
 }
 

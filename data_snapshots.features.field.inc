@@ -1556,7 +1556,7 @@ function data_snapshots_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dssds_processing_steps',
-      'label' => 'Outline of Processing Steps',
+      'label' => 'What data processing did it take to produce this set of Data Snapshots?',
       'required' => 1,
       'settings' => array(
         'text_processing' => '1',
@@ -2350,7 +2350,7 @@ function data_snapshots_field_default_fields() {
   t('Machine Name');
   t('Name of and URL to Data Provider\'s main site.');
   t('NOAA Data Product');
-  t('Outline of Processing Steps');
+  t('What data processing did it take to produce this set of Data Snapshots?');
   t('Processing Environment');
   t('References');
   t('References used in writing the description.');
