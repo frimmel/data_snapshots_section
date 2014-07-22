@@ -228,7 +228,7 @@
             $datasourceWrapper = $("<div></div>");
             for (j = 0; j < dataSources[theme].length; j++) {
                 $datasourceWrapper.append($("<div/>", { value: dataSources[theme][j].mname })
-                                  .addClass("dss-data-source-dropdown")
+                                  .addClass("dss-data-source-dropdown " + dataSources[theme][j].scope)
                                   .text(dataSources[theme][j].oname));
 
                 if (!foundTheme) {

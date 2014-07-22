@@ -206,7 +206,8 @@ function data_snapshots_field_group_info() {
       2 => 'field_dssds_themes',
       3 => 'field_dssds_catalog_url',
       4 => 'field_dssds_image_frequency',
-      5 => 'title',
+      5 => 'field_dssds_map_scope',
+      6 => 'title',
     ),
     'format_type' => 'htab',
     'format_settings' => array(

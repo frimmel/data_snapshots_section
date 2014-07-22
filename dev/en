@@ -6,4 +6,6 @@ drush vocimp --vocabulary_id=data_snapshot_data_source_frequency `pwd`/dev/data_
 
 drush vocimp --vocabulary_id=data_snapshots_themes `pwd`/dev/data_snapshots_themes-vocab.csv flat
 
+drush vocimp --vocabulary_id=data_source_scope `pwd`/dev/data_snapshot_map_scope-vocab.csv flat
+
 drush -y en dss_views_dev

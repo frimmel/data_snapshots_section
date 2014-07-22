@@ -58,6 +58,7 @@ features[field][] = node-data_snapshot_data_source-field_dssds_framing_q_answer
 features[field][] = node-data_snapshot_data_source-field_dssds_framing_question
 features[field][] = node-data_snapshot_data_source-field_dssds_image_frequency
 features[field][] = node-data_snapshot_data_source-field_dssds_machine_name
+features[field][] = node-data_snapshot_data_source-field_dssds_map_scope
 features[field][] = node-data_snapshot_data_source-field_dssds_noaa_data_product
 features[field][] = node-data_snapshot_data_source-field_dssds_processing_steps
 features[field][] = node-data_snapshot_data_source-field_dssds_references

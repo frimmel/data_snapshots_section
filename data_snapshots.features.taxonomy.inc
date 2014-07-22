@@ -55,5 +55,28 @@ function data_snapshots_taxonomy_default_vocabularies() {
         ),
       ),
     ),
+    'data_source_scope' => array(
+      'name' => 'Data Source Scope',
+      'machine_name' => 'data_source_scope',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+	'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+	'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
   );
 }

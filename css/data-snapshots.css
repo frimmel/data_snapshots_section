@@ -229,6 +229,16 @@
     font-weight: bold;
     line-height: 20px;
     cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 2px 2px;
+}
+
+.conus {
+    background-image: url("images/conusIcon.png");
+}
+
+.global {
+    background-image: url("images/globalIcon.png");
 }
 
 .ui-accordion-content div.active {
