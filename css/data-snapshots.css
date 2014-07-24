@@ -861,37 +861,9 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
   z-index: 990;
 }
 
-.node-type-data-snapshot-data-source .ds-2col > .group-left {
-    width: 63%;
-}
-
-.node-type-data-snapshot-data-source .group-right.article-info {
-    width: 29%;
-    height: auto;
-    float: right;
-}
-
-.node-type-data-snapshot-data-source .group-right.article-info p,
-.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question p,
-.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi p {
-    color: #000;
-    margin-bottom: 0;
-}
-
-.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question,
-.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi {
-    font: 700 italic 1em Cabin,Arial,sans-serif;
-    font-weight: bold;
-    color: #000;
-}
-
 /* needed for dev. Will be provided by live site */
 .node-type-data-snapshot-data-source #page-title {
     display: none;
-}
-
-.node-type-data-snapshot-data-source .field-name-title h2 {
-    margin-top: 0;
 }
 
 .article-info {
