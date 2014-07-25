@@ -445,7 +445,7 @@
         initDropdowns();
         dataSourceStkChange();
         $(".dss-data-source-dropdown").click(dataSourceDropdownChange);
-        $('#dss-theme-dropdown').change(themeDropdownChange);
+        $('h3.ui-accordion-header').click(themeDropdownChange);
         setSliderNames(getFrequency(dsmn));
 
 	$("div[value=" + dsmn + "]").addClass("active");
@@ -782,31 +782,29 @@
         }
 
         function themeDropdownChange() {
-            var newTheme = $(this).val(),
+            var newTheme = $(this).attr("value"),
                 dataSources = getPropertiesObject().data_sources[newTheme],
-                $dataSourceDropdown = $('#dss-data-source-dropdown'),
                 dataSource, mname,
                 changeDataSource = true,
                 i;
 
-            $dataSourceDropdown.empty();
-
             for (i = 0; i < dataSources.length; i++) {
                 dataSource = dataSources[i];
                 mname = dataSource.mname;
-                $dataSourceDropdown.append($("<option>", { value: mname })
-                                             .text(dataSource.oname));
                 // Note: dsmn is the machine name of the currently selected data source; it's a local
                 // var declared inside `$('document').ready(function()` above.
                 if (dsmn === mname) {
-                    $dataSourceDropdown.val(mname);
                     changeDataSource = false;
+		    break;
                 }
             }
 
             if (changeDataSource === true) {
-                setDataSource(dataSources[0].mname);
-            }
+		dataSourceDropdownChange.call($('.dss-data-source-dropdown[value=' + dataSources[0].mname + ']'));
+            } else {
+		$(".dss-data-source-dropdown.active").removeClass("active");
+		$('.dss-data-source-dropdown[value=' + mname + ']').addClass("active")
+	    }
 
             setUrl(dsmn, ptks[currentPtkIndex], stks[currentStkIndex], newTheme);
             dismissPermalink();

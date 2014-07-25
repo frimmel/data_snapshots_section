@@ -349,7 +349,7 @@ function data_snapshots_view($node, $view_mode) {
     $theme_taxonomy_name = 'data_snapshots_themes';
     $query = db_select('taxonomy_term_data', 'ttd')
       ->fields('ttd', array('tid','name'))
-      ->orderBy('name');
+      ->orderBy('ttd.weight');
     $query->leftJoin('taxonomy_vocabulary', 'tv', '(ttd.vid = tv.vid)');
     $query->condition('tv.machine_name', $theme_taxonomy_name);
     $rows = $query->execute()
