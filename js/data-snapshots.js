@@ -137,8 +137,57 @@
     }
 
     function setDownloads(html) {
-        var newLinks = $(html).find("ul");
-        $(".field-name-field-ds-dloads ul").replaceWith(newLinks);
+	unbindDownloadEvents();
+	$(".dss-downloads-popup").replaceWith($(html).find(".dss-downloads-popup"));
+        bindDownloadEvents();
+    }
+
+    function bindDownloadEvents() {
+	$(".dss-downloads-options label").each(function (index) {
+	    $(this).jqxRadioButton({
+		"theme" : "ui-darkness"
+	    }).bind("change", downloadLabelChangeHandler);
+
+	    if (index === 0) {
+		$(this).jqxRadioButton({
+		    "checked": true
+		}).change();
+	    }
+	});
+
+	$(".dss-downloads-ok-button").jqxButton({theme: "ui-darkness", width: 68})
+	    .click(downloadOkButtonHandler);
+
+	$(".dss-downloads-cancel-button").jqxButton({theme: "ui-darkness", width: 68})
+	    .click(downloadCancelButtonHandler);
+
+	$(".dss-downloads-popup input").bind("change", downloadInputChangeHandler);
+    }
+
+    function unbindDownloadEvents() {
+	$(".dss-downloads-options label").each(function (index) {
+	    $(this).unbind("change", downloadLabelChangeHandler);
+	});
+	$(".dss-downloads-ok-button").unbind("click", downloadOkButtonHandler);
+	$(".dss-downloads-cancel-button").unbind("click", downloadCancelButtonHandler);
+	$(".dss-downloads-popup input").unbind("change", downloadInputChangeHandler);
+    }
+
+    function downloadLabelChangeHandler() {
+	$("#" + $(this).attr("for")).attr("checked", "checked").change();
+    }
+
+    function downloadOkButtonHandler() {
+	$(".dss-downloads-popup").fadeOut(200);
+    }
+
+    function downloadCancelButtonHandler(event) {
+	event.preventDefault();
+	$(".dss-downloads-popup").fadeOut(200);
+    }
+
+    function downloadInputChangeHandler() {
+	$("#exampleform").attr("action", $(this).attr("value"));
     }
 
     function setPermalink(html) {
@@ -332,37 +381,7 @@
     $('document').ready(function() {
         hideAnnotation();
 
-	$(".dss-downloads-options label").each(function (index) {
-	    $(this).jqxRadioButton({
-		"theme" : "ui-darkness"
-	    }).bind("change", function () {
-		$("#" + $(this).attr("for")).attr("checked", "checked").change();
-	    });
-
-	    console.log(index === 0)
-
-	    if (index === 0) {
-		$(this).jqxRadioButton({
-		    "checked": true
-		}).change();
-	    }
-	});
-
-	$(".dss-downloads-ok-button").jqxButton({theme: "ui-darkness", width: 68})
-	    .click(function () {
-		$(".dss-downloads-popup").fadeOut(200);
-	    });
-
-	$(".dss-downloads-cancel-button").jqxButton({theme: "ui-darkness", width: 68})
-	    .click(function (event) {
-		event.preventDefault();
-		$(".dss-downloads-popup").fadeOut(200);
-	    });
-
-	$(".dss-downloads-popup input").change(function () {
-	    $("#exampleform").attr("action", $(this).attr("value"));
-	});
-
+	bindDownloadEvents();
 	$(".dss-downloads-toggle").jqxToggleButton({ theme: "ui-darkness", width: '86', toggled: false })
 	    .click(function () {
 		$(".dss-downloads-popup").fadeToggle(200);
