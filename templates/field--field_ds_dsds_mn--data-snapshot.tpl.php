@@ -43,31 +43,40 @@
  *
  * @ingroup themeable
  */
-$evergreen_answer_length = 450;
-$evergreen_answer_length_ellipsis = $evergreen_answer_length + 3;
+$framing_answer_length = 450;
+$secondary_answer_length = 250;
+$ellipsis_length = 3;
+$framing_answer_length_ellipsis = $framing_answer_length + $ellipsis_length;
+$secondary_answer_length_ellipsis = $secondary_answer_length + $ellipsis_length;
 
+$title = $element['#object']->{'datasource_node'}->title;
 $framing_question = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_question'}['und'][0]['value']);
 $framing_question_answer = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_framing_q_answer'}['und'][0]['safe_value']);
 $secondary_question = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_secondary_questi'}['und'][0]['value']);
 $secondary_question_answer = strip_tags($element['#object']->{'datasource_node'}->{'field_dssds_secondary_q_answ'}['und'][0]['safe_value']);
 
-if (strlen($framing_question_answer) > $evergreen_answer_length_ellipsis) {
-  $framing_question_answer = trim(substr($framing_question_answer, 0, $evergreen_answer_length)) . '...';
+if (strlen($framing_question_answer) > $framing_answer_length_ellipsis) {
+  $framing_question_answer = trim(substr($framing_question_answer, 0, $framing_answer_length)) . '...';
 }
 
-if (strlen($secondary_question_answer) > $evergreen_answer_length_ellipsis) {
-  $secondary_question_answer = trim(substr($secondary_question_answer, 0, $evergreen_answer_length)) . '...';
+if (strlen($secondary_question_answer) > $secondary_answer_length_ellipsis) {
+  $secondary_question_answer = trim(substr($secondary_question_answer, 0, $secondary_answer_length)) . '...';
 }
 
 ?>
 <div class="field-name-field-ds-dsds-evergreen <?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="field-label field_dssds_framing_question"<?php print $title_attributes; ?>><?php print $framing_question; ?>&nbsp;</div>
-  <div class="field-items"<?php print $content_attributes; ?>>
-    <div class="field-item field_dssds_framing_q_answer"><p><?php print $framing_question_answer; ?></p></div>
+  <div class="field_dssds_title"><?php print $title ?></div>
+  <div class="framing_question_wrapper">
+    <div class="field-label field_dssds_framing_question"<?php print $title_attributes; ?>><?php print $framing_question; ?>&nbsp;</div>
+    <div class="field-items"<?php print $content_attributes; ?>>
+      <div class="field-item field_dssds_framing_q_answer"><p><?php print $framing_question_answer; ?></p></div>
+    </div>
   </div>
-  <div class="field-label field_dssds_secondary_questi"<?php print $title_attributes; ?>><?php print $secondary_question; ?>&nbsp;</div>
-  <div class="field-items"<?php print $content_attributes; ?>>
-    <div class="field-item field_dssds_secondary_q_answ"><p><?php print $secondary_question_answer; ?></p></div>
-    <span class="dss-question-read-more"><a href="/node/<?php print $element['#object']->{'datasource_node'}->nid; ?>">read more</a></span>
+  <div class="secondary_questi_wrapper">
+    <div class="field-label field_dssds_secondary_questi"<?php print $title_attributes; ?>><?php print $secondary_question; ?>&nbsp;</div>
+    <div class="field-items"<?php print $content_attributes; ?>>
+      <div class="field-item field_dssds_secondary_q_answ"><p><?php print $secondary_question_answer; ?></p></div>
+      <span class="dss-question-read-more"><a href="/node/<?php print $element['#object']->{'datasource_node'}->nid; ?>">read more</a></span>
+    </div>
   </div>
 </div>

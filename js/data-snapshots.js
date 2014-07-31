@@ -92,8 +92,17 @@
     }
 
     function setImg(dsmn, ptk, stk) {
-        $('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn, ptk, stk));
+	var ptkValue = ptk,
+	    stkValue = stk;
+	if (stk === null) {
+	    ptkValue = "0000";
+	    stkValue = "00-00";
+	}
+	$('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn, ptkValue, stkValue));
+    }
 
+    function switchImgContent (dsmn, ptk, stk) {
+	setImg(dsmn, ptk, stk);
         setUrl(dsmn, ptk, stk, $(".dss-accordion .ui-accordion-header-active").attr("value"));
     }
 
@@ -307,9 +316,9 @@
         return jQuery.isEmptyObject(getAllStks());
     }
 
-    function formatEvergreenText(text) {
-        var textLength = 450,
-            textLengthEllipsis = textLength + 3;
+    function formatEvergreenText(text, length) {
+	var textLength = length || 450,
+	    textLengthEllipsis = textLength + 3;
 
         // strip all tags
         text = $("<div/>").html(text).text();
@@ -322,17 +331,21 @@
     }
 
     function switchDataSourceContent(node) {
-        var framingQuestion = formatEvergreenText(node.field_dssds_framing_question.und[0].safe_value),
-            framingAnswer = formatEvergreenText(node.field_dssds_framing_q_answer.und[0].value),
-            secondaryQuestion = formatEvergreenText(node.field_dssds_secondary_questi.und[0].value),
-            secondaryAnswer = formatEvergreenText(node.field_dssds_secondary_q_answ.und[0].safe_value),
+	var framingLength = 450,
+	    secondaryLength = 250,
+	    framingQuestion = formatEvergreenText(node.field_dssds_framing_question.und[0].safe_value, framingLength),
+            framingAnswer = formatEvergreenText(node.field_dssds_framing_q_answer.und[0].value, framingLength),
+            secondaryQuestion = formatEvergreenText(node.field_dssds_secondary_questi.und[0].value, secondaryLength),
+            secondaryAnswer = formatEvergreenText(node.field_dssds_secondary_q_answ.und[0].safe_value, secondaryLength),
             $evergreenWrapper = $(".field-name-field-ds-dsds-evergreen"),
+            $title = $evergreenWrapper.find(".field_dssds_title"),
             $framingQuestion = $evergreenWrapper.find(".field_dssds_framing_question"),
             $framingAnswer = $evergreenWrapper.find(".field_dssds_framing_q_answer p"),
             $secondaryQuestion = $evergreenWrapper.find(".field_dssds_secondary_questi"),
             $secondaryAnswer = $evergreenWrapper.find(".field_dssds_secondary_q_answ p"),
             $readMoreLink = $evergreenWrapper.find(".dss-question-read-more a");
 
+        $title.text(node.title);
         $framingQuestion.text(framingQuestion);
         $framingAnswer.text(framingAnswer);
         $secondaryQuestion.text(secondaryQuestion);
@@ -632,7 +645,7 @@
                 stk = stks[currentStkIndex];
             }
 
-            setImg(dsmn, ptk, stk);
+            switchImgContent(dsmn, ptk, stk);
 	    setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
             configStkSlider();
         }
@@ -710,6 +723,7 @@
         function stkSlideHandler(event) {
             var newStkIndex = event.args.value;
             if (stks[newStkIndex] === null) {
+		setImg(dsmn, ptk, null);
                 return false;
             }
             var ptk, stk;
@@ -718,7 +732,7 @@
             ptk = ptks[currentPtkIndex];
             stk = stks[currentStkIndex];
 
-            setImg(dsmn, ptk, stk);
+            switchImgContent(dsmn, ptk, stk);
 	    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
         }
 
@@ -837,7 +851,7 @@
                 stk = stks[currentStkIndex];
             }
 
-            setImg(dsmn, ptk, stk);
+            switchImgContent(dsmn, ptk, stk);
             configPtkSlider();
             configStkSlider();
 
