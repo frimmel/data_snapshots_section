@@ -414,7 +414,7 @@ function data_snapshots_fields_data_snapshot() {
             'show_repeat_rule' => 'show',
           ),
           'type' => 'date_default',
-          'weight' => '1',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
