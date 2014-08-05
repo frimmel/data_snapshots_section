@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # save current data set node content for reloading later...
-#drush ne-export --type=data_snapshot_data_source --format=json > dev/datasets.json
+drush ne-export --type=data_snapshot_data_source --format=json > dev/datasets.json
 
 # re-install drupal; this completely replaces the current database
 drush -y site-install
