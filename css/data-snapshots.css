@@ -263,7 +263,7 @@
     line-height: 20px;
     cursor: pointer;
     background-repeat: no-repeat;
-    background-position: 2px 2px;
+    background-position: 97% 2px;
 }
 
 .conus {
@@ -380,7 +380,7 @@
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     font-weight: 800;
     text-align: center;
-    padding: 3px 3px 6px 3px;
+    padding: 4px 3px 5px 3px;
     cursor: pointer;
     background: #555555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
     border: 1px solid #666;
