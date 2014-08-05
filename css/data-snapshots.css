@@ -201,10 +201,19 @@
 }
 
 .dss-short-summary-text {
+    display: inline;
     font-size: 12px;
     font-weight: normal;
     color: #333;
     line-height: 14px;
+}
+
+.dss-short-summary-read-more {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    line-height: 14px;
+    cursor: pointer;
 }
 
 .dss-accordion .ui-accordion .ui-accordion-header {
@@ -380,7 +389,7 @@
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     font-weight: 800;
     text-align: center;
-    padding: 4px 3px 5px 3px;
+    padding: 3px 3px 6px 3px;
     cursor: pointer;
     background: #555555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
     border: 1px solid #666;

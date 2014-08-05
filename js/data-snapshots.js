@@ -82,7 +82,6 @@
     }
 
     function setUrl(dsmn, ptk, stk, theme) {
-        console.log("DOG");
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
         if (window.history && window.history.replaceState) {
@@ -138,8 +137,6 @@
     }
 
     function setAnnotation(html) {
-        console.log("HEY")
-        console.log(html);
         $(".field-name-body .field-items").html(html ? $(html).children(".field-items").html() : "");
         html ? showAnnotationLabels() : hideAnnotationLabels();
         //        $(".group-footer").html(html);
@@ -417,6 +414,10 @@
             $("#dss-tabs-maps").removeClass("active");
             hideAnnotation();
         });
+
+	$(".dss-short-summary-read-more").click(function () {
+	    $("#dss-tabs-description").click();
+	});
 
         $(".annotation-toggle").click(function () {
             if ($(".field-name-body").hasClass("expanded")) {
