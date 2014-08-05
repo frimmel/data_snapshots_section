@@ -67,6 +67,7 @@ features[field][] = node-data_snapshot_data_source-field_dssds_secondary_q_answ
 features[field][] = node-data_snapshot_data_source-field_dssds_secondary_questi
 features[field][] = node-data_snapshot_data_source-field_dssds_themes
 features[field][] = node-data_snapshot_data_source-field_dssds_url_pattern
+features[field][] = node-data_snapshot_data_source-field_weight
 features[field_group][] = group_dssds_metadata|node|data_snapshot_data_source|form
 features[field_group][] = group_dssds_people|node|data_snapshot_data_source|form
 features[field_group][] = group_dssds_processing|node|data_snapshot_data_source|form

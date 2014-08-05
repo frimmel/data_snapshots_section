@@ -2220,6 +2220,82 @@ function data_snapshots_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-data_snapshot_data_source-field_weight'
+  $fields['node-data_snapshot_data_source-field_weight'] = array(
+    'field_config' => array(
+      'active' => 1,
+      'cardinality' => 1,
+      'deleted' => 0,
+      'entity_types' => array(),
+      'field_name' => 'field_weight',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => 0,
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'data_snapshot_data_source',
+      'default_value' => NULL,
+      'deleted' => 0,
+      'description' => 'Sets the display order of data sources in the theme dropdown. This value is used across all themes for the data source.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+	  'module' => 'number',
+	  'settings' => array(
+            'decimal_separator' => '.',
+	    'empty_fields_emptyfieldtext_empty_text' => '',
+	    'empty_fields_handler' => '',
+	    'prefix_suffix' => TRUE,
+	    'scale' => 0,
+	    'thousand_separator' => ' ',
+          ),
+	  'type' => 'number_integer',
+	  'weight' => 31,
+        ),
+	'full' => array(
+          'label' => 'above',
+	  'settings' => array(),
+	  'type' => 'hidden',
+	  'weight' => 0,
+        ),
+	'search_result' => array(
+          'label' => 'above',
+	  'settings' => array(),
+	  'type' => 'hidden',
+	  'weight' => 0,
+        ),
+	'teaser' => array(
+          'label' => 'above',
+	  'settings' => array(),
+	  'type' => 'hidden',
+	  'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_weight',
+      'label' => 'Weight',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+	'min' => '',
+	'prefix' => '',
+	'suffix' => '',
+	'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+	'module' => 'number',
+	'settings' => array(),
+	'type' => 'number',
+	'weight' => 37,
+      ),
+    ),
+  );
+
   ////////////////////////////////////////
 
   $fields['node-data_snapshot_data_source-field_dssds_map_scope'] = array(
@@ -2441,10 +2517,12 @@ function data_snapshots_field_default_fields() {
   t('References used in writing the description.');
   t('Reviewer');
   t('Secondary Question');
+  t('Sets the display order of data sources in the theme dropdown. This value is used across all themes for the data source.');
   t('The url pattern where the Data Sanpshot image is hosted. Use {dsmn} for the machine name, {ptk} for the primary key & {stk} for the secondary key.');
   t('Theme(s)');
   t('URL pattern');
   t('URL to Climate.gov Dataset Catalog record.');
+  t('Weight');
   t('What do the colors mean?');
   t('Why do these data matter?');
 

@@ -208,6 +208,7 @@ function data_snapshots_field_group_info() {
       4 => 'field_dssds_image_frequency',
       5 => 'field_dssds_map_scope',
       6 => 'title',
+      7 => 'field_weight',
     ),
     'format_type' => 'htab',
     'format_settings' => array(
