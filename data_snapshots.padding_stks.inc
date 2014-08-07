@@ -27,7 +27,7 @@ function _data_snapshots_pad_Custom($ptks, &$stks, $PAD_VALUE) {
 
 function _data_snapshots_pad_Monthly($ptks, &$stks, $PAD_VALUE) {
   $MONTH_LENGTH = 12;
-  $EXPECTED_MONTH_VALUES = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
+  $EXPECTED_MONTH_VALUES = array('01-00', '02-00', '03-00', '04-00', '05-00', '06-00', '07-00', '08-00', '09-00', '10-00', '11-00', '12-00');
 
   for ($i = 0; $i < count($ptks); $i++) {
     if (count($stks[$ptks[$i]]) == $MONTH_LENGTH) {
