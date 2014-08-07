@@ -353,6 +353,7 @@
 
 .group-header {
     position: relative;
+    height: 39px;
 }
 
 .field-name-title {
