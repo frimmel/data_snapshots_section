@@ -84,7 +84,7 @@
     function setUrl(dsmn, ptk, stk, theme) {
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
-        if (window.history && window.history.replaceState) {
+        if (stk && ptk && window.history && window.history.replaceState) {
             url = (determineStkDisabled() === false) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
             window.history.replaceState({}, "", url);
         }
@@ -232,6 +232,10 @@
 
         $elem.css("margin-left", marginLeft)
             .css("left", elemPosition);
+
+	if (!$elem.hasClass("dss-interactive-slider-popup-active")) {
+	    $elem.addClass("dss-interactive-slider-popup-active");
+	}
     }
 
     function setPtkSliderPopup(selector, ptk, stk, frequency, slider, steps, position) {
@@ -464,14 +468,6 @@
 
 	$("div[value=" + dsmn + "]").addClass("active");
 
-        function hideElements() {
-            //            $('.group-footer').html("").stop(true, true).animate({'opacity' : 0.0}, 200).html("");
-        }
-
-        function showElements() {
-            //            $('.group-footer').stop(true, true).animate({'opacity' : 1.0}, 200);
-        }
-
         function replaceTickmarks() {
             var ptkLength = ptks.length,
                 stkLength = stks.length,
@@ -640,14 +636,20 @@
             ptk = ptks[currentPtkIndex];
             stks = getStks(ptk);
 
+	    stk = stks[currentStkIndex];
+	    /*
             if (currentStkIndex >= stks.length || stks[currentStkIndex] === null) {
                 stk = stks[findValidStkIndex()];
             } else {
                 stk = stks[currentStkIndex];
             }
-
+	    */
             switchImgContent(dsmn, ptk, stk);
-	    setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
+	    if (stk === null) {
+		$(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
+	    } else {
+		setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
+	    }
             configStkSlider();
         }
 
@@ -656,7 +658,6 @@
             dismissPermalink();
 	    setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, event.args.value);
 	    $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
-            //            hideElements();
         }
 
         function ptkSlideEndHandler(event) {
@@ -668,7 +669,6 @@
             } else {
                 switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
             }
-            //            showElements();
         };
 
         function bindPtkEvents() {
@@ -709,7 +709,7 @@
                 showRange: false,
                 mode: 'fixed',
                 tooltip: false
-                        });
+            });
 
             /*
             $('#dss-interactive-slider-ptk-slider').slider({
@@ -722,32 +722,31 @@
         };
 
         function stkSlideHandler(event) {
-            var newStkIndex = event.args.value;
-            if (stks[newStkIndex] === null) {
-		setImg(dsmn, ptk, null);
-                return false;
-            }
             var ptk, stk;
             currentStkIndex = event.args.value;
 
             ptk = ptks[currentPtkIndex];
             stk = stks[currentStkIndex];
 
+            if (stk === null) {
+		setImg(dsmn, ptk, null);
+		$(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
+                return false;
+            }
             switchImgContent(dsmn, ptk, stk);
 	    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
         }
 
         function stkSlideStartHandler(event) {
             dismissPermalink();
-	    setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, event.args.value);
-	    $(stkPopupSelector).addClass("dss-interactive-slider-popup-active");
-	    //	    hideElements();
+	    if (stks[currentStkIndex]) {
+		setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, event.args.value);
+	    }
         }
 
         function stkSlideEndHandler(event) {
 	    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
             switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-	    //	    showElements();
         }
 
         function bindStkEvents() {
@@ -770,7 +769,7 @@
                 min: 0,
                 max: stks.length - 1,
                 ticksFrequency: 1,
-                value: findValidStkIndex(),
+			value: currentStkIndex,//findValidStkIndex(),
                 step: 1,
                 showButtons: false,
                 ticksPosition: 'top',
@@ -781,15 +780,7 @@
                 tooltip: false
             });
 
-            /*
-            $('#dss-interactive-slider-stk-slider').slider({
-                'min' : 0,
-                'max' : stks.length - 1,
-                'value' : findValidStkIndex()
-            });
-
-            replaceTickmarks();
-            */
+	    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
         }
 
         function dataSourceStkChange() {
