@@ -406,15 +406,15 @@
 
         $("#dss-tabs-maps").click(function () {
 	    $(this).addClass("active");
-            $(".dss-selector-wrapper").show();
-            $(".dss-text-wrapper").hide();
+            $(".dss-selector-wrapper").fadeIn(100);
+            $(".dss-text-wrapper").fadeOut(100);
             $("#dss-tabs-description").removeClass("active");
         });
 
         $("#dss-tabs-description").click(function () {
 	    $(this).addClass("active");
-            $(".dss-selector-wrapper").hide();
-            $(".dss-text-wrapper").show();
+            $(".dss-selector-wrapper").fadeOut(100);
+            $(".dss-text-wrapper").fadeIn(100);
             $("#dss-tabs-maps").removeClass("active");
             hideAnnotation();
         });
@@ -863,6 +863,7 @@
         }
 
         function setDataSource(newDsmn) {
+	    $(".field-name-field-ds-disimg").fadeOut(160);
             $.ajax({
                 type    : "POST",
                 url     : "/data-snapshots/ajax",
@@ -877,6 +878,7 @@
                             "stk"               : stks[currentStkIndex]
                           }
             });
+	    $(".field-name-field-ds-disimg").fadeIn(160);
         }
     });
 
