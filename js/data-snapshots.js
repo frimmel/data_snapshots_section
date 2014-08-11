@@ -564,6 +564,12 @@
                         stkStart : "Jan",
                         stkEnd : "Dec"
                     },
+                    Bimonthly : {
+                        ptk : "Year:",
+                        stk : "Month:",
+                        stkStart : "Jan",
+                        stkEnd : "Dec"
+                    },
                     Weekly : {
                         ptk : "Year:",
                         stk : "Day:",
