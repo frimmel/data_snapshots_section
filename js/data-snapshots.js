@@ -850,6 +850,7 @@
             }
 
             switchImgContent(dsmn, ptk, stk);
+	    $(".field-name-field-ds-disimg").fadeIn(160);
             configPtkSlider();
             configStkSlider();
 
@@ -860,7 +861,6 @@
             $(".dss-short-summary-text").text($(".field_dssds_framing_q_answer").text().split(".")[0] + ".");
             bindPtkEvents();
             bindStkEvents();
-	    $(".field-name-field-ds-disimg").fadeIn(160);
         }
 
         function setDataSource(newDsmn) {
