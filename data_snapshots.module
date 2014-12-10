@@ -133,6 +133,9 @@ function data_snapshots_form($node, $form_state) {
  */
 function data_snapshots_theme($existing, $type, $theme, $path) {
   return array (
+    'page__front' => array(
+      'template' => 'templates/page--front',
+    ),
     'ds_2col_stacked__node_data_snapshot_full' => array(
       'template' => 'templates/ds-2col-stacked--node-data-snapshot-full',
     ),
