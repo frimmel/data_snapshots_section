@@ -46,7 +46,10 @@ function data_snapshots_fields_data_snapshot() {
         'full' => array(
           'label' => 'above',
           'module' => 'text',
-          'settings' => array(),
+          'settings' => array(
+            'empty_fields_emptyfieldtext_empty_text' => ' ',
+            'empty_fields_handler' => 'EmptyFieldText',
+          ),
           'type' => 'text_default',
           'weight' => '4',
         ),
