@@ -21,7 +21,7 @@ drush ne-import < dev/datasets.json
 #drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/ghcntemp/feed.csv
 #drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/spc_severe/feed.csv
 
-drush variable-set --yes data_snapshots_import_url "http://54.235.203.129/Images/feed.csv"
+drush variable-set --yes data_snapshots_import_url "http://107.20.157.228/Images/feed.csv"
 
 echo "importing nodes now, this might take a while"
 
