@@ -991,4 +991,8 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
     width: 100% !important;
 }
 
+.html button {
+    text-shadow: none;
+}
+
 /* end john keck's theme */
