@@ -78,6 +78,7 @@
 
     if (!empty($entities['node'])) {
       $node = node_load(current(array_keys($entities['node'])));
+      $node_view = node_view($node);
     }
     
    ?>
@@ -131,7 +132,7 @@
                      <ul class="action-links"><?php print render($action_links); ?></ul>
                      <?php endif; ?>
 		     <div id="block-system-main" class="block block-system">
-                        <?php print drupal_render(node_view($node)); ?>
+                        <?php print drupal_render($node_view); ?>
                      </div>
                   </div>
                </div>
