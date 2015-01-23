@@ -1,0 +1,110 @@
+<?php
+
+#
+# This script
+# 
+#     1. Reads in the file sites/all/modules/data-snapshots/dev/datasets-notids.json
+#     2. Changes all references to tids from strings based on vocabulary and term names to numbers
+#     3. Writes the result to the file sites/all/modules/data-snapshots/dev/datasets-retids.json
+# 
+# Usage:
+#
+#     drush scr retidify-datasets-json
+#
+# See the comments at the top of `untidify-datasets-json` for more documentation.
+
+function get_taxonomy_vocab_machine_name_to_vid_array() {
+  #
+  # Return an assoc array whose keys are machine_names and whose values are the vids
+  # of the currently installed taxonomy vocabularies.  For, example:
+  #     Array(
+  #         ['tags'] => 1
+  #         ['author'] => 2
+  #         ['climate_and_energy_topics'] => 3
+  #         ['gcmd'] => 4
+  #         ['section'] => 5
+  #         ['data_snapshot_data_source_frequency'] => 6
+  #         ['data_snapshots_themes'] => 7
+  #         ['data_source_scope'] => 8
+  #     )
+  #
+  $rows = db_select('taxonomy_vocabulary', 'tv')
+    ->fields('tv', array('vid','name','machine_name'))
+    ->execute()
+    ->fetchAll();
+  $answer = [];
+  if (!empty($rows)) {
+    foreach ($rows as $row) {
+      $answer[$row->{'machine_name'}] = $row->{'vid'};
+    }
+  }
+  return $answer;
+}
+
+function get_taxonomy_term_vid_and_name_to_tid_array() {
+  #
+  # Return an assoc array of the following structure:
+  #   [ vid => [ name => tid ] ]
+  # For example:
+  #    Array(
+  #        [5] => Array(
+  #                [Climate Conditions] => 1
+  #                [Decision Support] => 3
+  #                [Maps and Data] => 2
+  #                [News and Features] => 4
+  #                [Teaching Climate] => 5
+  #            )
+  #    
+  #        [6] => Array(
+  #                [Annual] => 10
+  #                [Bimonthly] => 8
+  #                [Custom] => 11
+  #                [Daily] => 6
+  #                [Monthly] => 9
+  #                [Weekly] => 7
+  #            )
+  #        ...
+  #    )
+  #
+  $rows = db_select('taxonomy_term_data', 'ttd')
+    ->fields('ttd', array('tid','vid','name'))
+    ->execute()
+    ->fetchAll();
+  $answer = array();
+  if (!empty($rows)) {
+    foreach ($rows as $row) {
+      if (!array_key_exists($row->{'vid'}, $answer)) {
+        $answer[$row->{'vid'}] = [];
+      }
+      $answer[$row->{'vid'}][$row->{'name'}] = $row->{'tid'};
+    }
+  }
+  return $answer;
+}
+
+$tx_vocabs = get_taxonomy_vocab_machine_name_to_vid_array();
+
+$tx_terms = get_taxonomy_term_vid_and_name_to_tid_array();
+
+function unstringify_term($term, $tx_vocabs, $tx_terms) {
+    $words = explode(":", $term);
+    $vocab_machine_name = $words[0];
+    $term_name = $words[1];
+    return $tx_terms[$tx_vocabs[$vocab_machine_name]][$term_name];
+}
+
+$string = file_get_contents("sites/all/modules/data-snapshots/dev/datasets-notids.json");
+
+$datasets = json_decode($string, true);
+
+for ($i=0; $i<count($datasets); ++$i) {
+    foreach (array('field_dssds_map_scope','field_dssds_image_frequency','field_dssds_themes') as $field_name) {
+        for ($j=0; $j<count($datasets[$i][$field_name]['und']); ++$j) {
+            $datasets[$i][$field_name]['und'][$j]['tid'] = unstringify_term( $datasets[$i][$field_name]['und'][$j]['tid'], $tx_vocabs, $tx_terms );
+        }
+    }
+}
+
+$outfile = fopen("sites/all/modules/data-snapshots/dev/datasets-retids.json", "w");
+fwrite($outfile, json_encode($datasets));
+fclose($outfile);

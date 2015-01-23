@@ -87,6 +87,8 @@ function data_snapshots_node_info() {
 
 /**
  * Implements hook_insert()
+ *
+ * Inserts records into the custom table data_snapshots when a new node is created.
  */
 // Q: Why is guid '???'?
 function data_snapshots_insert($node) {
@@ -105,6 +107,8 @@ function data_snapshots_insert($node) {
 
 /**
  * Implements hook_update()
+ *
+ * Updates records in the custom table data_snapshots when a node is altered.
  */
 // Q: Why is guid '???'?
 function data_snapshots_update($node) {
@@ -130,6 +134,8 @@ function data_snapshots_form($node, $form_state) {
 
 /**
  * Implements hook_theme()
+ *
+ * Enables custom templates for data snapshots.
  */
 function data_snapshots_theme($existing, $type, $theme, $path) {
   return array (
@@ -193,6 +199,10 @@ function _get_field_value($node, $field) {
   return $q[0]['value'];
 }
 
+/*
+ * Returns arrays of the ptks and stks of a data source when passed its
+ * machine name.
+ */
 function _data_snapshots_get_dates($data_source) {
   $rows = db_select('data_snapshots', 'ds')
     ->fields('ds', array('nid','ptk','stk'))
@@ -226,6 +236,9 @@ function _data_snapshots_get_dates($data_source) {
 	       );
 }
 
+/*
+ * Gets nid of data source node from its machine name.
+ */
 function _data_snapshots_get_data_source_nid($dsmn) {
   return db_select('field_data_field_dssds_machine_name', 'f')
     ->condition('field_dssds_machine_name_value', $dsmn)
@@ -234,6 +247,9 @@ function _data_snapshots_get_data_source_nid($dsmn) {
     ->FetchField();
 }
 
+/*
+ * Gets name of a data sources frequency from its machine name.
+ */
 function _data_snapshots_get_data_source_frequency($dsmn) {
   $query = db_select('field_data_field_dssds_machine_name', 'f')
     ->condition('field_dssds_machine_name_value', $dsmn);
@@ -683,8 +699,10 @@ function data_snapshots_last_import_info() {
 function data_snapshots_run_import() {
 
   ###
-  ### Get the list of URLs that have already been loaded, store them in
-  ### the `$loaded_urls` hash:
+  ### Get the list of URLs that have already been loaded, and store them in
+  ### the `$loaded_urls` hash.  These URLs are stored in the table named
+  ### `data_snapshots_import_urls`; each URL looks like
+  ###     http://larry.nemac.org/Images/averagetemp-monthly-cmb/averagetemp-monthly-cmb--2015-01-23.csv
   ###
 
   $loaded_urls = array();

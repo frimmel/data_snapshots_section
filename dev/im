@@ -3,7 +3,8 @@
 # import data set nodes
 
 # reload data set node content saved by "si" script...
-drush ne-import < dev/datasets.json
+drush scr dev/retidify-datasets-json
+drush ne-import < dev/datasets-retids.json
 
 #( cd dev/data-sets ; ./make_node_jsons )
 #drush ne-import < dev/data-sets/node_json/averagetemp-monthly-cmb.node.json

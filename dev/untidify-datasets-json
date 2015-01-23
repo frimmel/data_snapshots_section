@@ -1,0 +1,123 @@
+<?php
+
+#
+# This script
+# 
+#     1. Reads in the file sites/all/modules/data-snapshots/dev/datasets.json
+#     2. Changes all references to tids from numbers to strings based on vocabulary and term names
+#     3. Writes the result to the file sites/all/modules/data-snapshots/dev/datasets-notids.json
+# 
+# Usage:
+#
+#     drush scr untidify-datasets-json
+#
+# This script is intended to be used in conjunction with the script `untidify-datasets-json`.  The
+# idea is that the `untidify` script can be used to remove the numeric tids from a file, replacing
+# them with strings that are portable to a different Drupal site where the tids might have different
+# numeric values, and the `retidify` script can be run on that site to create a file containing
+# tids with numeric values that are correct for the new site.  So, the workflow is, generally:
+#
+#    In the source site:
+#      1. run 
+#           drush ne-export --type=data_snapshot_data_source --format=json > dev/datasets.json
+#         to create the source 'datasets.json' file
+#      2. run 
+#           drush scr untidify-datasets-json
+#         to create the relocatable 'datasets-notids.json' file
+#    Then, in the destination site:
+#      3. run
+#           drush scr retidify-datasets-json
+#         to create the file 'datasets-retids.json' containing numeric tids that are correct
+#         for that site
+#      4. run 
+#           drush ne-import < dev/datasets-retids.json
+#         to import the data from that file into the site
+#
+
+
+function get_taxonomy_vocab_vid_to_machine_name_array() {
+  #
+  # Return an assoc array whose keys are vids and whose values are the machine_names
+  # of the currently installed taxonomy vocabularies.  For, example:
+  #    Array(
+  #        [1] => 'tags',
+  #        [2] => 'author',
+  #        [3] => 'climate_and_energy_topics',
+  #        [4] => 'gcmd',
+  #        [5] => 'section',
+  #        [6] => 'data_snapshot_data_source_frequency',
+  #        [7] => 'data_snapshots_themes',
+  #        [8] => 'data_source_scope'
+  #    )
+  #
+  $rows = db_select('taxonomy_vocabulary', 'tv')
+    ->fields('tv', array('vid','name','machine_name'))
+    ->execute()
+    ->fetchAll();
+  $answer = [];
+  if (!empty($rows)) {
+    foreach ($rows as $row) {
+      $answer[$row->{'vid'}] = $row->{'machine_name'};
+    }
+  }
+  return $answer;
+}
+
+function get_taxonomy_term_tid_to_name_array() {
+  #
+  # Return an assoc array whose keys are tids and whose values are arrays
+  # having keys 'vid' and 'name'.  For example:
+  #     Array(
+  #         [1] => Array(
+  #                 [vid] => 5
+  #                 [name] => 'Climate Conditions'
+  #             )
+  #     
+  #         [3] => Array(
+  #                 [vid] => 5
+  #                 [name] => 'Decision Support'
+  #             )
+  #     ...
+  #     )
+  #
+  $rows = db_select('taxonomy_term_data', 'ttd')
+    ->fields('ttd', array('tid','vid','name'))
+    ->execute()
+    ->fetchAll();
+  $answer = array();
+  if (!empty($rows)) {
+    foreach ($rows as $row) {
+      $answer[$row->{'tid'}] = [
+        'vid'  => $row->{'vid'},
+        'name' => $row->{'name'}
+      ];
+    }
+  }
+  return $answer;
+}
+
+$tx_vocabs = get_taxonomy_vocab_vid_to_machine_name_array();
+
+$tx_terms = get_taxonomy_term_tid_to_name_array();
+
+function stringify_term_tid($tid, $tx_vocabs, $tx_terms) {
+    $vocab_name = $tx_vocabs[$tx_terms[$tid]['vid']];
+    $term_name = $tx_terms[$tid]['name'];
+    return sprintf("%s:%s", $vocab_name, $term_name);
+}
+
+$string = file_get_contents("sites/all/modules/data-snapshots/dev/datasets.json");
+
+$datasets = json_decode($string, true);
+
+for ($i=0; $i<count($datasets); ++$i) {
+    foreach (array('field_dssds_map_scope','field_dssds_image_frequency','field_dssds_themes') as $field_name) {
+        for ($j=0; $j<count($datasets[$i][$field_name]['und']); ++$j) {
+            $datasets[$i][$field_name]['und'][$j]['tid'] = stringify_term_tid( $datasets[$i][$field_name]['und'][$j]['tid'], $tx_vocabs, $tx_terms );
+        }
+    }
+}
+
+$outfile = fopen("sites/all/modules/data-snapshots/dev/datasets-notids.json", "w");
+fwrite($outfile, json_encode($datasets));
+fclose($outfile);
