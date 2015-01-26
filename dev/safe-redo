@@ -1,0 +1,132 @@
+#! /bin/bash
+
+Do these things after updating/installing new module code and (re)enabling this module
+
+#>> 1. drush sqlc:
+#>>       > delete * from data_snapshots
+#>>       > delete * from data_snapshots_import_urls
+#>>       > delete * from data_snapshots_imports
+#>>
+#>> 2. in Drupal UI:
+#>>       * delete all nodes of type data_snapshot
+#>>       * delete all nodes of type data_snapshot_data_source
+#>>
+#>> 3. Ensure the following taxonomy vocabularies are present: (vids don't need to match):
+#>> 
+#>>     select * from taxonomy_vocabulary:
+#>>       +-----+-------------------------------------+-------------------------------------+---------------------------------------------------------------+-----------+----------+--------+
+#>>       | vid | name                                | machine_name                        | description                                                   | hierarchy | module   | weight |
+#>>       +-----+-------------------------------------+-------------------------------------+---------------------------------------------------------------+-----------+----------+--------+
+#>>       |   5 | Section                             | section                             | Distinguishes site content by section.                        |         0 | taxonomy |      0 |
+#>>       |   6 | Data Snapshot Data Source Frequency | data_snapshot_data_source_frequency | Image frequency for a Data Snapshot Data source.              |         0 | taxonomy |      0 |
+#>>       |   7 | Data Snapshots Themes               | data_snapshots_themes               | The available Themes for Data Snapshots                       |         0 | taxonomy |      0 |
+#>>       |   8 | Data Source Scope                   | data_source_scope                   |                                                               |         0 | taxonomy |      0 |
+#>>       +-----+-------------------------------------+-------------------------------------+---------------------------------------------------------------+-----------+----------+--------+
+#>> 
+#>> 4. Ensure the following taxonomy terms are defined for the above vocabularies (vids and tids don't need to match):
+#>> 
+#>>    select * from taxonomy_term_data:
+#>>       +-----+-----+--------------------+-------------+------------+--------+--------------------------------------+
+#>>       | tid | vid | name               | description | format     | weight | uuid                                 |
+#>>       +-----+-----+--------------------+-------------+------------+--------+--------------------------------------+
+#>>       |   1 |   5 | Climate Conditions |             | plain_text |      0 | 59c78d9a-27a7-483f-924f-c100cf04d300 |
+#>>       |   2 |   5 | Maps and Data      |             | plain_text |      0 | f1e028d2-d541-4fa1-8481-c752aa548b93 |
+#>>       |   3 |   5 | Decision Support   |             | plain_text |      0 | 2444cfea-9ece-4e8e-a923-1db13ac8dce2 |
+#>>       |   4 |   5 | News and Features  |             | plain_text |      0 | 55da6447-b54c-4bbd-bddb-d0d666d76b97 |
+#>>       |   5 |   5 | Teaching Climate   |             | plain_text |      0 | 35a4599b-d959-4856-954f-f43d0d6a026c |
+#>>       |   6 |   6 | Daily              |             | plain_text |      0 | 746bccb9-0264-4782-95cc-d2e402607c23 |
+#>>       |   7 |   6 | Weekly             |             | plain_text |      0 | 5375f29e-45ed-42bd-baf2-b6766f837f27 |
+#>>       |   8 |   6 | Bimonthly          |             | plain_text |      0 | 99477242-b9e2-46c6-8760-8c91902fbe3b |
+#>>       |   9 |   6 | Monthly            |             | plain_text |      0 | f7707032-a2c0-4d5c-ae3b-9fde41cca528 |
+#>>       |  10 |   6 | Annual             |             | plain_text |      0 | 57e85e68-dc97-4701-8202-567887e57105 |
+#>>       |  11 |   6 | Custom             |             | plain_text |      0 | a32d9b01-f954-462f-9f82-3c946309ac54 |
+#>>       |  12 |   7 | Drought            |             | plain_text |      3 | 829f4640-0478-4ccd-9d68-ce9579bfab2f |
+#>>       |  13 |   7 | Outlooks           |             | plain_text |      4 | 7a944fea-b10a-44ed-91cc-683ecfc3816e |
+#>>       |  14 |   7 | Temperature        |             | plain_text |      1 | de30fa7d-ec50-4c39-80a3-c488c4f44d6a |
+#>>       |  15 |   7 | Precipitation      |             | plain_text |      2 | c40699f3-ef4a-4c0f-a8a6-5bcc0675fa3d |
+#>>       |  16 |   7 | Severe Weather     |             | plain_text |      5 | 7cc8b8fc-b55f-4c99-a2f1-0059184c42b4 |
+#>>       |  17 |   7 | Snow               |             | plain_text |      6 | 4ad07836-6cdc-42a1-88a6-434203694be0 |
+#>>       |  18 |   8 | CONUS              |             | plain_text |      0 | 5ebe7104-0ab2-496f-8c45-136795bd232c |
+#>>       |  19 |   8 | Global             |             | plain_text |      0 | 6a0201b7-a31f-42a0-875e-81a49f5598cb |
+#>>       +-----+-----+--------------------+-------------+------------+--------+--------------------------------------+
+#>>
+#>> 5. Run this script
+#>>
+
+##### si:
+
+# save current data set node content for reloading later...
+### drush ne-export --type=data_snapshot_data_source --format=json > dev/datasets.json
+### drush scr dev/untidify-datasets-json
+
+### # re-install drupal; this completely replaces the current database
+### drush -y site-install
+
+### # reset the admin user password
+### drush upwd admin --password=`cat dev/.password`
+
+### # create any local user accounts by running a the script dev/.localusers, if it exsists
+### if [ -f dev/.localusers ] ; then
+###   . ./dev/.localusers
+### fi
+
+### # disable comment module
+### drush -y dis comment
+
+### # install several modules that we need for development
+### drush -y en global_dependencies taxonomy_csv node_export data_snapshot_dev_view_modes data_snapshots_css_dev
+
+### # import some taxonomy vocab terms
+### drush vocimp --vocabulary_id=section `pwd`/dev/section-vocab.csv flat
+
+### # set custom theme as default
+### drush -y en climate
+### drush -y vset theme_default climate
+
+
+##### en:
+
+### drush -y en add_this_dev data_snapshots devel
+
+### drush vocimp --vocabulary_id=data_snapshot_data_source_frequency `pwd`/dev/data_snapshot_data_source_frequency-vocab.csv flat
+
+### drush vocimp `pwd`/dev/data_snapshots_themes-vocab.csv fields --fields_format="name,weight" --vocabulary_id=data_snapshots_themes --result_terms --result_stats --check_line
+
+### drush vocimp --vocabulary_id=data_source_scope `pwd`/dev/data_snapshot_map_scope-vocab.csv flat
+
+### drush -y en dss_views_dev
+
+
+##### im:
+
+#! /bin/bash
+
+# import data set nodes
+
+# reload data set node content saved by "si" script...
+drush scr dev/retidify-datasets-json
+drush ne-import < dev/datasets-retids.json
+
+#( cd dev/data-sets ; ./make_node_jsons )
+#drush ne-import < dev/data-sets/node_json/averagetemp-monthly-cmb.node.json
+#drush ne-import < dev/data-sets/node_json/tempanomaly-annual-nnvl.node.json
+#drush ne-import < dev/data-sets/node_json/usdroughtmonitor-weekly-ndmc.node.json
+#drush ne-import < dev/data-sets/node_json/droughtoutlook-monthly-cpc.node.json
+#drush ne-import < dev/data-sets/node_json/tempanomaly-monthly-nnvl.node.json
+#drush ne-import < dev/data-sets/node_json/oisst-daily-cdr.node.json	      
+#drush ne-import < dev/data-sets/node_json/totalprecip-monthly-cmb.node.json
+#drush ne-import < dev/data-sets/node_json/probseverewx-dayofyear-spc.node.json
+
+#drush ne-import < data-snapshot-usdm-2000-01-04.json
+#drush -y en feedsdrush ; drush cc all
+#drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/usdm/feed.csv
+#drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/ghcntemp/feed.csv
+#drush fim data_snapshot_importer http://datasnapshots-images.nemac.com/spc_severe/feed.csv
+
+drush variable-set --yes data_snapshots_import_url "http://larry.nemac.org/Images/feed.csv"
+
+echo "importing nodes now, this might take a while"
+
+drush scr dev/run_import.php
+
+echo "importing done."
