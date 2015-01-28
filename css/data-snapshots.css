@@ -155,6 +155,15 @@
     min-height: 93px;
 }
 
+.node-type-data-snapshot .field-name-body .field-items {
+    max-height: 18px;
+}
+
+.node-type-data-snapshot .field-name-body.expanded .field-items {
+    max-height: 320px;
+    overflow: scroll;
+}
+
 .node-type-data-snapshot .field-name-body .field-label.hidden,
 .node-type-data-snapshot .field-name-body .annotation-toggle-wrapper.hidden {
     display: none;
