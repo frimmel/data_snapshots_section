@@ -139,9 +139,6 @@ function data_snapshots_form($node, $form_state) {
  */
 function data_snapshots_theme($existing, $type, $theme, $path) {
   return array (
-    'page__front' => array(
-      'template' => 'templates/page--front',
-    ),
     'ds_2col_stacked__node_data_snapshot_full' => array(
       'template' => 'templates/ds-2col-stacked--node-data-snapshot-full',
     ),
@@ -551,13 +548,16 @@ function data_snapshots_admin_settings() {
     '#markup' => $status,
   );
 
-  $form['data_snapshots_import_url'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Import URL'),
-    '#default_value' => variable_get('data_snapshots_import_url'),
-    '#description' => t('Enter the master feed URL to be used for automated Data Snapshots imports; this should be a full URL, complete with http:// or https://'),
-    '#size' => 80
-  );
+##
+## This is not used any more (it has been replaced with individual master feed urls for each data source node):
+##
+#  $form['data_snapshots_import_url'] = array(
+#    '#type' => 'textfield',
+#    '#title' => t('Import URL'),
+#    '#default_value' => variable_get('data_snapshots_import_url'),
+#    '#description' => t('Enter the master feed URL to be used for automated Data Snapshots imports; this should be a full URL, complete with http:// or https://'),
+#    '#size' => 80
+#  );
 
   return system_settings_form($form);
 }
@@ -769,13 +769,14 @@ function data_snapshots_run_import() {
     $timeout = 5;
     $result = drupal_http_request($ds_feed, array('timeout' => $timeout));
     if ($result->code != 200) {
-      throw new Exception(t('Download of @url failed with code !code.', array('@url' => $ds_feed, '!code' => $result->code)));
-    }
-    $lines = explode("\n", $result->data);
-    foreach ($lines as $line) {
-      $url = trim($line);
-      if ($url != '' && (!array_key_exists($url, $loaded_urls) ||  !$loaded_urls[$url])) {
-        $urls[] = $url;
+      drupal_set_message(t('Download of @url failed with code !code.', array('@url' => $ds_feed, '!code' => $result->code)), 'error');
+    } else {
+      $lines = explode("\n", $result->data);
+      foreach ($lines as $line) {
+        $url = trim($line);
+        if ($url != '' && (!array_key_exists($url, $loaded_urls) ||  !$loaded_urls[$url])) {
+          $urls[] = $url;
+        }
       }
     }
   }

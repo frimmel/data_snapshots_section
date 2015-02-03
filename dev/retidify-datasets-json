@@ -1,5 +1,7 @@
 <?php
 
+$FEED_URL_PREFIX = "http://larry.nemac.org/Images/";
+
 #
 # This script
 # 
@@ -103,7 +105,14 @@ for ($i=0; $i<count($datasets); ++$i) {
             $datasets[$i][$field_name]['und'][$j]['tid'] = unstringify_term( $datasets[$i][$field_name]['und'][$j]['tid'], $tx_vocabs, $tx_terms );
         }
     }
+    $datasets[$i]['field_dssds_feed_url']['und'][0]['value'] = $FEED_URL_PREFIX . $datasets[$i]['field_dssds_machine_name']['und'][0]['value'] . "/feed.csv";
+    $datasets[$i]['field_dssds_feed_url']['und'][0]['safe_value'] = $datasets[$i]['field_dssds_feed_url']['und'][0]['value'];
+
+    $datasets[$i]['field_dssds_url_pattern']['und'][0]['value'] = preg_replace('|^.*/Images/|', $FEED_URL_PREFIX,
+        $datasets[$i]['field_dssds_url_pattern']['und'][0]['value']);
+    $datasets[$i]['field_dssds_url_pattern']['und'][0]['safe_value'] = $datasets[$i]['field_dssds_url_pattern']['und'][0]['value'];
 }
+
 
 $outfile = fopen("sites/all/modules/data-snapshots/dev/datasets-retids.json", "w");
 fwrite($outfile, json_encode($datasets));

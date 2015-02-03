@@ -103,7 +103,7 @@ function _data_snapshots_pad_Bimonthly($ptks, &$stks, $PAD_VALUE) {
     // pad the front
     $base_date = date_create($ptk . '-' . $stks[$ptk][0]);
     $offset = array_search(date_format($base_date, 'm'), $MONTHS) * $EXPECTED_SNAPSHOTS;
-    if (date_format(date_create($ptk . '-' . $stks[$ptk][0]), 'm') != date_format(date_create($ptk . '-' . $stks[$ptk][1]), 'm')) {
+    if (!(count($stks[$ptk]) > 1) || date_format(date_create($ptk . '-' . $stks[$ptk][0]), 'm') != date_format(date_create($ptk . '-' . $stks[$ptk][1]), 'm')) {
       $offset--;
     }
     for (; $offset > 0; $offset--) {
@@ -114,7 +114,7 @@ function _data_snapshots_pad_Bimonthly($ptks, &$stks, $PAD_VALUE) {
     $count = count($stks[$ptk]);
     $base_date = date_create($ptk . '-' . $stks[$ptk][$count - 1]);
     $offset = (count($MONTHS) - array_search(date_format($base_date, 'm'), $MONTHS) - 1) * $EXPECTED_SNAPSHOTS;
-    if (date_format(date_create($ptk . '-' . $stks[$ptk][$count - 1]), 'm') != date_format(date_create($ptk . '-' . $stks[$ptk][$count - 2]), 'm')) {
+    if (count($stks[$ptk]) > 1 && date_format(date_create($ptk . '-' . $stks[$ptk][$count - 1]), 'm') != date_format(date_create($ptk . '-' . $stks[$ptk][$count - 2]), 'm')) {
       $offset--;
     }
     for (; $offset > 0; $offset--) {
