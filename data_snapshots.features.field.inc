@@ -2414,7 +2414,7 @@ function data_snapshots_field_default_fields() {
       'bundle' => 'data_snapshot_data_source',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'The URL of the feed from which images (data_snapshot nodes) for this data source should be imported',
+      'description' => 'The URL of the master feed file for this data source (must be a complete URL of the feed.csv file, complete with "http://" prefix)',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -2470,7 +2470,7 @@ function data_snapshots_field_default_fields() {
       ),
       'entity_type' => 'node',
       'field_name' => 'field_dssds_feed_url',
-      'label' => 'Feed URL',
+      'label' => 'Master Feed URL',
       'required' => 1,
       'settings' => array(
         'text_processing' => '0',

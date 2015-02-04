@@ -527,7 +527,7 @@ function data_snapshots_menu() {
 
 function data_snapshots_admin_settings() {
   $form['description'] = array(
-    '#markup' => '<p>' . t('Use this form to configure the Data Snapshots module import URL, and/or to run the import.') . '</p>',
+    '#markup' => '<p>' . t('Use the "Run Import Now" button below to import any new Data Snapshot nodes from the feeds associated with all Data Sources.  Pay no attention to the "Save Configuration" button; it does nothing.') . '</p>',
   );
   $form['run'] = array(
     '#type' => 'submit',
