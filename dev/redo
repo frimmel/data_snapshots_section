@@ -1,0 +1,6 @@
+#! /bin/bash
+
+# Note: this script must be run from the data_snaphots directory
+#   (Not the "dev" directory where it lives)
+
+./dev/si ; ./dev/en ; ./dev/im
