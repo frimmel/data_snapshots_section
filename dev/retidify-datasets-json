@@ -34,7 +34,7 @@ function get_taxonomy_vocab_machine_name_to_vid_array() {
     ->fields('tv', array('vid','name','machine_name'))
     ->execute()
     ->fetchAll();
-  $answer = [];
+  $answer = array();
   if (!empty($rows)) {
     foreach ($rows as $row) {
       $answer[$row->{'machine_name'}] = $row->{'vid'};
@@ -76,7 +76,7 @@ function get_taxonomy_term_vid_and_name_to_tid_array() {
   if (!empty($rows)) {
     foreach ($rows as $row) {
       if (!array_key_exists($row->{'vid'}, $answer)) {
-        $answer[$row->{'vid'}] = [];
+        $answer[$row->{'vid'}] = array();
       }
       $answer[$row->{'vid'}][$row->{'name'}] = $row->{'tid'};
     }
