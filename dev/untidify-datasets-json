@@ -3,9 +3,9 @@
 #
 # This script
 # 
-#     1. Reads in the file sites/all/modules/data-snapshots/dev/datasets.json
+#     1. Reads in the file sites/all/modules/data_snapshots/dev/datasets.json
 #     2. Changes all references to tids from numbers to strings based on vocabulary and term names
-#     3. Writes the result to the file sites/all/modules/data-snapshots/dev/datasets-notids.json
+#     3. Writes the result to the file sites/all/modules/data_snapshots/dev/datasets-notids.json
 # 
 # Usage:
 #
@@ -106,7 +106,7 @@ function stringify_term_tid($tid, $tx_vocabs, $tx_terms) {
     return sprintf("%s:%s", $vocab_name, $term_name);
 }
 
-$string = file_get_contents("sites/all/modules/data-snapshots/dev/datasets.json");
+$string = file_get_contents("sites/all/modules/data_snapshots/dev/datasets.json");
 
 $datasets = json_decode($string, true);
 
@@ -118,6 +118,6 @@ for ($i=0; $i<count($datasets); ++$i) {
     }
 }
 
-$outfile = fopen("sites/all/modules/data-snapshots/dev/datasets-notids.json", "w");
+$outfile = fopen("sites/all/modules/data_snapshots/dev/datasets-notids.json", "w");
 fwrite($outfile, json_encode($datasets));
 fclose($outfile);
