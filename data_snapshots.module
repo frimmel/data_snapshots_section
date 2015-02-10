@@ -267,7 +267,7 @@ function _data_snapshots_get_data_source_frequency($dsmn) {
  *
  * This funtion should ALWAYS return $node!!!
  *
- * What the @#$%&*# !!!???
+ * What on earth?
  *
  *   The mere presence of this hook apparently changes the structure of the contents
  *   of the $node object that gets passed to the template file.  When this hook is
@@ -298,7 +298,7 @@ function _data_snapshots_get_data_source_frequency($dsmn) {
  *
  * ANOTHER UPDATE:
  *
- * Holy shit!  Simply including "dsm($node)" at the top of
+ * Simply including "dsm($node)" at the top of
  * data_snapshots_view() changes the structure of the $node object
  * that is available to the template file!!!
  */
