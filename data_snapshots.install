@@ -3,35 +3,35 @@
 include_once 'data_snapshots.fields.data_snapshot.inc';
 include_once 'data_snapshots.field_groups.inc';
 
-function data_snapshots_uninstall() {
-  //
-  // WARNING: delete (or comment out) this function before releasing this module.
-  //   It's here during development so that the content types created by
-  //   this module will get removed from the database when uninstalling the module,
-  //   to make it easier to undo the effect of installing the module during testing.
-  //   In production, however, we don't want this to happen.
-
-  //fwrite(STDERR, "uninstall at 1\n");
-  foreach (data_snapshots_fields_data_snapshot() as $field) {
-    $instance = $field['field_instance'];
-    $instance['entity_type'] = 'node';
-    $instance['bundle'] = 'data_snapshot';
-    field_delete_instance($instance);
-    field_delete_field($field['field_config']['field_name']);
-  }
-  node_type_delete('data_snapshot');
-
-  foreach (data_snapshots_fields_data_snapshot_data_source() as $field) {
-    $instance = $field['field_instance'];
-    $instance['entity_type'] = 'node';
-    $instance['bundle'] = 'data_snapshot_data_source';
-    field_delete_instance($instance);
-    field_delete_field($field['field_config']['field_name']);
-  }
-  node_type_delete('data_snapshot_data_source');
-
-  field_purge_batch();
-}
+// function data_snapshots_uninstall() {
+//   //
+//   // WARNING: delete (or comment out) this function before releasing this module.
+//   //   It's here during development so that the content types created by
+//   //   this module will get removed from the database when uninstalling the module,
+//   //   to make it easier to undo the effect of installing the module during testing.
+//   //   In production, however, we don't want this to happen.
+// 
+//   //fwrite(STDERR, "uninstall at 1\n");
+//   foreach (data_snapshots_fields_data_snapshot() as $field) {
+//     $instance = $field['field_instance'];
+//     $instance['entity_type'] = 'node';
+//     $instance['bundle'] = 'data_snapshot';
+//     field_delete_instance($instance);
+//     field_delete_field($field['field_config']['field_name']);
+//   }
+//   node_type_delete('data_snapshot');
+// 
+//   foreach (data_snapshots_fields_data_snapshot_data_source() as $field) {
+//     $instance = $field['field_instance'];
+//     $instance['entity_type'] = 'node';
+//     $instance['bundle'] = 'data_snapshot_data_source';
+//     field_delete_instance($instance);
+//     field_delete_field($field['field_config']['field_name']);
+//   }
+//   node_type_delete('data_snapshot_data_source');
+// 
+//   field_purge_batch();
+// }
 
 /**
  * Implements hook_schema().
