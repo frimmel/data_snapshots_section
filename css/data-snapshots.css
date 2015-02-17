@@ -5,6 +5,10 @@
     font-family: 'Segoe UI', Arial, sans-serif;
 }
 
+.node-type-data-snapshot .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+    display: none;
+}
+
 #toolbar {
     display: none;
 }
