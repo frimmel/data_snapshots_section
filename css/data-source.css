@@ -1,35 +1,36 @@
-.col-2-left {
+.node-type-data-snapshot-data-source .field-name-title h2 {
+    color: #333;
+    margin-top: 0;
+}
+
+.node-type-data-snapshot-data-source .field-name-title h2:before {
+    content: "Data Snapshot Detail:\0020";
+}
+
+.node-type-data-snapshot-data-source div.field-label,
+.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question,
+.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi {
+    margin-bottom: 1em;
+}
+
+.node-type-data-snapshot-data-source p:last-child {
+    margin-bottom: 1.5em;
+}
+
+/* These are fields that need to look like labels */
+.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question p,
+.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi p {
+    margin-bottom: 0;
+    font: 700 italic 1em Cabin,Arial,sans-serif;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Hide extra elements added by dev theme */
+.node-type-data-snapshot-data-source .col-2-left {
     display: none;
 }
 
 .node-type-data-snapshot-data-source #page-title {
     display: none;
-}
-
-.node-type-data-snapshot-data-source .ds-2col > .group-left {
-    width: 63%;
-}
-
-.node-type-data-snapshot-data-source .field-name-title h2 {
-    margin-top: 0;
-}
-
-.node-type-data-snapshot-data-source .group-right.article-info {
-    width: 29%;
-    height: auto;
-    float: right;
-}
-
-.node-type-data-snapshot-data-source .group-right.article-info p,
-.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question p,
-.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi p {
-    color: #000;
-    margin-bottom: 0;
-}
-
-.node-type-data-snapshot-data-source .field-name-field-dssds-framing-question,
-.node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi {
-    font: 700 italic 1em Cabin,Arial,sans-serif;
-    font-weight: bold;
-    color: #000;
 }
