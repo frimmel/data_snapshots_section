@@ -331,7 +331,7 @@
         return text;
     }
 
-    function switchDataSourceContent(node) {
+    function switchDataSourceContent(node, alias) {
 	var framingLength = 450,
 	    secondaryLength = 250,
 	    framingQuestion = formatEvergreenText(node.field_dssds_framing_question.und[0].safe_value, framingLength),
@@ -351,7 +351,7 @@
         $framingAnswer.text(framingAnswer);
         $secondaryQuestion.text(secondaryQuestion);
         $secondaryAnswer.text(secondaryAnswer);
-        $readMoreLink.attr("href", "/node/" + node.nid);
+        $readMoreLink.attr("href", alias);
     };
 
     var xhr;
@@ -854,7 +854,7 @@
             configPtkSlider();
             configStkSlider();
 
-            switchDataSourceContent(result.node);
+            switchDataSourceContent(result.node, result.alias);
             switchDataSnapshotContent(dsmn, ptk, stk);
             dataSourceStkChange();
             setSliderNames(getFrequency(dsmn));

@@ -630,6 +630,8 @@ function _data_snapshots_data_source_ajax($parameters) {
 
   $result['node'] = node_load($data_source_nid);
 
+  $result['alias'] = url('node/' . $data_source_nid);
+
   return $result;
 }
 
