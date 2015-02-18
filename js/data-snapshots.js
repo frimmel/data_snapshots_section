@@ -96,6 +96,7 @@
 	if (stk === null) {
 	    ptkValue = "0000";
 	    stkValue = "00-00";
+	    setAnnotation();
 	}
 	$('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn, ptkValue, stkValue));
     }
