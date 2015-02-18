@@ -19,7 +19,7 @@ fi
 drush -y dis comment
 
 # install several modules that we need for development
-drush -y en global_dependencies taxonomy_csv node_export data_snapshot_dev_view_modes data_snapshots_css_dev
+drush -y en global_dependencies taxonomy_csv node_export data_snapshot_dev_view_modes
 
 # import some taxonomy vocab terms
 drush vocimp --vocabulary_id=section `pwd`/dev/section-vocab.csv flat

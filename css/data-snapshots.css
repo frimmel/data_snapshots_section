@@ -677,6 +677,28 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 
 /* END JOHN KECKS THEME */
 
+.node-data-snapshot.view-mode-nf_category_listing .group-left,
+.node-data-snapshot.view-mode-nf_related_content_teaser .group-left,
+.node-data-snapshot.view-mode-short_teaser .group-left,
+.node-data-snapshot.view-mode-tiny_teaser .group-left,
+.node-data-snapshot.view-mode-teaser .group-left {
+    width: 37% !important;
+}
+
+.node-data-snapshot.view-mode-nf_category_listing .group-right,
+.node-data-snapshot.view-mode-nf_related_content_teaser .group-right,
+.node-data-snapshot.view-mode-short_teaser .group-right,
+.node-data-snapshot.view-mode-tiny_teaser .group-right,
+.node-data-snapshot.view-mode-teaser .group-right {
+    width: 60% !important;
+    padding: 0;
+    height: auto;
+    border: 0;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
 /******************************************************************/
 /*!
  * Bootstrap v3.0.0
