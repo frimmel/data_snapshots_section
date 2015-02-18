@@ -230,6 +230,8 @@ function data_snapshots_ds_field_settings_info() {
   //
   // from ../data_snapshots_data_source
   //
+
+
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|data_snapshot_data_source|full';
@@ -695,66 +697,63 @@ function data_snapshots_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'data_snapshot_data_source';
   $ds_layout->view_mode = 'full';
-  $ds_layout->layout = 'ds_2col';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
+      'ds_content' => array(
         0 => 'title',
-        1 => 'field_dssds_framing_question',
-        3 => 'field_dssds_framing_q_answer',
-        5 => 'field_dssds_secondary_questi',
-        6 => 'field_dssds_secondary_q_answ',
-        7 => 'field_dssds_colors',
-        9 => 'field_dssds_data_matter',
-        11 => 'field_dssds_additional_info',
-        14 => 'field_dssds_processing_steps',
-        15 => 'field_dssds_data_format',
-        16 => 'field_dssds_references',
-      ),
-      'right' => array(
-        2 => 'field_dssds_noaa_data_product',
-        4 => 'field_dssds_data_provider',
-        8 => 'field_dssds_data_access_url',
-        10 => 'field_dssds_catalog_url',
-        12 => 'field_dssds_reviewer',
+        1 => 'group_ds_representative_image',
+        2 => 'group_data_source_metadata',
+        3 => 'field_dssds_representative_image',
+        4 => 'group_data_source_content',
+        5 => 'field_dssds_framing_question',
+        6 => 'field_dssds_framing_q_answer',
+        7 => 'field_dssds_noaa_data_product',
+        8 => 'field_dssds_secondary_questi',
+        9 => 'field_dssds_data_provider',
+        10 => 'field_dssds_secondary_q_answ',
+        11 => 'field_dssds_colors',
+        12 => 'field_dssds_data_access_url',
+        13 => 'field_dssds_data_matter',
+        14 => 'field_dssds_catalog_url',
+        15 => 'field_dssds_reviewer',
+        16 => 'field_dssds_additional_info',
+        17 => 'field_dssds_processing_steps',
+        18 => 'field_dssds_data_format',
+        19 => 'field_dssds_references',
       ),
     ),
     'fields' => array(
-      'title' => 'left',
-      'field_dssds_framing_question' => 'left',
-      'field_dssds_noaa_data_product' => 'right',
-      'field_dssds_framing_q_answer' => 'left',
-      'field_dssds_data_provider' => 'right',
-      'field_dssds_secondary_questi' => 'left',
-      'field_dssds_secondary_q_answ' => 'left',
-      'field_dssds_colors' => 'left',
-      'field_dssds_data_access_url' => 'right',
-      'field_dssds_data_matter' => 'left',
-      'field_dssds_catalog_url' => 'right',
-      'field_dssds_additional_info' => 'left',
-      'field_dssds_reviewer' => 'right',
-      'field_dssds_processing_steps' => 'left',
-      'field_dssds_data_format' => 'left',
-      'field_dssds_references' => 'left',
+      'title' => 'ds_content',
+      'group_ds_representative_image' => 'ds_content',
+      'group_data_source_metadata' => 'ds_content',
+      'field_dssds_representative_image' => 'ds_content',
+      'group_data_source_content' => 'ds_content',
+      'field_dssds_framing_question' => 'ds_content',
+      'field_dssds_framing_q_answer' => 'ds_content',
+      'field_dssds_noaa_data_product' => 'ds_content',
+      'field_dssds_secondary_questi' => 'ds_content',
+      'field_dssds_data_provider' => 'ds_content',
+      'field_dssds_secondary_q_answ' => 'ds_content',
+      'field_dssds_colors' => 'ds_content',
+      'field_dssds_data_access_url' => 'ds_content',
+      'field_dssds_data_matter' => 'ds_content',
+      'field_dssds_catalog_url' => 'ds_content',
+      'field_dssds_reviewer' => 'ds_content',
+      'field_dssds_additional_info' => 'ds_content',
+      'field_dssds_processing_steps' => 'ds_content',
+      'field_dssds_data_format' => 'ds_content',
+      'field_dssds_references' => 'ds_content',
     ),
-    'classes' => array(
-      'layout_class' => array(
-        '' => '',
-      ),
-      'left' => array(
-        'article-body' => 'article-body',
-      ),
-      'right' => array(
-        'article-info' => 'article-info',
-      ),
-    ),
+    'classes' => array(),
     'wrappers' => array(
-      'left' => 'div',
-      'right' => 'div',
+      'ds_content' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
     'layout_attributes_merge' => 1,
+    'layout_link_attribute' => '',
+    'layout_link_custom' => '',
   );
   $export['node|data_snapshot_data_source|full'] = $ds_layout;
 
