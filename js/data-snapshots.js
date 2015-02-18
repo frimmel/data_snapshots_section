@@ -718,6 +718,14 @@
                 tooltip: false
             });
 
+	    if (ptks.length === 1 && ptks[0] === "0000") {
+		$('.field-name-field-ds-ptk').addClass("hidden");
+		$('.field-name-field-ds-ptk > .field-items').jqxSlider("disable");
+	    } else {
+		$('.field-name-field-ds-ptk').removeClass("hidden");
+		$('.field-name-field-ds-ptk > .field-items').jqxSlider("enable");
+	    }
+
             /*
             $('#dss-interactive-slider-ptk-slider').slider({
                 'min' : 0,
@@ -786,6 +794,20 @@
                 mode: 'fixed',
                 tooltip: false
             });
+
+	    if (stks.length === 1 && stks[0] === "00-00") {
+		$('.field-name-field-ds-stk').addClass("hidden");
+		$('.field-name-field-ds-stk > .field-items').jqxSlider("disable");
+	    } else {
+		$('.field-name-field-ds-stk').removeClass("hidden");
+		$('.field-name-field-ds-stk > .field-items').jqxSlider("enable");
+	    }
+
+	    if (ptks.length === 1 && ptks[0] === "0000") {
+		$('.field-name-field-ds-stk > .field-items').jqxSlider({
+		    "ticksPosition": "bottom"
+		});
+	    }
 
 	    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
         }

@@ -9,7 +9,7 @@
     display: none;
 }
 
-#toolbar {
+.node-type-data-snapshot .hidden {
     display: none;
 }
 
@@ -132,6 +132,8 @@
 
 .field-name-field-ds-stk, .field-name-field-ds-ptk {
     position: relative;
+    width: 496px;
+    height: 18px;
 }
 
 .dss-question-read-more a {
@@ -208,6 +210,8 @@
 }
 
 .jqx-slider {
+    position: absolute;
+    left: 73px;
     clear: none !important;
     margin-left: 13px;
     margin-right: 13px;
@@ -301,8 +305,13 @@
 }
 
 .dss-interactive-slider-start-label {
+    left: 40px;
     margin-left: 13px;
     text-align: right;
+}
+
+.dss-interactive-slider-end-label {
+    left: 479px;
 }
 
 .dss-text-wrapper {
@@ -493,6 +502,8 @@
 #node_data_snapshot_full_group_dss_sliders {
     float: left;
     width: 627px;
+    height: 51px;
+    position: relative;
     padding: 9px 15px .5em 1em;
     border-radius: 9px;
     -moz-box-sizing: border-box;
@@ -573,9 +584,10 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 
 .dss-interactive-slider-label {
     float: left;
+    width: 20px;
+    position: absolute;
     font-size: 9px;
     font-weight: bold;
-    width: 20px;
     white-space: nowrap;
 }
 
