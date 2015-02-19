@@ -137,10 +137,6 @@
     color: #1a1a1a !important;
 }
 
-#zone-postscript-wrapper {
-    margin-top: 20px !important;
-}
-
 .node-type-data-snapshot .field-name-body {
     position: absolute;
     bottom: 0;
@@ -659,21 +655,6 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
     clear: both;
 }
 
-
-
-/* DEV FOR JOHN KECKS THEME */
-/* REMOVE THIS IN LIVE VERSION */
-
-.page-node .col-2-left {
-    display: none;
-}
-
-.page-node .region-content.grid-9 {
-    width: 940px;
-}
-
-/* END JOHN KECKS THEME */
-
 .node-data-snapshot.view-mode-nf_category_listing .group-left,
 .node-data-snapshot.view-mode-nf_related_content_teaser .group-left,
 .node-data-snapshot.view-mode-short_teaser .group-left,
@@ -700,51 +681,9 @@ OLD CONTENT BELOW. NEEDS TO BE PRUNED AND RE-WRITTEN
 .node-type-data-snapshot-data-source #page-title {
     display: none;
 }
-
-.article-info {
-    padding: 1em;
-    padding: 1em;
-    width: 30%;
-    height: 426px;
-    border: 5px solid #f4f4f4;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background-color: #fff;
-    -webkit-box-shadow: 0 0 5px 0 #aaa;
-    -moz-box-shadow: 0 0 5px 0 #aaa;
-    box-shadow: 0 0 5px 0 #aaa;
-    -o-border-radius: 5px;
-}
 /* end needed for dev */
 
 /* john keck's theme */
-.group-right.article-info {
-    height: auto;
-}
-
-.node-type-page .col-2-left {
-    display: none;
-}
-
-.page-node .region-inner .group-right {
-    float: right;
-    width: 29%;
-}
-
-.page-node .region-inner .group-left {
-    float: left;
-    width: 63%%;
-}
-
-.node-type-data-snapshot-data-source .container-12 .grid-9 {
-    width: auto !important;
-}
-
-#page-title {
-    display: none;
-}
-
 .page-data-snapshot-annotation-admin-view .container-12 .grid-9 {
     width: 100% !important;
 }
