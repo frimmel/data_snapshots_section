@@ -1,4 +1,119 @@
 /**
+ * Region styles
+ */
+.node-type-data-snapshot .group-header {
+    position: relative;
+    height: 39px;
+}
+
+.node-type-data-snapshot .group-left {
+    background-color: #fff;
+    min-height: 469px;
+}
+
+.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
+    width: 69%;
+}
+
+.node-type-data-snapshot .group-right {
+    height: 469px;
+    overflow: hidden;
+    background: #dadbdc;
+    position: relative;
+}
+
+.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
+    float: left;
+    width: 31%;
+}
+
+.node-type-data-snapshot .group-footer {
+    padding-top: 10px;
+}
+
+/**
+ * Title styles
+ */
+.node-type-data-snapshot #page-title {
+    display: none;
+}
+
+.node-type-data-snapshot #region-content .group-header h2 {
+    display: inline-block;
+    width: 69%;
+    margin-top: -2px;
+    margin-bottom: 9px;
+    padding-left: 6px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 28px;
+}
+
+/**
+ * Image styles
+ */
+.field-name-field-ds-disimg {
+    width: 100%;
+    height: 469px;
+    display: table;
+    text-align: center;
+}
+
+.field-name-field-ds-disimg > .field-items {
+    display: table-cell;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+}
+
+/**
+ * Tabs styles
+ */
+#dss-tabs-wrapper {
+    width: 31%;
+    background: #dadbdc url(images/dss-accent4.png) 0px 0px no-repeat;
+    height: 100%;
+    display: inline-block;
+    vertical-align: bottom;
+    position: absolute;
+    text-align: center;
+    border-top-right-radius: 6px;
+    padding-top: 8px;
+    padding-left: 48px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 13px;
+}
+
+.dss-tab {
+    display: inline-block;
+    width: 102px;
+    vertical-align: bottom;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    text-align: center;
+    padding: 3px 3px 6px 3px;
+    cursor: pointer;
+    background: #555555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
+    border: 1px solid #666;
+}
+
+.dss-tab.active {
+    background: #f58400 url(images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
+    border-color: #ffaf0f;
+}
+
+#dss-tabs-maps {
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+#dss-tabs-description {
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+/**
  * Accordion styles
  */
 .dss-selector-wrapper {
@@ -81,73 +196,166 @@
 }
 
 /**
- * Download styles
+ * Short Summary styles
  */
-.dss-downloads-toggle.jqx-button {
-    float: right;
-    margin-top: 2px;
-    padding: 4px 3px;
-}
-
-.dss-downloads-popup {
-    width: 319px;
-    height: 219px;
+.dss-short-summary-wrapper {
     position: absolute;
-    bottom: 200px;
-    left: 170px;
-    display: none;
-    background-color: #dadbdc;
-    border: 1px solid #fff;
-    border-radius: 7px;
-    -webkit-box-shadow: 0px 5px 5px #888;
-    -moz-box-shadow: 0px 5px 5px #888;
-    box-shadow: 0px 5px 5px #888;
-}
-
-.dss-downloads-label {
-    height: 10px;
-    position: absolute;
-    top: 0px;
-    left: 30px;
-    font-family: Segoe UI, Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    font-style: oblique;
-    background-color: #DADBDC;
-    padding: 10px;
-    color: #333;
-}
-
-.dss-downloads-options {
-    width: 284px;
-    height: 150px;
-    padding: 12px 30px 20px;
-    border: 1px solid #444;
-    border-radius: 4px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+    width: 100%;
+    bottom: 0;
+    background: #aaa;
+    height: 91px;
+    padding: 12px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-.dss-downloads-options > div {
-    height: 25px;
-    color: #000;
+.dss-short-summary-title {
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     font-size: 12px;
-    font-style: normal;
-    font-weight: 600;
+    font-weight: bold;
+    font-style: oblique;
+    color: #000;
 }
 
-.dss-downloads-radio {
+.dss-short-summary-text {
+    display: inline;
+    font-size: 12px;
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.dss-short-summary-read-more {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    line-height: 14px;
+    cursor: pointer;
+}
+
+/**
+ * Data Source styles
+ */
+.dss-text-wrapper {
     display: none;
+    padding-top: 7px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.dss-downloads-buttons {
+.field_dssds_title {
+    margin-top: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1a1a1a;
+}
+
+.node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
+    max-height: 373px;
+    overflow: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.field-name-field-ds-dsds-evergreen .field_dssds_framing_question, .field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
+    font-size: 13px;
+    color: #1a1a1a;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    line-height: 14px;
+}
+
+.field-name-field-ds-dsds-evergreen .field_dssds_framing_question {
+    margin-top: 15px;
+}
+
+.field-name-field-ds-dsds-evergreen .field_dssds_framing_q_answer,
+.field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
+    margin-top: 12px;
+}
+
+.field_dssds_framing_q_answer p, .field_dssds_secondary_q_answ p {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1A1A1A;
+    margin-bottom: 0;
+}
+
+.secondary_questi_wrapper {
+    position: absolute;
+    top: 228px;
+    padding-right: 1em;
+}
+
+/**
+ * Read More styles
+ */
+.dss-question-read-more {
     float: right;
-    margin-top: 10px;
-    margin-right: 20px;
+    margin-top: 3px;
+}
+
+.dss-question-read-more a {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #1a1a1a !important;
+}
+
+/**
+ * Annotation styles
+ */
+.node-type-data-snapshot .field-name-body {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #aaa;
+    padding: 12px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 91px;
+    overflow: hidden;
+}
+
+.node-type-data-snapshot .field-name-body .field-label,
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.node-type-data-snapshot .field-name-body .field-label {
+    font-weight: bold;
+    font-style: oblique;
+    color: #000;
+}
+
+.node-type-data-snapshot .field-name-body.expanded {
+    height: auto;
+    min-height: 93px;
+}
+
+.node-type-data-snapshot .field-name-body .field-items {
+    min-height: 30px;
+    overflow: hidden;
+}
+
+.node-type-data-snapshot .field-name-body.expanded .field-items {
+    height: auto;
+    max-height: 320px;
+    overflow: scroll;
+}
+
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.node-type-data-snapshot .annotation-toggle-wrapper {
+    text-align: right;
+    color: #000;
+    font-size: 12px;
+    cursor: pointer;
 }
 
 /**
@@ -237,264 +445,73 @@
 }
 
 /**
- * Annotation styles
+ * Download styles
  */
-.node-type-data-snapshot .field-name-body {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #aaa;
-    padding: 12px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    height: 91px;
-    overflow: hidden;
-}
-
-.node-type-data-snapshot .field-name-body .field-label,
-.node-type-data-snapshot .field-name-body .field-items p {
-    font-family: Segoe UI, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-}
-
-.node-type-data-snapshot .field-name-body .field-label {
-    font-weight: bold;
-    font-style: oblique;
-    color: #000;
-}
-
-.node-type-data-snapshot .field-name-body.expanded {
-    height: auto;
-    min-height: 93px;
-}
-
-.node-type-data-snapshot .field-name-body .field-items {
-    min-height: 30px;
-    overflow: hidden;
-}
-
-.node-type-data-snapshot .field-name-body.expanded .field-items {
-    height: auto;
-    max-height: 320px;
-    overflow: scroll;
-}
-
-.node-type-data-snapshot .field-name-body .field-items p {
-    font-weight: normal;
-    color: #333;
-    line-height: 14px;
-}
-
-.node-type-data-snapshot .annotation-toggle-wrapper {
-    text-align: right;
-    color: #000;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-/**
- * Region styles
- */
-.node-type-data-snapshot .group-header {
-    position: relative;
-    height: 39px;
-}
-
-.node-type-data-snapshot .group-left {
-    background-color: #fff;
-    min-height: 469px;
-}
-
-.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
-    width: 69%;
-}
-
-.node-type-data-snapshot .group-right {
-    height: 469px;
-    overflow: hidden;
-    background: #dadbdc;
-    position: relative;
-}
-
-.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
-    float: left;
-    width: 31%;
-}
-
-.node-type-data-snapshot .group-footer {
-    padding-top: 10px;
-}
-
-/**
- * Data Source styles
- */
-.dss-text-wrapper {
-    display: none;
-    padding-top: 7px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.field_dssds_title {
-    margin-top: 4px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #1a1a1a;
-}
-
-.node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
-    max-height: 373px;
-    overflow: auto;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-.field-name-field-ds-dsds-evergreen .field_dssds_framing_question, .field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
-    font-size: 13px;
-    color: #1a1a1a;
-    font-family: Segoe UI, Arial, Helvetica, sans-serif;
-    line-height: 14px;
-}
-
-.field-name-field-ds-dsds-evergreen .field_dssds_framing_question {
-    margin-top: 15px;
-}
-
-.field-name-field-ds-dsds-evergreen .field_dssds_framing_q_answer,
-.field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
-    margin-top: 12px;
-}
-
-.field_dssds_framing_q_answer p, .field_dssds_secondary_q_answ p {
-    font-family: Segoe UI, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    line-height: 14px;
-    color: #1A1A1A;
-    margin-bottom: 0;
-}
-
-.secondary_questi_wrapper {
-    position: absolute;
-    top: 228px;
-    padding-right: 1em;
-}
-
-/**
- * Short Summary styles
- */
-.dss-short-summary-wrapper {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    background: #aaa;
-    height: 91px;
-    padding: 12px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-.dss-short-summary-title {
-    font-family: Segoe UI, Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: bold;
-    font-style: oblique;
-    color: #000;
-}
-
-.dss-short-summary-text {
-    display: inline;
-    font-size: 12px;
-    font-weight: normal;
-    color: #333;
-    line-height: 14px;
-}
-
-.dss-short-summary-read-more {
-    font-size: 12px;
-    font-weight: bold;
-    color: #333;
-    line-height: 14px;
-    cursor: pointer;
-}
-
-/**
- * Tabs styles
- */
-#dss-tabs-wrapper {
-    width: 31%;
-    background: #dadbdc url(images/dss-accent4.png) 0px 0px no-repeat;
-    height: 100%;
-    display: inline-block;
-    vertical-align: bottom;
-    position: absolute;
-    text-align: center;
-    border-top-right-radius: 6px;
-    padding-top: 8px;
-    padding-left: 48px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: 13px;
-}
-
-.dss-tab {
-    display: inline-block;
-    width: 102px;
-    vertical-align: bottom;
-    font-family: Segoe UI, Arial, Helvetica, sans-serif;
-    font-weight: 800;
-    text-align: center;
-    padding: 3px 3px 6px 3px;
-    cursor: pointer;
-    background: #555555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
-    border: 1px solid #666;
-}
-
-.dss-tab.active {
-    background: #f58400 url(images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
-    border-color: #ffaf0f;
-}
-
-#dss-tabs-maps {
-    border-bottom-left-radius: 6px;
-    border-top-left-radius: 6px;
-}
-
-#dss-tabs-description {
-    border-bottom-right-radius: 6px;
-    border-top-right-radius: 6px;
-}
-
-/**
- * Read More styles
- */
-.dss-question-read-more {
+.dss-downloads-toggle.jqx-button {
     float: right;
-    margin-top: 3px;
+    margin-top: 2px;
+    padding: 4px 3px;
 }
 
-.dss-question-read-more a {
+.dss-downloads-popup {
+    width: 319px;
+    height: 219px;
+    position: absolute;
+    bottom: 200px;
+    left: 170px;
+    display: none;
+    background-color: #dadbdc;
+    border: 1px solid #fff;
+    border-radius: 7px;
+    -webkit-box-shadow: 0px 5px 5px #888;
+    -moz-box-shadow: 0px 5px 5px #888;
+    box-shadow: 0px 5px 5px #888;
+}
+
+.dss-downloads-label {
+    height: 10px;
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    font-family: Segoe UI, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: oblique;
+    background-color: #DADBDC;
+    padding: 10px;
+    color: #333;
+}
+
+.dss-downloads-options {
+    width: 284px;
+    height: 150px;
+    padding: 12px 30px 20px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.dss-downloads-options > div {
+    height: 25px;
+    color: #000;
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     font-size: 12px;
-    font-weight: bold;
-    color: #1a1a1a !important;
+    font-style: normal;
+    font-weight: 600;
 }
 
-/**
- * Title styles
- */
-.node-type-data-snapshot #page-title {
+.dss-downloads-radio {
     display: none;
 }
 
-.node-type-data-snapshot #region-content .group-header h2 {
-    display: inline-block;
-    width: 69%;
-    margin-top: -2px;
-    margin-bottom: 9px;
-    padding-left: 6px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: 28px;
+.dss-downloads-buttons {
+    float: right;
+    margin-top: 10px;
+    margin-right: 20px;
 }
 
 /**
@@ -512,23 +529,6 @@
 
 .node-type-data-snapshot .addthis_toolbox .at300b {
     margin-right: 2px;
-}
-
-/**
- * Image styles
- */
-.field-name-field-ds-disimg {
-    width: 100%;
-    height: 469px;
-    display: table;
-    text-align: center;
-}
-
-.field-name-field-ds-disimg > .field-items {
-    display: table-cell;
-    margin-left: auto;
-    margin-right: auto;
-    vertical-align: middle;
 }
 
 /**
@@ -569,7 +569,7 @@
 }
 
 /**
- * Block styles
+ * General styles
  */
 .node-type-data-snapshot #block-system-main {
     padding: 8px 8px 11px;
