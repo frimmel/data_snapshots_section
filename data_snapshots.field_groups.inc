@@ -248,7 +248,7 @@ function data_snapshots_field_group_info() {
       0 => 'field_dssds_catalog_url',
       1 => 'field_dssds_data_access_url',
       2 => 'field_dssds_data_provider',
-      3 => 'field_dssds_noaa_data_product',
+      3 => 'field_dssds_data_product',
       4 => 'field_dssds_reviewer',
     ),
     'format_type' => 'div',
@@ -313,7 +313,7 @@ function data_snapshots_field_group_info() {
     'children' => array(
       0 => 'field_dssds_catalog_url',
       1 => 'field_dssds_image_frequency',
-      2 => 'field_dssds_noaa_data_product',
+      2 => 'field_dssds_data_product',
       3 => 'field_dssds_themes',
       4 => 'field_dssds_url_pattern',
       5 => 'field_weight',
