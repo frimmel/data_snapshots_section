@@ -7,6 +7,10 @@
     content: "Data Snapshot Detail:\0020";
 }
 
+.node-type-data-snapshot-data-source .group-data-source-content {
+    width: 63%;
+}
+
 .node-type-data-snapshot-data-source div.field-label,
 .node-type-data-snapshot-data-source .field-name-field-dssds-framing-question,
 .node-type-data-snapshot-data-source .field-name-field-dssds-secondary-questi {

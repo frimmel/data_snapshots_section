@@ -4,9 +4,6 @@
 .dss-selector-wrapper {
     height: 100%;
     position: relative;
-}
-
-.dss-selector-wrapper {
     padding-top: 6px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -24,27 +21,31 @@
     font-size: 14px;
 }
 
-.ui-accordion .ui-accordion-header.ui-state-default {
+.dss-accordion .ui-accordion-header.ui-state-default {
     border: 1px solid #666;
     background: #555 url(images/ui-bg_glass_20_555555_1x400.png) 50% 50% repeat-x;
     font-weight: bold;
     color: #eee;
 }
 
-.ui-accordion .ui-accordion-header.ui-state-active {
+.dss-accordion .ui-accordion-header.ui-state-active {
     background: #565656;
     font-weight: bold;
     color: #fff;
 }
 
-.node-type-data-snapshot .ui-accordion .ui-accordion-header .ui-accordion-header-icon {
+.dss-accordion .ui-accordion-header-icon {
     display: none;
 }
 
-.node-type-data-snapshot .ui-accordion-content div {
+.dss-accordion .ui-accordion .ui-accordion-content {
+    padding: 0;
+}
+
+.dss-accordion .ui-accordion-content div {
     border: 1px solid #888;
     height: 25px;
-    background-color: #888888;
+    background-color: #888;
     color: #fff;
     padding-left: 30px;
     padding-top: 0px;
@@ -57,35 +58,25 @@
     background-position: 97% 2px;
 }
 
-.conus {
-    background-image: url("images/conusIcon.png");
-}
-
-.global {
-    background-image: url("images/globalIcon.png");
-}
-
-.ui-accordion-content div.active {
+.dss-accordion .ui-accordion-content div.active {
     background-color: #aaa;
 }
 
-.dss-accordion .ui-accordion .ui-accordion-content {
-    padding: 0;
+.dss-accordion .conus {
+    background-image: url("images/conusIcon.png");
 }
 
-.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-top, .dss-accordion .ui-corner-right, .dss-accordion .ui-corner-tr {
+.dss-accordion .global {
+    background-image: url("images/globalIcon.png");
+}
+
+.dss-accordion .ui-corner-top {
     border-top-right-radius: 0;
-}
-
-.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-top, .dss-accordion .ui-corner-left, .dss-accordion .ui-corner-tl {
     border-top-left-radius: 0;
 }
 
-.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-bottom, .dss-accordion .ui-corner-right, .dss-accordion .ui-corner-br {
+.dss-accordion .ui-corner-bottom {
     border-bottom-right-radius: 0;
-}
-
-.dss-accordion .ui-corner-all, .dss-accordion .ui-corner-bottom, .dss-accordion .ui-corner-left, .dss-accordion .ui-corner-bl {
     border-bottom-left-radius: 0;
 }
 
@@ -93,6 +84,7 @@
  * Download styles
  */
 .dss-downloads-toggle.jqx-button {
+    float: right;
     margin-top: 2px;
     padding: 4px 3px;
 }
@@ -100,16 +92,16 @@
 .dss-downloads-popup {
     width: 319px;
     height: 219px;
+    position: absolute;
+    bottom: 200px;
+    left: 170px;
     display: none;
-    background-color: #DADBDC;
+    background-color: #dadbdc;
     border: 1px solid #fff;
     border-radius: 7px;
     -webkit-box-shadow: 0px 5px 5px #888;
     -moz-box-shadow: 0px 5px 5px #888;
     box-shadow: 0px 5px 5px #888;
-    position: absolute;
-    bottom: 200px;
-    left: 170px;
 }
 
 .dss-downloads-label {
@@ -158,22 +150,33 @@
     margin-right: 20px;
 }
 
-.dss-downloads-toggle {
-    float: right;
-}
-
 /**
  * Slider styles
  */
-.jqx-slider {
+#node_data_snapshot_full_group_dss_sliders {
+    float: left;
+    width: 627px;
+    height: 51px;
+    position: relative;
+    padding: 9px 15px .5em 1em;
+    border-radius: 9px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #303841;
+}
+
+.group-dss-sliders .jqx-slider {
     position: absolute;
     left: 73px;
-    clear: none !important;
+    clear: none;
     margin-left: 13px;
     margin-right: 13px;
 }
 
 .field-name-field-ds-stk, .field-name-field-ds-ptk {
+    position: relative;
+    width: 496px;
+    height: 18px;
     float: left;
 }
 
@@ -187,44 +190,12 @@
     font-style: normal;
 }
 
-.field-name-field-ds-ptk .field-label {
-    margin-bottom: 2px;
-}
-
 .field-name-field-ds-stk .field-label {
     margin-bottom: 1px;
 }
 
-.dss-interactive-slider-start-label {
-    left: 40px;
-    margin-left: 13px;
-    text-align: right;
-}
-
-.dss-interactive-slider-end-label {
-    left: 479px;
-}
-
-.dss-interactive-sliders .dss-interactive-component {
-    position: relative;
-    height: 30px;
-}
-
-.dss-interactive-slider-wrapper {
-    position: relative;
-    left: 10%;
-    width: 90%;
-    height: 100%;
-}
-
-.dss-interactive-label, .dss-interactive-slider {
-    float: left;
-}
-
-.dss-interactive-slider.ui-slider {
-    position: absolute;
-    width: 100%;
-    border: 1px solid #aaaaaa;
+.field-name-field-ds-ptk .field-label {
+    margin-bottom: 2px;
 }
 
 .dss-interactive-slider-label {
@@ -236,32 +207,14 @@
     white-space: nowrap;
 }
 
-.dss-interactive-slider-region-disabled {
-    position: absolute;
-    height: .8em;
-    background-color: #ccc;
+.dss-interactive-slider-start-label {
+    left: 40px;
+    margin-left: 13px;
+    text-align: right;
 }
 
-.dss-interactive-slider-tickmarks {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-}
-
-.dss-interactive-slider-tickmarks span {
-    position: absolute;
-    width: 1px;
-    height: 3px;
-    float: left;
-    background-color: #aaa;
-}
-
-#dss-interactive-slider-region-disabled-left {
-    left: 0;
-}
-
-#dss-interactive-slider-region-disabled-right {
-    right: 0;
+.dss-interactive-slider-end-label {
+    left: 479px;
 }
 
 .dss-interactive-slider-popup {
@@ -283,24 +236,6 @@
     display: inline-block !important;
 }
 
-.field-name-field-ds-stk, .field-name-field-ds-ptk {
-    position: relative;
-    width: 496px;
-    height: 18px;
-}
-
-#node_data_snapshot_full_group_dss_sliders {
-    float: left;
-    width: 627px;
-    height: 51px;
-    position: relative;
-    padding: 9px 15px .5em 1em;
-    border-radius: 9px;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #303841;
-}
-
 /**
  * Annotation styles
  */
@@ -316,25 +251,6 @@
     overflow: hidden;
 }
 
-.node-type-data-snapshot .field-name-body.expanded {
-    height: auto;
-    min-height: 93px;
-}
-
-.node-type-data-snapshot .field-name-body .field-items {
-    max-height: 18px;
-}
-
-.node-type-data-snapshot .field-name-body.expanded .field-items {
-    max-height: 320px;
-    overflow: scroll;
-}
-
-.node-type-data-snapshot .field-name-body .field-label.hidden,
-.node-type-data-snapshot .field-name-body .annotation-toggle-wrapper.hidden {
-    display: none;
-}
-
 .node-type-data-snapshot .field-name-body .field-label,
 .node-type-data-snapshot .field-name-body .field-items p {
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
@@ -347,10 +263,9 @@
     color: #000;
 }
 
-.node-type-data-snapshot .field-name-body .field-items p {
-    font-weight: normal;
-    color: #333;
-    line-height: 14px;
+.node-type-data-snapshot .field-name-body.expanded {
+    height: auto;
+    min-height: 93px;
 }
 
 .node-type-data-snapshot .field-name-body .field-items {
@@ -360,9 +275,17 @@
 
 .node-type-data-snapshot .field-name-body.expanded .field-items {
     height: auto;
+    max-height: 320px;
+    overflow: scroll;
 }
 
-.annotation-toggle-wrapper {
+.node-type-data-snapshot .field-name-body .field-items p {
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.node-type-data-snapshot .annotation-toggle-wrapper {
     text-align: right;
     color: #000;
     font-size: 12px;
@@ -372,29 +295,25 @@
 /**
  * Region styles
  */
-.group-header {
+.node-type-data-snapshot .group-header {
     position: relative;
     height: 39px;
 }
 
-.group-left {
+.node-type-data-snapshot .group-left {
     background-color: #fff;
     min-height: 469px;
 }
 
-.group-right {
+.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
+    width: 69%;
+}
+
+.node-type-data-snapshot .group-right {
     height: 469px;
     overflow: hidden;
     background: #dadbdc;
     position: relative;
-}
-
-.group-footer {
-    padding-top: 10px;
-}
-
-.node-type-data-snapshot .view-mode-full.node-data-snapshot .group-left {
-    width: 69%;
 }
 
 .node-type-data-snapshot .view-mode-full.node-data-snapshot .group-right {
@@ -402,17 +321,18 @@
     width: 31%;
 }
 
+.node-type-data-snapshot .group-footer {
+    padding-top: 10px;
+}
+
 /**
  * Data Source styles
  */
 .dss-text-wrapper {
+    display: none;
     padding-top: 7px;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-}
-
-.dss-text-wrapper {
-    display: none;
 }
 
 .field_dssds_title {
@@ -422,17 +342,18 @@
     color: #1a1a1a;
 }
 
+.node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
+    max-height: 373px;
+    overflow: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .field-name-field-ds-dsds-evergreen .field_dssds_framing_question, .field-name-field-ds-dsds-evergreen .field_dssds_secondary_questi {
     font-size: 13px;
     color: #1a1a1a;
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     line-height: 14px;
-}
-
-.secondary_questi_wrapper {
-    position: absolute;
-    top: 228px;
-    padding-right: 1em;
 }
 
 .field-name-field-ds-dsds-evergreen .field_dssds_framing_question {
@@ -449,38 +370,18 @@
     font-size: 12px;
     line-height: 14px;
     color: #1A1A1A;
-}
-
-.node-type-data-snapshot .field-name-field-ds-dsds-evergreen {
-    max-height: 373px;
-    overflow: auto;
-    padding-left: 1em;
-    padding-right: 1em;
-}
-
-.node-type-data-snapshot .field-name-field-ds-dsds-evergreen p {
     margin-bottom: 0;
+}
+
+.secondary_questi_wrapper {
+    position: absolute;
+    top: 228px;
+    padding-right: 1em;
 }
 
 /**
  * Short Summary styles
  */
-.dss-short-summary-text {
-    display: inline;
-    font-size: 12px;
-    font-weight: normal;
-    color: #333;
-    line-height: 14px;
-}
-
-.dss-short-summary-read-more {
-    font-size: 12px;
-    font-weight: bold;
-    color: #333;
-    line-height: 14px;
-    cursor: pointer;
-}
-
 .dss-short-summary-wrapper {
     position: absolute;
     width: 100%;
@@ -498,6 +399,22 @@
     font-weight: bold;
     font-style: oblique;
     color: #000;
+}
+
+.dss-short-summary-text {
+    display: inline;
+    font-size: 12px;
+    font-weight: normal;
+    color: #333;
+    line-height: 14px;
+}
+
+.dss-short-summary-read-more {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    line-height: 14px;
+    cursor: pointer;
 }
 
 /**
@@ -532,6 +449,11 @@
     border: 1px solid #666;
 }
 
+.dss-tab.active {
+    background: #f58400 url(images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
+    border-color: #ffaf0f;
+}
+
 #dss-tabs-maps {
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
@@ -542,43 +464,24 @@
     border-top-right-radius: 6px;
 }
 
-.dss-tab.active {
-    background: #f58400 url(images/ui-bg_inset-soft_30_f58400_1x100.png) 50% 50% repeat-x;
-    border-color: #ffaf0f;
-}
-
 /**
  * Read More styles
  */
+.dss-question-read-more {
+    float: right;
+    margin-top: 3px;
+}
+
 .dss-question-read-more a {
     font-family: Segoe UI, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bold;
-}
-
-.dss-question-read-more a {
     color: #1a1a1a !important;
-}
-
-.node-type-data-snapshot .dss-question-read-more {
-    float: right;
-    margin-top: 3px;
 }
 
 /**
  * Title styles
  */
-.field-name-title {
-    display: inline-block;
-}
-
-.field-name-title h2 {
-    padding-bottom: .5em;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    line-height: normal;
-}
-
 .node-type-data-snapshot #page-title {
     display: none;
 }
@@ -594,12 +497,6 @@
     font-size: 28px;
 }
 
-/* needed for dev. Will be provided by live site */
-.node-type-data-snapshot-data-source #page-title {
-    display: none;
-}
-/* end needed for dev */
-
 /**
  * Add this styles
  */
@@ -609,11 +506,11 @@
     margin-right: 1.5em;
 }
 
-.addthis_toolbox {
+.node-type-data-snapshot .addthis_toolbox {
     margin-top: 0 !important;
 }
 
-.addthis_toolbox .at300b {
+.node-type-data-snapshot .addthis_toolbox .at300b {
     margin-right: 2px;
 }
 
@@ -637,13 +534,13 @@
 /**
  * Permalink styles
  */
-.field .field-label.permalink {
-    color: #fff;
-    font-weight: normal;
-}
-
 .node-type-data-snapshot .field-name-data-snapshot-permalink {
     float: left;
+}
+
+.node-type-data-snapshot .field-label.permalink {
+    color: #fff;
+    font-weight: normal;
 }
 
 /**
@@ -689,7 +586,7 @@
     width: 100% !important;
 }
 
-.html button {
+.node-type-data-snapshot  button {
     text-shadow: none;
 }
 
