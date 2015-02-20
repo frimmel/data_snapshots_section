@@ -1432,7 +1432,7 @@ function data_snapshots_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_dssds_processing_steps',
-    'label' => 'What data processing did it take to produce this set of Data Snapshots?',
+    'label' => 'How did you produce these snapshots from the source data?',
     'required' => 1,
     'settings' => array(
       'text_processing' => 1,
@@ -2129,7 +2129,7 @@ function data_snapshots_field_default_field_instances() {
   t('URL pattern');
   t('URL to Climate.gov Dataset Catalog record.');
   t('Weight');
-  t('What data processing did it take to produce this set of Data Snapshots?');
+  t('How did you produce these snapshots from the source data?');
   t('What do the colors mean?');
   t('Why do these data matter?');
 
