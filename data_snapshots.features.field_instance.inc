@@ -98,108 +98,6 @@ function data_snapshots_field_default_field_instances() {
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-data_snapshot_data_source-field_dssds_catalog_url'
-  $field_instances['node-data_snapshot_data_source-field_dssds_catalog_url'] = array(
-    'bundle' => 'data_snapshot_data_source',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'URL to Climate.gov Dataset Catalog record.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(
-          'empty_fields_emptyfieldtext_empty_text' => '',
-          'empty_fields_handler' => '',
-        ),
-        'type' => 'link_default',
-        'weight' => 18,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(
-          'empty_fields_emptyfieldtext_empty_text' => '',
-          'empty_fields_handler' => '',
-        ),
-        'type' => 'link_default',
-        'weight' => 8,
-      ),
-      'nf_category_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-      'nf_related_content_teaser' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(
-          'empty_fields_emptyfieldtext_empty_text' => '',
-          'empty_fields_handler' => '',
-        ),
-        'type' => 'link_default',
-        'weight' => 18,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
-      ),
-      'tiny_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_dssds_catalog_url',
-    'label' => 'Source Dataset Information',
-    'required' => 1,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 2,
-    ),
-    'workbench_access_field' => 0,
-  );
-
   // Exported field_instance: 'node-data_snapshot_data_source-field_dssds_colors'
   $field_instances['node-data_snapshot_data_source-field_dssds_colors'] = array(
     'bundle' => 'data_snapshot_data_source',
@@ -562,6 +460,108 @@ function data_snapshots_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 32,
+    ),
+    'workbench_access_field' => 0,
+  );
+
+  // Exported field_instance: 'node-data_snapshot_data_source-field_dssds_data_product'
+  $field_instances['node-data_snapshot_data_source-field_dssds_data_product'] = array(
+    'bundle' => 'data_snapshot_data_source',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Formal name for data product source.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'empty_fields_emptyfieldtext_empty_text' => '',
+          'empty_fields_handler' => '',
+        ),
+        'type' => 'link_default',
+        'weight' => 13,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'empty_fields_emptyfieldtext_empty_text' => '',
+          'empty_fields_handler' => '',
+        ),
+        'type' => 'link_default',
+        'weight' => 5,
+      ),
+      'nf_category_listing' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'nf_related_content_teaser' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'empty_fields_emptyfieldtext_empty_text' => '',
+          'empty_fields_handler' => '',
+        ),
+        'type' => 'link_default',
+        'weight' => 13,
+      ),
+      'search_result' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 31,
+      ),
+      'short_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
+      'tiny_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 19,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_dssds_data_product',
+    'label' => 'Source Data Product',
+    'required' => 1,
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 2,
     ),
     'workbench_access_field' => 0,
   );
@@ -1272,108 +1272,6 @@ function data_snapshots_field_default_field_instances() {
       'type' => 'options_buttons',
       'weight' => -3,
     ),
-  );
-
-  // Exported field_instance: 'node-data_snapshot_data_source-field_dssds_data_product'
-  $field_instances['node-data_snapshot_data_source-field_dssds_data_product'] = array(
-    'bundle' => 'data_snapshot_data_source',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Formal name for data product source.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(
-          'empty_fields_emptyfieldtext_empty_text' => '',
-          'empty_fields_handler' => '',
-        ),
-        'type' => 'link_default',
-        'weight' => 13,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(
-          'empty_fields_emptyfieldtext_empty_text' => '',
-          'empty_fields_handler' => '',
-        ),
-        'type' => 'link_default',
-        'weight' => 5,
-      ),
-      'nf_category_listing' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'nf_related_content_teaser' => array(
-        'label' => 'above',
-        'module' => 'link',
-        'settings' => array(
-          'empty_fields_emptyfieldtext_empty_text' => '',
-          'empty_fields_handler' => '',
-        ),
-        'type' => 'link_default',
-        'weight' => 13,
-      ),
-      'search_result' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 31,
-      ),
-      'short_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 30,
-      ),
-      'tiny_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_dssds_data_product',
-    'label' => 'Source Data Product',
-    'required' => 1,
-    'settings' => array(
-      'attributes' => array(
-        'class' => '',
-        'configurable_title' => 0,
-        'rel' => '',
-        'target' => 'default',
-        'title' => '',
-      ),
-      'display' => array(
-        'url_cutoff' => 80,
-      ),
-      'enable_tokens' => 1,
-      'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_maxlength' => 128,
-      'title_value' => '',
-      'url' => 0,
-      'user_register_form' => FALSE,
-      'validate_url' => 1,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'link',
-      'settings' => array(),
-      'type' => 'link_field',
-      'weight' => 2,
-    ),
-    'workbench_access_field' => 0,
   );
 
   // Exported field_instance: 'node-data_snapshot_data_source-field_dssds_processing_steps'
@@ -2124,11 +2022,11 @@ function data_snapshots_field_default_field_instances() {
   t('First and last name of subject matter expert reviewer.');
   t('Formal name for data product source.');
   t('Framing Question');
+  t('How did you produce these snapshots from the source data?');
   t('Image Frequency');
   t('Machine Name');
   t('Map scope');
   t('Master Feed URL');
-  t('Source Data Product');
   t('Name of and URL to Data Provider\'s main site.');
   t('References');
   t('References used in writing the description.');
@@ -2136,14 +2034,12 @@ function data_snapshots_field_default_field_instances() {
   t('Reviewer');
   t('Secondary Question');
   t('Sets the display order of data sources in the theme dropdown. This value is used across all themes for the data source.');
-  t('Source Dataset Information');
+  t('Source Data Product');
   t('The URL of the master feed file for this data source (must be a complete URL of the feed.csv file, complete with "http://" prefix)');
   t('The url pattern where the Data Sanpshot image is hosted. Use {dsmn} for the machine name, {ptk} for the primary key & {stk} for the secondary key.');
   t('Theme(s)');
   t('URL pattern');
-  t('URL to Climate.gov Dataset Catalog record.');
   t('Weight');
-  t('How did you produce these snapshots from the source data?');
   t('What do the colors mean?');
   t('Why do these data matter?');
 

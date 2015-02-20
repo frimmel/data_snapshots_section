@@ -231,7 +231,6 @@ function data_snapshots_ds_field_settings_info() {
   // from ../data_snapshots_data_source
   //
 
-
   $ds_fieldsetting = new stdClass();
   $ds_fieldsetting->api_version = 1;
   $ds_fieldsetting->id = 'node|data_snapshot_data_source|full';
@@ -411,6 +410,8 @@ function data_snapshots_ds_field_settings_info() {
     ),
   );
   $export['node|data_snapshot_data_source|tiny_teaser'] = $ds_fieldsetting;
+
+
   //
   // end from ../data_snapshots_data_source
   //
@@ -691,6 +692,7 @@ function data_snapshots_ds_layout_settings_info() {
   //
   // from ../data_snapshots_data_source
   //
+
   $ds_layout = new stdClass();
   $ds_layout->api_version = 1;
   $ds_layout->id = 'node|data_snapshot_data_source|full';
@@ -708,19 +710,18 @@ function data_snapshots_ds_layout_settings_info() {
         4 => 'group_data_source_content',
         5 => 'field_dssds_framing_question',
         6 => 'field_dssds_framing_q_answer',
-        7 => 'field_dssds_data_product',
-        8 => 'field_dssds_secondary_questi',
-        9 => 'field_dssds_data_provider',
-        10 => 'field_dssds_secondary_q_answ',
-        11 => 'field_dssds_colors',
-        12 => 'field_dssds_data_access_url',
+        7 => 'field_dssds_secondary_questi',
+        8 => 'field_dssds_data_product',
+        9 => 'field_dssds_secondary_q_answ',
+        10 => 'field_dssds_data_provider',
+        11 => 'field_dssds_data_access_url',
+        12 => 'field_dssds_colors',
         13 => 'field_dssds_data_matter',
-        14 => 'field_dssds_catalog_url',
-        15 => 'field_dssds_reviewer',
-        16 => 'field_dssds_additional_info',
-        17 => 'field_dssds_processing_steps',
-        18 => 'field_dssds_data_format',
-        19 => 'field_dssds_references',
+        14 => 'field_dssds_reviewer',
+        15 => 'field_dssds_additional_info',
+        16 => 'field_dssds_processing_steps',
+        17 => 'field_dssds_data_format',
+        18 => 'field_dssds_references',
       ),
     ),
     'fields' => array(
@@ -731,14 +732,13 @@ function data_snapshots_ds_layout_settings_info() {
       'group_data_source_content' => 'ds_content',
       'field_dssds_framing_question' => 'ds_content',
       'field_dssds_framing_q_answer' => 'ds_content',
-      'field_dssds_data_product' => 'ds_content',
       'field_dssds_secondary_questi' => 'ds_content',
-      'field_dssds_data_provider' => 'ds_content',
+      'field_dssds_data_product' => 'ds_content',
       'field_dssds_secondary_q_answ' => 'ds_content',
-      'field_dssds_colors' => 'ds_content',
+      'field_dssds_data_provider' => 'ds_content',
       'field_dssds_data_access_url' => 'ds_content',
+      'field_dssds_colors' => 'ds_content',
       'field_dssds_data_matter' => 'ds_content',
-      'field_dssds_catalog_url' => 'ds_content',
       'field_dssds_reviewer' => 'ds_content',
       'field_dssds_additional_info' => 'ds_content',
       'field_dssds_processing_steps' => 'ds_content',
@@ -950,6 +950,7 @@ function data_snapshots_ds_layout_settings_info() {
     'layout_attributes_merge' => 1,
   );
   $export['node|data_snapshot_data_source|tiny_teaser'] = $ds_layout;
+
   //
   // end from ../data_snapshots_data_source
   //
