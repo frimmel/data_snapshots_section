@@ -1344,7 +1344,7 @@ function data_snapshots_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_dssds_processing_steps',
-    'label' => 'How did you produce these snapshots from the source data?',
+    'label' => 'How did you produce these snapshots?',
     'required' => 1,
     'settings' => array(
       'text_processing' => 1,
@@ -2022,7 +2022,7 @@ function data_snapshots_field_default_field_instances() {
   t('First and last name of subject matter expert reviewer.');
   t('Formal name for data product source.');
   t('Framing Question');
-  t('How did you produce these snapshots from the source data?');
+  t('How did you produce these snapshots?');
   t('Image Frequency');
   t('Machine Name');
   t('Map scope');
