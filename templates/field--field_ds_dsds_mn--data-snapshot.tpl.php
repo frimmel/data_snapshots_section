@@ -76,7 +76,7 @@ if (strlen($secondary_question_answer) > $secondary_answer_length_ellipsis) {
     <div class="field-label field_dssds_secondary_questi"<?php print $title_attributes; ?>><?php print $secondary_question; ?>&nbsp;</div>
     <div class="field-items"<?php print $content_attributes; ?>>
       <div class="field-item field_dssds_secondary_q_answ"><p><?php print $secondary_question_answer; ?></p></div>
-      <span class="dss-question-read-more"><a href="<?php print url('node/' . $element['#object']->{'datasource_node'}->nid); ?>">read more</a></span>
+      <span class="dss-question-read-more"><a href="<?php print url('node/' . $element['#object']->{'datasource_node'}->nid); ?>" target="_blank">read more</a></span>
     </div>
   </div>
 </div>
