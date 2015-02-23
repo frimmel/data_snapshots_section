@@ -73,14 +73,6 @@
         }
     }
 
-    function makeImgUrl(dsmn, ptk, stk) {
-        var pattern = getPattern(dsmn);
-
-        return pattern.replace(/\{dsmn\}/g, dsmn)
-            .replace(/\{ptk\}/g, ptk)
-            .replace(/\{stk\}/g, stk);
-    }
-
     function setUrl(dsmn, ptk, stk, theme) {
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
@@ -88,6 +80,14 @@
             url = (determineStkDisabled() === false) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
             window.history.replaceState({}, "", url);
         }
+    }
+
+    function makeImgUrl(dsmn, ptk, stk) {
+        var pattern = getPattern(dsmn);
+
+        return pattern.replace(/\{dsmn\}/g, dsmn)
+            .replace(/\{ptk\}/g, ptk)
+            .replace(/\{stk\}/g, stk);
     }
 
     function setImg(dsmn, ptk, stk) {
@@ -109,6 +109,41 @@
     function setTitle(html) {
         $(".field-name-title h2").text(html);
         document.title = html;
+    }
+
+    function setDownloads(html) {
+	unbindDownloadEvents();
+	$(".dss-downloads-popup").replaceWith($(html).find(".dss-downloads-popup"));
+        bindDownloadEvents();
+    }
+
+    function setAnnotation(html) {
+        $(".field-name-body .field-items").html(html ? $(html).children(".field-items").html() : "");
+        html ? showAnnotationLabels() : hideAnnotationLabels();
+        //        $(".group-footer").html(html);
+    }
+
+    function setPermalink(html) {
+        $(".field-name-data-snapshot-permalink .field-label").permalink('url', html);
+    }
+
+    function setDateGenerated(html) {
+        $(".field-name-field-ds-dtgen").replaceWith(html);
+    }
+
+    function setPrimaryTabs(nid) {
+        var re = /(\/node\/)(\d+)(\/\w+)/,
+            pattern = "$1" + nid + "$3",
+            $links = $(".tabs .primary a"),
+            $link,
+            href,
+            i;
+
+        for (i = 0; i < $links.length; i++) {
+            $link = $($links[i]);
+            href = $link.attr("href").replace(re, pattern);
+            $link.attr("href", href);
+        }
     }
 
     function showAnnotation() {
@@ -137,16 +172,21 @@
         }
     }
 
-    function setAnnotation(html) {
-        $(".field-name-body .field-items").html(html ? $(html).children(".field-items").html() : "");
-        html ? showAnnotationLabels() : hideAnnotationLabels();
-        //        $(".group-footer").html(html);
+    function downloadLabelChangeHandler() {
+	$("#" + $(this).attr("for")).attr("checked", "checked").change();
     }
 
-    function setDownloads(html) {
-	unbindDownloadEvents();
-	$(".dss-downloads-popup").replaceWith($(html).find(".dss-downloads-popup"));
-        bindDownloadEvents();
+    function downloadOkButtonHandler() {
+	$(".dss-downloads-popup").fadeOut(200);
+    }
+
+    function downloadCancelButtonHandler(event) {
+	event.preventDefault();
+	$(".dss-downloads-popup").fadeOut(200);
+    }
+
+    function downloadInputChangeHandler() {
+	$("#exampleform").attr("action", $(this).attr("value"));
     }
 
     function bindDownloadEvents() {
@@ -180,90 +220,29 @@
 	$(".dss-downloads-popup input").unbind("change", downloadInputChangeHandler);
     }
 
-    function downloadLabelChangeHandler() {
-	$("#" + $(this).attr("for")).attr("checked", "checked").change();
-    }
+    function setSliderPopups(selector, ptk, stk, slider, steps, position) {
+        var $elem = $(selector),
+	    $slider = $(slider),
+	    popupText = "",
+            elemPosition;
 
-    function downloadOkButtonHandler() {
-	$(".dss-downloads-popup").fadeOut(200);
-    }
+	popupText = (ptk !== "0000") ? ptk : "";
+	popupText += (ptk !== "0000" && stk) ? "-" : "";
+	popupText += (stk) ? stk : "";
+        $elem.text(popupText);
 
-    function downloadCancelButtonHandler(event) {
-	event.preventDefault();
-	$(".dss-downloads-popup").fadeOut(200);
-    }
+	elemPosition = parseInt($slider.css("left"), 10) +
+	    parseInt($slider.css("margin-left"), 10) +
+	    (position * ($slider.width() / (steps - 1))) -
+	    ($elem.width() / 2) -
+	    parseInt($elem.css("padding-left"), 10) +
+	    "px";
 
-    function downloadInputChangeHandler() {
-	$("#exampleform").attr("action", $(this).attr("value"));
-    }
-
-    function setPermalink(html) {
-        $(".field-name-data-snapshot-permalink .field-label").permalink('url', html);
-    }
-
-    function setDateGenerated(html) {
-        $(".field-name-field-ds-dtgen").replaceWith(html);
-    }
-
-    function setPrimaryTabs(nid) {
-        var re = /(\/node\/)(\d+)(\/\w+)/,
-            pattern = "$1" + nid + "$3",
-            $links = $(".tabs .primary a"),
-            $link,
-            href,
-            i;
-
-        for (i = 0; i < $links.length; i++) {
-            $link = $($links[i]);
-            href = $link.attr("href").replace(re, pattern);
-            $link.attr("href", href);
-        }
-    }
-
-    function setSliderPopups(selector, value, slider, steps, position) {
-        var afterElemBorder = 6,// need to add to margin for correct placement. Change if css changes.
-            $elem = $(selector),
-            elemPosition = (75 + position * ($(slider).width() / (steps - 1))) + "px",
-            elemWidth, marginLeft;
-
-        $elem.text(value);
-
-        elemWidth = $elem.width() / 2;
-        marginLeft = (-elemWidth + afterElemBorder) + "px";
-
-        $elem.css("margin-left", marginLeft)
-            .css("left", elemPosition);
+        $elem.css("left", elemPosition);
 
 	if (!$elem.hasClass("dss-interactive-slider-popup-active")) {
 	    $elem.addClass("dss-interactive-slider-popup-active");
 	}
-    }
-
-    function setPtkSliderPopup(selector, ptk, stk, frequency, slider, steps, position) {
-        var popupText = ptk;
-
-        if (determineStkDisabled() === false) {
-            popupText += "-" + stk;
-        }
-
-        setSliderPopups(selector, popupText, slider, steps, position);
-    }
-
-    function determineSliderOffset(index, length) {
-        length--;
-        return (length === 0) ? 0 : (index / length) * 100;
-    };
-
-    function replaceSliderTickmarks(wrapper, length) {
-        var tickmarks = "",
-            left, i;
-
-        for (i = 0; i < length; i++) {
-            left = determineSliderOffset(i, length);
-            tickmarks += "<span style=\"left:" + left + "%;\"></span>";
-        }
-
-        wrapper.html(tickmarks);
     }
 
     function initDropdowns() {
@@ -469,20 +448,6 @@
 
 	$("div[value=" + dsmn + "]").addClass("active");
 
-        function replaceTickmarks() {
-            var ptkLength = ptks.length,
-                stkLength = stks.length,
-                $ptkTickmarks = $("#dss-interactive-slider-tickmarks-ptk"),
-                $stkTickmarks = $("#dss-interactive-slider-tickmarks-stk");
-
-            if ($ptkTickmarks.children().length !== ptkLength) {
-                replaceSliderTickmarks($ptkTickmarks, ptkLength);
-            }
-            if ($stkTickmarks.children().length !== stkLength) {
-                replaceSliderTickmarks($stkTickmarks, stkLength);
-            }
-        }
-
         function getStkMin() {
             var allStks = getAllStks(),
                 ptk = ptks[0],
@@ -596,28 +561,6 @@
             $("#dss-interactive-slider-ptk-end-label").text(ptks[ptks.length - 1]);
         }
 
-        function setDisabledRegions() {
-            var missingValue = null,
-                leftCount = 0, rightCount = 0,
-                leftWidth, rightWidth,
-                l = stks.length,
-                i;
-
-            for (i = 0; stks[i] === missingValue && i < l; i++) {
-                leftCount++;
-                
-            }
-            for (i = l - 1; stks[i] === missingValue && i >= 0; i--) {
-                rightCount++;
-            }
-
-            leftWidth = determineSliderOffset(leftCount, l);
-            rightWidth = determineSliderOffset(rightCount, l);
-
-            $("#dss-interactive-slider-region-disabled-left").css("width", leftWidth + "%");
-            $("#dss-interactive-slider-region-disabled-right").css("width", rightWidth + "%");
-        }
-
         function findValidStkIndex() {
             var l = stks.length,
                 i;
@@ -655,7 +598,7 @@
 	    if (stk === null) {
 		$(ptkPopupSelector).removeClass("dss-interactive-slider-popup-active");
 	    } else {
-		setPtkSliderPopup(ptkPopupSelector, ptk, stk, getFrequency(dsmn), this, ptks.length, currentPtkIndex);
+		setSliderPopups(ptkPopupSelector, ptk, stk, this, ptks.length, currentPtkIndex);
 	    }
             configStkSlider();
         }
@@ -663,7 +606,7 @@
         function ptkSlideStartHandler(event) {
             unbindStkEvents();
             dismissPermalink();
-	    setPtkSliderPopup(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], getFrequency[dsmn], this, ptks.length, event.args.value);
+	    setSliderPopups(ptkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], this, ptks.length, event.args.value);
 	    $(ptkPopupSelector).addClass("dss-interactive-slider-popup-active");
         }
 
@@ -732,7 +675,6 @@
                 'max' : ptks.length - 1,
                 'value' : currentPtkIndex,
             });
-            replaceTickmarks();
             */
         };
 
@@ -749,13 +691,13 @@
                 return false;
             }
             switchImgContent(dsmn, ptk, stk);
-	    setSliderPopups(stkPopupSelector, ptk + "-" + stk, this, stks.length, currentStkIndex);
+	    setSliderPopups(stkPopupSelector, ptk, stk, this, stks.length, currentStkIndex);
         }
 
         function stkSlideStartHandler(event) {
             dismissPermalink();
 	    if (stks[currentStkIndex]) {
-		setSliderPopups(stkPopupSelector, ptks[currentPtkIndex] + "-" + stks[currentStkIndex], this, stks.length, event.args.value);
+		setSliderPopups(stkPopupSelector, ptks[currentPtkIndex], stks[currentStkIndex], this, stks.length, event.args.value);
 	    }
         }
 
@@ -777,14 +719,12 @@
         }
 
         function configStkSlider() {
-            //            setDisabledRegions();
-
             $('.field-name-field-ds-stk > .field-items').jqxSlider({ 
                 theme: 'ui-darkness',
                 min: 0,
                 max: stks.length - 1,
                 ticksFrequency: 1,
-			value: currentStkIndex,//findValidStkIndex(),
+		value: currentStkIndex,//findValidStkIndex(),
                 step: 1,
                 showButtons: false,
                 ticksPosition: 'top',
