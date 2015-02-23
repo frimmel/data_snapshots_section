@@ -35,7 +35,7 @@ function data_snapshots_field_default_field_instances() {
           'empty_fields_handler' => '',
         ),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
       'nf_category_listing' => array(
         'label' => 'above',
@@ -1299,7 +1299,7 @@ function data_snapshots_field_default_field_instances() {
           'empty_fields_handler' => '',
         ),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'nf_category_listing' => array(
         'label' => 'above',
