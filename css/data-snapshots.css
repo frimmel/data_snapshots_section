@@ -225,15 +225,16 @@
     line-height: 14px;
 }
 
-.dss-short-summary-read-more {
+a.dss-short-summary-read-more {
     font-size: 12px;
     font-weight: bold;
-    color: #333;
+    color: #1a1a1a;
     line-height: 14px;
 }
 
-.group-right a.dss-short-summary-read-more:after {
-    content: "";
+.node-data-snapshot a.dss-short-summary-read-more:link,
+.node-data-snapshot a.dss-short-summary-read-more:visited {
+    color: #1a1a1a;
 }
 
 /**
