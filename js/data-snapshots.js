@@ -331,6 +331,7 @@
         $secondaryQuestion.text(secondaryQuestion);
         $secondaryAnswer.text(secondaryAnswer);
         $readMoreLink.attr("href", alias);
+        $(".dss-short-summary-read-more").attr("href", alias);
     };
 
     var xhr;

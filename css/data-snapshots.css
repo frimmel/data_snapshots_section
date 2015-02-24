@@ -230,7 +230,10 @@
     font-weight: bold;
     color: #333;
     line-height: 14px;
-    cursor: pointer;
+}
+
+.group-right a.dss-short-summary-read-more:after {
+    content: "";
 }
 
 /**

@@ -31,7 +31,7 @@
       <div class="dss-short-summary-wrapper">
         <div class="dss-short-summary-title">About This Snapshot:</div>
         <div class="dss-short-summary-text"></div>
-        <span class="dss-short-summary-read-more">&raquo;</span>
+        <span><a href="<?php print url('node/' . $node->datasource_node->nid); ?>" class="dss-short-summary-read-more">&raquo;</a></span>
       </div>
     </div>
     <div class="dss-text-wrapper">
