@@ -605,7 +605,9 @@ a.dss-short-summary-read-more {
 }
 
 .node-type-data-snapshot .breadcrumb,
-.page-data-snapshot-start .breadcrumb {
+.page-data-snapshot-start .breadcrumb,
+.node-type-data-snapshot #breadcrumb,
+.page-data-snapshot-start #breadcrumb {
     display: none;
 }
 
