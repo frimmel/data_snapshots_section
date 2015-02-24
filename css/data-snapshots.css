@@ -604,6 +604,11 @@ a.dss-short-summary-read-more {
     display: none;
 }
 
+.node-type-data-snapshot .breadcrumb,
+.page-data-snapshot-start .breadcrumb {
+    display: none;
+}
+
 .node-type-data-snapshot .group-right,
 .node-type-data-snapshot .field_dssds_title,
 .node-type-data-snapshot .ui-accordion,
