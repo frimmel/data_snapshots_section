@@ -399,10 +399,6 @@
             hideAnnotation();
         });
 
-	$(".dss-short-summary-read-more").click(function () {
-	    $("#dss-tabs-description").click();
-	});
-
         $(".annotation-toggle").click(function () {
             if ($(".field-name-body").hasClass("expanded")) {
                 hideAnnotation();
