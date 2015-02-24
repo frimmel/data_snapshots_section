@@ -90,7 +90,6 @@ function data_snapshots_node_info() {
  *
  * Inserts records into the custom table data_snapshots when a new node is created.
  */
-// Q: Why is guid '???'?
 function data_snapshots_insert($node) {
   if ($node->type == "data_snapshot") {
     db_insert('data_snapshots')
@@ -110,7 +109,6 @@ function data_snapshots_insert($node) {
  *
  * Updates records in the custom table data_snapshots when a node is altered.
  */
-// Q: Why is guid '???'?
 function data_snapshots_update($node) {
   if ($node->type == "data_snapshot") {
     db_update('data_snapshots')
@@ -171,21 +169,6 @@ function data_snapshots_theme($existing, $type, $theme, $path) {
     ),
   );
 }
-
-/*
- * Implements hook_load()
- *
- * Note that we don't actually need this, at the moment, but I'm leaving it in here commented
- * out as a reminder that we can use it if/when it turns out we need to.  hook_load() allows
- * us to arrange for arbitrary things to happen each time a node of one of our content types
- * is loaded; we can modify the $node object here to insert whatever we want (within reason).
- *
-function data_snapshots_load($nodes) {
-  //dsm("***********   data_snapshots_load   *************************\n");
-  //dsm($nodes);
-  //NOTE: hook_load() does not (need to) return anything
-}
-*/
 
 /*
  * I'm really not sure what the correct way to fetch a node field value is,
@@ -311,13 +294,10 @@ function data_snapshots_view($node, $view_mode) {
   drupal_add_css($base_path . "/css/data-snapshots.css");
   drupal_add_css($base_path . "/permalink/permalink.css");
   drupal_add_css($base_path . "/css/jquery-ui-1.10.4.custom.min.css");
-  //  drupal_add_css($base_path . "/datSnapWebBuild/css/custom-theme/jquery-ui-1.10.4.custom.min.css");
 
   drupal_add_js($base_path . "/permalink/permalink.js",
                 array('scope' => 'header', 'group' => JS_DEFAULT, 'weight' => 1001));
 
-//  drupal_add_js($base_path . "/js/bootstrap.js",
-//                array('scope' => 'header', 'group' => JS_DEFAULT, 'weight' => 1001));
   drupal_add_js($base_path . "/js/jquery-ui-1.10.4.custom.js",
                 array('scope' => 'header', 'group' => JS_DEFAULT, 'weight' => 1002));
   drupal_add_js($base_path . "/js/jquery.ui.touch-punch.min.js",
@@ -447,6 +427,7 @@ function data_snapshots_node_type_insert($content_type) {
 
   if ($content_type->type == 'data_snapshot') {
     // sets up alias for data snapshots
+    // update this line if you wish to change the auto alias for data snapshots
     variable_set('pathauto_node_data_snapshot_pattern', 'data-snapshot/[node:field_ds_dsds_mn]-[node:field_ds_ptk]-[node:field_ds_stk]');
 
     // following code block taken from features module
@@ -486,9 +467,9 @@ function data_snapshots_node_type_insert($content_type) {
 
   if ($content_type->type == 'data_snapshot_data_source') {
     // sets up alias for data snapshots
+    // update this line if you wish to change the auto alias for data sources
     variable_set('pathauto_node_data_snapshot_data_source_pattern', 'data-snapshot/data-source-[node:title]');
   }
-
 }
 
 /**
@@ -562,7 +543,10 @@ function data_snapshots_admin_settings() {
   return system_settings_form($form);
 }
 
-
+/**
+ * Determines the function used to switch between frequencies. The functions are found in
+ * data_snapshots.switch_callbacks.inc and rely on the frequency taxonomy.
+ */
 function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name) {
   $custom_freq = 'Custom';
   $default_conversion = '_data_snapshots_default_conversion';
@@ -582,6 +566,10 @@ function _data_snapshots_get_callback($cur_freq, $new_freq, $cur_name, $new_name
   }
 }
 
+/**
+ * So that we only need one endpoint to get new data for data snapshots ajax requests
+ * we switch between two different callbacks based on a parameter.
+ */
 function _data_snapshots_ajax() {
   if ($_POST['type'] == 'data_snapshot') {
     $result = _data_snapshots_data_snapshot_ajax($_POST);
@@ -593,6 +581,15 @@ function _data_snapshots_ajax() {
   exit();
 }
 
+/**
+ * Callback for getting new data snapshots. Grabs the:
+ *
+ *   title,
+ *   annotation html,
+ *   downloads section html,
+ *   date generated html,
+ *   permalink html
+ */
 function _data_snapshots_data_snapshot_ajax($parameters) {
   $query = db_select('data_snapshots', 'ds')
     ->fields('ds', array('nid'))
@@ -618,6 +615,12 @@ function _data_snapshots_data_snapshot_ajax($parameters) {
   return $result;
 }
 
+/**
+ * Callback for getting new data sources. Grabs the:
+ *
+ *   whole node content,
+ *   node's alias
+ */
 function _data_snapshots_data_source_ajax($parameters) {
   $new_dsmn = $parameters['new_dsmn'];
   $callback = _data_snapshots_get_callback($parameters['current_frequency'], $parameters['new_frequency'], $parameters['current_dsmn'], $new_dsmn);
@@ -635,6 +638,11 @@ function _data_snapshots_data_source_ajax($parameters) {
   return $result;
 }
 
+/**
+ * Implements hook_entity_info_alter
+ *
+ * Enables custom display modes
+ */
 function data_snapshots_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['full']['custom settings'] = TRUE;
   $entity_info['node']['view modes']['teaser']['custom settings'] = TRUE;

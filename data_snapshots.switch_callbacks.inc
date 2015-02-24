@@ -1,8 +1,8 @@
 <?php
 
-  /*
-callback functions to switch between different data sources
-  */
+/**
+ * callback functions to switch between different data sources
+ */
 
 function _data_snapshots_get_ptk($ptk, $dates) {
   if (in_array($ptk, $dates['p'])) {

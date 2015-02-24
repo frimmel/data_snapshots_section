@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * The code in general assumes that every STK array will have the same rough count
+ * of values (ie 12 for Monthly & 52 or 53 for weekly). These functions determine
+ * where there are missing values and adds in placeholder values where appropriate.
+ */
 function _data_snapshots_pad_snapshots($dsmn, $ptks, &$stks) {
   $PAD_VALUE = NULL;
   $frequency = _data_snapshots_get_data_source_frequency($dsmn);
@@ -125,5 +130,5 @@ function _data_snapshots_pad_Bimonthly($ptks, &$stks, $PAD_VALUE) {
 
 function _data_snapshots_pad_Annual($ptks, &$stks, $PAD_VALUE) {
   // nothing needs to happen here. There will never be stks.
-  // This functions just created to avoid the need for additional logic
+  // This function was just created to avoid the need for additional logic
 }
