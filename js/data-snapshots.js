@@ -103,7 +103,6 @@
 
     function switchImgContent (dsmn, ptk, stk) {
 	setImg(dsmn, ptk, stk);
-        setUrl(dsmn, ptk, stk, $(".dss-accordion .ui-accordion-header-active").attr("value"));
     }
 
     function setTitle(html) {
@@ -441,7 +440,6 @@
         bindStkEvents();
 
         initDropdowns();
-        dataSourceStkChange();
         $(".dss-data-source-dropdown").click(dataSourceDropdownChange);
         $('h3.ui-accordion-header').click(themeDropdownChange);
         setSliderNames(getFrequency(dsmn));
@@ -619,6 +617,7 @@
             } else {
                 switchDataSnapshotContent(dsmn, ptks[currentPtkIndex]);
             }
+            setUrl(dsmn, ptks[currentPtkIndex], stks[currentStkIndex], $(".dss-accordion .ui-accordion-header-active").attr("value"));
         };
 
         function bindPtkEvents() {
@@ -626,15 +625,6 @@
                 .bind('slide', ptkSlideHandler)
                 .bind('slideStart', ptkSlideStartHandler)
                 .bind('slideEnd', ptkSlideEndHandler);
-
-            /*
-              $('.field-name-field-ds-ptk > .field-items').bind('change', function(event) {
-                currentPtkIndex = event.args.value;
-                stks = getStks(ptks[currentPtkIndex]);
-                setImg(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
-                configStkSlider();
-                })
-            */
         }
 
         function unbindPtkEvents() {
@@ -704,6 +694,7 @@
         function stkSlideEndHandler(event) {
 	    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
             switchDataSnapshotContent(dsmn, ptks[currentPtkIndex], stks[currentStkIndex]);
+            setUrl(dsmn, ptks[currentPtkIndex], stks[currentStkIndex], $(".dss-accordion .ui-accordion-header-active").attr("value"));
         }
 
         function bindStkEvents() {
@@ -750,10 +741,6 @@
 	    }
 
 	    $(stkPopupSelector).removeClass("dss-interactive-slider-popup-active");
-        }
-
-        function dataSourceStkChange() {
-            //            $('#dss-interactive-slider-stk-slider').slider("option", "disabled", determineStkDisabled());
         }
 
         function themeDropdownChange() {
@@ -819,11 +806,11 @@
 
             switchDataSourceContent(result.node, result.alias);
             switchDataSnapshotContent(dsmn, ptk, stk);
-            dataSourceStkChange();
             setSliderNames(getFrequency(dsmn));
             $(".dss-short-summary-text").text($(".field_dssds_framing_q_answer").text().split(".")[0] + ".");
             bindPtkEvents();
             bindStkEvents();
+            setUrl(dsmn, ptk, stk, $(".dss-accordion .ui-accordion-header-active").attr("value"));
         }
 
         function setDataSource(newDsmn) {
