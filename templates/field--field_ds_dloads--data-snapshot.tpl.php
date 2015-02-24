@@ -60,6 +60,7 @@
           <input type="radio" value="<?php print $item['#element']['url']; ?>" id="dss-form-element-<?php print $delta; ?>" class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?> name="dss-download"></input>
         <?php endforeach; ?>
       </div>
+      <div class="dss-downloads-license">These public-domain images are freely available for re-use.</div>
       <div class="dss-downloads-buttons">
         <button class="dss-downloads-cancel-button">Cancel</button>
         <button class="dss-downloads-ok-button" type="submit">OK</button>
