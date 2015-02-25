@@ -1,13 +1,35 @@
 <?php
 
+###
+### START OF CONFIGURATION SETTINGS
+###
+
+# Before running this script, edit the following settings to be appropriate for
+# your environment.
+
+# $FEED_URL_PREFIX should be the URL of the top level image directory on the image server.
+# This MUST end with a '/'.
 $FEED_URL_PREFIX = "http://larry.nemac.org/Images/";
+
+# $notids_input_file should be the path to the file 'dev/datasets-notids.json'.
+# Note that this is the input file read by this program.
+$notids_input_file = "sites/all/modules/data_snapshots/dev/datasets-notids.json";
+
+# $retids_output_file should be the path to the file 'dev/datasets-retids.json'
+# Note that this is the output file written by this program.
+$retids_output_file = "sites/all/modules/data_snapshots/dev/datasets-retids.json";
+
+###
+### END OF CONFIGURATION SETTINGS
+###
+
 
 #
 # This script
 # 
-#     1. Reads in the file sites/all/modules/data_snapshots/dev/datasets-notids.json
+#     1. Reads in the file dev/datasets-notids.json
 #     2. Changes all references to tids from strings based on vocabulary and term names to numbers
-#     3. Writes the result to the file sites/all/modules/data_snapshots/dev/datasets-retids.json
+#     3. Writes the result to the file dev/datasets-retids.json
 # 
 # Usage:
 #
@@ -95,7 +117,7 @@ function unstringify_term($term, $tx_vocabs, $tx_terms) {
     return $tx_terms[$tx_vocabs[$vocab_machine_name]][$term_name];
 }
 
-$string = file_get_contents("sites/all/modules/data_snapshots/dev/datasets-notids.json");
+$string = file_get_contents($notids_input_file);
 
 $datasets = json_decode($string, true);
 
@@ -114,6 +136,6 @@ for ($i=0; $i<count($datasets); ++$i) {
 }
 
 
-$outfile = fopen("sites/all/modules/data_snapshots/dev/datasets-retids.json", "w");
+$outfile = fopen($retids_output_file, "w");
 fwrite($outfile, json_encode($datasets));
 fclose($outfile);
