@@ -76,6 +76,9 @@
     function setUrl(dsmn, ptk, stk, theme) {
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
+	ptk = (ptk) ? ptk : "0000";
+	stk = (stk) ? stk : "00-00";
+	
         if (stk && ptk && window.history && window.history.replaceState) {
             url = (determineStkDisabled() === false) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
             window.history.replaceState({}, "", url);
@@ -261,6 +264,24 @@
             if (dataSources[theme].length === 0) {
                 continue;
             }
+	    if (theme === initTheme) {
+		for (j = 0; j < dataSources[theme].length; j++) {
+                    if (dataSources[theme][j].mname === dsmn) {
+                        foundTheme = true;
+			break;
+                    }
+                }
+            }
+	    if (!foundTheme) {
+		themeIndex++;
+	    }
+        }
+
+        for (i = 0; i < themes.length; i++) {
+            theme = themes[i];
+            if (dataSources[theme].length === 0) {
+                continue;
+            }
             $accordion.append($("<h3/>", { value: theme }).text(theme));
 
             $datasourceWrapper = $("<div></div>");
@@ -287,9 +308,6 @@
 	if (foundTheme) {
 	    $accordion.accordion("option", "active", themeIndex);
 	}
-
-        //        $themeDropdown.val(initTheme);
-        //        $dataSourceDropdown.val(dsmn);
     }
 
     function determineStkDisabled() {
