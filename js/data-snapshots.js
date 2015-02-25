@@ -41,6 +41,12 @@
         };
     }
 
+    /**
+     * Missing Value placeholders
+     */
+    var MISSING_PTK = "0000";
+    var MISSING_STK = "00-00";
+
     function getPropertiesObject() {
         return Drupal.settings.data_snapshots;
     }
@@ -76,8 +82,8 @@
     function setUrl(dsmn, ptk, stk, theme) {
         var url;
         dsmn = dsmn.replace(/_/g, "");// URL aliases strip out underscores
-	ptk = (ptk) ? ptk : "0000";
-	stk = (stk) ? stk : "00-00";
+	ptk = (ptk) ? ptk : MISSING_PTK;
+	stk = (stk) ? stk : MISSING_STK;
 	
         if (stk && ptk && window.history && window.history.replaceState) {
             url = (determineStkDisabled() === false) ? dsmn + "-" + ptk + "-" + stk + "?theme=" + theme : dsmn + "-" + ptk + "?theme=" + theme;
@@ -97,8 +103,8 @@
 	var ptkValue = ptk,
 	    stkValue = stk;
 	if (stk === null) {
-	    ptkValue = "0000";
-	    stkValue = "00-00";
+	    ptkValue = MISSING_PTK;
+	    stkValue = MISSING_STK;
 	    setAnnotation();
 	}
 	$('.field-name-field-ds-disimg img').attr('src', makeImgUrl(dsmn, ptkValue, stkValue));
@@ -228,9 +234,9 @@
 	    popupText = "",
             elemPosition;
 
-	popupText = (ptk !== "0000") ? ptk : "";
-	popupText += (ptk !== "0000" && stk) ? "-" : "";
-	popupText += (stk) ? stk : "";
+	popupText = (ptk !== MISSING_PTK) ? ptk : "";
+	popupText += (ptk !== MISSING_PTK && stk !== MISSING_STK && stk) ? "-" : "";
+	popupText += (stk !== MISSING_STK && stk) ? stk : "";
         $elem.text(popupText);
 
 	elemPosition = parseInt($slider.css("left"), 10) +
@@ -666,7 +672,7 @@
                 tooltip: false
             });
 
-	    if (ptks.length === 1 && ptks[0] === "0000") {
+	    if (ptks.length === 1 && ptks[0] === MISSING_PTK) {
 		$('.field-name-field-ds-ptk').addClass("hidden");
 		$('.field-name-field-ds-ptk > .field-items').jqxSlider("disable");
 	    } else {
@@ -741,7 +747,7 @@
                 tooltip: false
             });
 
-	    if (stks.length === 1 && stks[0] === "00-00") {
+	    if (stks.length === 1 && stks[0] === MISSING_STK) {
 		$('.field-name-field-ds-stk').addClass("hidden");
 		$('.field-name-field-ds-stk > .field-items').jqxSlider("disable");
 	    } else {
@@ -749,7 +755,7 @@
 		$('.field-name-field-ds-stk > .field-items').jqxSlider("enable");
 	    }
 
-	    if (ptks.length === 1 && ptks[0] === "0000") {
+	    if (ptks.length === 1 && ptks[0] === MISSING_PTK) {
 		$('.field-name-field-ds-stk > .field-items').jqxSlider({
 		    "ticksPosition": "bottom"
 		});
