@@ -186,11 +186,13 @@
 
     function downloadOkButtonHandler() {
 	$(".dss-downloads-popup").fadeOut(200);
+	$(".dss-downloads-toggle").jqxToggleButton('toggle');
     }
 
     function downloadCancelButtonHandler(event) {
 	event.preventDefault();
 	$(".dss-downloads-popup").fadeOut(200);
+	$(".dss-downloads-toggle").jqxToggleButton('toggle');
     }
 
     function downloadInputChangeHandler() {
