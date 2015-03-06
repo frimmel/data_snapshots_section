@@ -129,6 +129,10 @@
     background-color: #787878;
 }
 
+.context-maps-data #region-content .content .dss-accordion h3 {
+    margin: 2px 0 0 0;
+}
+
 .dss-accordion .ui-accordion .ui-accordion-header {
     padding-top: 3px;
     padding-bottom: 5px;
