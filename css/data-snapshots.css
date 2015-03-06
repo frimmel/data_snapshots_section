@@ -236,6 +236,11 @@ a.dss-short-summary-read-more {
     line-height: 14px;
 }
 
+a.dss-short-summary-read-more:after {
+    content: '\00BB';
+    padding-left: 5px;
+}
+
 .node-data-snapshot a.dss-short-summary-read-more:link,
 .node-data-snapshot a.dss-short-summary-read-more:visited {
     color: #1a1a1a;
@@ -302,6 +307,11 @@ a.dss-short-summary-read-more {
     font-size: 12px;
     font-weight: bold;
     color: #1a1a1a !important;
+}
+
+.dss-question-read-more a:after {
+    content: '\00BB';
+    padding-left: 5px;
 }
 
 /**
