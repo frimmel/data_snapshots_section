@@ -502,8 +502,39 @@ function data_snapshots_menu() {
     'access arguments' => array('administer site configuration'),
     'type' => MENU_NORMAL_ITEM
   );
+  $items['maps-data/data-snapshots/latest/%'] = array(
+    'title' => 'Data Snapshots Latest',
+    'description' => 'Links to the latest snapshot for a data source',
+    'page callback' => '_data_snapshots_latest_callback',
+    'page arguments' => array(3),
+    'access arguments' => array('view published content'),
+  );
 
   return $items;
+}
+
+function _data_snapshots_latest_callback($data_source) {
+    $data_source_exists = db_select('field_data_field_dssds_machine_name', 'mn')
+      ->fields('mn', array('field_dssds_machine_name_value'))
+      ->condition('field_dssds_machine_name_value', $data_source)
+      ->execute()
+      ->rowCount();
+
+    if ($data_source_exists) {
+      $query = db_select('field_data_field_ds_dsds_mn', 'mn')
+        ->fields('mn', array('entity_id'))
+	->condition('field_ds_dsds_mn_value', $data_source);
+      $query->leftJoin('field_data_field_ds_ptk', 'ptk', '(mn.entity_id = ptk.entity_id)');
+      $query->leftJoin('field_data_field_ds_stk', 'stk', '(mn.entity_id = stk.entity_id)');
+      $query->orderBy('field_ds_ptk_value', 'DESC')
+        ->orderBy('field_ds_stk_value', 'DESC')
+	->range(0, 1);
+
+      $snapshot = $query->execute()->fetchField();
+      drupal_goto('node/' . $snapshot);
+    } else {
+      drupal_not_found();
+    }
 }
 
 function data_snapshots_admin_settings() {
