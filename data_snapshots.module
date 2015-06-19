@@ -544,7 +544,7 @@ function data_snapshots_admin_settings() {
   $form['run'] = array(
     '#type' => 'submit',
     '#value' => t('Run import now'),
-    '#submit' => array('data_snapshots_run_import'),
+    '#submit' => array('data_snapshots_run_import_gui'),
   );
   $last_import = data_snapshots_last_import_info();
   if ($last_import == null) {
@@ -738,7 +738,6 @@ function data_snapshots_last_import_info() {
 
 
 function data_snapshots_run_import() {
-
   ###
   ### Get the list of URLs that have already been loaded, and store them in
   ### the `$loaded_urls` hash.  These URLs are stored in the table named
@@ -836,10 +835,12 @@ function data_snapshots_run_import() {
   } else {
     drupal_set_message(t('Nothing new to import'));
   }
-  
-  drupal_goto('admin/config/data-snapshots/settings');
 }
 
+function data_snapshots_run_import_gui() {
+  data_snapshots_run_import();
+  drupal_goto('admin/config/data-snapshots/settings');
+}
 
 function data_snapshots_load_url($url, $dsi_id) {
 
